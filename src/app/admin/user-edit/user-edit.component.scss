@@ -1,0 +1,89 @@
+.user-info-container {
+    background: linear-gradient(180deg, #33545B 49.6%, #11405A 99.98%);
+    color: #ffffff;
+    font-family: 'K2D', !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding: 10px;
+}
+
+h2 {
+    font-size: 32px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.profile-picture {
+    width: 150px; 
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px; 
+}
+
+.user-details {
+    text-align: left; 
+    margin: 10px 0;
+    font-size: 18px; 
+    width: 100%; 
+    max-width: 300px; 
+}
+
+.user-details p {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+    margin: 5px 0;
+}
+
+.status {
+    color: lightgreen; 
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly; 
+    gap: 10px; 
+    margin-top: 20px;
+    flex-wrap: wrap; 
+}
+
+button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 8px 15px; 
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #bdc3c7;
+}
+
+/* Media Query for Mobile Screens */
+@media screen and (max-width: 480px) {
+    h2 {
+        font-size: 24px; /* Scales down heading for small screens */
+    }
+
+    .profile-picture {
+        width: 120px; /* Smaller profile picture */
+        height: 120px;
+    }
+
+    .user-details {
+        font-size: 16px; /* Adjusted for readability on small screens */
+    }
+
+    .user-details p {
+        flex-direction: row; /* Stacks labels and values vertically */
+        text-align: left; /* Keeps alignment consistent */
+    }
+
+    .buttons {
+        flex-direction: row; /* Stacks buttons vertically */
+        gap: 15px; /* More spacing between buttons */
+    }
+}

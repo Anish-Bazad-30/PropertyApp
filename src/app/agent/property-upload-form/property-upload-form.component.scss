@@ -1,0 +1,140 @@
+/* Property Upload Form Container */
+.property-upload-form-container {
+    padding: 16px;
+    background: linear-gradient(180deg, #33545B 49.6%, #11405A 99.98%);
+    color: #ffffff;
+    font-family: 'K2D', sans-serif;
+    min-height: 100vh;
+    max-width: 1280px;
+    max-height: 1368px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Form Header */
+.property-upload-form-container h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Form Fields */
+label {
+    display: block;
+    text-align: left;
+    margin: 10px 0px 5px;
+    font-weight: bold;
+}
+
+.form-input, 
+.form-select, 
+textarea {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    background: #d9d9d9;
+    color: black;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Buttons */
+.submit-button {
+    width: 100%;
+    max-width: 350px;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #d9d9d9;
+    color: #11405a;
+    border: 2px solid #11405a;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+
+/* Large Tablets & Small Desktops */
+@media screen and (max-width: 1024px) {
+    .property-upload-form-container {
+        padding: 14px;
+        max-height: 100vh;
+    }
+
+    .form-input, .form-select, textarea {
+        max-width: 600px;
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .submit-button {
+        width: 95%;
+        font-size: 15px;
+    }
+}
+
+/* Tablets & Smaller Screens */
+@media screen and (max-width: 768px) {
+    .property-upload-form-container {
+        padding: 12px;
+        max-height: 100vh;
+    }
+
+    .form-input, .form-select, textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .submit-button {
+        width: 90%;
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* Small Mobile Screens */
+@media screen and (max-width: 480px) {
+    .property-upload-form-container {
+        padding: 10px;
+    }
+
+    .form-input, .form-select, textarea {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .submit-button {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* Extra Small Screens (Phones below 360px width) */
+@media screen and (max-width: 360px) {
+    .property-upload-form-container {
+        padding: 8px;
+    }
+
+    .form-input, .form-select, textarea {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .submit-button {
+        width: 100%;
+        font-size: 13px;
+        padding: 8px;
+    }
+}

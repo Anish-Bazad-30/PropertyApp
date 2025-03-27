@@ -1,0 +1,16 @@
+<div class="agent-edit-container">
+  <h2>Agent Info</h2>
+  <img src="assets/images/pp.png" alt="Profile Picture" class="profile-picture">
+  <div class="agent-details">
+    <p><strong>Name:</strong> {{ agent.name }}</p>
+    <p><strong>Email:</strong> {{ agent.email }}</p>
+    <p><strong>Status:</strong> <span class="status">{{ agent.status }}</span></p>
+    <p><strong>Referral Link:</strong> <a href="{{ agent.referralLink }}" target="_blank">{{ agent.referralLink }}</a></p>
+    <p><strong>Total Referrals:</strong> {{ agent.totalReferrals }}</p>
+    <p><strong>Services Taken:</strong> {{ agent.servicesTaken.join(', ') }}</p>
+  </div>
+  <div class="buttons">
+    <button (click)="edit()">Edit</button>
+    <button (click)="cancel()">Cancel</button>
+  </div>
+</div>

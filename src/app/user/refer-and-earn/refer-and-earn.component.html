@@ -1,0 +1,40 @@
+<div class="refer-container">
+  <h2>Refer & Earn</h2>
+  <p>20% off for you, 20% for them!</p>
+  <p>Share the referral link with your friends. Earn a bonus on every qualified referral.</p>
+
+  <div class="how-it-works">
+    <h3>How it works</h3>
+    <ul>
+      <li class="step-item">
+        <img src="assets/icon/f-arrow.png" alt="ForwardArrow" class="icon">
+        <span>Share the referral link with your friend</span>
+      </li>
+      <li class="step-item">
+        <img src="assets/icon/rupee.png" alt="Rupee" class="icon">
+        <span>After your friend buys any service using your referral, you get 20% off on your next order</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="referral-box">
+    <input type="text" [(ngModel)]="referralLink" readonly />
+    <button (click)="copyLink()">
+      <img src="assets/icon/copy.png" alt="Copy" />
+    </button>
+  </div>
+ 
+  <button class="whatsapp-btn" (click)="shareOnWhatsApp()">
+    <img src="assets/images/whatsapp.png" alt="WhatsApp" />
+    Invite via WhatsApp
+  </button>
+
+  <button class="share-btn" (click)="shareReferralLink()">Share Referral Link</button>
+
+  <div class="commission-box">
+    <h3>Total Commission Earned</h3>
+    <p>{{ totalCommission }}</p>
+  </div>
+
+  <a href="/terms" class="terms-link">Terms & Conditions</a>
+</div>

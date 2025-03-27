@@ -1,0 +1,16 @@
+<div class="vendor-edit-container">
+  <h2>Edit Vendor</h2>
+  <img src="assets/images/plumbing.jpeg" alt="Plumbing Image" class="plumbing-picture">
+  <div class="vendor-details">
+    <p><strong>Name:</strong> {{ vendorInfo.name }}</p>
+    <p><strong>Service Category:</strong> {{ vendorInfo.category }}</p>
+    <p><strong>Referred by:</strong> {{ vendorInfo.referredBy }}</p>
+    <p><strong>Status:</strong> <span class="status">{{ vendorInfo.status }}</span></p>
+    <p><strong>Contact Info:</strong> {{ vendorInfo.contact }}</p>
+    <p><strong>No. of times Services taken:</strong> {{ vendorInfo.serviceCount }}</p>
+  </div>
+  <div class="buttons">
+    <button (click)="edit()">Edit</button>
+    <button (click)="cancel()">Cancel</button>
+  </div>
+</div>

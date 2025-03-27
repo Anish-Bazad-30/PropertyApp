@@ -1,0 +1,160 @@
+.agent-management-container {
+    background: linear-gradient(180deg, #33545B 49.6%, #11405A 99.98%);
+    color: #ffffff;
+    font-family: 'K2D', !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    width: 100%;
+    
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+  .search-filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .search-bar-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 6px;
+    padding: 4px 10px;
+  }
+  
+  .search-box {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    margin-left: 5px;
+    background-color: white;
+    color: black;
+    min-width: 120px;
+  }
+  
+  .filter-icon {
+    background-color: black;
+    padding: 3px;
+    border-radius: 5px;
+  }
+  
+  .content-box {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  
+  }
+  
+  
+  .add-agent-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+  }
+  
+  .add-agent-btn {
+    background: #E8E8E8;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    display: block;
+  }
+  
+  .agent-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .agent-table th, .agent-table td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  .agent-table th {
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+  }
+  
+  .profile-pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .active {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .inactive {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .edit-btn, .delete-btn {
+    border: none;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 2px;
+  }
+  
+  .edit-btn {
+    background: #007bff;
+    color: white;
+  }
+
+  .delete-btn {
+    background: #dc3545;
+    color: white;
+  }
+
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+    }
+  
+    .search-bar-container {
+      margin-top: 5px;
+      width: 100%;
+    }
+  
+    .agent-table th, .agent-table td {
+      padding: 8px;
+      font-size: 12px;
+    }
+  
+    .edit-btn, .delete-btn {
+      font-size: 10px;
+      padding: 3px 6px;
+    }
+  }
+  

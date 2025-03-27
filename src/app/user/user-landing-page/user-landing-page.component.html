@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="main w-100 d-flex flex-column align-items-center flex-grow-1 p-2">
+    <div class="top-header d-flex justify-content-between align-items-center w-100 px-3">
+      <ion-icon name="arrow-back" class="back-icon"></ion-icon> 
+      <ion-icon name="menu-outline" class="menu-icon"></ion-icon> 
+    </div>
+
+    <div class="header w-100 text-start p-3">
+      <h5 class="welcome-text">Welcome</h5>
+      <h3 class="find-text">Find Your Properties</h3>
+    </div>
+    
+    <div class="dropdown-container w-100 d-flex flex-column align-items-start px-3 mb-3">
+      <select class="form-select w-100 mb-3" [(ngModel)]="selectedCity" (change)="onCityChange()">
+        <option value="" disabled selected>Select City</option>
+        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+      </select>
+
+      <div class="dropdown-row d-flex justify-content-between w-100">
+        <select class="form-select w-50 me-2" [(ngModel)]="selectedArea" (change)="onAreaChange()" [disabled]="!selectedCity">
+          <option value="" disabled selected>Select Area</option>
+          <option *ngFor="let area of areas" [value]="area">{{ area }}</option>
+        </select>
+
+        <select class="form-select w-50" [(ngModel)]="selectedSector" [disabled]="!selectedArea" (change)="onSectorChange()">
+          <option value="" disabled selected>Select Sector</option>
+          <option *ngFor="let sector of sectors" [value]="sector">{{ sector }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="categories-section w-100 text-start">
+      <h6 class="categories-title">Categories</h6>
+      <div class="categories-buttons">
+        <button class="btn btn-primary category-button" (click)="filterByCategory('House')">House</button>
+        <button class="btn btn-primary category-button" (click)="filterByCategory('Apartment')">Apartment</button>
+        <button class="btn btn-primary category-button" (click)="filterByCategory('Office')">Office</button>
+      </div>
+    </div>
+
+    <div class="property-cards w-100 d-flex flex-wrap justify-content-between">
+      <div class="property-card" *ngFor="let property of filteredProperties">
+     
+        <h6 class="property-title">{{ property.title }}</h6>
+
+        <div class="property-content">
+
+        <div class="property-image">
+          <img src="assets/images/Apartment.png" alt="Property Image" />
+        </div>
+        <div class="property-details">
+          <p class="property-address">
+            <strong class = "address-label">Address:</strong> {{ property.description }}
+          </p>
+          <div class="property-buttons">
+            <button class="btn btn-danger view-button" (click)="viewProperty(property.title)">View</button>
+            <button class="btn btn-info call-now-button" (click)="callNow(property.title)">Call Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    

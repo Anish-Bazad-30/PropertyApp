@@ -1,0 +1,76 @@
+import { Component, OnInit } from '@angular/core';
+import { ReferAndEarnService } from 'src/app/services/refer-and-earn.service';
+
+@Component({
+  selector: 'app-refer-earn',
+  templateUrl: './refer-and-earn.component.html',
+  styleUrls: ['./refer-and-earn.component.scss']
+})
+export class ReferEarnComponent implements OnInit {
+  referralLink: string = '';
+  totalCommission: string = 'Loading...';
+  userId: string = 'user4';
+
+  constructor(private referAndEarnService: ReferAndEarnService,) { }
+
+  ngOnInit() {
+
+    const storedUserName = localStorage.getItem('userName');
+  this.userId = storedUserName !== null ? storedUserName : '';
+  console.log('User ID:', this.userId); // Check if userId is correct
+
+  if (this.userId) {
+    this.fetchReferralLink(); // Call API only if userId is not empty
+  } else {
+    console.error('User ID is missing');
+  }
+    // Fetch total commission earned
+    // this.referAndEarnService.getTotalCommission(this.userId).subscribe(res => {
+    //   this.totalCommission = res;
+    // }, error => {
+    //   console.error('Error fetching commission:', error);
+    //   this.totalCommission = 'Error fetching commission';
+    // });
+  }
+
+  async fetchReferralLink(){
+    console.log('Calling getReferrals API with userId:', this.userId);
+  this.referAndEarnService.getReferrals(this.userId).subscribe(
+    (res:any) => {
+      console.log('API Response:', res);
+      this.referralLink = res.data[0].referralLink;
+      console.log("refereafasdsd",this.referralLink);
+      
+    },
+    (error) => {
+      console.error('Error generating referral link:', error);
+      this.referralLink = 'Error fetching link';
+    }
+  );
+  }
+
+  copyLink() {
+    navigator.clipboard.writeText(this.referralLink).then(() => {
+      alert('Referral link copied to clipboard!');
+    });
+  }
+
+  shareOnWhatsApp() {
+    const message = `Hey! Get 20% off using my referral link: ${this.referralLink}`;
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  shareReferralLink() {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Refer & Earn',
+        text: 'Get 20% off using my referral link!',
+        url: this.referralLink
+      }).catch(error => console.log('Error sharing:', error));
+    } else {
+      this.copyLink();
+    }
+  }
+}
+

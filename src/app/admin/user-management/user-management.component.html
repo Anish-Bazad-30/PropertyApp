@@ -1,0 +1,56 @@
+<div class="user-management-container">
+  <div class="navbar">
+    <h2 class="title">User Management</h2>
+    
+    <div class="search-filter-container">
+    <div class="search-bar-container">
+      <img src="assets/icon/search.png" alt="Search Icon" class="search-icon" />
+      <input
+        type="text"
+        placeholder="Search"
+        class="search-box"
+        (input)="updateSearchTerm($event)"
+      />
+      </div>
+      <img src="assets/icon/slider.png" alt="Filter Icon" class="filter-icon" />
+    </div>
+    </div>
+  
+
+  <div class = "add-user-container">
+  <button class="add-user-btn">Add New User</button>
+  </div>
+
+  <div class="content-box">
+    <table class="user-table">
+      <thead>
+        <tr>
+          <th>Profile Picture</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of filteredUsers">
+          <td>
+            <img src="assets/images/image1.png" alt="{{user.name}}" class="profile-pic" />
+          </td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <span [ngClass]="{'active': user.status === 'Active', 'inactive': user.status !== 'Active'}">
+              {{ user.status }}
+            </span>
+          </td>
+          <td>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn" (click)="confirmDelete(user)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+

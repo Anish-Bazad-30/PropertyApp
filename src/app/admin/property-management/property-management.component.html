@@ -1,0 +1,56 @@
+<div class="property-management-container">
+  <!-- Navbar -->
+  <div class="navbar">
+    <h2 class="title">Property Management</h2>
+
+    <div class="search-filter-container">
+      <div class="search-bar-container">
+        <img src="assets/icon/search.png" alt="Search Icon" class="search-icon" />
+        <input
+          type="text"
+          placeholder="Search"
+          class="search-box"
+          (input)="updateSearchTerm($event)"
+        />
+      </div>
+      <img src="assets/icon/slider.png" alt="Filter Icon" class="filter-icon" />
+    </div>
+  </div>
+
+  <div class="add-property-container">
+    <button class="add-property-btn">Add New Property</button>
+  </div>
+
+  <div class="content-box">
+    <table class="property-table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name & Address</th>
+          <th>Status</th>
+          <th>Owner</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let property of filteredProperties">
+          <td>
+            <img src="assets/images/property.png" alt="Property Image" class="property-pic" />
+          </td>
+          <td>{{ property.name }}<br>{{ property.address }}</td>
+          <td>
+            <span [ngClass]="{'active': property.status === 'Active', 'sold': property.status === 'Sold'}">
+              {{ property.status }}
+            </span>
+          </td>
+          <td>{{ property.owner }}</td>
+          <td>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn" (click)="confirmDelete(vendor)">Delete</button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

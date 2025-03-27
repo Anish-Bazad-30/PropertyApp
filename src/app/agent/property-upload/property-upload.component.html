@@ -1,0 +1,28 @@
+<div class="property-upload-container">
+    <h1>Property Upload</h1>
+    <div class="add-property-wrapper">
+        <button class="add-property-btn">Add New Property</button>
+    </div>
+
+    <div class="" *ngFor="let property of properties">
+        <h2>{{ property.name }}</h2>
+        <span class="property-title">{{ property.title }}</span>
+        <p class="property-price">{{ property.price }}</p>
+
+        <div class="icon-group">
+            <img src="assets/images/positive.png" alt="Positive" class="icon positive-icon">
+            <img src="assets/images/negative.png" alt="Negative" class="icon negative-icon">
+        </div>
+
+        <div class="property-image-wrapper">
+            <img src="{{ property.image }}" alt="Property Image" class="property-image">
+            <img src="assets/images/backward.png" alt="Backward" class="icon backward-icon" (click)="goBackward(property)">
+            <img src="assets/images/forward.png" alt="Forward" class="icon forward-icon" (click)="goForward(property)">
+        </div>
+
+        <div class="card-actions">
+            <button class="edit-btn" (click)="editProperty(property)">Edit</button>
+            <button class="delete-btn" (click)="deleteProperty(property)">Delete</button>
+        </div>
+    </div>
+</div>

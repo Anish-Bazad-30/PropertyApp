@@ -1,0 +1,110 @@
+.referral-management-container {
+    background: linear-gradient(180deg, #33545B 49.6%, #11405A 99.98%);
+    color: #ffffff;
+    font-family: 'K2D', !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    align-items: center;
+    background-color: #0f3b47;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    width: 100%;
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Search */
+  .search-filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .search-bar-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 6px;
+    padding: 4px 10px;
+  }
+  
+  .search-box {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    margin-left: 5px;
+    background-color: white;
+    color: black;
+    min-width: 120px;
+  }
+  
+  .stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .stat-box {
+    background-color: #0f3b47;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .stat-box span {
+    font-size: 18px;
+    display: block;
+    margin-top: 5px;
+  }
+  
+  /* Referral Table */
+  .content-box {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .referral-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .referral-table th,
+  .referral-table td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  .referral-table th {
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+  }
+  
+  .status-success {
+    color: green;
+    font-weight: bold;
+  }
+  .status-pending {
+    color: red;
+    font-weight: bold;
+  }
+  

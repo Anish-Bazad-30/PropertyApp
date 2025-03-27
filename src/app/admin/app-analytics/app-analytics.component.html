@@ -1,0 +1,58 @@
+<div class="analytics-dashboard-container">
+  <!-- Navbar -->
+  <div class="navbar">
+    <h2 class="title">App Usage Analytics Dashboard</h2>
+
+    <div class="search-filter-container">
+      <div class="search-bar-container">
+        <img src="assets/icon/search.png" alt="Search Icon" class="search-icon" />
+        <input
+          type="text"
+          placeholder="Search"
+          class="search-box"
+          (input)="updateSearchTerm($event)"
+        />
+      </div>
+      <img src="assets/icon/slider.png" alt="Filter Icon" class="filter-icon" />
+    </div>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="stats-container">
+    <div class="stat-box">Total Active Users <br> <strong>{{ totalUsers }}</strong></div>
+    <div class="stat-box">Daily/Weekly/Monthly Active Users <br> <strong>{{ activeUsers }}</strong></div>
+    <div class="stat-box">Total Property Views <br> <strong>{{ totalPropertyViews }}</strong></div>
+    <div class="stat-box">Total Successful Referrals <br> <strong>{{ totalSuccessfulReferrals }}</strong></div>
+    <div class="stat-box">Agent Listings Added <br> <strong>{{ agentListingsAdded }}%</strong></div>
+  </div>
+  
+  <div class="charts-container">
+    <img src="assets/images/user.png" alt="User Engagement Chart" class="chart-img" />
+    <img src="assets/images/graph.png" alt="Properties Viewed Chart" class="chart-img" />
+    <img src="assets/images/leaderchart.png" alt="Sales Leaderboard" class="chart-img" />
+  </div>
+
+  <!-- User Activity Table -->
+  <div class="content-box">
+    <table class="analytics-table">
+      <thead>
+        <tr>
+          <th>User Id/Name</th>
+          <th>Last Active Time</th>
+          <th>Properties Viewed</th>
+          <th>Referrals Made</th>
+          <th>Agent Listings Added</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of filteredUsers">
+          <td>{{ user.id }}</td>
+          <td>{{ user.lastActive }}</td>
+          <td>{{ user.propertiesViewed }}</td>
+          <td>{{ user.referralsMade }}</td>
+          <td>{{ user.agentListingsAdded }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

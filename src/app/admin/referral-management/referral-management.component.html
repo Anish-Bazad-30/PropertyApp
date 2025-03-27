@@ -1,0 +1,61 @@
+<div class="referral-management-container">
+  <!-- Navbar -->
+  <div class="navbar">
+    <h2 class="title">Referral Management</h2>
+
+    <div class="search-filter-container">
+      <div class="search-bar-container">
+        <img src="assets/icon/search.png" alt="Search Icon" class="search-icon" />
+        <input
+          type="text"
+          placeholder="Search"
+          class="search-box"
+          (input)="updateSearchTerm($event)"
+        />
+      </div>
+      <img src="assets/icon/slider.png" alt="Filter Icon" class="filter-icon" />
+    
+      </div>
+    </div>
+  
+
+  <!-- Stats Boxes -->
+  <div class="stats-container">
+    <div class="stat-box">Total Referrals<br /><span>{{ totalReferrals }}</span></div>
+    <div class="stat-box">Successful Referrals<br /><span>{{ successfulReferrals }}</span></div>
+    <div class="stat-box">Pending Referrals<br /><span>{{ pendingReferrals }}</span></div>
+    <div class="stat-box">Total Revenue<br /><span>${{ totalRevenue }}</span></div>
+    <div class="stat-box">Referral Conversion Rate<br /><span>{{ conversionRate }}%</span></div>
+  </div>
+
+  <!-- Referral Table -->
+  <div class="content-box">
+    <table class="referral-table">
+      <thead>
+        <tr>
+          <th>Referral ID</th>
+          <th>Referrer ID</th>
+          <th>Referee ID</th>
+          <th>Referral Link</th>
+          <th>Status</th>
+          <th>Earning</th>
+          <th>Date of Referral</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let referral of referrals">
+          <td>{{ referral.id }}</td>
+          <td>{{ referral.referrerId }}</td>
+          <td>{{ referral.refereeId }}</td>
+          <td>{{ referral.link }}</td>
+          <td>  <span [ngClass]="{'status-success': referral.status === 'Successful', 'status-pending': referral.status === 'Pending'}">
+            {{ referral.status }}
+          </span>
+          </td>
+          <td>{{ referral.earning }}</td>
+          <td>{{ referral.date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

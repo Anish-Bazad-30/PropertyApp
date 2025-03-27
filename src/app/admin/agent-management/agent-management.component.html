@@ -1,0 +1,57 @@
+<div class="agent-management-container">
+  <div class="navbar">
+    <h2 class="title">Agent Management</h2>
+    
+    <div class="search-filter-container">
+    <div class="search-bar-container">
+      <img src="assets/icon/search.png" alt="Search Icon" class="search-icon" />
+      <input
+        type="text"
+        placeholder="Search"
+        class="search-box"
+        (input)="updateSearchTerm($event)"
+      />
+      </div>
+      <img src="assets/icon/slider.png" alt="Filter Icon" class="filter-icon" />
+    </div>
+    </div>
+  
+
+  <div class = "add-agent-container">
+  <button class="add-agent-btn">Add New Agent</button>
+  </div>
+
+  <div class="content-box">
+    <table class="agent-table">
+      <thead>
+        <tr>
+          <th>Profile Picture</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let agent of filteredAgents">
+          <td>
+            <img src="assets/images/image1.png" alt="{{agent.name}}" class="profile-pic" />
+          </td>
+          <td>{{ agent.name }}</td>
+          <td>{{ agent.email }}</td>
+          <td>
+            <span [ngClass]="{'active': agent.status === 'Active', 'inactive': agent.status !== 'Active'}">
+              {{ agent.status }}
+            </span>
+          </td>
+          <td>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn" (click)="confirmDelete(agent)">Delete</button>
+           
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+

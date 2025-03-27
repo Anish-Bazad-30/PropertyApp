@@ -1,0 +1,25 @@
+<div class = "container">
+
+<div class="content">
+  <h2>Profile Management</h2>
+
+  <label for="username">User Name</label>
+  <input type="text" id="username" [(ngModel)]="userName" />
+
+  <label for="email">E-mail</label>
+  <input type="email" id="email" [(ngModel)]="email" />
+
+  <label for="phone">Phone-Number</label>
+  <input type="text" id="phone" [(ngModel)]="phone" />
+
+  
+  <label for="service">Service-Type</label>
+  <input type="text" id="service" [(ngModel)]="serviceType" />
+
+ 
+
+  <button class="edit-btn" (click)="editDetails()">Edit Details</button>
+  <button class="apply-btn" (click)="applyToOfferServices()">Apply to Offer Services</button>
+ 
+</div>
+</div>

@@ -1,0 +1,60 @@
+<ion-content [scrollY]="false">
+  <div class="main w-100 d-flex flex-column justify-content-evenly align-items-center flex-grow-1 p-2">
+    <div class="text-center">
+      <h3 class="title">Login</h3>
+      <div class = "underline"></div>
+    </div>
+
+    <!-- Bind the form to loginForm and submit with (ngSubmit) -->
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="d-flex flex-column mt-4 form-container">
+  
+      <div class="mb-3">
+        <label for="username" class="form-label mb-3">User Name</label>
+        <ion-input
+          id="username"
+          aria-label="User name"
+          type="text"
+          class="form-control rounded-input"
+          formControlName="username">
+        </ion-input>
+  
+        <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="error">
+          User Name is required.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label mb-3">Password</label>
+        <ion-input
+          id="password"
+          aria-label="Password"
+          type="password"
+          class="form-control rounded-input"
+          formControlName="password">
+        </ion-input>
+
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
+          Password is required (minimum 6 characters).
+        </div>
+      </div>
+
+      <!-- Login Button -->
+      <div class="d-flex justify-content-center mt-2">
+        <ion-button
+          type="submit"
+          expand="block"
+          class="w-50 text-center rounded-login-button"
+          [disabled]="loginForm.invalid">
+          Login
+        </ion-button>
+      </div>
+    </form>
+
+    <!-- Register Link -->
+     <div class = "wrap">
+    <!-- <p class="text-center mt-1 register-link"> -->
+      New to Property App? <a href="register-url">Register Now</a>
+    <!-- </p> -->
+  </div>
+  </div>
+</ion-content>

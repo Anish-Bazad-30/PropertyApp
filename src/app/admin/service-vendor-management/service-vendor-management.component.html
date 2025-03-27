@@ -1,0 +1,56 @@
+<div class="service-vendor-container">
+  <!-- Navbar -->
+  <div class="navbar">
+    <h2 class="title">Service Vendor Management</h2>
+
+    <div class="search-filter-container">
+      <div class="search-bar-container">
+        <img src="assets/icon/search.png" alt="Search Icon" class="search-icon" />
+        <input
+          type="text"
+          placeholder="Search"
+          class="search-box"
+          (input)="updateSearchTerm($event)"
+        />
+      </div>
+      <img src="assets/icon/slider.png" alt="Filter Icon" class="filter-icon" />
+    </div>
+  </div>
+
+  <!-- Add Vendor Button -->
+  <div class="add-vendor-container">
+    <button class="add-vendor-btn">Add New Vendor</button>
+  </div>
+
+  <div class="content-box">
+    <table class="vendor-table">
+      <thead>
+        <tr>
+          <th>Vendor Name</th>
+          <th>Referred By (Agent)</th>
+          <th>Service Category</th>
+          <th>Contact Info</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vendor of filteredVendors">
+          <td>{{ vendor.name }}</td>
+          <td>{{ vendor.agent }}</td>
+          <td>{{ vendor.category }}</td>
+          <td>{{ vendor.contact }}</td>
+          <td>
+            <span [ngClass]="{'active': vendor.status === 'Active', 'inactive': vendor.status === 'Inactive'}">
+              {{ vendor.status }}
+            </span>
+          </td>
+          <td>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn" (click)="confirmDelete(vendor)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

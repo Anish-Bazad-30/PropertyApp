@@ -1,0 +1,37 @@
+<ion-content [scrollY]="false">
+  <swiper-container class="h-100">
+    <swiper-slide class="main d-flex flex-column">
+      <img [src]="firstScreen.imageUrl" class="w-100 h-50" alt="First Screen">
+      <div class="h-50 d-flex flex-column justify-content-evenly align-items-center">
+        <div>
+          <h3 class="title-text pb-4">{{firstScreen.title}}</h3>
+          <p class="text-center fs-3">{{firstScreen.infomsg}}</p>
+        </div>
+        <div>
+          <p class="footer fs-5">{{firstScreen.footer}}</p>
+        </div>
+      </div>
+    </swiper-slide>
+    <swiper-slide class="main d-flex flex-column">
+      <img [src]="secoundScreen.imageUrl" class="w-100 h-50" alt="secoundScreen">
+      <div class="h-50 d-flex flex-column justify-content-evenly align-items-center">
+       <h3 class="title-text pb-4">{{secoundScreen.title}}</h3>
+        
+        <p class="footer fs-5">
+          {{secoundScreen.footer}}
+        </p>
+        
+      </div>
+      
+      
+    </swiper-slide>
+    <swiper-slide class="main">
+      <img [src]="thirdScreen.imageUrl" class="w-100 h-50" alt="First Screen">
+      <div class="h-50 d-flex flex-column justify-content-evenly align-items-center">
+        <h3 class="title-text fs-1 pb-4 px-1">{{thirdScreen.title}}</h3>
+        <ion-button (click)="navigateToTarget()">Get Started</ion-button>
+      </div>
+        
+    </swiper-slide>
+  </swiper-container>
+</ion-content>

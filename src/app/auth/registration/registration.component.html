@@ -1,0 +1,109 @@
+<ion-content [scrollY]="true">
+  <div class="main w-100 d-flex flex-column justify-content-evenly align-items-center flex-grow-1 p-2">
+    <div class="text-center">
+      <h3 class="title">Registration</h3>
+      <div class = "underline"></div>
+    </div>
+
+    <!-- Bind the form to the 'registrationForm' -->
+    <form [formGroup]="registrationForm" (ngSubmit)="onRegister()" class="d-flex flex-column mt-4 form-container">
+      
+      <div class="mb-3">
+        <label for="name" class="form-label mb-3">Name</label>
+        <!-- Use formControlName to bind the input to the 'name' form control -->
+        <ion-input
+          id="name"
+          aria-label="Name"
+          type="text"
+          class="form-control"
+          formControlName="name">
+        </ion-input>
+        <div *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched" class="error">
+          Name is required and must be at least 3 characters.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label mb-3">Password</label>
+        <ion-input
+          id="password"
+          aria-label="Password"
+          type="password"
+          class="form-control"
+          formControlName="password">
+        </ion-input>
+        <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched" class="error">
+          Password is required (minimum 6 characters).
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label mb-3">Confirm Password</label>
+        <ion-input
+          aria-label="Confirm Password"
+          type="password"
+          class="form-control"
+          formControlName="confirmPassword">
+        </ion-input>
+        <div *ngIf="registrationForm.hasError('mismatch') && registrationForm.get('confirmPassword')?.touched" class="error">
+          Passwords must match.
+        </div>
+      </div>
+
+
+<div class="mb-3">
+  <label for="referral" class="form-label mb-3">Referral Link (Optional)</label>
+  <ion-input
+    id="referral"
+    aria-label="Referral Link"
+    type="text"
+    class="form-control"
+    formControlName="referral">
+  </ion-input>
+  <div *ngIf="registrationForm.get('referral')?.invalid && registrationForm.get('referral')?.touched" class="error">
+    Invalid referral link.
+  </div>
+</div>
+
+
+      <div class="mb-2 d-flex align-items-center">
+        <label for="role" class="form-label me-4">Role</label>
+        <div class="form-check me-4">
+          <input 
+            class="form-check-input" 
+            type="radio" 
+            formControlName="role" 
+            id="userRole" 
+            value="USER">
+          <label class="form-check-label" for="userRole">User</label>
+        </div>
+        <div class="form-check">
+          <input 
+            class="form-check-input" 
+            type="radio" 
+            formControlName="role" 
+            id="agentRole" 
+            value="AGENT">
+          <label class="form-check-label" for="agentRole">Agent</label>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center mt-3">
+        <!-- Submit button triggers the (ngSubmit) event -->
+        <ion-button 
+          type="submit" 
+          expand="block" 
+          class="w-50 text-center" 
+          [disabled]="registrationForm.invalid">
+          Register
+        </ion-button>
+      </div> 
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    </form>
+    <div class = "wrap">
+    <!-- <p class="text-center mt-3"> -->
+      Already registered? <a href="sign-in-url">Sign In</a>
+    <!-- </p> -->
+  </div>
+  </div>
+</ion-content>

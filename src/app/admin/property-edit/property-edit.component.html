@@ -1,0 +1,16 @@
+<div class="property-edit-container">
+  <h2>Edit Property</h2>
+  <img src="assets/images/property-upload.png" alt="Property Image" class="property-picture">
+  <div class="property-details">
+    <p><strong>Name:</strong> {{ property.name }}</p>
+    <p><strong>Address:</strong> {{ property.address }}</p>
+    <p><strong>Status:</strong> <span class="status">{{ property.status }}</span></p>
+    <p><strong>Owner:</strong> {{ property.owner }}</p>
+    <p><strong>Total Visit:</strong> {{ property.totalVisit }}</p>
+    <p><strong>People Interested:</strong> {{ property.peopleInterested }}</p>
+  </div>
+  <div class="buttons">
+    <button (click)="edit()">Edit</button>
+    <button (click)="cancel()">Cancel</button>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class = "service-listing-container">
+  <h2>Service Listing</h2>
+<p>
+  Expand your reach by listing your services under the 'More Services' section.
+  Fill out the details below to apply
+</p>
+<form [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
+  <label>Service Name</label>
+  <input formControlName = "serviceName" type = "text" placeholder="Enter service name"/>
+
+  <label>Service Description</label>
+  <input formControlName = "serviceDescription" type = "text" placeholder="Enter service description"/>
+
+  <label>Pricing</label>
+  <input formControlName = "pricing" type = "text" placeholder="Enter pricing"/>
+
+  <label>Agent Id</label>
+  <input formControlName = "agentId" type = "text" value="110021" readonly/>
+
+  <button type="submit" class="submit-btn" [disabled]="serviceForm.invalid">Submit for review</button>
+  <button type = "cancel" class="cancel-btn" (click)="onCancel()">Cancel</button>
+</form>
+</div>

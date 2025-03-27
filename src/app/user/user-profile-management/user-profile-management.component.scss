@@ -1,0 +1,210 @@
+/* Main Container */
+.container {
+  padding: 16px;
+  background: linear-gradient(180deg, #33545B 49.6%, #11405A 99.98%);
+  color: #ffffff;
+  font-family: K2D, sans-serif !important;
+  min-height: 100vh;
+  max-width: 1280px;
+  max-height: 1368px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.back-icon {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+.profile-pic img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Content Section */
+.content {
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 24px;
+}
+
+h2 {
+  margin-bottom: 40px;
+  font-size: 22px;
+}
+
+/* Form Labels */
+label {
+  display: block;
+  text-align: left;
+  margin: 10px 0px 5px;
+  font-weight: bold;
+}
+
+/* Input Fields */
+input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #d9d9d9;
+  color: #000;
+}
+
+input:disabled {
+  background: #d9d9d9;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  max-width: 350px;
+  padding: 12px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.apply-button {
+  background: #d9d9d9;
+  color: #000000;
+  border: 2px solid #11405a;
+}
+
+.update-button {
+  background: #d9d9d9;
+  color: #000000;
+}
+
+.submit-button {
+  background: #d9d9d9;
+  color: #11405a;
+  border: 2px solid #11405a;
+}
+
+/* Responsive Design */
+
+/* Large tablets and small desktops */
+@media screen and (max-width: 1024px) {
+  .container {
+      padding: 14px;
+      max-height: 100vh;
+  }
+
+  .content {
+      width: 95%;
+      max-width: 600px;
+  }
+
+  h2 {
+      font-size: 20px;
+  }
+
+  input {
+      font-size: 15px;
+      padding: 10px;
+  }
+
+  button {
+      width: 95%;
+      font-size: 15px;
+  }
+}
+
+/* Tablets and smaller screens */
+@media screen and (max-width: 768px) {
+  .container {
+      padding: 12px;
+      max-height: 100vh;
+  }
+
+  .content {
+      width: 90%;
+  }
+
+  h2 {
+      font-size: 19px;
+  }
+
+  input {
+      font-size: 14px;
+      padding: 10px;
+  }
+
+  button {
+      width: 90%;
+      font-size: 14px;
+      padding: 10px;
+  }
+}
+
+/* Small mobile screens */
+@media screen and (max-width: 480px) {
+  .container {
+      padding: 10px;
+  }
+
+  .content {
+      width: 100%;
+  }
+
+  h2 {
+      font-size: 18px;
+      margin-bottom: 30px;
+  }
+
+  input {
+      font-size: 14px;
+      padding: 8px;
+  }
+
+  button {
+      width: 100%;
+      font-size: 14px;
+      padding: 10px;
+  }
+}
+
+/* Extra Small Screens (Phones below 360px width) */
+@media screen and (max-width: 360px) {
+  .container {
+      padding: 8px;
+  }
+
+  .content {
+      width: 100%;
+  }
+
+  h2 {
+      font-size: 16px;
+  }
+
+  input {
+      font-size: 13px;
+      padding: 8px;
+  }
+
+  button {
+      width: 100%;
+      font-size: 13px;
+      padding: 8px;
+  }
+}

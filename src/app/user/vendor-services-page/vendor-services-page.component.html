@@ -1,0 +1,38 @@
+<div class="container">
+  <!-- Header -->
+  <div class="header">
+    <ion-icon name="menu-outline" class="menu-icon"></ion-icon> 
+    <!-- <div class="menu-icon">
+      <i class="fas fa-bars"></i>
+    </div> -->
+    <div class="profile-pic">
+      <img src="assets/images/image1.png" alt="Profile" />
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <h2>More Services</h2>
+    <p>Access 10+ essential home services to make your life easier. Connect with trusted vendors directly!</p>
+
+    <!-- Category Section -->
+    <div class="category-section">
+      <label for="category">Categories</label>
+      <select id="category" (change)="onCategoryChange($event)">
+        <option value="all">All Categories</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+
+    <!-- Cards Section -->
+    <div class="card-grid">
+      <div class="card" *ngFor="let service of filteredServices">
+        <img [src]="service.image" [alt]="service.title" />
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+  
+        <button class="buy-now-button" (click)="callAgent()">Call Agent</button>
+      </div>
+    </div>
+  </div>
+</div>

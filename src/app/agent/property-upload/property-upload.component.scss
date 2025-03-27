@@ -1,0 +1,140 @@
+.property-upload-container {
+    padding: 10px;
+    background: linear-gradient(180deg, #33545B 49.6%, #11405A 99.98%);
+    color: #ffffff;
+    font-family: K2D !important;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: white;
+    text-align: center;
+}
+
+.add-property-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.add-property-btn {
+    background-color: #44c1f0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.property-card {
+    background-color: #2f4b56;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 10px;
+}
+
+.property-title {
+    background-color: #4b3b81;
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.property-price {
+    color: white;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.icon-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.property-image-wrapper {
+    position: relative;
+    margin: 10px 0;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.property-image {
+    width: 100%;
+    border-radius: 10px;
+    max-height: 150px;
+    object-fit: cover;
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.icon:hover {
+    transform: scale(1.2);
+}
+
+.positive-icon {
+    position: relative;
+}
+
+.negative-icon {
+    position: relative;
+}
+
+.backward-icon {
+    position: absolute;
+    top: 50%;
+    left: -40px;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.forward-icon {
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.edit-btn {
+    background-color: #5d6ee1;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+}
+
+.delete-btn {
+    background-color: #e35657;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+}

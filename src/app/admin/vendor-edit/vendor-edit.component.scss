@@ -1,0 +1,87 @@
+.vendor-edit-container {
+    background: linear-gradient(180deg, #33545B 49.6%, #11405A 99.98%);
+    color: #ffffff;
+    font-family: 'K2D', !important;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  h2 {
+    font-size: 32px;
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .plumbing-picture {
+    width: 400px; 
+    height: 200px;
+    margin-bottom: 20px;
+  }
+  
+  .vendor-details {
+    text-align: left;
+    margin: 10px 0;
+    font-size: 20px;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .vendor-details p {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+  }
+  
+  .status {
+    color: lightgreen;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap; 
+  }
+  
+  button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #bdc3c7;
+  }
+  
+  /* Media Query for Mobile Screens */
+  @media screen and (max-width: 480px) {
+    h2 {
+      font-size: 24px;
+    }
+  
+    .plumbing-picture {
+      width: 200px;
+      height: 150px;
+    }
+  
+    .vendor-details {
+      font-size: 16px;
+    }
+  
+    .vendor-details p {
+      flex-direction: row; 
+      text-align: center;
+    }
+  
+    .buttons {
+      flex-direction: row;
+      gap: 15px;
+    }
+  }
