@@ -38,9 +38,9 @@ export class LoginComponent implements OnInit {
         }
       })
       console.log('Login Data:', formData); // Log the data
-      alert('Login Successful!'); // Show a success message
+      //alert('Login Successful!'); // Show a success message
     } else {
-      alert('Please fill in all required fields correctly.');
+      //alert('Please fill in all required fields correctly.');
     }
   }
 }

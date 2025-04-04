@@ -9,59 +9,36 @@ import { Component, OnInit } from '@angular/core';
 export class VendorServicesPageComponent implements OnInit {
   constructor() {}
 
-  ngOnInit(): void {
-    this.filteredServices = [...this.services];
-    console.log('Filtered Services Initialized:', this.filteredServices);
-  }
+  categories: string[] = ['Plumbing', 'Electrical'];
 
-  // Categories for the dropdown
-  categories: string[] = ['Plumbing', 'Electrical', 'AC Servicing', 'Painting'];
-
-  // All services data
   services = [
-    {
-      title: 'Plumbing Work',
-      description: 'Fix your plumbing issues.',
-      category: 'Plumbing',
-      image: 'assets/images/plumbing.jpeg'
-    },
-    {
-      title: 'Electrical Work',
-      description: 'Solve electrical problems.',
-      category: 'Electrical',
-      image: 'assets/images/electrical.jpg'
-    },
-    {
-      title: 'AC Servicing',
-      description: 'Maintain and repair AC units.',
-      category: 'AC Servicing',
-      image: 'assets/images/split-ac.jpg'
-    },
-    {
-      title: 'Painting Work',
-      description: 'Professional painting services.',
-      category: 'Painting',
-      image: 'assets/images/painting.jpeg'
-    }
+    { title: 'SMT Enterprise', category: 'Plumbing', agent: 'Agent Name', amount: '₹25,000' },
+    { title: 'SMT Enterprise', category: 'Plumbing', agent: 'Agent Name', amount: '₹25,000' },
+    { title: 'SMT Enterprise', category: 'Electrical', agent: 'Agent Name', amount: '₹25,000' },
+    { title: 'SMT Enterprise', category: 'Electrical', agent: 'Agent Name', amount: '₹25,000' }
   ];
 
-  // Filtered services to display
   filteredServices = [...this.services];
+
+  ngOnInit(): void {
+    this.filteredServices = [...this.services];
+  }
+
+  // Get services based on category
+  getServicesByCategory(category: string) {
+    return this.filteredServices.filter(service => service.category === category);
+  }
 
   // Handle category change
   onCategoryChange(event: Event) {
     const selectedCategory = (event.target as HTMLSelectElement).value;
-
-    if (selectedCategory === 'all') {
-      this.filteredServices = [...this.services];
-    } else {
-      this.filteredServices = this.services.filter(
-        (service) => service.category === selectedCategory
-      );
-    }
+    this.filteredServices = selectedCategory === 'all'
+      ? [...this.services]
+      : this.services.filter(service => service.category === selectedCategory);
   }
-    // Call Agent method
-    callAgent(): void {
-      alert('Calling now...');
-    }
+
+  // Call Agent method
+  callAgent(): void {
+    alert('Calling now...');
+  }
 }

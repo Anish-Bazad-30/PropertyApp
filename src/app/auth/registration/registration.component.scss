@@ -5,6 +5,7 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
+    //background: linear-gradient(to right, #337280 50%, #145274 100%);
     background: linear-gradient(180deg, #337280 50%, #145274 100%);
     font-family: K2D !important;
   }
@@ -80,6 +81,9 @@
   .form-check-input {
     margin-right: 5px; 
     color: #ffffff;
+  }
+  .form-check-label {
+    color: #ffffff !important; /* Change text color to white */
   }
   
   ion-radio {

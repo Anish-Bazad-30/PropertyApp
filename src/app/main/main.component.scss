@@ -1,8 +1,27 @@
-.main {
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(180deg, #33545B 49.6%, #11405A 99.98%);
+// .main {
+//   width: 100vw;
+//   // height: 100vh;
+//    background: linear-gradient(180deg, #33545B 49.6%, #11405A 99.98%);
+ 
+// }
+.three-lines {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
 
+.three-lines span {
+  width: 60px;
+  height: 5px;
+  background-color: white;
+  border-radius: 2px;
+}
+.three-lines span:first-child {
+  background-color: #7fdbff; 
+}
+p{
+  color: #ffffff;
 }
 
 .title-text {
@@ -28,4 +47,11 @@ ion-button {
   width: 80%;
   --padding-top: 10px;
   --padding-bottom: 10px;
+}
+ion-content {
+  --background: transparent !important;
+}
+
+.nunito-text {
+  font-size: 26px;
 }

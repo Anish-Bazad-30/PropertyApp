@@ -1,41 +1,48 @@
- <ion-content>
+<ion-content>
   <div class="main">
-   <!--Header Section-->
-   <div class="header">
-    <ion-icon name="arrow-back" class="back-icon"></ion-icon> 
-    <ion-icon name="menu-outline" class="menu-icon"></ion-icon> 
-   </div>
-  
-   <!--Carousel Effect-->
-   <div class="carousel-container">
-    <div id="propertyCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="assets/images/apartment1.png" class="d-block w-100" alt="Property Image" />
-      </div>
-      <div class="carousel-item">
-        <img src="assets/images/apartment1.png" class="d-block w-100" alt="Property Image" />
-      </div>
-      <div class="carousel-item">
-        <img src="assets/images/apartment1.png" class="d-block w-100" alt="Property Image" />
+    <!--Header Section-->
+    <div class="header">
+      <ion-icon name="arrow-back" class="back-icon"></ion-icon> 
+      <ion-icon name="menu-outline" class="menu-icon"></ion-icon> 
+    </div>
+
+    <!--Carousel Effect-->
+    <div class="carousel-container">
+      <div id="propertyCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="assets/images/apartment1.png" class="d-block w-100" alt="Property Image" />
+          </div>
+          <div class="carousel-item">
+            <img src="assets/images/apartment1.png" class="d-block w-100" alt="Property Image" />
+          </div>
+          <div class="carousel-item">
+            <img src="assets/images/apartment1.png" class="d-block w-100" alt="Property Image" />
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#propertyCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#propertyCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#propertyCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#propertyCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-   </div>
-  </div>
-    <!--Property Description-->
+
+    <!--Property Details-->
     <div class="details-section">
       <h5>{{ propertyTitle }}</h5>
       <p class="address">{{ propertyAddress }}</p>
+
+      <!-- Amount Section -->
       <h6>Amount :</h6>
-      <p class="amount">{{ propertyAmount }}</p>
+      <div class="amount-box">
+        <img src="assets/icon/rupee.png" class="rupee-icon" alt="₹" />
+        <p class="amount-text">{{ propertyAmount }}</p>
+      </div>
+
       <p class="description">{{ propertyDescription }}</p>
     </div>
 

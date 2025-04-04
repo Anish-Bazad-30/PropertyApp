@@ -12,6 +12,13 @@ export class UserProfileManagementService {
 
 
   constructor(private http: HttpClient) { }
+  
+  fetchUserData(userId: string): Observable<any> {
+    const profileManagementUrl = `${this.apiUrl}/api/admin/users/${userId}`;
+    console.log(`Fetching user data from: ${profileManagementUrl}`);
+    return this.http.get<any>(profileManagementUrl);
+  }
+
   updateProfile(userId: string, data: any): Observable<any> {
     const profileManagementUrl = `${this.apiUrl}/api/users/${userId}/profile`;
     console.log(data, profileManagementUrl);

@@ -8,16 +8,22 @@ import { Component, OnInit } from '@angular/core';
 export class PropertyUploadComponent implements OnInit {
   properties = [
     {
-      name: 'Property Name',
-      title: '4 BHK with Terrace/Basement with Utility',
-      price: 'Starting: Rs. 5.45 Cr*',
-      image: 'assets/images/property-upload.png'
+      name: 'Lotus Residency - 2BHK Deluxe Apartment',
+      address: 'Flat no. 5A, Lotus Residency, MG Road, Koramangala, Bengaluru - 560095',
+      amount: '3.85 Cr',
+      image: 'assets/images/Apartment.png' 
     },
     {
-      name: 'Property Name',
-      title: '3 BHK with Terrace/Basement with Utility',
-      price: 'Starting: Rs. 3.45 Cr*',
-      image: 'assets/images/property-upload.png'
+      name: 'Lotus Residency - 2BHK Deluxe Apartment',
+      address: 'Flat no. 5A, Lotus Residency, MG Road, Koramangala, Bengaluru - 560095',
+      amount: '3.85 Cr',
+      image: 'assets/images/Apartment.png'
+    },
+    {
+      name: 'Lotus Residency - 2BHK Deluxe Apartment',
+      address: 'Flat no. 5A, Lotus Residency, MG Road, Koramangala, Bengaluru - 560095',
+      amount: '3.85 Cr',
+      image: 'assets/images/Apartment.png'
     }
   ];
 
@@ -27,21 +33,10 @@ export class PropertyUploadComponent implements OnInit {
 
   editProperty(property: any) {
     console.log('Edit property:', property);
-    // Implement edit functionality here
   }
 
   deleteProperty(property: any) {
     console.log('Delete property:', property);
-    // Implement delete functionality here
   }
 
-  goForward(property: any) {
-    console.log('Go forward:', property);
-    // Implement forward navigation here
-  }
-
-  goBackward(property: any) {
-    console.log('Go backward:', property);
-    // Implement backward navigation here
-  }
 }

@@ -8,8 +8,9 @@ import { ReferAndEarnService } from 'src/app/services/refer-and-earn.service';
 })
 export class ReferEarnComponent implements OnInit {
   referralLink: string = '';
-  totalCommission: string = 'Loading...';
-  userId: string = 'user4';
+  totalEarnings: string = '0';
+  totalReferrals: string = '0';
+  userId: string = '';
 
   constructor(private referAndEarnService: ReferAndEarnService,) { }
 
@@ -55,17 +56,11 @@ export class ReferEarnComponent implements OnInit {
     });
   }
 
-  shareOnWhatsApp() {
-    const message = `Hey! Get 20% off using my referral link: ${this.referralLink}`;
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-  }
-
   shareReferralLink() {
     if (navigator.share) {
       navigator.share({
         title: 'Refer & Earn',
-        text: 'Get 20% off using my referral link!',
+        text: `Get 20% off using my referral link! ${this.referralLink}`,
         url: this.referralLink
       }).catch(error => console.log('Error sharing:', error));
     } else {

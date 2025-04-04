@@ -7,21 +7,22 @@
 html, body {
   height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
   background-color: #11405a; 
+  overflow: hidden; 
 }
 
 .refer-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background: linear-gradient(180deg, #33545B 49.6%, #11405A 99.98%);
+  align-items: center;  
+  background: linear-gradient(180deg, #337280 50%, #145274 100%);
   font-family: K2D, sans-serif;
-  min-height: 100vh;
   width: 100vw;
+  min-height: 100vh;
   color: white;
   padding: 20px;
+  overflow-y: auto; /* Enables vertical scrolling */
 }
 
 /* Header */
@@ -31,63 +32,57 @@ h2 {
   margin-top: 30px;
 }
 
-p {
-  font-size: 16px;
-  margin-top: 20px;
+.sub-heading {
+  font-size: 18px;
+  font-weight: bold;
 }
 
+.description {
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: center;
+}
+.menu-icon {
+  font-size: 32px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.back-icon {
+  font-size: 32px;
+  color: #ffffff;
+  cursor: pointer;
+}
 /* How it Works Section */
 .how-it-works {
   width: 100%;
   max-width: 400px;
   text-align: left;
   margin: 15px 0;
+  text-align: center;
 }
 
 .how-it-works h3 {
   font-size: 20px;
   margin-bottom: 10px;
-  color: white;
 }
 
 .how-it-works ul {
   list-style: none;
   padding: 0;
   margin-top: 10px;
-  position: relative;
 }
 
 .how-it-works li.step-item {
   display: flex;
   align-items: center;
   padding: 10px 0;
-  position: relative;
 }
 
 .how-it-works .icon {
   width: 20px;
   height: 20px;
   margin-right: 10px;
-  position: relative;
-}
-
-.how-it-works li.step-item:first-child .icon {
-  position: relative;
-}
-
-.how-it-works li.step-item:last-child .icon {
-  position: relative;
-}
-
-/* Line between icons */
-.how-it-works ul::before {
-  content: "";
-  position: absolute;
-  left: 8px;  /* Adjust to align with icons */
-  top: 20px;   /* Start just below the first icon */
-  bottom: 38px; /* End just above the second icon */
-  width: 2px;
-  background-color: #ffffff;
 }
 
 .how-it-works span {
@@ -95,17 +90,22 @@ p {
   color: white;
 }
 
-/* Referral Box */
+.referral-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  width: 90%;
+  max-width: 450px;
+  margin-top: 20px;
+}
+
 .referral-box {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   background: white;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
-  margin: 10px 0;
-  width: 90%;
-  max-width: 400px;
+  flex-grow: 1; /* Allows it to take most of the space */
 }
 
 .referral-box input {
@@ -123,10 +123,14 @@ p {
   cursor: pointer;
 }
 
-/* Buttons */
-.whatsapp-btn, .share-btn {
-  width: 90%;
-  max-width: 400px;
+.referral-box button img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Share Button */
+.share-btn {
+  color: white;
   padding: 12px;
   border-radius: 5px;
   font-size: 16px;
@@ -135,30 +139,42 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  height: 45px; /* Match the referral box height */
+  min-width: 50px; /* Adjust width */
 }
 
-.whatsapp-btn {
-  background: #25D366;
+.share-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Earnings and Referrals */
+.earnings-container,
+.referrals-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 400px;
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.earnings-value {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff4d4d;
+}
+
+.referrals-value {
+  font-size: 22px;
+  font-weight: bold;
   color: white;
-  margin-top: 10px;
-
-}
-.whatsapp-btn img {
-  margin-right: 8px;
-}
-
-.share-btn {
-  background: #ffffff;
-  color: #333;
-  margin-top: 10px;
 }
 
 /* Terms Link */
 .terms-link {
   margin-top: 15px;
-  color: white;
+  color: #7fdbff;
   text-decoration: underline;
   font-size: 14px;
 }

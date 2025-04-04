@@ -1,32 +1,50 @@
-<div class="container">
-  <!-- Header -->
-  <div class="header">    
-  <ion-icon name="arrow-back" class="back-icon"></ion-icon> 
-    <div class="profile-pic">
-      <img src="assets/images/image1.png" alt="Profile" />
+<ion-content>
+  <div class="container">
+    <!-- Header -->
+    <div class="main w-100 d-flex flex-column align-items-center flex-grow-1 p-2">
+      <div class="top-header d-flex justify-content-between align-items-center w-100 px-3">
+        <ion-icon name="arrow-back" class="back-icon"></ion-icon> 
+        <ion-icon name="menu-outline" class="menu-icon"></ion-icon> 
+      </div>
+    <div class="header">
+    
+      <h2>Profile</h2>
+ 
+    </div>
+
+    <!-- Profile Picture Section -->
+    <div class="profile-section">
+      <div class="profile-pic">
+        <img src="assets/images/image1.png" alt="Profile" />
+        <div class="edit-icon">
+          <ion-icon name="create-outline"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile Form -->
+    <div class="content">
+      <label for="username">Username</label>
+      <input type="text" id="username" [(ngModel)]="name" />
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" [(ngModel)]="email" />
+
+      <label for="mobile">Mobile Number</label>
+      <input type="text" id="mobile" [(ngModel)]="mobileNumber" />
+
+      <label for="role">Role</label>
+      <input type="text" id="role" [(ngModel)]="role" disabled />
+
+  
+      <div class="button-group">
+        <button class="cancel-button">Cancel</button>
+        <button class="save-button" (click)="updateProfile()">Save</button>
+      </div>
+
+  
+      <button class="join-agent-button" (click)="applyForAgent()">Join As Agent <ion-icon name="arrow-forward"></ion-icon></button>
+    </div>
     </div>
   </div>
-
-  <!-- Profile Management Form -->
-  <div class="content">
-    <h2>Profile Management</h2>
-
-    <!-- <button (click)="updateProfile()">Click</button>  -->
-
-    <label for="name">User Name</label>
-    <input type="text" id="username" [(ngModel)]="name" />
-
-    <label for="email">E-mail</label>
-    <input type="email" id="email" [(ngModel)]="email" />
-
-    <label for="role">Role</label>
-    <input type="text" id="role" [(ngModel)]="role" disabled />
-
-    <button class="apply-button" (click)="applyForAgent()">Apply to Become an Agent</button>
-    
-    <button class="update-button" (click)="updateProfile()">Update Details</button>
-
-    <button class="submit-button" (click)="submitApplication()">Submit Application</button>
-  </div>
-</div>
-
+</ion-content>

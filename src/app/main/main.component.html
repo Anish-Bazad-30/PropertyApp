@@ -5,10 +5,17 @@
       <div class="h-50 d-flex flex-column justify-content-evenly align-items-center">
         <div>
           <h3 class="title-text pb-4">{{firstScreen.title}}</h3>
-          <p class="text-center fs-3">{{firstScreen.infomsg}}</p>
+          <p class="text-center fs-3 nunito-text">{{firstScreen.infomsg}}</p>
+
+          <div class="three-lines">
+            <span></span>
+            <span></span>
+            <span></span>
+            </div>
+
         </div>
         <div>
-          <p class="footer fs-5">{{firstScreen.footer}}</p>
+          <p class="footer fs-5 nunito-text">{{firstScreen.footer}}</p>
         </div>
       </div>
     </swiper-slide>
@@ -16,6 +23,13 @@
       <img [src]="secoundScreen.imageUrl" class="w-100 h-50" alt="secoundScreen">
       <div class="h-50 d-flex flex-column justify-content-evenly align-items-center">
        <h3 class="title-text pb-4">{{secoundScreen.title}}</h3>
+
+       
+       <div class="three-lines">
+        <span></span>
+        <span></span>
+        <span></span>
+        </div>
         
         <p class="footer fs-5">
           {{secoundScreen.footer}}

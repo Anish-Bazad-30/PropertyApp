@@ -1,98 +1,99 @@
 <div class="property-upload-form-container">
-  <h1>Property Upload Form</h1>
+    <div class="top-nav">
+        <button class="back-button" (click)="goBack()">&lt;</button>
+        <button class="menu-button">&#9776;</button>
+    </div>
+      <h1>Upload Property Details</h1>
 
-  <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
-      <!-- Property Description -->
-      <label for="description">Property Description</label>
-      <textarea 
-          id="description" 
-          placeholder="Describe the property..." 
-          class="form-input"
-          formControlName="description"
-      ></textarea>
-      <div *ngIf="propertyForm.get('description')?.invalid && propertyForm.get('description')?.touched" class="error">
-          Description is required
-      </div>
+    <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+        <!-- Property Name -->
+        <label for="propertyName">Property Name</label>
+        <input 
+            type="text" 
+            id="propertyName" 
+            placeholder="Enter property name..." 
+            class="form-input"
+            formControlName="propertyName"
+        />
 
-      <!-- Price -->
-      <label for="price">Price</label>
-      <input 
-          type="text" 
-          id="price" 
-          placeholder="Price" 
-          class="form-input"
-          formControlName="price"
-      />
-      <div *ngIf="propertyForm.get('price')?.invalid && propertyForm.get('price')?.touched" class="error">
-          Enter a valid price
-      </div>
+        <!-- Add Images/Videos -->
+        <div class="image-upload-section">
+            <label>Add Images/Videos</label>
+            <button type="button" class="upload-button" (click)="uploadImages()">Add</button>
+        </div>
+        <input type="file" id="images" multiple class="hidden-input" (change)="onImageUpload($event)" />
 
-      <!-- City -->
-      <label for="city">City</label>
-      <input 
-          type="text" 
-          id="city" 
-          placeholder="City" 
-          class="form-input"
-          formControlName="city"
-      />
+        <!-- Property Type (Dropdown) -->
+        <label for="propertyType">Property Type</label>
+        <select id="propertyType" formControlName="propertyType" class="form-select">
+            <option value="">Select Type</option>
+            <option *ngFor="let type of propertyTypes" [value]="type">{{ type }}</option>
+        </select>
 
-      <!-- Area -->
-      <label for="area">Area</label>
-      <input 
-          type="text" 
-          id="area" 
-          placeholder="Area" 
-          class="form-input"
-          formControlName="area"
-      />
+        <!-- Amount (Rs.) -->
+        <label for="amount">Amount (Rs.)</label>
+        <input 
+            type="text" 
+            id="amount" 
+            placeholder="Enter amount..." 
+            class="form-input"
+            formControlName="amount"
+        />
 
-      <!-- Sector -->
-      <label for="sector">Sector</label>
-      <input 
-          type="text" 
-          id="sector" 
-          placeholder="Sector" 
-          class="form-input"
-          formControlName="sector"
-      />
+        <!-- Property Description -->
+        <label for="description">Property Description</label>
+        <textarea 
+            id="description" 
+            placeholder="Describe the property..." 
+            class="form-input"
+            formControlName="description"
+        ></textarea>
 
-      <label for="address">Property Address</label>
-      <input 
-          type="text" 
-          id="address" 
-          placeholder="Enter full address" 
-          class="form-input"
-          formControlName="address"
-      />
-      <div *ngIf="propertyForm.get('address')?.invalid && propertyForm.get('address')?.touched" class="error">
-          Address is required
-      </div>
+        <!-- City -->
+        <label for="city">City</label>
+        <select id="city" formControlName="city" class="form-select">
+            <option value="">Select City</option>
+            <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+        </select>
 
-      <!-- Image Upload -->
-      <label for="images">Upload Property Images</label>
-      <input 
-          type="file" 
-          id="images" 
-          multiple
-          class="form-input"
-          (change)="onImageUpload($event)"
-      />
+        <!-- Area -->
+        <label for="area">Area</label>
+        <select id="area" formControlName="area" class="form-select">
+            <option value="">Select Area</option>
+            <option *ngFor="let area of areas" [value]="area">{{ area }}</option>
+        </select>
 
-      <!-- Agent Contact Section -->
-      <label for="agentPhone">Agent Phone</label>
-      <input 
-          type="text" 
-          id="agentPhone" 
-          placeholder="Agent Phone" 
-          class="form-input"
-          formControlName="agentPhone"
-      />
+        <!-- Sector -->
+        <label for="sector">Sector</label>
+        <select id="sector" formControlName="sector" class="form-select">
+            <option value="">Select Sector</option>
+            <option *ngFor="let sector of sectors" [value]="sector">{{ sector }}</option>
+        </select>
 
-      <div class="wrapper">
-          <button type="submit" [disabled]="propertyForm.invalid" class="submit-button">
-              Submit
-          </button>
-      </div>
-  </form>
+        <!-- Address -->
+        <label for="address">Address</label>
+        <input 
+            type="text" 
+            id="address" 
+            placeholder="Enter full address" 
+            class="form-input"
+            formControlName="address"
+        />
+
+        <!-- Agent Mobile Number -->
+        <label for="agentMobileNumber">Agent Mobile Number</label>
+        <input 
+            type="text" 
+            id="agentMobileNumber" 
+            placeholder="Enter mobile number" 
+            class="form-input"
+            formControlName="agentMobileNumber"
+        />
+
+        <div class="submit-button-container">
+            <button type="submit" [disabled]="propertyForm.invalid" class="submit-button">
+                Submit
+            </button>
+        </div>
+    </form>
 </div>

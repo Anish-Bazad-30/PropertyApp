@@ -6,13 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./property-detail-view.component.scss'],
 })
 
-export class PropertyDetailViewComponent  implements OnInit {
+export class PropertyDetailViewComponent implements OnInit {
   propertyTitle = 'Lotus Residency - 2BHK Deluxe Apartment';
   propertyAddress = `Flat No. 5A, Lotus Residency, 
     MG Road, Koramangala, 
     Bengaluru, Karnataka - 560095`;
-  propertyAmount = '₹85,00,000';
-  propertyDescription = `Description : A spacious and well-ventilated 2BHK apartment 
+  propertyAmount = '3.85 Cr';
+  propertyDescription = `Description: A spacious and well-ventilated 2BHK apartment 
     located in the prime area of Koramangala. 
     The property features two bedrooms, two modern bathrooms, 
     a modular kitchen, a large living room with balcony access, 
@@ -21,17 +21,11 @@ export class PropertyDetailViewComponent  implements OnInit {
     Ideal for professionals, families, and anyone looking for 
     convenience and comfort in the heart of Bengaluru.`;
 
+  constructor() {}
 
-  constructor() {
-  }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {  
-  }
-  
   callNow() {
     alert('Calling agent...');
   }
 }
-
- 
-

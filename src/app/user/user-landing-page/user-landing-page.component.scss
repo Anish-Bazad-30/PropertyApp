@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=K2D:wght@400;600&family=Nunito+Sans:wght@400;600&display=swap');
+// import url('https://fonts.googleapis.com/css2?family=K2D:wght@400;600&family=Nunito+Sans:wght@400;600&display=swap');
  
 body {
   font-family: 'Nunito Sans', sans-serif;
@@ -21,13 +21,14 @@ input, select, textarea,
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(180deg, #337280 50%, #145274 100%);
+  //background: linear-gradient(180deg, #337280 50%, #145274 100%);
   min-height: 100vh;
   width: 100vw; 
 }
 
 .container{
   padding: 0;
+  overflow-y: auto;
 }
 .top-header {
   margin-top: 10px;
