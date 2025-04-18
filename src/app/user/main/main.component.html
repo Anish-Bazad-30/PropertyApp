@@ -1,0 +1,41 @@
+<ion-content [scrollY]="true">
+  <ion-menu side="end" menuId="mainMenu" contentId="main-content" type="overlay">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Rajpal Properties</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="side-bar">
+      <ion-list>
+        <ion-item routerLink="/user/landing-page" (click)="closeMenu()">
+          <img src="assets/icon/Home.svg" slot="start" style="width: 24px; height: 24px;" />
+          Home</ion-item>
+        <ion-item routerLink="/user/profile" (click)="closeMenu()">
+          <img src="assets/icon/User.svg" slot="start" style="width: 24px; height: 24px;" />
+          Profile</ion-item>
+        <ion-item routerLink="/user/vendor-service" (click)="closeMenu()">
+          <img src="assets/icon/Service.svg" slot="start" style="width: 24px; height: 24px;" />More Services</ion-item>
+        <ion-item routerLink="/user/refer-and-earn" (click)="closeMenu()">
+          <img src="assets/icon/Money Bag Rupee.svg" slot="start" style="width: 24px; height: 24px;" />
+          Refer & Earn</ion-item>
+        <ion-item (click)="closeMenu()" (click)="logout()">
+          <img src="assets/icon/Logout.svg" slot="start" style="width: 24px; height: 24px;" />
+          Log out</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- Main Content -->
+  <div id="main-content">
+    <div class="main w-100 d-flex flex-column align-items-center flex-grow-1">
+      <div class="top-header d-flex justify-content-between align-items-center w-100">
+        <ion-icon name="arrow-back" class="back-icon" (click)="goBack()"></ion-icon>
+        <ion-icon name="menu-outline" class="menu-icon" (click)="openMenu()"></ion-icon>
+      </div>
+      <div class="px-3">
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>
+  </div>
+</ion-content>

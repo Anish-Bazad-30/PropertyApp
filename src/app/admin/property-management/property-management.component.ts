@@ -1,44 +1,52 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+ 
 @Component({
   selector: 'app-property-management',
   templateUrl: './property-management.component.html',
   styleUrls: ['./property-management.component.scss']
 })
 export class PropertyManagementComponent implements OnInit {
-  searchTerm: string = '';
-  
-  properties = [
-    { name: 'Sarah Homes', address: 'Sector 37 (Gurgaon)', status: 'Active', owner: 'Sarah Group' },
-    { name: 'Sarah Homes', address: 'Sector 37 (Gurgaon)', status: 'Sold', owner: 'Sarah Group' },
-    { name: 'Sarah Homes', address: 'Sector 37 (Gurgaon)', status: 'Active', owner: 'Sarah Group' },
-    { name: 'Sarah Homes', address: 'Sector 37 (Gurgaon)', status: 'Sold', owner: 'Sarah Group' },
-    { name: 'Sarah Homes', address: 'Sector 37 (Gurgaon)', status: 'Active', owner: 'Sarah Group' },
+  searchText: string = '';
+ 
+  propertyList = [
+    {
+      username: 'mayank@singh',
+      propertyName: 'Lotus Residency - 2BHK,Deluxe Apartment',
+      amount: '₹ 3.85 Cr'
+    },
+    {
+      username: 'mayank@singh',
+      propertyName: 'Lotus Residency - 2BHK,Deluxe Apartment',
+      amount: '₹ 3.85 Cr'
+    },
+    {
+      username: 'mayank@singh',
+      propertyName: 'Lotus Residency - 2BHK,Deluxe Apartment',
+      amount: '₹ 3.85 Cr'
+    },
+    {
+      username: 'mayank@singh',
+      propertyName: 'Lotus Residency - 2BHK,Deluxe Apartment',
+      amount: '₹ 3.85 Cr'
+    }
   ];
-
-  filteredProperties = [...this.properties];
-vendor: any;
-
-  
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  updateSearchTerm(event: any) {
-    const searchTerm = event.target.value.toLowerCase();
-    this.filteredProperties = this.properties.filter(
-      (property) =>
-        property.name.toLowerCase().includes(searchTerm) ||
-        property.address.toLowerCase().includes(searchTerm) ||
-        property.owner.toLowerCase().includes(searchTerm)
-    );
+  constructor(
+    private router: Router
+  ) {}
+  ngOnInit(): void {
+     
   }
-    confirmDelete(property: any) {
-    const confirmation = window.confirm("Are you sure you want to delete this property?");
-    if (confirmation) {
-      this.properties = this.properties.filter(p => p !== property);
-      this.filteredProperties = this.filteredProperties.filter(p => p !== property);
-      alert("Property deleted successfully!");
-}
+  addNew(){
+    console.log("Add New Property clicked");
+  }
+ 
+  editProperty(property: any): void {
+    this.router.navigate(['/admin/edit-property'])
+  }
+ 
+  deleteProperty(property: any): void {
+    console.log('Edit clicked for:', property);
     }
   }
+ 

@@ -18,10 +18,10 @@ export class ReferEarnComponent implements OnInit {
 
     const storedUserName = localStorage.getItem('userName');
   this.userId = storedUserName !== null ? storedUserName : '';
-  console.log('User ID:', this.userId); // Check if userId is correct
+  console.log('User ID:', this.userId); // Here we check if userId is correct
 
   if (this.userId) {
-    this.fetchReferralLink(); // Call API only if userId is not empty
+    this.fetchReferralLink(); 
   } else {
     console.error('User ID is missing');
   }

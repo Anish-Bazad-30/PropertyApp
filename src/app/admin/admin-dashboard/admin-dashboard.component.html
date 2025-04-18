@@ -1,25 +1,58 @@
-<div class = "admin-dashboard-container">
+<div
+  class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1"
+>
+  <div class="header w-100 text-start px-3">
+    <h5 class="welcome-text primary-font">Welcome</h5>
+    <p class="admin-name primary-font">Mayank Singh!</p>
+  </div>
 
-  <h2>Admin Dashboard</h2>
-
-  <div class = "grid-container">
-  <div class = "dashboard-card" (click) = "navigateTo('userManagement')">
-    User Management
+  <div class="text-center">
+    <img
+      src="assets/images/horizontal.svg"
+      alt="Line"
+      class="horizontal-line"
+    />
   </div>
-  <div class = "dashboard-card" (click) = "navigateTo('agentManagement')">
-    Agent Management
-  </div>
-  <div class = "dashboard-card" (click) = "navigateTo('propertyManagement')">
-    Property Management
-  </div>
-  <div class = "dashboard-card" (click) = "navigateTo('service-vendor-Management')">
-    Service Vendor Management
-  </div>
-  <div class = "dashboard-card" (click) = "navigateTo('referralManagement')">
-    Referral Management
-  </div>
-  <div class = "dashboard-card" (click) = "navigateTo('app-usage-stats')">
-    App Usage Statics Dashboard
-  </div>
+  <div class="options w-100 d-flex flex-column px-3">
+    <div
+      class="option-button d-flex justify-content-between align-items-center mb-5 mt-3 fw-semibold"
+      (click)="navigateTo('user-agent')"
+    >
+      <span >User & Agent Management</span>
+      <img src="assets/icon/Advance.png" alt="Arrow" class="option-arrow" />
+    </div>
+ 
+    <div
+      class="option-button d-flex justify-content-between align-items-center mb-5 fw-semibold"
+      (click)="navigateTo('property')"
+    >
+      <span >Property Management</span>
+      <img src="assets/icon/Advance.png" alt="Arrow" class="option-arrow" />
+    </div>
+ 
+    <div
+      class="option-button d-flex justify-content-between align-items-center mb-5 fw-semibold"
+      (click)="navigateTo('vendor')"
+    >
+      <span >Service Vendor Management</span>
+      <img src="assets/icon/Advance.png" alt="Arrow" class="option-arrow" />
+    </div>
+ 
+    <div
+      class="option-button d-flex justify-content-between align-items-center mb-5 fw-semibold"
+      (click)="navigateTo('referral')"
+    >
+      <span >Referral Management</span>
+      <img src="assets/icon/Advance.png" alt="Arrow" class="option-arrow" />
+    </div>
+ 
+    <div
+      class="option-button d-flex justify-content-between align-items-center mb-5 fw-semibold"
+      (click)="navigateTo('statistics')"
+    >
+      <span >App Usage Statistics</span>
+      <img src="assets/icon/Advance.png" alt="Arrow" class="option-arrow" />
+    </div>
   </div>
 </div>
+ 

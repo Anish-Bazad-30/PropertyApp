@@ -11,12 +11,16 @@ export class AgentProfileManagementService {
   private apiUrl: string = environment.API_URL; 
 
   constructor(private http:HttpClient) { }
-
-  createAgentProfile(profileData: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/create`, profileData);
+ 
+  fetchAgentData(userId: string): Observable<any> {
+    const fetchProfileUrl = `${this.apiUrl}/api/admin/users/${userId}`;
+    // console.log(`Fetching user data from: ${fetchProfileUrl}`);
+    return this.http.get<any>(fetchProfileUrl);
   }
 
-  updateAgentProfile(id:string, profileData: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${id}/update`, profileData);
-  }
+  updateProfile(data: any): Observable<any> {
+    const updateProfileUrl = `${this.apiUrl}/api/profile/update`;
+    // console.log(data, updateProfileUrl);
+    return this.http.put<any>(updateProfileUrl, data);
+}
 }

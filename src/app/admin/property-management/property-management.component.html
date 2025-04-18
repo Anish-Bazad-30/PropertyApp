@@ -1,56 +1,55 @@
-<div class="property-management-container">
-  <!-- Navbar -->
-  <div class="navbar">
-    <h2 class="title">Property Management</h2>
-
-    <div class="search-filter-container">
-      <div class="search-bar-container">
-        <img src="assets/icon/search.png" alt="Search Icon" class="search-icon" />
-        <input
-          type="text"
-          placeholder="Search"
-          class="search-box"
-          (input)="updateSearchTerm($event)"
-        />
-      </div>
-      <img src="assets/icon/slider.png" alt="Filter Icon" class="filter-icon" />
+<div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1 px-1">
+ 
+  <div class="header w-100 text-center">
+    <h2 class="primary-font">Property Management</h2>
+  </div>
+ 
+  <div class="add-property-wrapper w-100 p-4">
+    <button class="add-property-btn primary-font" (click)="addNew()">Add New</button>
+  </div>
+  <div class="search-filter w-100 d-flex justify-content-between align-items-center p-3">
+    <div class="search-container">
+      <input type="text" class="search-input primary-font" placeholder="search" />
+      <img src="assets/icon/Search.svg" width="20px" class="search-icon">
     </div>
+ 
+    <img src="assets/icon/Filter.svg">
   </div>
-
-  <div class="add-property-container">
-    <button class="add-property-btn">Add New Property</button>
-  </div>
-
-  <div class="content-box">
-    <table class="property-table">
-      <thead>
-        <tr>
-          <th>Image</th>
-          <th>Name & Address</th>
-          <th>Status</th>
-          <th>Owner</th>
-          <th>Actions</th>
+ 
+ 
+ 
+    <table class="data-table w-100">
+      <thead class="table-header">
+        <tr class="text-center custom-font">
+          <th>Sl No</th>
+          <th>Owner Name</th>
+          <th>Property Name</th>
+          <th>Amount</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let property of filteredProperties">
+        <tr class="table-data" *ngFor="let property of propertyList; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ property.username }}</td>
           <td>
-            <img src="assets/images/property.png" alt="Property Image" class="property-pic" />
+            <div class="text-break text-wrap w-100">
+              {{ property.propertyName }}
+            </div>
           </td>
-          <td>{{ property.name }}<br>{{ property.address }}</td>
-          <td>
-            <span [ngClass]="{'active': property.status === 'Active', 'sold': property.status === 'Sold'}">
-              {{ property.status }}
-            </span>
-          </td>
-          <td>{{ property.owner }}</td>
-          <td>
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn" (click)="confirmDelete(vendor)">Delete</button>
-
+          <td class="text-danger fw-semibold">{{ property.amount }}</td>
+          <td class="d-flex justify-content-center gap-2">
+           
+            <button class="btn p-1" (click)="editProperty(property)">
+              <img src="assets/icon/Edit.svg" alt="Edit" class="edit-icon"  />
+            </button>
+            <button class="btn p-1" (click)="deleteProperty(property)">
+              <img src="assets/icon/Delete.svg" alt="Delete" class="delete-icon"  />
+            </button>
           </td>
         </tr>
       </tbody>
+ 
+         
     </table>
   </div>
-</div>

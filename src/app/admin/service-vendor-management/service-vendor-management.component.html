@@ -1,56 +1,74 @@
-<div class="service-vendor-container">
-  <!-- Navbar -->
-  <div class="navbar">
-    <h2 class="title">Service Vendor Management</h2>
-
-    <div class="search-filter-container">
-      <div class="search-bar-container">
-        <img src="assets/icon/search.png" alt="Search Icon" class="search-icon" />
-        <input
-          type="text"
-          placeholder="Search"
-          class="search-box"
-          (input)="updateSearchTerm($event)"
-        />
-      </div>
-      <img src="assets/icon/slider.png" alt="Filter Icon" class="filter-icon" />
+<div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1 px-1">
+ 
+  <div class="header w-100 text-center">
+    <h2 class="primary-font">Service Vendor Management</h2>
+  </div>
+ 
+  <div class="add-property-wrapper w-100 p-4">
+    <button class="add-property-btn primary-font" (click)="addNew()">Add New</button>
+  </div>
+  <div class="search-filter w-100 d-flex justify-content-between align-items-center p-3">
+    <div class="search-container">
+      <input type="text" class="search-input primary-font" placeholder="search" />
+      <img src="assets/icon/Search.svg" width="20px" class="search-icon">
     </div>
+ 
+    <img src="assets/icon/Filter.svg">
   </div>
-
-  <!-- Add Vendor Button -->
-  <div class="add-vendor-container">
-    <button class="add-vendor-btn">Add New Vendor</button>
-  </div>
-
-  <div class="content-box">
-    <table class="vendor-table">
-      <thead>
-        <tr>
-          <th>Vendor Name</th>
-          <th>Referred By (Agent)</th>
-          <th>Service Category</th>
-          <th>Contact Info</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let vendor of filteredVendors">
-          <td>{{ vendor.name }}</td>
-          <td>{{ vendor.agent }}</td>
-          <td>{{ vendor.category }}</td>
-          <td>{{ vendor.contact }}</td>
-          <td>
-            <span [ngClass]="{'active': vendor.status === 'Active', 'inactive': vendor.status === 'Inactive'}">
-              {{ vendor.status }}
-            </span>
-          </td>
-          <td>
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn" (click)="confirmDelete(vendor)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table class="data-table w-100">
+    <thead class="table-header">
+      <tr class="text-center primary-font">
+        <th>Sl No</th>
+        <th>Username</th>
+        <th>Service Type</th>
+        <th>Amount</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-data" *ngFor="let vendor of paginatedBatches; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ vendor.username }}</td>
+        <td>
+          <div class="text-break text-wrap w-100">
+            {{ vendor.serviceType }}
+          </div>
+        </td>
+        <td class="text-danger fw-semibold">{{ vendor.serviceAmount }}</td>
+        <td class="d-flex justify-content-center gap-2">
+ 
+          <button class="btn p-1 edit-btn" (click)="editService(service)">
+            <img src="assets/icon/Edit-1.svg" alt="Edit" class="edit-icon" />
+          </button>
+          <button class="btn p-1 delete-btn" (click)="deleteService(service)">
+            <img src="assets/icon/Delete.svg" alt="Delete" class="delete-icon" />
+          </button>
+        </td>
+      </tr>
+    </tbody>
+ 
+  </table>
+ 
+  <nav >
+    <ul class="pagination-ul d-flex justify-content-center align-items-center">
+        <li class="" [class.disabled]="currentPage === 1">
+            <a class="" (click)="changePage(currentPage - 1)">
+                <img src="assets/icon/Double Left.svg" width="20px">
+            </a>
+        </li>
+ 
+        <li class="ms-3 fs-5"
+            *ngFor="let page of [].constructor(getTotalPages()); let i = index"
+            [class.active]="currentPage === i + 1">
+            <a class="" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+        </li>
+ 
+        <li class="ms-3" [class.disabled]="currentPage === getTotalPages()">
+            <a class="" (click)="changePage(currentPage + 1)">
+                <img src="assets/icon/Double Right.svg" width="20px">
+            </a>
+        </li>
+    </ul>
+</nav>
+ 
 </div>

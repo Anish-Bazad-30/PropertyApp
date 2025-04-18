@@ -1,0 +1,41 @@
+<div
+  class="main-container w-100 d-flex flex-column align-items-center flex-grow-1 p-3"
+>
+  <h2>Profile Management</h2>
+
+  <div class="role=selection d-flex flex-column align-items-center my-3">
+    <div>
+      <span class="text-white">Role</span>
+
+      <label style="color: #7fdbff">
+        <input
+          type="radio"
+          name="role"
+          (click)="selectRole('user')"
+          value="user"
+        />
+        User
+      </label>
+
+      <label style="color: #7fdbff">
+        <input
+          type="radio"
+          name="role"
+          (click)="selectRole('agent')"
+          value="agent"
+        />
+        Agent
+      </label>
+    </div>
+     
+
+      <ng-container *ngIf="roleType === 'user'">
+        <app-user-management></app-user-management>
+      </ng-container>
+
+      <ng-container *ngIf="roleType === 'agent'">
+        <app-agent-management></app-agent-management>
+      </ng-container>
+  
+  </div>
+</div>

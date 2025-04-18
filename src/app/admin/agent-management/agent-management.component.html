@@ -1,57 +1,53 @@
-<div class="agent-management-container">
-  <div class="navbar">
-    <h2 class="title">Agent Management</h2>
-    
-    <div class="search-filter-container">
-    <div class="search-bar-container">
-      <img src="assets/icon/search.png" alt="Search Icon" class="search-icon" />
-      <input
-        type="text"
-        placeholder="Search"
-        class="search-box"
-        (input)="updateSearchTerm($event)"
-      />
-      </div>
-      <img src="assets/icon/slider.png" alt="Filter Icon" class="filter-icon" />
+<div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1 px-1">
+ 
+ 
+  <div class="add-property-wrapper w-100 p-4">
+    <button class="add-property-btn primary-font" (click)="addNew()">Add New</button>
+  </div>
+  <div class="search-filter w-100 d-flex justify-content-between align-items-center p-3">
+    <div class="search-container">
+      <input type="text" class="search-input primary-font" placeholder="search" />
+      <img src="assets/icon/Search.svg" width="20px" class="search-icon">
     </div>
-    </div>
-  
-
-  <div class = "add-agent-container">
-  <button class="add-agent-btn">Add New Agent</button>
+ 
+    <img src="assets/icon/Filter.svg">
   </div>
 
-  <div class="content-box">
-    <table class="agent-table">
-      <thead>
-        <tr>
-          <th>Profile Picture</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Status</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let agent of filteredAgents">
-          <td>
-            <img src="assets/images/image1.png" alt="{{agent.name}}" class="profile-pic" />
-          </td>
-          <td>{{ agent.name }}</td>
-          <td>{{ agent.email }}</td>
-          <td>
-            <span [ngClass]="{'active': agent.status === 'Active', 'inactive': agent.status !== 'Active'}">
-              {{ agent.status }}
-            </span>
-          </td>
-          <td>
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn" (click)="confirmDelete(agent)">Delete</button>
-           
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  </div>
-
+  <table class="data-table w-100">
+    <thead class="table-header">
+      <tr class="text-center custom-font">
+        <th>Sl No</th>
+        <th>Profile Pic</th>
+        <th>Username</th>
+        <th>Mobile Number</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-data" *ngFor="let agent of agentList; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td><img [src]="agent.profilePic" alt="Profile Pic" width="30" /></td>
+        <td>
+          <div class="text-break text-wrap w-100">
+            {{ agent.username }}
+          </div>
+        </td>
+        <td>{{ agent.mobile }}</td>
+        <td class="text-danger">{{ agent.status}}</td>
+        <td class="d-flex justify-content-center gap-2">
+          <button class="btn p-1 edit-btn" (click)="editAgent(agent)">
+            <img src="assets/icon/Edit.svg" alt="Edit" class="edit-icon" />
+          </button>
+          <button class="btn p-1 delete-btn" (click)="deleteAgent(agent)">
+            <img
+              src="assets/icon/Delete.svg"
+              alt="Delete"
+              class="delete-icon"
+            />
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

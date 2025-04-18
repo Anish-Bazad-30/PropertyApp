@@ -53,6 +53,6 @@ export class MainComponent  implements OnInit {
   // }
 
   navigateToTarget() {
-    this.router.navigate(['/mobilenoverification']);
+    this.router.navigate(['/auth']);
   }
 }

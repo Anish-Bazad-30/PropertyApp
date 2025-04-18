@@ -42,30 +42,33 @@
 
 
 body{
-    background: linear-gradient(180deg, #337280 50%, #145274 100%);
+   
+    background: linear-gradient(180deg, rgba(51,114,128,1) 50%, rgba(20,82,116,1) 100%);
     color: #000;
-    min-height: 100vh; /* Ensures it always covers the full screen */
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    font-family: K2D, sans-serif;
 }
-
+ 
 .firstscreen{
     height: 100%;
 }
+
 --swiper-navigation-top-offset{
     top:90%;
 }
-
-.nunito-text {
+ 
+.primary-font {
+    font-family: 'K2D', sans-serif !important;
+}
+.secondary-font{
     font-family: 'Nunito Sans', sans-serif !important;
 }
 
-// *{
-    
-//     font-family: K2D !important;
-   
-    
-// }
+.custom-input {
+    padding: 10px;
+    border-radius: 10px !important;
+    background:#ffffff !important;
+}

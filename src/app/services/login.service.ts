@@ -17,4 +17,9 @@ export class LoginService {
      return  this.http.post<any>(loginUrl,data);
   
    }
+
+   role(data:any):Observable<any>{
+    const url= this.apiUrl+"/api/user/role";
+    return this.http.get<any>(url,data);
+   }
 }

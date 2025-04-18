@@ -1,42 +1,18 @@
-/* Main Container */
-.container {
-  padding: 16px;
-  background: linear-gradient(180deg, #337280 50%, #145274 100%);
-  color: #ffffff;
-  font-family: K2D, sans-serif;
-  min-height: 100vh;
+.main-container {
+  width: 100vw;
+  min-height: 100%;
 }
-
-.content h2{
-  text-align: center;
+h2{
   font-size: 32px;
+  color: #FFFFFF;
+  font-weight: 300;
 }
-.menu-icon {
-  font-size: 32px;
-  color: #ffffff;
-  cursor: pointer;
-}
-
-.back-icon {
-  font-size: 32px;
-  color: #ffffff;
-  cursor: pointer;
-}
-
 .subtitle {
-  text-align: center;
   font-size: 20px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  color: #FFFFFF;
+  font-weight: 200;
 }
-
-/* Category Selector */
-.category-section {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
+ 
 select {
   width: 100%;
   padding: 10px;
@@ -46,85 +22,139 @@ select {
   font-size: 16px;
   border: none;
 }
-
-/* Category Titles */
+ 
 .category-title {
-  margin-top: 20px;
-  font-size: 20px;
-  text-transform: uppercase;
-  text-align: left;
-  padding-left: 16px;
   color: #7fdbff;
+  font-weight: 300;
+  font-size: 20px;
 }
-
-/* Service Cards */
-.service-card {
-  width: 100%;
-  background: #ffffff;
-  color: #000;
+.service-card{
   border-radius: 20px;
-  padding: 8px;
-  margin: 10px 16px;
-  display: flex;
-  justify-content:  space-between;
-  align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #FFFFFF;
+  margin-top: 20px;
 }
-
 .service-info h4 {
   margin: 0;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 15px;
+  color: #11405a;
 }
-
-.agent-name {
+.service-info p {
+  margin: 0;
   font-size: 14px;
   color: #ff7f7f;
-  margin: 4px 0 0;
 }
-
-/* Amount and Call Now Button */
 .service-details {
-  display: flex;
-  flex-direction: column; /* Stacks items vertically */
-  align-items: center; /* Centers items horizontally */
-  gap: 8px;
- } /* Adds space between Amount and Call Now button */
-
+  height: 100%;
+}
+ 
 .amount {
   font-size: 14px;
-  color: #000;
+  color: #000000;
   text-align: right;
-  margin-top: 20px;
+  margin: 0;
 }
-
-.rupee {
+.amount-value{
+  color: #ff7f7f;
+}
+ 
+ 
+ 
+.call-now-button {
+  color: #ffffff;
+  background-color: #337280;
+  border: none;
+  padding: 6px 14px;
   font-size: 12px;
-  position: relative;
-  top: -2px; /* Moves rupee icon slightly up */
-}
-
-.call-now {
-  background: #337280;
-  color: white;
-  border: none;
-  padding: 6px 12px;
   border-radius: 10px;
-  font-size: 14px;
   cursor: pointer;
-  margin-top: 5px;
 }
-
-/* View All Button */
-.view-all {
-  display: block;
-  margin: 10px auto;
-  background: #ff7f7f;
-  color: white;
+.view-button {
+  color: #ffffff;
+  background-color: #ff7f7f;
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 14px;
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: 10px;
   cursor: pointer;
-
 }
+ 
+@media only screen and (max-width: 800px) and (min-width: 700px) {
+ h2{
+  font-size: 38px;
+ }
+ .subtitle{
+  font-size: 30px;
+ }
+ select{
+  font-size: 22px;
+ }
+ .category-title{
+  font-size: 25px;
+ }
+ .service-info h4{
+  font-size: 22px;
+ }
+ .service-info p{
+  font-size: 20px;
+ }
+ .amount{
+  font-size: 22px;
+ }
+ .call-now-button, .view-button{
+  font-size: 18px;
+ }
+}
+ 
+@media only screen and (max-width: 920px) and (min-width: 820px) {
+  h2{
+   font-size: 56px;
+  }
+  .subtitle{
+   font-size: 36px;
+  }
+  select{
+   font-size: 28px;
+  }
+  .category-title{
+   font-size: 36px;
+  }
+  .service-info h4{
+   font-size: 28px;
+  }
+  .service-info p{
+   font-size: 26px;
+  }
+  .amount{
+   font-size: 28px;
+  }
+  .call-now-button, .view-button{
+   font-size: 26px;
+  }
+ }
+ 
+@media only screen and (min-width: 1024px) {
+  h2{
+   font-size: 56px;
+  }
+  .subtitle{
+   font-size: 42px;
+  }
+  select{
+   font-size: 26px;
+  }
+  .category-title{
+   font-size: 36px;
+  }
+  .service-info h4{
+   font-size: 30px;
+  }
+  .service-info p{
+   font-size: 25px;
+  }
+  .amount{
+   font-size: 28px;
+  }
+  .call-now-button, .view-button{
+   font-size: 26px;
+  }
+ }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { PropertyService } from 'src/app/services/property.service';
 
 @Component({
   selector: 'app-property-upload',
@@ -6,33 +8,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./property-upload.component.scss']
 })
 export class PropertyUploadComponent implements OnInit {
-  properties = [
-    {
-      name: 'Lotus Residency - 2BHK Deluxe Apartment',
-      address: 'Flat no. 5A, Lotus Residency, MG Road, Koramangala, Bengaluru - 560095',
-      amount: '3.85 Cr',
-      image: 'assets/images/Apartment.png' 
-    },
-    {
-      name: 'Lotus Residency - 2BHK Deluxe Apartment',
-      address: 'Flat no. 5A, Lotus Residency, MG Road, Koramangala, Bengaluru - 560095',
-      amount: '3.85 Cr',
-      image: 'assets/images/Apartment.png'
-    },
-    {
-      name: 'Lotus Residency - 2BHK Deluxe Apartment',
-      address: 'Flat no. 5A, Lotus Residency, MG Road, Koramangala, Bengaluru - 560095',
-      amount: '3.85 Cr',
-      image: 'assets/images/Apartment.png'
-    }
-  ];
+  properties :any[]=[];
+  userId!: any;
 
-  constructor() { }
+  constructor(
+    private router : Router,
+    private propertyService : PropertyService
+  ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    const storedUserId = localStorage.getItem('userId');
+    this.userId = storedUserId !== null ? storedUserId : '';
+    this.fetchProperty();
+  }
+
+
+  fetchProperty(){
+    this.propertyService.getProperties(this.userId).subscribe((res)=>{
+      this.properties= res.data;
+      console.log(this.properties);
+      
+    })
+  }
+  addNew(){
+    this.router.navigate(['/agent/upload-property'])
+  }
+  finalizeSale(property: any) {
+    this.router.navigate(['/agent/buyer-details']);
+  }
 
   editProperty(property: any) {
-    console.log('Edit property:', property);
+    this.router.navigate(['/agent/edit-property']);
   }
 
   deleteProperty(property: any) {

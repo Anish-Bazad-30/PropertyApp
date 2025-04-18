@@ -3,22 +3,38 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PropertyUploadFormComponent } from './property-upload-form/property-upload-form.component';
 import { PropertyUploadComponent } from './property-upload/property-upload.component';
+import { PropertyEditFormComponent } from './property-edit-form/property-edit-form.component';
 import { AgentProfileComponent } from './agent-profile/agent-profile.component';
 import { ServiceListingComponent } from './service-listing/service-listing.component';
+import { IonicModule } from '@ionic/angular';
+import { AddServiceComponent } from './add-service/add-service.component';
+import { EditServiceComponent } from './edit-service/edit-service.component';
+import { BuyerDetailsComponent } from './buyer-details/buyer-details.component';
+import { MainComponent } from './main/main.component';
+import { RouterModule } from '@angular/router';
+import { AgentRoutingModule } from './agent-routing.module';
 
 
 
 @NgModule({
   declarations: [
     PropertyUploadFormComponent,
+    PropertyEditFormComponent,
     PropertyUploadComponent,
     AgentProfileComponent,
-    ServiceListingComponent
+    ServiceListingComponent,
+    AddServiceComponent,
+    EditServiceComponent,
+    BuyerDetailsComponent,
+    MainComponent
   ],
   imports: [
+    AgentRoutingModule,
     CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    IonicModule,
+    RouterModule,
   ],
   exports: [
     PropertyUploadFormComponent,

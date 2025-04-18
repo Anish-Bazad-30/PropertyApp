@@ -1,53 +1,111 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+ 
 @Component({
   selector: 'app-service-vendor-management',
   templateUrl: './service-vendor-management.component.html',
   styleUrls: ['./service-vendor-management.component.scss']
 })
 export class ServiceVendorManagementComponent implements OnInit {
-
-  vendors: any[] = [];
-  filteredVendors: any[] = [];
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-    this.loadVendors();
-  }
-
-  loadVendors(): void {
-    this.vendors = [
-      { name: 'A K Enterprise', agent: 'Agent A', category: 'Plumbing', contact: '99999999', status: 'Active' },
-      { name: 'B K Services', agent: 'Agent B', category: 'Electrical', contact: '88888888', status: 'Active' },
-      { name: 'C K Solutions', agent: 'Agent C', category: 'Cleaning', contact: '77777777', status: 'Inactive' },
-      { name: 'D K Suppliers', agent: 'Agent D', category: 'Painting', contact: '66666666', status: 'Active' },
-      { name: 'E K Suppliers', agent: 'Agent D', category: 'Painting', contact: '66666666', status: 'Active' },
-      { name: 'F K Suppliers', agent: 'Agent D', category: 'Painting', contact: '66666666', status: 'Active' },
-      { name: 'F K Suppliers', agent: 'Agent D', category: 'Painting', contact: '66666666', status: 'Active' },
-      { name: 'F K Suppliers', agent: 'Agent D', category: 'Painting', contact: '66666666', status: 'Active' }
-    ];
-
-    this.filteredVendors = [...this.vendors];
-  }
-
-  updateSearchTerm(event: Event): void {
-    const searchTerm = (event.target as HTMLInputElement).value.toLowerCase();
-    this.filteredVendors = this.vendors.filter(vendor =>
-      vendor.name.toLowerCase().includes(searchTerm) ||
-      vendor.agent.toLowerCase().includes(searchTerm) ||
-      vendor.category.toLowerCase().includes(searchTerm) ||
-      vendor.contact.includes(searchTerm) ||
-      vendor.status.toLowerCase().includes(searchTerm)
-    );
-  }
-  confirmDelete(vendor: any) {
-    const confirmation = window.confirm("Are you sure you want to delete this vendor?");
-    if (confirmation) {
-      this.vendors = this.vendors.filter(p => p !== vendor);
-      this.filteredVendors = this.filteredVendors.filter(p => p !== vendor);
-      alert("Vendor deleted successfully!");
-}
+  searchText: string = '';
+   
+   vendorList = [
+     {
+       username: 'mayank@singh',
+       serviceType: 'Plumbing',
+       serviceAmount: '₹ 25,000'
+     },
+     {
+       username: 'mayank@singh',
+       serviceType: 'Plumbing',
+       serviceAmount: '₹ 25,000'
+     },
+     {
+       username: 'mayank@singh',
+       serviceType: 'Plumbing',
+       serviceAmount: '₹ 25,000'
+     },
+     {
+       username: 'mayank@singh',
+       serviceType: 'Plumbing',
+       serviceAmount: '₹ 25,000'
+     },
+     {
+      username: 'mayank@singh',
+      serviceType: 'Plumbing',
+      serviceAmount: '₹ 25,000'
+    },
+    {
+      username: 'mayank@singh',
+      serviceType: 'Plumbing',
+      serviceAmount: '₹ 25,000'
+    },
+    {
+      username: 'mayank@singh',
+      serviceType: 'Plumbing',
+      serviceAmount: '₹ 25,000'
+    },
+    {
+      username: 'mayank@singh',
+      serviceType: 'Plumbing',
+      serviceAmount: '₹ 25,000'
+    },
+    {
+      username: 'mayank@singh',
+      serviceType: 'Plumbing',
+      serviceAmount: '₹ 25,000'
+    },
+    {
+      username: 'mayank@singh',
+      serviceType: 'Plumbing',
+      serviceAmount: '₹ 25,000'
+    },
+    {
+      username: 'mayank@singh',
+      serviceType: 'Plumbing',
+      serviceAmount: '₹ 25,000'
+    },
+    {
+      username: 'mayank@singh',
+      serviceType: 'Plumbing',
+      serviceAmount: '₹ 25,000'
     }
+   ];
+   service: any;
+   currentPage = 1;
+   itemsPerPage = 10;
+   constructor(
+     private router: Router
+   ) {}
+   ngOnInit(): void {
+       
+   }
+   addNew(){
+     console.log("Add New Vendor clicked");
+   }
+ 
+   editService(service: any): void {
+     this.router.navigate(['/admin/edit-service'])
+   }
+ 
+   deleteService(service: any): void {
+     console.log('Delete clicked for:', service);
+     }
+   
+ 
+ 
+   get paginatedBatches() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.vendorList.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+ 
+  getTotalPages(): number {
+    return Math.ceil(this.vendorList.length / this.itemsPerPage);
+  }
+ 
+  changePage(newPage: number) {
+    if (newPage > 0 && newPage <= this.getTotalPages()) {
+      this.currentPage = newPage;
+    }
+  }
 }

@@ -1,111 +1,199 @@
-.main {
-  background: linear-gradient(180deg, #337280 50%, #145274 100%);
-  font-family: 'K2D', sans-serif;
-  padding: 20px;
-  min-height: 100vh;
+.main-container {
+  width: 100vw;
+  min-height: 100%;
 }
-
-/* Header */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.menu-icon {
-  font-size: 32px;
-  color: #ffffff;
-  cursor: pointer;
-}
-
-.back-icon {
-  font-size: 32px;
-  color: #ffffff;
-  cursor: pointer;
-}
-
+ 
 /* Carousel Section */
-.carousel-container {
-  margin-bottom: 20px;
-}
-
-.carousel-inner img {
-  border-radius: 10px;
-  object-fit: cover;
-  height: 200px;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-}
-
+ 
+// .carousel-inner img {
+//   height: 200px;
+// }
+ 
+ 
+// .carousel-control-prev-icon,
+// .carousel-control-next-icon {
+//   background-color: rgba(0, 0, 0, 0.5);
+//   border-radius: 50%;
+// }
+ 
 /* Property Details */
 .details-section h5 {
-  color: #ffffff;
+  color: #7FDBFF;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 500;
   margin-top: 10px;
 }
-
-.address {
-  color: #d9d9d9;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-/* Amount Section */
-h6 {
+.amount-text {
   color: #ffffff;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 300;
   margin-top: 10px;
 }
-
-.amount-box {
+.address {
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+ 
+ 
+h6 {
+  color: #7FDBFF;
+  font-size: 16px;
+  font-weight: 500;
+}
+ 
+ 
+.amount {
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 10px;
-  border-radius: 5px;
-  width: fit-content;
+  gap: 4px; /* Or whatever spacing looks good */
 }
-
 .rupee-icon {
   position: relative;
-  top: -8px;
+  top: -4px;
   width: 16px;
   height: 16px;
-  margin-right: 5px;
 }
-
+ 
 .amount-text {
-  color: #ff4d4d; /* Red color */
+  color: #FF7F7F; /* Red color */
   font-size: 18px;
   font-weight: bold;
 }
-
+ 
 /* Description */
 .description {
-  color: #d9d9d9;
-  font-size: 14px;
+  color: #ffffff;
+  font-size: 13px;
   line-height: 1.5;
-  margin-top: 50px;
+  font-weight: 300;
 }
-
-/* Call Button */
-.call-button-container {
-  text-align: center;
-  margin-top: 40px;
-  border-radius: 20px;
+ 
+ 
+// .call-button {
+//   --background: #ffffff;
+//   --color: #11405a;
+//   --border-radius: 20px;
+//   font-size: 20px;
+ 
+// }
+ 
+ion-button {
+  --background: #FFFFFF;
+  --background-hover: #FFFFFF;
+  --background-activated: #FFFFFF;
+  --background-focused: #FFFFFF;
+  --color: #11405A !important;
+  --border-radius: 20px !important;
+  --padding-top: 10px !important;
+  --padding-bottom: 10px !important;
+  min-height: 20px !important;
+  width: 70%;
+  font-size: 22px;
+  font-weight: bold;
+  border: none;
+  text-transform: none;
 }
-
-.call-button {
-  --background: #ffffff;
-  --color: #11405a;
-  --border-radius: 10px;
-  font-size: 20px;
-  padding: 2px 2px;
+ 
+@media only screen and (max-width: 540px) and (min-width: 400px) {
+  .details-section h5{
+    font-size: 20px;
+  }
+  .address{
+    font-size: 18px;
+  }
+  h6{
+    font-size: 18px;
+  }
+  .description{
+    font-size: 15px;
+  }
+}
+@media only screen and (max-width: 820px) and (min-width: 700px) {
+  .main-container{
+    padding: 30px;
+  }
+  .details-section h5{
+    font-size: 30px;
+  }
+  .address{
+    font-size: 24px;
+  }
+  h6{
+    font-size: 26px;
+  }
+  .rupee-icon {
+    width: 32px;
+    height: 32px;
+  }
+ 
+  .amount-text {
+    font-size: 32px;
+  }
+  .description{
+    font-size: 24px;
+  }
+  ion-button{
+    width: 50%;
+    font-size: 25px;
+  }
+}
+@media only screen and (max-width: 920px) and (min-width: 840px) {
+  .main-container{
+    padding: 30px;
+  }
+  .details-section h5{
+    font-size: 30px;
+  }
+  .address{
+    font-size: 24px;
+  }
+  h6{
+    font-size: 26px;
+  }
+  .rupee-icon {
+    width: 32px;
+    height: 32px;
+  }
+ 
+  .amount-text {
+    font-size: 32px;
+  }
+  .description{
+    font-size: 24px;
+  }
+  ion-button{
+    width: 50%;
+    font-size: 25px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .main-container{
+    padding: 30px;
+  }
+  .details-section h5{
+    font-size: 40px;
+  }
+  .address{
+    font-size: 30px;
+  }
+  h6{
+    font-size: 28px;
+  }
+  .rupee-icon {
+    width: 32px;
+    height: 32px;
+  }
+ 
+  .amount-text {
+    font-size: 32px;
+  }
+  .description{
+    font-size: 30px;
+  }
+  ion-button{
+    width: 50%;
+    font-size: 38px;
+  }
 }

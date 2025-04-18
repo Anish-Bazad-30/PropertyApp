@@ -1,115 +1,151 @@
-.analytics-dashboard-container {
-    background: linear-gradient(180deg, #33545B 49.6%, #11405A 99.98%);
-    color: #ffffff;
-    font-family: 'K2D', !important;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
+.main-container {
+  width: 100vw;
+  min-height: 100%;
+}
+ 
+h2 {
+  font-size: 24px;
+  color: white;
+  font-weight: 300;
+}
+ 
+.data-table .fw-bold .d-flex {
+  display: flex;
+  gap: 4px;
+}
+ 
+.data-table .form-control {
+  flex: 1;
+  text-align: center;
+}
+ 
+.data-table .fw-bold .text-center {
+  flex: 1;
+}
+ 
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+}
+ 
+.table-data {
+  text-align: center;
+  font-size: 10px;
+  background-color: #fff;
+  color: #11405A;
+}
+ 
+.table-header {
+  background-color: #96E1FF;
+  font-size: 12px;
+  color: #11405A;
+}
+ 
+.data-table td {
+  padding: 2px;
+ 
+}
+ 
+.data-table thead th:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+ 
+.data-table thead th:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+ 
+.table-data td:first-child {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+ 
+.table-data td:last-child {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+ 
+th {
+  padding: 8px;
+}
+ 
+.text-danger{
+  color: #FF7F7F !important;
+}
+ 
+ 
+@media screen and (max-width:430px) and (min-width:410px) {
+  .table-header {
+    font-size: 14px;
   }
-  
-  .navbar {
-    display: flex;
-    align-items: center;
-    background-color: #0f3b47;
-    padding: 10px 20px;
-    border-radius: 10px;
-    color: white;
-    width: 100%;
+  .table-data {
+    font-size: 12px;
   }
-  
-  .title {
+ 
+}
+@media screen and (min-width:540px) {
+  h2{
+    font-size: 30px;
+  }
+  .table-header {
+    font-size: 16px;
+  }
+  .table-data {
+    font-size: 14px;
+  }
+  .data-table{
+    max-width: 480px;
+  }
+ 
+}
+@media screen and (max-width:830px) and (min-width:760px) {
+  h2{
+    font-size: 42px;
+  }
+  .data-table{
+    max-width: 700px;
+  }
+  .table-header {
     font-size: 20px;
-    font-weight: bold;
-    margin: 0;
   }
-  
-  .search-filter-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+ 
+  .table-data {
+    font-size: 18px;
   }
-  
-  .search-bar-container {
-    display: flex;
-    align-items: center;
-    background: white;
-    border-radius: 6px;
-    padding: 4px 10px;
+ 
+}
+ 
+@media screen and (max-width:930px) and (min-width:840px) {
+  h2{
+    font-size: 42px;
   }
-  
-  .search-box {
-    border: none;
-    outline: none;
-    font-size: 14px;
-    margin-left: 5px;
-    background-color: white;
-    color: black;
-    min-width: 120px;
+  .data-table{
+    max-width: 785px;
   }
-  
-  .filter-icon {
-    background-color: black;
-    padding: 3px;
-    border-radius: 5px;
+  .table-header {
+    font-size: 22px;
   }
-  
-  /* Stats Section */
-  .stats-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 20px 0;
+ 
+  .table-data {
+    font-size: 20px;
   }
-  
-  .stat-box {
-    background: #0f3b47;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 14px;
-    min-width: 160px;
+
+}
+ 
+@media screen and (min-width:1024px) {
+  h2{
+    font-size: 56px;
   }
-  
-  /* Charts */
-  .charts-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 20px 0;
+  .data-table{
+    max-width: 900px;
   }
-  
-  .chart-img {
-    width: 150px;
-    height: auto;
-    border-radius: 10px;
+  .table-header {
+    font-size: 22px;
   }
-  
-  /* Table */
-  .content-box {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    margin: 10px auto;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  .table-data {
+    font-size: 20px;
   }
-  
-  .analytics-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .analytics-table th, .analytics-table td {
-    padding: 10px;
-    text-align: left;
-    vertical-align: middle;
-  }
-  
-  .analytics-table th {
-    background: rgba(255, 255, 255, 0.2);
-    font-weight: bold;
-  }
-  
+ 
+}

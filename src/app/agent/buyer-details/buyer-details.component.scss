@@ -1,0 +1,139 @@
+.main-container {
+  min-height: 100%;
+  width: 100vw;
+}
+ 
+.title {
+  font-size: 32px;
+  font-weight: 300;
+  color: #ffffff;
+}
+ 
+ 
+.form-container {
+  width: 80%;
+  margin-top: 20px;
+}
+ 
+label {
+  color: #ffffff;
+  font-size: 16px;
+}
+ 
+input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #ffffff;
+  color: #000;
+}
+ 
+input,
+select {
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+}
+ 
+ 
+ 
+ion-button {
+  --background: #FFFFFF;
+  --background-hover: #FFFFFF;
+  --background-activated: #FFFFFF;
+  --background-focused: #FFFFFF;
+  --color: #11405A !important;
+  --border-radius: 20px !important;
+  --padding-top: 10px !important;
+  --padding-bottom: 10px !important;
+  min-height: 20px !important;
+  width: 80%;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  text-transform: none;
+}
+ 
+ 
+ 
+ 
+@media screen and (max-width:430px) and (min-width:390px){
+  .form-container{
+    margin-top: 30px;
+  }
+  label{
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  ion-button{
+    font-size: 20px;
+    margin-top: 20px;
+  }
+}
+ 
+@media screen and (max-width:830px) and (min-width:760px){
+  .title{
+    font-size: 40px;
+  }
+  .form-container{
+    margin-top: 30px;
+  }
+  label{
+    font-size: 24px;
+    margin-top: 20px;
+  }
+  ion-button{
+    font-size: 26px;
+    margin-top: 20px;
+  }
+  input, .form-select{
+    font-size: 22px;
+  }
+}
+ 
+@media screen and (max-width:920px) and (min-width:840px){
+  .title{
+    font-size: 50px;
+  }
+  .form-container{
+    margin-top: 30px;
+  }
+  label{
+    font-size: 32px;
+    margin-top: 40px;
+  }
+  ion-button{
+    font-size: 32px;
+    --padding-top:15px !important;
+    --padding-bottom:15px !important;
+    margin-top: 30px;
+  }
+  input, .form-select{
+    font-size: 26px;
+  }
+}
+ 
+@media screen and (min-width:1024px){
+  .title{
+    font-size: 50px;
+  }
+  .form-container{
+    margin-top: 30px;
+  }
+  label{
+    font-size: 32px;
+    margin-top: 40px;
+  }
+  ion-button{
+    font-size: 32px;
+    --padding-top:15px !important;
+    --padding-bottom:15px !important;
+    margin-top: 30px;
+  }
+  input, .form-select{
+    font-size: 26px;
+  }
+}

@@ -1,23 +1,29 @@
-<div class = "service-listing-container">
-  <h2>Service Listing</h2>
-<p>
-  Expand your reach by listing your services under the 'More Services' section.
-  Fill out the details below to apply
-</p>
-<form [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
-  <label>Service Name</label>
-  <input formControlName = "serviceName" type = "text" placeholder="Enter service name"/>
-
-  <label>Service Description</label>
-  <input formControlName = "serviceDescription" type = "text" placeholder="Enter service description"/>
-
-  <label>Pricing</label>
-  <input formControlName = "pricing" type = "text" placeholder="Enter pricing"/>
-
-  <label>Agent Id</label>
-  <input formControlName = "agentId" type = "text" value="110021" readonly/>
-
-  <button type="submit" class="submit-btn" [disabled]="serviceForm.invalid">Submit for review</button>
-  <button type = "cancel" class="cancel-btn" (click)="onCancel()">Cancel</button>
-</form>
+<div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1">
+ 
+  <div class="text-center">
+    <h3 class="title primary-font">Service List</h3>
+  </div>
+    <div class="add-service-wrapper mt-4">
+    <button class="add-new-service primary-font" (click)="addService()">Add New Service</button>
+  </div>
+ 
+  <div class="service-card d-flex justify-content-between align-items-center p-3 mb-3" *ngFor="let service of services">
+    <div class="service-info">
+      <h4 class="primary-font">{{service.agentFirmName}}</h4>
+      <p class="secondary-font mt-3">{{service.serviceType}}</p>
+    </div>
+    <div class="service-details d-flex flex-column align-items-end justify-content-between gap-1 secondary-font">
+      <span class="amount">
+        Amount:
+        <span class="amount-value"><span class="rupee">₹</span>{{service.amount}}</span>
+      </span>
+  
+      <div class="icon-wrapper mt-2">
+        <img src="assets/icon/Edit-1.svg" alt="Edit" class="icon edit-icon" (click)="editService(service)">
+        <img src="assets/icon/Delete.png" alt="Delete" class="icon delete-icon" (click)="deleteService(service.id)">
+      </div>
+    </div>
+  </div>
+  
+ 
 </div>

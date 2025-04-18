@@ -1,0 +1,95 @@
+*{
+  font-family: 'K2D', sans-serif !important;
+}
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+}
+ 
+.app-title {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+h1{
+  font-size: 20px;
+}
+.agent-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 6px;
+}
+ 
+.agent-name {
+  color: white;
+  font-size: 14px;
+  margin: 0;
+}
+ 
+// ion-backdrop {
+//   display: none !important;
+// }
+ 
+   
+  ion-toolbar{
+    --color: #fff;
+    --background: #11405A;
+    --min-height : 120px !important;
+  }
+  ion-content{
+  --background:linear-gradient(180deg, rgba(51,114,128,1) 50%, rgba(20,82,116,1) 100%);
+  --min-height:100vh;
+}
+   
+  ion-menu {
+    --width: 70%;
+  }
+  .side-bar{
+  --background: #ffffff !important;
+  }
+   
+  ion-item{
+    --border-color:#ffffff;
+    --color: #11405A;
+  }
+   
+   
+   
+  .top-header {
+    position: sticky;
+    top: 0;
+    z-index: 10; /* ensure it stays on top */
+    background: #337280; /* or your app's background */
+    padding: 10px 10px;
+  }
+   
+  .menu-icon {
+    font-size: 32px;
+    color: #ffffff;
+    cursor: pointer;
+  }
+   
+  .back-icon {
+    font-size: 32px;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  .header {
+    margin-bottom: 10px;
+  }
+   
+  .container{
+    height: 100vh !important;
+  }
+ 
+ 
+ 
+ 
+ 
+ 

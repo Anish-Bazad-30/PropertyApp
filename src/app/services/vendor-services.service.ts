@@ -11,12 +11,24 @@ export class VendorServicesService {
 
   constructor(private http: HttpClient) { }
 
+  postServices(data:any):Observable<any>{
+    return this.http.post<any[]>(`${this.apiUrl}/api/services`,data);
+  }
+
   getServices(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/api/services`);
   }
 
-  getServicesByCategory(category: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/api/services?category=${category}`);
+  getServicesByAgentId(agentId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/api/services/user/${agentId}`);
+  }
+
+  deleteServiceById(serviceId:any): Observable<any>{
+    return this.http.delete(`${this.apiUrl}/api/services/${serviceId}`);
+  }
+
+  updateServiceById(serviceId:any, data:any): Observable<any>{
+    return this.http.put(`${this.apiUrl}/api/services/${serviceId}`, data);
   }
 }
 

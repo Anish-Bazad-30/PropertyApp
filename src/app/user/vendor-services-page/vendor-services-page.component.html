@@ -1,38 +1,42 @@
-<div class="container">
-  <div class="main w-100 d-flex flex-column align-items-center flex-grow-1 p-2">
-    <div class="top-header d-flex justify-content-between align-items-center w-100 px-3">
-      <ion-icon name="arrow-back" class="back-icon"></ion-icon> 
-      <ion-icon name="menu-outline" class="menu-icon"></ion-icon> 
-    </div>
-  
-  <!-- Content -->
-  <div class="content">
-    <h2>More Services</h2>
-    <p class = "subtitle">Essential Home Services at Your Fingertips</p>
-
-    <!-- Category Section -->
-    <div class="category-section">
+<div class="main-container w-100 d-flex flex-column align-items-center flex-grow-1">
+  <h2 class="text-center primary-font">More Services</h2>
+  <p class="subtitle text-center primary-font mt-4">Essential Home Services at Your Fingertips</p>
+  <div class="service-container w-100">
+    <div class="category-section d-flex justify-content-center mt-4">
       <select id="category" (change)="onCategoryChange($event)">
         <option value="all">Choose categories</option>
         <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
       </select>
     </div>
-
+  
     <div *ngFor="let category of categories">
-      <h3 class="category-title">{{ category }}</h3>
-      
-      <div class="service-card" *ngFor="let service of getServicesByCategory(category)">
-        <div class="service-info">
-          <h4>SMT Enterprise</h4>
-          <p class="agent-name">Agent Name</p>
+      <ng-container *ngIf="shouldShowCategory(category)">
+        <h3 class="category-title mt-4 primary-font">{{ category }}</h3>
+    
+        <div class="service-card d-flex justify-content-between align-items-center p-3 mb-3 w-100"
+          *ngFor="let service of getServicesByCategory(category)">
+          <div class="service-info">
+            <h4 class="primary-font">{{ service.title }}</h4>
+            <p class="secondary-font mt-3">{{ service.agent }}</p>
+          </div>
+          <div class="service-details d-flex flex-column align-items-end justify-content-between gap-1">
+            <span class="amount">
+              Amount:
+              <span class="amount-value"><span class="rupee">₹</span>{{ service.amount }}</span>
+            </span>
+            <button class="btn btn-info call-now-button" (click)="callAgent()">Call Now</button>
+          </div>
         </div>
-        <div class="service-details">
-          <span class="amount">Amount <span class="rupee">₹</span> 25,000</span>
-          <button class="call-now">Call Now</button>
+    
+        <div class="d-flex justify-content-end mb-4" *ngIf="viewAllCategory !== category">
+          <button class="btn btn-danger view-button" style="background-color: #ff7f7f;" (click)="viewAll(category)">
+            View All
+          </button>
         </div>
-      </div>
-  
-        <button class="view-all">View All</button>
-      </div>
+      </ng-container>
     </div>
+    
+  </div>
   
+  
+</div>

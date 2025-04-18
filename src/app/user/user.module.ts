@@ -6,21 +6,25 @@ import { UserLandingPageComponent } from './user-landing-page/user-landing-page.
 import { VendorServicesPageComponent } from './vendor-services-page/vendor-services-page.component';
 import { UserProfileManagementComponent } from './user-profile-management/user-profile-management.component';
 import { ReferEarnComponent } from './refer-and-earn/refer-and-earn.component';
-
-
-
-
-
+import { UserRoutingModule } from './user-routing.module';
+import { MainComponent } from './main/main.component';
+import { RouterModule } from '@angular/router';
+import { PropertyDetailViewComponent } from './property-detail-view/property-detail-view.component';
 @NgModule({
   declarations: [UserLandingPageComponent,
     VendorServicesPageComponent,
     UserProfileManagementComponent,
-    ReferEarnComponent],
+    ReferEarnComponent,
+    PropertyDetailViewComponent,
+    MainComponent
+  ],
   imports: [
+    UserRoutingModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    IonicModule
+    IonicModule,
+    RouterModule,
   ],
 
 })

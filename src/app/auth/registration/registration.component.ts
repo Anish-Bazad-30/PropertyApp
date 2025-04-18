@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ReferAndEarnService } from 'src/app/services/refer-and-earn.service';
 import { RegistrationService } from 'src/app/services/registration.service';
 
@@ -15,7 +16,8 @@ export class RegistrationComponent  implements OnInit {
 
   constructor(private fb: FormBuilder, 
     private registerService: RegistrationService,
-    private referAndEarnService: ReferAndEarnService
+    private referAndEarnService: ReferAndEarnService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -47,19 +49,34 @@ export class RegistrationComponent  implements OnInit {
         role: formData.role,
       };
   
-      console.log(filteredData);
-  
-      // Send only the filtered data
       this.registerService.register(filteredData).subscribe({
+        
         next: (res) => {
-          console.log('Registration successful:', res);
-          this.errorMessage = ''; 
-  
-          // Referral Service Call (Optional)
+          localStorage.setItem("jwtToken",res.data.token);
+          localStorage.setItem("userName",res.data.user.username);
+          localStorage.setItem("userId",res.data.user.id);
+          localStorage.setItem("role",res.data.user.role);
           this.referAndEarnService.createReferral(this.userName).subscribe({
             next: (res) => console.log('Referral created:', res),
             error: (error) => console.error('Error generating referral link:', error),
           });
+
+          if (res.code === 200) {
+            switch (res.data.user.role) {
+              case 'AGENT':
+                this.router.navigate(['/agent']);
+                break;
+              case 'USER':
+                this.router.navigate(['/user']);
+                break;
+                case 'AGENT':
+                this.router.navigate(['/agent']);
+                break;
+              default:
+                this.router.navigate(['/login']);
+                break;
+            }
+          }
         },
         error: (error) => {
           console.error('Error during registration:', error);
@@ -76,4 +93,9 @@ export class RegistrationComponent  implements OnInit {
       this.errorMessage = 'Please correct the errors in the form.';
     }
   }
+
+
+  navigate() {
+    this.router.navigate(["auth/login"]);
+    }
 }

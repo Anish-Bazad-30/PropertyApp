@@ -12,6 +12,10 @@ export class PropertyUploadFormService {
   constructor(private http: HttpClient) { }
 
     uploadProperty(propertyData: any): Observable<any> {
-      return this.http.post<any>(`${this.apiUrl}/upload`, propertyData);
+      return this.http.post<any>(`${this.apiUrl}/api/properties/upload`, propertyData);
+    }
+
+    getAllProperties():Observable<any> {
+      return this.http.get<any>(`${this.apiUrl}/api/admin/properties`);
     }
 }

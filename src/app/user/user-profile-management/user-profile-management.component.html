@@ -1,50 +1,44 @@
-<ion-content>
-  <div class="container">
-    <!-- Header -->
-    <div class="main w-100 d-flex flex-column align-items-center flex-grow-1 p-2">
-      <div class="top-header d-flex justify-content-between align-items-center w-100 px-3">
-        <ion-icon name="arrow-back" class="back-icon"></ion-icon> 
-        <ion-icon name="menu-outline" class="menu-icon"></ion-icon> 
-      </div>
-    <div class="header">
-    
-      <h2>Profile</h2>
- 
-    </div>
-
-    <!-- Profile Picture Section -->
-    <div class="profile-section">
-      <div class="profile-pic">
-        <img src="assets/images/image1.png" alt="Profile" />
-        <div class="edit-icon">
-          <ion-icon name="create-outline"></ion-icon>
-        </div>
-      </div>
-    </div>
-
-    <!-- Profile Form -->
-    <div class="content">
-      <label for="username">Username</label>
-      <input type="text" id="username" [(ngModel)]="name" />
-
-      <label for="email">E-mail</label>
-      <input type="email" id="email" [(ngModel)]="email" />
-
-      <label for="mobile">Mobile Number</label>
-      <input type="text" id="mobile" [(ngModel)]="mobileNumber" />
-
-      <label for="role">Role</label>
-      <input type="text" id="role" [(ngModel)]="role" disabled />
-
-  
-      <div class="button-group">
-        <button class="cancel-button">Cancel</button>
-        <button class="save-button" (click)="updateProfile()">Save</button>
-      </div>
-
-  
-      <button class="join-agent-button" (click)="applyForAgent()">Join As Agent <ion-icon name="arrow-forward"></ion-icon></button>
-    </div>
-    </div>
+<div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1">
+  <div class="header">
+    <h2 class="primary-font">Profile</h2>
   </div>
-</ion-content>
+
+  <div class="profile-container d-flex flex-column justify-content-center align-items-center mt-4">
+
+    <div class="profile-photo">
+      <img src="assets/icon/profile.svg" alt="Profile Photo" />
+      <div class="change-profile-icon">
+        <img src="assets/icon/Edit.svg">
+      </div>
+    </div>
+    <form [formGroup]="profileForm" class="d-flex flex-column form-container mt-3" (ngSubmit)="updateProfile()">
+      <label for="username" class="form-label secondary-font">Username</label>
+      <input type="text" id="username" class="form-control custom-input" formControlName="username" />
+
+      <label for="email" class="form-label secondary-font">E-mail</label>
+      <input type="email" id="email" class="form-control custom-input" formControlName="email" required />
+
+      <label for="mobilenumber" class="form-label secondary-font">Mobile Number</label>
+      <input type="text" id="mobilenumber" class="form-control custom-input" formControlName="mobilenumber" required
+        maxlength="10" inputmode="numeric" pattern="[0-9]{10}" (keypress)="onlyDigits($event)" />
+
+      <label for="role" class="form-label secondary-font">Role</label>
+      <input type="text" id="role" class="form-control custom-input" formControlName="role" />
+
+      <div class="button-group d-flex justify-content-between mt-4 secondary-font">
+        <button type="button" class="cancel-button">Cancel</button>
+        <button type="submit" class="save-button" [disabled]="profileForm.invalid">Save</button>
+      </div>
+    </form>
+
+
+    <div class="text-center mt-4 ">
+      <button class="agent-button secondary-font" (click)="applyForAgent()">
+        Join As Agent<img src="assets/icon/arrow.svg" style="width: 24px; height: 24px;margin-left: 10px;">
+      </button>
+    </div>
+    <p class="join-agent mt-3 secondary-font">
+      Your request has been submitted successfully!
+    </p>
+  </div>
+</div>

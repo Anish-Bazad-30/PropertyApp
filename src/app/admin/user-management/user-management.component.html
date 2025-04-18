@@ -1,56 +1,50 @@
-<div class="user-management-container">
-  <div class="navbar">
-    <h2 class="title">User Management</h2>
-    
-    <div class="search-filter-container">
-    <div class="search-bar-container">
-      <img src="assets/icon/search.png" alt="Search Icon" class="search-icon" />
-      <input
-        type="text"
-        placeholder="Search"
-        class="search-box"
-        (input)="updateSearchTerm($event)"
-      />
-      </div>
-      <img src="assets/icon/slider.png" alt="Filter Icon" class="filter-icon" />
+<div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1 px-1">
+ 
+  <div class="add-property-wrapper w-100 p-4">
+    <button class="add-property-btn primary-font" (click)="addNew()">Add New</button>
+  </div>
+  <div class="search-filter w-100 d-flex justify-content-between align-items-center p-3">
+    <div class="search-container">
+      <input type="text" class="search-input primary-font" placeholder="search" />
+      <img src="assets/icon/Search.svg" width="20px" class="search-icon">
     </div>
-    </div>
-  
-
-  <div class = "add-user-container">
-  <button class="add-user-btn">Add New User</button>
+ 
+    <img src="assets/icon/Filter.svg">
   </div>
 
-  <div class="content-box">
-    <table class="user-table">
-      <thead>
-        <tr>
-          <th>Profile Picture</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Status</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of filteredUsers">
-          <td>
-            <img src="assets/images/image1.png" alt="{{user.name}}" class="profile-pic" />
-          </td>
-          <td>{{ user.name }}</td>
-          <td>{{ user.email }}</td>
-          <td>
-            <span [ngClass]="{'active': user.status === 'Active', 'inactive': user.status !== 'Active'}">
-              {{ user.status }}
-            </span>
-          </td>
-          <td>
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn" (click)="confirmDelete(user)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  </div>
-
+  <table class="data-table w-100">
+    <thead class="table-header">
+      <tr class="text-center custom-font">
+        <th>Sl No</th>
+        <th>Profile Pic</th>
+        <th>Username</th>
+        <th>Mobile Number</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-data" *ngFor="let user of userList; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td><img [src]="user.profilePic" alt="Profile Pic" width="30" /></td>
+        <td>
+          <div class="text-break text-wrap w-100">
+            {{ user.username }}
+          </div>
+        </td>
+        <td>{{ user.mobile }}</td>
+        <td class="d-flex justify-content-center gap-2">
+          <button class="btn p-1 edit-btn" (click)="editUser(user)">
+            <img src="assets/icon/Edit.svg" alt="Edit" class="edit-icon" />
+          </button>
+          <button class="btn p-1 delete-btn" (click)="deleteUser(user)">
+            <img
+              src="assets/icon/Delete.svg"
+              alt="Delete"
+              class="delete-icon"
+            />
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

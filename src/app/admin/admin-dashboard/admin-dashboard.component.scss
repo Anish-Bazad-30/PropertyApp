@@ -1,40 +1,102 @@
-.admin-dashboard-container {
-    padding: 10px;
-    background: linear-gradient(180deg, #33545B 49.6%, #11405A 99.98%);
-    color: #ffffff;
-    font-family: K2D !important;
-    min-height: 100vh; 
+.main-container {
+  width: 100vw;
+  min-height: 100%;
 }
-h2{
+ 
+.welcome-text {
+  font-size: 26px;
+  color: #ffffff;
+  font-weight: 300;
+}
+.horizontal-line{
+  height: 20px;
+  width: 80%;
+}
+ 
+.admin-name{
+  font-size: 20px;
+  color: #7fdbff;
+  font-weight: 300;
+}
+.option-button {
+  background-color: #ffffff;
+  color: #11405a;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px;
+}
+ 
+.option-arrow {
+  width: 35px;
+  height: 35px;
+}
+ 
+@media screen and (max-width: 700px) and (min-width: 540px) {
+  .welcome-text{
+    font-size: 28px;
+  }
+  .admin-name{
+    font-size: 22px;
+  }
+  .horizontal-line{
+    width: 80%;
+  }
+}
+@media screen and (max-width:810px) and (min-width:740px) {
+  .welcome-text{
+    font-size: 34px;
+  }
+  .admin-name{
+    font-size: 30px;
+  }
+  .horizontal-line{
+    width: 80%;
+  }
+  .option-button{
+    font-size: 24px;
+    padding: 16px;
+  }
+  .option-arrow {
+    width: 50px;
+    height: 50px;
+  }
+}
+@media screen and (max-width:920px) and (min-width:820px) {
+  .welcome-text{
+    font-size: 38px;
+  }
+  .admin-name{
     font-size: 32px;
-    margin-top: 40px;
-    margin-bottom: 60px;
-    text-align: center;
+  }
+  .horizontal-line{
+    width: 80%;
+  }
+  .option-button{
+    font-size: 30px;
+    padding: 18px;
+  }
+  .option-arrow {
+    width: 60px;
+    height: 60px;
+  }
 }
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    justify-items: center;
-    margin-top: 60px;
+@media screen and (min-width:1024px) {
+  .welcome-text{
+    font-size: 58px;
   }
-  
-  .dashboard-card {
-    width: 180px;
-    height: 140px;
-    background-color: #013a63;
-    color: white;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
-    font-size: large;
+  .admin-name{
+    font-size: 52px;
   }
-  
-  .dashboard-card:hover {
-    transform: scale(1.05);
+  .horizontal-line{
+    width: 80%;
   }
+  .option-button{
+    font-size: 36px;
+    padding: 24px;
+  }
+  .option-arrow {
+    width: 65px;
+    height: 65px;
+  }
+}  

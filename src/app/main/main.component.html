@@ -2,50 +2,58 @@
   <swiper-container class="h-100">
     <swiper-slide class="main d-flex flex-column">
       <img [src]="firstScreen.imageUrl" class="w-100 h-50" alt="First Screen">
-      <div class="h-50 d-flex flex-column justify-content-evenly align-items-center">
+      <div class="h-50 d-flex flex-column justify-content-evenly align-items-center px-4">
         <div>
-          <h3 class="title-text pb-4">{{firstScreen.title}}</h3>
-          <p class="text-center fs-3 nunito-text">{{firstScreen.infomsg}}</p>
+          <h3 class="title-text primary-font">{{firstScreen.title}}</h3>
+          <p class="text-center secondary-font mt-5">{{firstScreen.infomsg}}</p>
 
           <div class="three-lines">
+            <span style="background-color: #7fdbff;"></span>
             <span></span>
             <span></span>
-            <span></span>
-            </div>
+          </div>
 
         </div>
         <div>
-          <p class="footer fs-5 nunito-text">{{firstScreen.footer}}</p>
+          <p class="footer secondary-font">{{firstScreen.footer}}</p>
         </div>
       </div>
     </swiper-slide>
     <swiper-slide class="main d-flex flex-column">
       <img [src]="secoundScreen.imageUrl" class="w-100 h-50" alt="secoundScreen">
-      <div class="h-50 d-flex flex-column justify-content-evenly align-items-center">
-       <h3 class="title-text pb-4">{{secoundScreen.title}}</h3>
+      <div class="h-50 d-flex flex-column justify-content-evenly align-items-center px-4">
+        <h3 class="title-text primary-font">{{secoundScreen.title}}</h3>
 
-       
-       <div class="three-lines">
-        <span></span>
-        <span></span>
-        <span></span>
+
+        <div class="three-lines">
+          <span></span>
+          <span style="background-color: #7fdbff;"></span>
+          <span></span>
         </div>
-        
-        <p class="footer fs-5">
+
+        <p class="footer secondary-font">
           {{secoundScreen.footer}}
         </p>
-        
+
       </div>
-      
-      
+
+
     </swiper-slide>
     <swiper-slide class="main">
       <img [src]="thirdScreen.imageUrl" class="w-100 h-50" alt="First Screen">
-      <div class="h-50 d-flex flex-column justify-content-evenly align-items-center">
-        <h3 class="title-text fs-1 pb-4 px-1">{{thirdScreen.title}}</h3>
-        <ion-button (click)="navigateToTarget()">Get Started</ion-button>
+      <div class="h-50 d-flex flex-column justify-content-evenly align-items-center px-4">
+        <h4 class="primary-font">{{thirdScreen.title}}</h4>
+        <div class="three-lines">
+          <span></span>
+
+          <span></span>
+          <span style="background-color: #7fdbff;"></span>
+        </div>
+
+
+        <ion-button class="secondary-font mt-3" (click)="navigateToTarget()">Get Started</ion-button>
       </div>
-        
+
     </swiper-slide>
   </swiper-container>
 </ion-content>

@@ -1,61 +1,79 @@
-<div class="referral-management-container">
-  <!-- Navbar -->
-  <div class="navbar">
-    <h2 class="title">Referral Management</h2>
-
-    <div class="search-filter-container">
-      <div class="search-bar-container">
-        <img src="assets/icon/search.png" alt="Search Icon" class="search-icon" />
-        <input
-          type="text"
-          placeholder="Search"
-          class="search-box"
-          (input)="updateSearchTerm($event)"
-        />
+<div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1 px-1">
+ 
+  <div class="header w-100 text-center">
+    <h2 class="primary-font">Referral Management</h2>
+  </div>
+  <div class="card-grid d-flex flex-wrap justify-content-center gap-3 py-3">
+    <div class="info-card d-flex justify-content-between align-items-center px-2">
+      <div class="text-start">
+        <img src="assets/icon/People.svg">
       </div>
-      <img src="assets/icon/slider.png" alt="Filter Icon" class="filter-icon" />
-    
+      <div class="d-flex flex-column text-center primary-font">
+        <h6>Total Referrals</h6>
+        <p>150</p>
       </div>
     </div>
-  
-
-  <!-- Stats Boxes -->
-  <div class="stats-container">
-    <div class="stat-box">Total Referrals<br /><span>{{ totalReferrals }}</span></div>
-    <div class="stat-box">Successful Referrals<br /><span>{{ successfulReferrals }}</span></div>
-    <div class="stat-box">Pending Referrals<br /><span>{{ pendingReferrals }}</span></div>
-    <div class="stat-box">Total Revenue<br /><span>${{ totalRevenue }}</span></div>
-    <div class="stat-box">Referral Conversion Rate<br /><span>{{ conversionRate }}%</span></div>
+    <div class="info-card d-flex justify-content-between align-items-center px-2">
+      <div class="text-start">
+        <img src="assets/icon/check.svg">
+      </div>
+      <div class="d-flex flex-column text-center primary-font">
+        <h6>Successful Rates</h6>
+        <p>150</p>
+      </div>
+    </div>
+    <div class="info-card d-flex justify-content-between align-items-center px-2">
+      <div class="text-start">
+        <img src="assets/icon/Future.svg">
+      </div>
+      <div class="d-flex flex-column text-center primary-font">
+        <h6>Pending Referrals</h6>
+        <p>150</p>
+      </div>
+    </div>
+    <div class="info-card d-flex justify-content-between align-items-center px-2">
+      <div class="text-start">
+        <img src="assets/icon/Money Bag Rupee.svg">
+      </div>
+      <div class="d-flex flex-column text-center primary-font">
+        <h6>Total Earnings</h6>
+        <p>150</p>
+      </div>
+    </div>
   </div>
-
-  <!-- Referral Table -->
-  <div class="content-box">
-    <table class="referral-table">
-      <thead>
-        <tr>
-          <th>Referral ID</th>
-          <th>Referrer ID</th>
-          <th>Referee ID</th>
-          <th>Referral Link</th>
-          <th>Status</th>
-          <th>Earning</th>
-          <th>Date of Referral</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let referral of referrals">
-          <td>{{ referral.id }}</td>
-          <td>{{ referral.referrerId }}</td>
-          <td>{{ referral.refereeId }}</td>
-          <td>{{ referral.link }}</td>
-          <td>  <span [ngClass]="{'status-success': referral.status === 'Successful', 'status-pending': referral.status === 'Pending'}">
-            {{ referral.status }}
-          </span>
-          </td>
-          <td>{{ referral.earning }}</td>
-          <td>{{ referral.date }}</td>
-        </tr>
-      </tbody>
-    </table>
+ 
+  <div class="search-filter w-100 d-flex justify-content-between align-items-center p-3">
+    <div class="search-container">
+      <input type="text" class="search-input primary-font" placeholder="search" />
+      <img src="assets/icon/Search.svg" width="20px" class="search-icon">
+    </div>
+ 
+    <img src="assets/icon/Filter.svg">
   </div>
+  <table class="data-table w-100">
+    <thead class="table-header">
+      <tr class="text-center primary-font">
+        <th>Sl No</th>
+        <th>Username</th>
+        <th>Referral Link</th>
+        <th>Total Referrals</th>
+        <th>Earnings</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-data" *ngFor="let user of userList; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td class="text-danger">{{ user.username }}</td>
+        <td>
+          <div class="text-break text-wrap w-100">
+            {{ user.referralLink }}
+          </div>
+        </td>
+        <td>{{ user.totalReferrals }}</td>
+        <td class="text-danger fw-semibold">{{ user.earnings}}</td>
+ 
+      </tr>
+    </tbody>
+  </table>
 </div>
+ 

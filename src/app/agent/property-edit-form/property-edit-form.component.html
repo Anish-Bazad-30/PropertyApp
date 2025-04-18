@@ -1,0 +1,107 @@
+<div class="main-container w-100 d-flex flex-column justify-content-evenly align-items-center flex-grow-1">
+
+    <div class="text-center">
+        <h3 class="title primary-font">Property Details</h3>
+    </div>
+
+    <form class="form-container" [formGroup]="propertyForm">
+        <div class="mb-3">
+            <label for="propertyName" class="form-label secondary-font">Property Name</label>
+            <input type="text" id="propertyName" placeholder="" class="form-control custom-input" 
+                formControlName="propertyName" />
+        </div>
+        <div class="mb-3">
+            <div class="image-upload-section d-flex justify-content-between align-items-center">
+                <label for="Add-image" class="form-label secondary-font">Add Images/Videos</label>
+                <button type="button" class="upload-button mb-3" (click)="uploadImages()">Add
+                    <img src="assets/icon/Add.svg">
+                </button>
+            </div>
+            <input type="file" id="images" class="form-input custom-input" multiple class="hidden-input"
+                (change)="onImageUpload($event)" style="display: none;" />
+
+            <div class="preview-container w-100"
+                style="background:none; border: 2px solid #7fdbff; padding: 5px; border-radius: 10px;">
+                <div class="image-container">
+                    <img src="assets/images/Apartment.png" class="main-img">
+                    <img src="assets/icon/Minus.svg" class="delete-icon">
+                </div>
+                <div class="image-container">
+                    <img src="assets/images/Apartment.png" class="main-img">
+                    <img src="assets/icon/Minus.svg" class="delete-icon">
+                </div>
+                <div class="image-container">
+                    <img src="assets/images/Apartment.png" class="main-img">
+                    <img src="assets/icon/Minus.svg" class="delete-icon">
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <!-- Property Type (Dropdown) -->
+            <label for="propertyType" class="form-label secondary-font">Property Type</label>
+            <select id="propertyType" formControlName="propertyType" class="form-select">
+                <option value="">Select Type</option>
+                <option *ngFor="let type of propertyTypes" [value]="type">{{ type }}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <!-- Amount (Rs.) -->
+            <label for="amount" class="form-label secondary-font">Amount (Rs.)</label>
+            <input type="text" id="amount" placeholder="" class="form-control custom-input" formControlName="amount" />
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label secondary-font">Property Description</label>
+            <textarea id="description" placeholder="" class="form-control custom-input"
+                formControlName="description"></textarea>
+        </div>
+        <!-- City -->
+        <div class="mb-3">
+            <label for="city" class="form-label secondary-font">City</label>
+            <select id="city" formControlName="city" class="form-select">
+                <option value="">Select City</option>
+                <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <!-- Area -->
+            <label for="area" class="form-label secondary-font">Area</label>
+            <select id="area" formControlName="area" class="form-select">
+                <option value="">Select Area</option>
+                <option *ngFor="let area of areas" [value]="area">{{ area }}</option>
+            </select>
+        </div>
+        <!-- Sector -->
+        <div class="mb-3">
+            <label for="sector" class="form-label secondary-font">Sector</label>
+            <select id="sector" formControlName="sector" class="form-select">
+                <option value="">Select Sector</option>
+                <option *ngFor="let sector of sectors" [value]="sector">{{ sector }}</option>
+            </select>
+        </div>
+        <!-- Address -->
+        <div class="mb-3">
+            <label for="address" class="form-label secondary-font">Address</label>
+            <!-- <input type="text" id="address" placeholder="" class="form-control custom-input"
+                formControlName="address" /> -->
+            <textarea id="address" placeholder="" class="form-control custom-input"
+                formControlName="address"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="agentMobileNumber" class="form-label secondary-font">Agent Mobile Number</label>
+            <input type="text" id="agentMobileNumber" placeholder="" class="form-control custom-input"
+                formControlName="agentMobileNumber" />
+        </div>
+
+        <!-- <div class="submit-button-container">
+            <button type="submit" [disabled]="propertyForm.invalid" class="submit-button">
+                Submit
+            </button>
+        </div> -->
+        <div class="button-group d-flex justify-content-between mt-4 secondary-font">
+            <ion-button type="button" class="primary-font" (click)="onCancel()">Cancel</ion-button>
+            <ion-button type="submit" class="primary-font" [disabled]="propertyForm.invalid"
+                (click)="onSave()">Save</ion-button>
+        </div>
+    </form>
+</div>

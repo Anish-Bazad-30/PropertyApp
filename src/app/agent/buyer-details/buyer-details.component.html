@@ -1,0 +1,35 @@
+<div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1 p-3">
+ 
+  <div class="text-center">
+    <h3 class="title primary-font">Buyer Details</h3>
+  </div>
+  <form class="form-container">
+    <div class="mb-3">
+      <label for="buyerName" class="form-label secondary-font">User Name(Buyer name)</label>
+      <input type="text" id="buyerName" class="form-control custom-input" [(ngModel)]="buyerName" />
+    </div>
+    <div class="mb-3">
+      <label for="contactNumber" class="form-label secondary-font">Contact Number</label>
+      <input type="text" id="contactNumber" class="form-control custom-input" [(ngModel)]="contactNumber" />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label secondary-font">Email</label>
+      <input type="text" id="amount" class="form-control custom-input" [(ngModel)]="email" />
+    </div>
+    <div class="mb-3">
+      <label for="salePrice" class="form-label secondary-font">Sale Price</label>
+      <input type="text" id="salePrice" class="form-control custom-input" [(ngModel)]="salePrice" />
+    </div>
+    <div class="mb-3">
+      <label for="saledate" class="form-label secondary-font">Sale Date</label>
+      <input type="date" id="saleDate" class="form-control custom-input" [(ngModel)]="saleDate" />
+    </div>
+ 
+    <div class="d-flex justify-content-center mt-4">
+      <!-- Submit button triggers the (ngSubmit) event -->
+      <ion-button type="submit" expand="block" class="text-center secondary-font" (click)="markSaleComplete()">
+        Mark Sale Complete
+      </ion-button>
+    </div>
+  </form>
+</div>

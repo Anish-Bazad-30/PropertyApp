@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserProfileManagementService } from 'src/app/services/user-profile-management.service';
 
@@ -9,34 +9,37 @@ import { UserProfileManagementService } from 'src/app/services/user-profile-mana
   styleUrls: ['./user-profile-management.component.scss'],
 })
 export class UserProfileManagementComponent implements OnInit {
-  name: string = 'ankit@103';
-  email: string = 'ankit23@gmail.com';
-  mobileNumber: string = '1234567890';
-  role: string = 'User';
+  username: string = '';
+  role: string = '';
+  userId: string = "";
 
-  profileForm: FormGroup<any> | undefined;
-
-  data = {
-    // "id": "1",
-    "name": "ankit@103",
-    "username": "agent2",
-    "email": "ankit23@gmail.com",
-    "mobilenumber": "1234567890",
-    "role": "User"
-  }  
-
-
-  constructor(private router: Router, private fb: FormBuilder, private userProfileManagementService: UserProfileManagementService) {}
+  profileForm!: FormGroup;
+  constructor(private router: Router, private fb: FormBuilder, private userProfileManagementService: UserProfileManagementService) { }
 
   ngOnInit(): void {
+
+    this.profileForm = this.fb.group({
+      username: [{ value: '', disabled: true }],
+      email: ['', [Validators.required, Validators.email]],
+      mobilenumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      role: [{ value: '', disabled: true }]
+    });
     this.fetchUserData();
   }
 
-  fetchUserData() {
-    const userId = "67e6760b3e7baa2013db10b3"; //agent 2.. Needs to change dynamically in future.
 
-    this.userProfileManagementService.fetchUserData(userId).subscribe((res) => {
+  fetchUserData() {
+    const storedUserId = localStorage.getItem('userId');
+
+    this.userId = storedUserId !== null ? storedUserId : '';
+    this.userProfileManagementService.fetchUserData(this.userId).subscribe((res) => {
       console.log(res);
+      this.profileForm.patchValue({
+        username: res.data.username,
+        email: res.data.email,
+        mobilenumber: res.data.mobilenumber,
+        role: res.data.role
+      });
     });
   }
 
@@ -49,13 +52,23 @@ export class UserProfileManagementComponent implements OnInit {
     this.role = 'Agent Pending'; // Updating role to show "Agent Pending"
   }
   updateProfile() {
-    this.userProfileManagementService.updateProfile("67e6760b3e7baa2013db10b3", this.data).subscribe((res) => {
-      console.log(res);
-    })
+    if (this.profileForm.valid) {
+      const formData = this.profileForm.getRawValue();
+      console.log(formData);
+
+      this.userProfileManagementService.updateProfile(formData).subscribe((res) => {
+        console.log(res);
+      })
+    }else {
+      console.log('Form is invalid');
+    }
   }
 
+  onlyDigits(event: KeyboardEvent) {
+    const charCode = event.key.charCodeAt(0);
+    if (charCode < 48 || charCode > 57) {
+      event.preventDefault();
+    }
+  }
 
-  // updateProfile() {
-  //   alert('Profile updated successfully!');
-  // }
 }

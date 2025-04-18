@@ -14,14 +14,14 @@ export class UserProfileManagementService {
   constructor(private http: HttpClient) { }
   
   fetchUserData(userId: string): Observable<any> {
-    const profileManagementUrl = `${this.apiUrl}/api/admin/users/${userId}`;
-    console.log(`Fetching user data from: ${profileManagementUrl}`);
-    return this.http.get<any>(profileManagementUrl);
+    const fetchProfileUrl = `${this.apiUrl}/api/admin/users/${userId}`;
+    // console.log(`Fetching user data from: ${fetchProfileUrl}`);
+    return this.http.get<any>(fetchProfileUrl);
   }
 
-  updateProfile(userId: string, data: any): Observable<any> {
-    const profileManagementUrl = `${this.apiUrl}/api/users/${userId}/profile`;
-    console.log(data, profileManagementUrl);
-    return this.http.put<any>(profileManagementUrl, data);
+  updateProfile(data: any): Observable<any> {
+    const updateProfileUrl = `${this.apiUrl}/api/profile/update`;
+    // console.log(data, updateProfileUrl);
+    return this.http.put<any>(updateProfileUrl, data);
 }
 } 

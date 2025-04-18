@@ -1,0 +1,37 @@
+<div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1">
+ 
+    <div class="header w-100 text-center">
+        <h1 class="primary-font">Properties List</h1>
+      </div>
+   
+        <div class="username-wrapper w-100  w-100 text-start p-4 secondary-font">
+          <span class="username-label">Username:</span>
+          <span class="username-value">{{ username }}</span>
+        </div>
+   
+    <div class="property-list p-3">
+        <div class="property-card" *ngFor="let property of properties">
+            <div class="property-img-wrapper">
+                <img [src]="property.image" alt="Property Image" class="property-img">
+            </div>
+   
+   
+            <div class="property-details">
+                <h2 class="property-name primary-font">{{ property.name }}</h2>
+                <p class="property-address secondary-font">
+                    <strong class="address-label fw-bold secondary-font">Address:</strong><br> {{ property.address }}
+                </p>
+                <!-- <p class="property-address">{{ property.address }}</p> -->
+                <p class="amount secondary-font fw-bold">
+                    Amount:
+                    <span class="amount-value"><span class="rupee">₹</span>{{property.amount}}</span>
+                </p>
+                <p class="property-views">
+                  <img src="assets/icon/Eye.svg" alt="views" class="eye-icon me-1" />
+                  {{ property.views }} views
+                </p>
+            </div>
+        </div>
+    </div>
+  </div>
+   

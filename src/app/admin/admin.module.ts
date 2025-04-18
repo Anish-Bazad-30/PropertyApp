@@ -4,7 +4,6 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { UserManagementComponent } from './user-management/user-management.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AgentManagementComponent } from './agent-management/agent-management.component';
 import { PropertyManagementComponent } from './property-management/property-management.component';
 import { ServiceVendorManagementComponent } from './service-vendor-management/service-vendor-management.component';
 import { ReferralManagementComponent } from './referral-management/referral-management.component';
@@ -12,8 +11,17 @@ import { AppUsageAnalyticsComponent } from './app-analytics/app-analytics.compon
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { AgentEditComponent } from './agent-edit/agent-edit.component';
 import { PropertyEditComponent } from './property-edit/property-edit.component';
-import { VendorEditComponent } from './vendor-edit/vendor-edit.component';
 import { UserPageComponent } from './user-page/user-page.component';
+import { IonicModule } from '@ionic/angular';
+import { PropertiesViewsComponent } from './properties-views/properties-views.component';
+import { AddAgentComponent } from './add-agent/add-agent.component';
+import { AddServiceComponent } from './add-service/add-service.component';
+import { EditServiceComponent } from './edit-service/edit-service.component';
+import { MainComponent } from './main/main.component';
+import { RouterModule } from '@angular/router';
+import { AdminRoutingModule } from './admin-routing.module';
+import { ProfileManagementComponent } from './profile-management/profile-management.component';
+import { AgentManagementComponent } from './agent-management/agent-management.component';
 
 
 
@@ -22,6 +30,7 @@ import { UserPageComponent } from './user-page/user-page.component';
 
 @NgModule({
   declarations: [
+    ProfileManagementComponent,
     AdminDashboardComponent,
     UserManagementComponent,
     AgentManagementComponent,
@@ -32,30 +41,36 @@ import { UserPageComponent } from './user-page/user-page.component';
     UserEditComponent,
     AgentEditComponent,
     PropertyEditComponent,
-    VendorEditComponent,
     UserPageComponent,
-    
+    PropertiesViewsComponent,
+    AddAgentComponent,
+    AddServiceComponent,
+    EditServiceComponent,
+    MainComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserModule
+    IonicModule,
+    RouterModule,
+    AdminRoutingModule,
   ],
   exports: [
     AdminDashboardComponent,
     UserManagementComponent,
-    AgentManagementComponent,
     PropertyManagementComponent,
     ServiceVendorManagementComponent,
     ReferralManagementComponent,
-    AppUsageAnalyticsComponent, 
+    AppUsageAnalyticsComponent,
     UserEditComponent,
     AgentEditComponent,
     PropertyEditComponent,
-    VendorEditComponent,
     UserPageComponent,
-  
+    PropertiesViewsComponent,
+    AddAgentComponent,
+    AddServiceComponent,
+    EditServiceComponent,
   ]
 })
 export class AdminModule { }

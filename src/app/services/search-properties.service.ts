@@ -7,9 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class SearchPropertiesService {
-  getCities() {
-    throw new Error('Method not implemented.');
-  }
+ 
 
 
    apiUrl: string=environment.API_URL;

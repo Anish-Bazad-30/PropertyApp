@@ -1,26 +1,36 @@
-<div class="property-management-container">
-    <h1>Property Management</h1>
-    
-    <div class="add-property-wrapper">
-        <button class="add-property-btn">Add New Property</button>
+<div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1">
+ 
+    <div class="header w-100 text-center">
+        <h1 class="primary-font">Property Management</h1>
     </div>
-
-    <div class="property-list">
+    <div class="add-property-wrapper w-100 p-4">
+        <button class="add-property-btn primary-font" (click)="addNew()">Add New Property</button>
+    </div>
+ 
+    <div class="property-list p-3">
         <div class="property-card" *ngFor="let property of properties">
             <div class="property-img-wrapper">
-                <img [src]="property.image" alt="Property Image" class="property-img">
+                <img [src]="property.mediaUrls[0]" alt="Property Image" class="property-img">
             </div>
-
-
+ 
+ 
             <div class="property-details">
-                <h2 class="property-name">{{ property.name }}</h2>
-                <p class="property-address">{{ property.address }}</p>
-                <p class="property-amount">Amount: ₹ {{ property.amount }}</p>
-
-                <div class="property-actions">
-                    <button class="finalize-btn">Finalize Sale</button>
-                    <img src="assets/icon/Edit.png" alt="Edit" class="icon edit-icon" (click)="editProperty(property)">
-                    <img src="assets/icon/Delete.png" alt="Delete" class="icon delete-icon" (click)="deleteProperty(property)">
+                <h2 class="property-name primary-font">{{ property.name }}</h2>
+                <p class="property-address secondary-font">
+                    <strong class="address-label fw-bold secondary-font">Address:</strong><br> {{ property.address }}
+                </p>
+                <!-- <p class="property-address">{{ property.address }}</p> -->
+                <p class="amount secondary-font fw-bold">
+                    Amount:
+                    <span class="amount-value"><span class="rupee">₹</span>{{property.amount}}</span>
+                </p>
+ 
+             
+                <div class="property-actions d-flex align-items-center justify-content-between">
+                    <button class="finalize-btn" (click)="finalizeSale(property)">Finalize Sale</button>
+                    <img src="assets/icon/Edit-1.svg" alt="Edit" class="icon edit-icon" (click)="editProperty(property)">
+                    <img src="assets/icon/Delete.svg" alt="Delete" class="icon delete-icon"
+                        (click)="deleteProperty(property)">
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { VendorServicesService } from 'src/app/services/vendor-services.service';
 
 @Component({
   selector: 'app-service-listing',
@@ -9,29 +10,56 @@ import { Router } from '@angular/router';
 })
 export class ServiceListingComponent  implements OnInit {
 
-  serviceForm : FormGroup;
+  services: any[] = [];
+  userId: any;
 
-  constructor(private fb: FormBuilder, private router: Router) { 
-    this.serviceForm = this.fb.group({
-      serviceName : ['', Validators.required],
-      serviceDescription : ['', Validators.required],
-      pricing : ['', Validators.required],
-      agentId : [{value : '110021', disabled : true}]
+  constructor(private fb: FormBuilder, private router: Router,
+    private vendorService : VendorServicesService
+  ) { 
+  }
+
+  ngOnInit(): void {
+    this.loadServices();
+  }
+
+  loadServices(): void {
+    const storedUserId = localStorage.getItem('userId');
+    this.userId = storedUserId !== null ? storedUserId : '';
+    this.vendorService.getServicesByAgentId(this.userId).subscribe((res:any)=>{
+      console.log(res);
+      this.services = res.data;
+    })
+  }
+
+  editService(service: any): void {
+    this.router.navigate(['/edit-service'], {
+      queryParams: {
+        id: service.id,
+        serviceType: service.serviceType,
+        agentFirmName: service.agentFirmName,
+        amount: service.amount
+      }
     });
   }
 
-  ngOnInit(): void {}
-
-  onSubmit() {
-    if(this.serviceForm.valid) {
-      console.log('Form Data:', this.serviceForm.getRawValue());
-      alert('Service submitted for review!');
-      this.serviceForm.reset();
-
-    }
-  }
-  onCancel() {
-    this.router.navigate(['/home']);
+  deleteService(serviceId: any): void {
+    this.vendorService.deleteServiceById(serviceId).subscribe((res)=>{
+      this.loadServices();
+    })
   }
 
+  addService(): void {
+    this.router.navigate(['agent/add-service']);
+  }
+
+  goBack(): void {
+    console.log('Back clicked');
+  }
+
+  openMenu(): void {
+    console.log('Menu clicked');
+  }
 }
+  
+
+ 
