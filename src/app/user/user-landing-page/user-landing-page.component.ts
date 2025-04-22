@@ -82,10 +82,12 @@ export class UserLandingPageComponent implements OnInit {
     this.filteredProperties = [...this.properties];
   }
 
-  viewProperty(propertyTitle: string) {
-    this.router.navigate(['user/property-detail-view'], {
-      queryParams: { data: JSON.stringify(propertyTitle) }
-    });
+  viewProperty(property: string) {
+    
+    this.router.navigate(['user/property-detail-view']);
+
+      this.propertyService.setPropertyData(property);
+
   }
 
   callNow(phoneNumber: string) {

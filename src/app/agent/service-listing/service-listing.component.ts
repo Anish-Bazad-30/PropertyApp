@@ -32,18 +32,21 @@ export class ServiceListingComponent  implements OnInit {
   }
 
   editService(service: any): void {
-    this.router.navigate(['/edit-service'], {
+    this.router.navigate(['/agent/edit-service'], {
       queryParams: {
         id: service.id,
         serviceType: service.serviceType,
         agentFirmName: service.agentFirmName,
-        amount: service.amount
+        amount: service.amount,
+        userId: service.userId 
       }
     });
   }
 
   deleteService(serviceId: any): void {
     this.vendorService.deleteServiceById(serviceId).subscribe((res)=>{
+      console.log("aadsdsadsa");
+      
       this.loadServices();
     })
   }

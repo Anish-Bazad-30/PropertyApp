@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PropertyUploadFormService } from 'src/app/services/property-upload-form.service';
 
 @Component({
   selector: 'app-property-detail-view',
@@ -12,13 +13,12 @@ export class PropertyDetailViewComponent implements OnInit {
 
   propertyDetail : any;
   constructor(
-    private route: ActivatedRoute
+    private propertyService: PropertyUploadFormService
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.propertyDetail = JSON.parse(params['data']);
-      console.log(this.propertyDetail);
+    this.propertyService.propertyData$.subscribe(data => {
+      this.propertyDetail = data;
     });
   }
 

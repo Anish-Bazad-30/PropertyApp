@@ -53,18 +53,18 @@ export class RegistrationComponent  implements OnInit {
         
         next: (res) => {
           localStorage.setItem("jwtToken",res.data.token);
-          localStorage.setItem("userName",res.data.user.username);
-          localStorage.setItem("userId",res.data.user.id);
-          localStorage.setItem("role",res.data.user.role);
+          localStorage.setItem("userName",res.data.username);
+          localStorage.setItem("userId",res.data.id);
+          localStorage.setItem("role",res.data.role);
           this.referAndEarnService.createReferral(this.userName).subscribe({
             next: (res) => console.log('Referral created:', res),
             error: (error) => console.error('Error generating referral link:', error),
           });
 
           if (res.code === 200) {
-            switch (res.data.user.role) {
-              case 'AGENT':
-                this.router.navigate(['/agent']);
+            switch (res.data.role) {
+              case 'ADMIN':
+                this.router.navigate(['/admin']);
                 break;
               case 'USER':
                 this.router.navigate(['/user']);

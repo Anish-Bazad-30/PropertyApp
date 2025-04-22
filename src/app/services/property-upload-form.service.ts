@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +17,17 @@ export class PropertyUploadFormService {
 
     getAllProperties():Observable<any> {
       return this.http.get<any>(`${this.apiUrl}/api/admin/properties`);
+    }
+
+    private propertySubject = new BehaviorSubject<any>(null);
+    propertyData$ = this.propertySubject.asObservable();
+
+    setPropertyData(data: any): void {
+      this.propertySubject.next(data);
+    }
+  
+    // Get current property data snapshot
+    getPropertyData(): any {
+      return this.propertySubject.getValue();
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -33,17 +33,37 @@ export class PropertyEditFormComponent  implements OnInit {
   goBack(): void {
     window.history.back();
   }
+uploadedFilesBase64: string[] = [];
 
-  uploadImages(): void {
-    document.getElementById('images')?.click();
+  @ViewChild('fileInput') fileInput!: ElementRef;
+
+  triggerFileInput() {
+    this.fileInput.nativeElement.click();
   }
 
-  onImageUpload(event: any): void {
-    if (event.target.files.length > 0) {
-      this.uploadedImages = Array.from(event.target.files);
-      console.log('Uploaded Images:', this.uploadedImages);
+  onImageUpload(event: any) {
+    const files: FileList = event.target.files;
+
+    if (files && files.length > 0) {
+      Array.from(files).forEach((file) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const base64String = reader.result as string;
+          this.uploadedFilesBase64.push(base64String);
+        };
+        reader.readAsDataURL(file);
+      });
     }
   }
+
+  isImage(fileBase64: string): boolean {
+    return fileBase64.startsWith('data:image');
+  }
+
+  removeFile(index: number): void {
+    this.uploadedFilesBase64.splice(index, 1);
+  }
+
   onSave(): void {
     if (this.propertyForm.valid) {
         console.log('Form Data:', this.propertyForm.value);

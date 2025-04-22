@@ -22,7 +22,7 @@
             <video
               *ngIf="isVideo(media)"
               class="d-block w-100"
-              controls
+              controls autoplay 
             >
               <source [src]="getBase64(media)" type="video/mp4" />
               Your browser does not support the video tag.

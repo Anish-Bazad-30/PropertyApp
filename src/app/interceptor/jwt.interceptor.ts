@@ -17,7 +17,7 @@ export class JwtInterceptor implements HttpInterceptor {
     const token = localStorage.getItem('jwtToken'); // Get token from storage or a service
    console.log('name');
     // Define the public API endpoints
-    const publicApis = ['/login','/accounts'  ]; // Update with your actual API paths
+    const publicApis = ['/login','/register'  ]; // Update with your actual API paths
  
     // Check if the request URL matches any of the public APIs
     if (publicApis.some(api => req.url.includes(api))) {

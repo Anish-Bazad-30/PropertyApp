@@ -1,28 +1,40 @@
 <div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1 p-3">
- 
+
   <div class="text-center">
     <h3 class="title primary-font">Edit Service</h3>
   </div>
-  <form class="form-container">
+  <form [formGroup]="serviceForm" class="form-container" (ngSubmit)="saveService()">
     <div class="mb-3">
       <label for="service" class="form-label secondary-font">Service Type</label>
-      <select id="service" class="form-select" [(ngModel)]="serviceType" name="serviceType">
-        <option value="" disabled selected>Select a service</option>
+      <select id="service" class="form-select" formControlName="serviceType">
+        <option value="" disabled>Select a service</option>
         <option *ngFor="let type of serviceTypes" [value]="type">{{ type }}</option>
       </select>
+      <div *ngIf="serviceForm.get('serviceType')?.touched && serviceForm.get('serviceType')?.invalid" class="text-danger">
+        Service Type is required.
+      </div>
     </div>
+  
     <div class="mb-3">
       <label for="agent-firm-name" class="form-label secondary-font">Agent Firm Name</label>
-      <input type="text" id="agent-firm-name" class="form-control custom-input" [(ngModel)]="agentFirmName"/>
+      <input type="text" id="agent-firm-name" class="form-control custom-input" formControlName="agentFirmName" />
+      <div *ngIf="serviceForm.get('agentFirmName')?.touched && serviceForm.get('agentFirmName')?.invalid" class="text-danger">
+        Agent Firm Name is required.
+      </div>
     </div>
+  
     <div class="mb-3">
-      <label for="Amount" class="form-label secondary-font">Amount</label>
-      <input type="text" id="amount" class="form-control custom-input" [(ngModel)]="amount"/>
+      <label for="amount" class="form-label secondary-font">Amount</label>
+      <input type="text" id="amount" class="form-control custom-input" formControlName="amount" />
+      <div *ngIf="serviceForm.get('amount')?.touched && serviceForm.get('amount')?.invalid" class="text-danger">
+        Valid amount is required.
+      </div>
     </div>
-   
+  
     <div class="button-group d-flex justify-content-between mt-4 secondary-font">
       <ion-button type="button" class="primary-font" (click)="cancel()">Cancel</ion-button>
-      <ion-button type="submit" class="primary-font" (click)="saveService()">Save</ion-button>
+      <ion-button type="submit" class="primary-font">Save</ion-button>
     </div>
-    </form>
-    </div>
+  </form>
+  
+</div>

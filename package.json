@@ -30,7 +30,7 @@
     "@capacitor/status-bar": "5.0.6",
     "@ionic/angular": "^7.0.0",
     "bootstrap": "^5.3.2",
-    "chart.js": "^4.4.1",
+    "chart.js": "^4.4.9",
     "chartjs-plugin-datalabels": "^2.2.0",
     "crypto-js": "^4.2.0",
     "exceljs": "^4.4.0",

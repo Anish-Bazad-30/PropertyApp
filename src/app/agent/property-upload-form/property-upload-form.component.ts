@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PropertyUploadFormService } from 'src/app/services/property-upload-form.service';
  
@@ -39,31 +39,38 @@ export class PropertyUploadFormComponent implements OnInit {
     window.history.back();
   }
  
-  @ViewChild('fileInput') fileInput: any;
  
-uploadedFilesBase64: string[] = [];
- 
-triggerFileInput() {
-  this.fileInput.nativeElement.click(); // triggers the hidden file input
-}
- 
-onImageUpload(event: any) {
-  const files: FileList = event.target.files;
-  this.uploadedFilesBase64 = []; // clear previous files if needed
- 
-  if (files && files.length > 0) {
-    Array.from(files).forEach((file) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const base64String = reader.result as string;
-        this.uploadedFilesBase64.push(base64String);
-        console.log('Base64:', base64String); // You can use this for upload or preview
-      };
-      reader.readAsDataURL(file); // this converts file to base64
-    });
+  uploadedFilesBase64: string[] = [];
+
+  @ViewChild('fileInput') fileInput!: ElementRef;
+
+  triggerFileInput() {
+    this.fileInput.nativeElement.click();
   }
-}
- 
+
+  onImageUpload(event: any) {
+    const files: FileList = event.target.files;
+
+    if (files && files.length > 0) {
+      Array.from(files).forEach((file) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const base64String = reader.result as string;
+          this.uploadedFilesBase64.push(base64String);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+  }
+
+  isImage(fileBase64: string): boolean {
+    return fileBase64.startsWith('data:image');
+  }
+
+  removeFile(index: number): void {
+    this.uploadedFilesBase64.splice(index, 1);
+  }
+  
   onSubmit(): void {
     // if (this.propertyForm.valid) {
       const storedUserId = localStorage.getItem('userId');

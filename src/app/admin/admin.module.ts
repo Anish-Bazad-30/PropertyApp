@@ -22,7 +22,10 @@ import { RouterModule } from '@angular/router';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ProfileManagementComponent } from './profile-management/profile-management.component';
 import { AgentManagementComponent } from './agent-management/agent-management.component';
-
+import { NgChartsModule } from 'ng2-charts';
+import { UserEngagementChartComponent } from './app-analytics/user-engagement-chart/user-engagement-chart.component';
+import { UserEngagementDonutChartComponent } from './app-analytics/user-engagement-donut-chart/user-engagement-donut-chart.component';
+import { ReferralPieChartComponent } from './app-analytics/referral-pie-chart/referral-pie-chart.component';
 
 
 
@@ -46,7 +49,10 @@ import { AgentManagementComponent } from './agent-management/agent-management.co
     AddAgentComponent,
     AddServiceComponent,
     EditServiceComponent,
-    MainComponent
+    MainComponent,
+    UserEngagementChartComponent,
+    UserEngagementDonutChartComponent,
+    ReferralPieChartComponent
   ],
   imports: [
     CommonModule,
@@ -55,6 +61,7 @@ import { AgentManagementComponent } from './agent-management/agent-management.co
     IonicModule,
     RouterModule,
     AdminRoutingModule,
+    NgChartsModule
   ],
   exports: [
     AdminDashboardComponent,
