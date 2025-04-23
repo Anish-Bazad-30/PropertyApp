@@ -1,21 +1,42 @@
-<div class="container">
-  <h2>User Page</h2>
-  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-    <label for="name">Name</label>
-    <input id="name" type="text" formControlName="name" placeholder="Enter name" />
+<div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1">
+  <!-- Header -->
+  <div class="header">
+    <h2 class="primary-font">Profile</h2>
+  </div>
 
-    <label for="email">E-Mail</label>
-    <input id="email" type="email" formControlName="email" placeholder="Enter email" />
+  <!-- Profile Picture Section -->
+  <div class="profile-container d-flex flex-column justify-content-center align-items-center mt-4">
 
-    <label for="status">Status</label>
-    <select id="status" formControlName="status">
-      <option value="Active">Active</option>
-      <option value="Inactive">Inactive</option>
-    </select>
-
-    <div class="button-group">
-      <button type="submit">Save</button>
-      <button type="button" (click)="onCancel()">Cancel</button>
+    <div class="profile-photo">
+      <img src="assets/icon/profile-placeholder.svg" alt="Profile Photo" />
+      <div class="change-profile-icon">
+        <img src="assets/icon/Edit.svg">
+      </div>
     </div>
-  </form>
+
+
+    <!-- Profile Form -->
+    <form [formGroup]="profileForm" class="d-flex flex-column form-container mt-3" (ngSubmit)="updateProfile()">
+      <label for="username" class="form-label secondary-font">Username</label>
+      <input type="text" id="username" class="form-control custom-input" formControlName="username" />
+
+      <label for="mobilenumber" class="form-label secondary-font">Mobile Number</label>
+      <input type="text" id="mobilenumber" class="form-control custom-input" formControlName="mobilenumber" />
+
+      <label for="password" class="form-label secondary-font">Password</label>
+      <input type="text" id="password" class="form-control custom-input" formControlName="password" />
+
+      <label for="confirmPassword" class="form-label secondary-font">Confirm Password</label>
+      <input type="text" id="confirmPassword" class="form-control custom-input" formControlName="confirmPassword" />
+
+      <div class="button-group d-flex justify-content-center mt-4 secondary-font">
+
+        <button type="submit" class="save-button">Submit</button>
+      </div>
+
+
+    </form>
+
+
+  </div>
 </div>

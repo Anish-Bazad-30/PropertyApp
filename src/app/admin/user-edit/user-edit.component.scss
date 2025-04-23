@@ -1,89 +1,185 @@
-.user-info-container {
-    background: linear-gradient(180deg, #33545B 49.6%, #11405A 99.98%);
+.main-container {
+    width: 100vw;
+    min-height: 100%;
+    // background: linear-gradient(180deg, rgba(51,114,128,1) 50%, rgba(20,82,116,1) 100%);
+  }
+  h2 {
     color: #ffffff;
-    font-family: 'K2D', !important;
-    min-height: 100vh;
+    text-align: center;
+    font-size: 34px;
+    font-weight: 300;
+  }
+   
+  .profile-container {
+   width: 100%;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    // padding-top: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    padding: 10px;
-}
-
-h2 {
-    font-size: 32px;
-    margin-top: 40px;
-    text-align: center;
-}
-
-.profile-picture {
-    width: 150px; 
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 20px; 
-}
-
-.user-details {
-    text-align: left; 
-    margin: 10px 0;
-    font-size: 18px; 
-    width: 100%; 
-    max-width: 300px; 
-}
-
-.user-details p {
-    display: flex;
+    flex-grow: 1;
     justify-content: space-between;
-    flex-wrap: wrap; 
-    margin: 5px 0;
-}
-
-.status {
-    color: lightgreen; 
-}
-
-.buttons {
-    display: flex;
-    justify-content: space-evenly; 
-    gap: 10px; 
-    margin-top: 20px;
-    flex-wrap: wrap; 
-}
-
-button {
-    background-color: white;
-    color: black;
+    position: relative;
+  }
+  input {
+    width: 100%;
+    padding: 12px;
     border: none;
-    padding: 8px 15px; 
-    border-radius: 5px;
+    border-radius: 8px;
+    font-size: 12px;
+    background: #ffffff;
+    color: #000;
+  }
+   
+  input,
+  select {
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+  }
+  .form-container {
+    width: 80%;
+  }
+   
+  .form-label {
+    color: #ffffff;
+    margin-top: 20px;
+    font-size: 20px;
+  }
+   
+   
+  .profile-photo {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+   
+  .profile-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+   
+  .change-profile-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 30px;
+    width: 30px;
+    background-color: #7FDBFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: #bdc3c7;
-}
-
-/* Media Query for Mobile Screens */
-@media screen and (max-width: 480px) {
-    h2 {
-        font-size: 24px; /* Scales down heading for small screens */
+  }
+   
+  input:disabled {
+    background: #f5f5f5;
+    color: #999999;
+  }
+   
+   
+  .cancel-button,
+  .save-button {
+    width: 40%;
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #11405a;
+  }
+   
+  .cancel-button:hover,
+  .save-button:hover {
+    background-color: #e6e6e6;
+  }
+  .agent-button {
+    width: 70%;
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #FF7F7F;
+    color: #ffffff;
+  }
+  .btn-group{
+    width: 70%;
+  }
+   .approve-button, .reject-button{
+    width: 50%;
+    padding: 6px;
+    background-color: #ffffff;
+    color: #11405a;
+    border: 1px solid #FF7F7F;
+    border-radius: 10px;
+   }
+   
+  @media only screen and (max-width: 820px) and (min-width: 700px) {
+    h2{
+      font-size: 44px;
+      margin-top: 60px;
     }
-
-    .profile-picture {
-        width: 120px; /* Smaller profile picture */
-        height: 120px;
+    .form-label{
+      font-size: 25px;
+      margin-top: 24px;
     }
-
-    .user-details {
-        font-size: 16px; /* Adjusted for readability on small screens */
+    .cancel-button, .save-button, .agent-button{
+      font-size: 24px;
     }
-
-    .user-details p {
-        flex-direction: row; /* Stacks labels and values vertically */
-        text-align: left; /* Keeps alignment consistent */
+    .join-agent{
+      font-size: 28px;
     }
-
-    .buttons {
-        flex-direction: row; /* Stacks buttons vertically */
-        gap: 15px; /* More spacing between buttons */
+    .custom-input{
+      font-size: 20px;
     }
-}
+   
+  }
+  @media only screen and (max-width: 920px) and (min-width: 840px) {
+    h2{
+      font-size: 50px;
+      margin-top: 67px;
+    }
+    .form-label{
+      font-size: 30px;
+      margin-top: 35px;
+    }
+    .cancel-button, .save-button, .agent-button{
+      font-size: 24px;
+    }
+    .join-agent{
+      font-size: 28px;
+    }
+    .custom-input{
+      font-size: 20px;
+    }
+  }
+  @media only screen and (min-width: 1024px) {
+    h2{
+      font-size: 44px;
+      margin-top: 60px;
+    }
+    .form-label{
+      font-size: 32px;
+      margin-top: 34px;
+    }
+    .cancel-button, .save-button, .agent-button{
+      font-size: 34px;
+    }
+    .join-agent{
+      font-size: 28px;
+    }
+    .custom-input{
+      font-size: 24px;
+    }
+   
+  }

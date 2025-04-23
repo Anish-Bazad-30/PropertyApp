@@ -1,3 +1,45 @@
-<p>
-  add-service works!
-</p>
+<div class="main-container flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+
+  <div class="text-center">
+    <h3 class="title primary-font">Add Service</h3>
+  </div>
+  <div class="flex-grow-1 d-flex flex-column justify-content-evenly align-items-center w-100">
+    <form [formGroup]="serviceForm" class="form-container" (ngSubmit)="addService()">
+      <div class="mb-3">
+        <label for="username" class="form-label secondary-font">Username</label>
+        <input type="text" id="username" class="form-control custom-input" formControlName="username" />
+      </div>
+      <div class="mb-3">
+        <label for="service" class="form-label secondary-font">Service Type</label>
+        <select id="service" class="form-select" formControlName="serviceType">
+          <option value="" disabled>Select a service</option>
+          <option *ngFor="let type of serviceTypes" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+    
+      <div class="mb-3">
+        <label for="agent-firm-name" class="form-label secondary-font">Agent Firm Name</label>
+        <input type="text" id="agent-firm-name" class="form-control custom-input" formControlName="agentFirmName" />
+      </div>
+    
+      <div class="mb-3">
+        <label for="amount" class="form-label secondary-font">Amount</label>
+        <input type="text" id="amount" class="form-control custom-input" formControlName="amount" />
+      </div>
+    
+      <div class="mb-3">
+        <label for="mobile" class="form-label secondary-font">Mobile Number</label>
+        <input type="text" id="mobile" class="form-control custom-input" formControlName="mobileNumber" 
+        maxlength="10" inputmode="numeric" pattern="[0-9]{10}" (keypress)="onlyDigits($event)" />
+      </div>
+    
+      <div class="d-flex justify-content-center w-100">
+        <ion-button type="submit" expand="block" class="text-center secondary-font">
+          Submit
+        </ion-button>
+      </div>
+    </form>
+    
+
+  </div>
+</div>

@@ -1,10 +1,11 @@
-<div style="width: 150px; height: 150px;">
-  <canvas baseChart
+<div style="width: 100%; height: 100%; background-color: #11405A;">
+  <canvas
+  baseChart
   [datasets]="userEngagementData"
   [labels]="months"
-  options="lineChartOptions"
-  colors="lineChartColors"
+  [options]="lineChartOptions"
   [legend]="true"
-  chartType="line">
-</canvas>
+  [type]="'line'"
+></canvas>
+
 </div>

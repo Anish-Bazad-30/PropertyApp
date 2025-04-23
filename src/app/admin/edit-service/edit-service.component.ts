@@ -7,8 +7,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditServiceComponent  implements OnInit {
 
+  serviceTypes: string[] = ['Electrical', 'Plumbing', 'Carpentry'];
+  serviceType: string = '';
+  agentFirmName: string = '';
+  amount: string = '';
+
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
+    saveService(): void {
+      if (!this.serviceType || !this.agentFirmName || !this.amount) {
+        return;
+      }
+      
+  
+      const serviceData = {
+        serviceType: this.serviceType,
+        agentFirmName: this.agentFirmName,
+        amount: this.amount
+      };
+  
+      console.log('Saved Service:', serviceData);
+  }
+  cancel(): void {
+    this.serviceType = '';
+    this.agentFirmName = '';
+    this.amount = '';
 }
+}
+
+

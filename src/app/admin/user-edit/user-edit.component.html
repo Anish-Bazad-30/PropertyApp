@@ -1,16 +1,41 @@
-<div class="user-info-container">
-  <h2>User Info</h2>
-  <img src="assets/images/pp.png" alt="Profile Picture" class="profile-picture">
-  <div class="user-details">
-    <p><strong>Name:</strong> {{ user.name }}</p>
-    <p><strong>Email:</strong> {{ user.email }}</p>
-    <p><strong>Status:</strong> <span class="status">{{ user.status }}</span></p>
-    <p><strong>Referral Link:</strong> <a href="{{ user.referralLink }}" target="_blank">{{ user.referralLink }}</a></p>
-    <p><strong>Total Referrals:</strong> {{ user.totalReferrals }}</p>
-    <p><strong>Services Taken:</strong> {{ user.servicesTaken.join(', ') }}</p>
+<div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1">
+  <!-- Header -->
+  <div class="header">
+    <h2 class="primary-font">Profile</h2>
   </div>
-  <div class="buttons">
-    <button (click)="edit()">Edit</button>
-    <button (click)="cancel()">Cancel</button>
+
+  <!-- Profile Picture Section -->
+  <div class="profile-container d-flex flex-column justify-content-center align-items-center mt-4">
+
+    <div class="profile-photo">
+      <img src="assets/icon/profile.svg" alt="Profile Photo" />
+      <div class="change-profile-icon">
+        <img src="assets/icon/Edit.svg">
+      </div>
+    </div>
+    
+    
+    <!-- Profile Form -->
+    <form [formGroup]="profileForm" class="d-flex flex-column form-container mt-3" (ngSubmit)="updateProfile()">
+      <label for="username" class="form-label secondary-font">Username</label>
+      <input type="text" id="username" class="form-control custom-input" formControlName="username"  />
+    
+      <label for="email" class="form-label secondary-font">E-mail</label>
+      <input type="email" id="email" class="form-control custom-input" formControlName="email" />
+    
+      <label for="mobilenumber" class="form-label secondary-font">Mobile Number</label>
+      <input type="text" id="mobilenumber" class="form-control custom-input" formControlName="mobilenumber" />
+
+      
+    
+      <div class="button-group d-flex justify-content-between mt-4 secondary-font">
+        <button type="submit" class="cancel-button">Cancel</button>
+        <button type="submit" class="save-button">Save</button>
+      </div>
+    
+      
+    </form>
+    
+    
   </div>
 </div>

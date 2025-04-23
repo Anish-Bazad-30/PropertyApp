@@ -1,3 +1,36 @@
-<p>
-  edit-service works!
-</p>
+<div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1 p-3">
+ 
+  <div class="text-center">
+    <h3 class="title primary-font">Edit Service</h3>
+  </div>
+  <form class="form-container">
+    <div class="mb-3">
+      <label for="username" class="form-label secondary-font">Username</label>
+      <input type="text" id="username" class="form-control custom-input" formControlName="username" />
+    </div>
+    <div class="mb-3">
+      <label for="service" class="form-label secondary-font">Service Type</label>
+      <select id="service" class="form-select" [(ngModel)]="serviceType" name="serviceType">
+        <option value="" disabled selected>Select a service</option>
+        <option *ngFor="let type of serviceTypes" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="agent-firm-name" class="form-label secondary-font">Agent Firm Name</label>
+      <input type="text" id="agent-firm-name" class="form-control custom-input" [(ngModel)]="agentFirmName"/>
+    </div>
+    <div class="mb-3">
+      <label for="Amount" class="form-label secondary-font">Amount</label>
+      <input type="text" id="amount" class="form-control custom-input" [(ngModel)]="amount"/>
+    </div>
+    <div class="mb-3">
+      <label for="mobile" class="form-label secondary-font">Mobile Number</label>
+      <input type="text" id="mobile" class="form-control custom-input" formControlName="mobileNumber" 
+      maxlength="10" inputmode="numeric" pattern="[0-9]{10}" />
+    </div>
+    <div class="button-group d-flex justify-content-between mt-4 secondary-font">
+      <ion-button type="button" class="primary-font" (click)="cancel()">Cancel</ion-button>
+      <ion-button type="submit" class="primary-font" (click)="saveService()">Save</ion-button>
+    </div>
+    </form>
+    </div>

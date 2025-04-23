@@ -9,6 +9,8 @@ export class AgentManagementComponent  implements OnInit {
   agentList: any[] = [];
   searchText: string = '';
 
+  currentPage = 1;
+  itemsPerPage = 10;
   constructor() {}
 
   ngOnInit(): void {
@@ -60,4 +62,19 @@ export class AgentManagementComponent  implements OnInit {
     console.log('Deleted agent:', agent);
   }
 
+    
+  get agentListview() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.agentList.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+ 
+  getTotalPages(): number {
+    return Math.ceil(this.agentList.length / this.itemsPerPage);
+  }
+ 
+  changePage(newPage: number) {
+    if (newPage > 0 && newPage <= this.getTotalPages()) {
+      this.currentPage = newPage;
+    }
+  }
   }
