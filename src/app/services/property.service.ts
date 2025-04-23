@@ -16,4 +16,9 @@ export class PropertyService {
         return  this.http.get<any>(searchPropertiesUrl);
      
       }
+
+      fetchAllProperties(): Observable<any>{
+        const url = `${this.apiUrl}/api/admin/properties`;
+        return this.http.get<any>(url);
+      }
 }

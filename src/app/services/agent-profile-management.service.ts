@@ -23,4 +23,9 @@ export class AgentProfileManagementService {
     // console.log(data, updateProfileUrl);
     return this.http.put<any>(updateProfileUrl, data);
 }
+
+  fetchAllAgentsData(): Observable<any>{
+  const url = `${this.apiUrl}/api/admin/agents`;
+  return this.http.get<any>(url);
+}
 }

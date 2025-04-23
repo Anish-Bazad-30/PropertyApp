@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AgentProfileManagementService } from 'src/app/services/agent-profile-management.service';
 
 @Component({
   selector: 'app-agent-management',
@@ -8,51 +10,58 @@ import { Component, OnInit } from '@angular/core';
 export class AgentManagementComponent  implements OnInit {
   agentList: any[] = [];
   searchText: string = '';
-
-  currentPage = 1;
   itemsPerPage = 10;
-  constructor() {}
+  currentPage = 1;
+
+  constructor(private router: Router, private agentProfileManagement: AgentProfileManagementService) {}
 
   ngOnInit(): void {
     this.loadAgents();
   }
 
   loadAgents(): void {
-    this.agentList = [
-      {
-        username: 'ankith@033',
-        mobile: '1234567890',
-        status: 'Pending',
-        profilePic: 'assets/images/image1.png'
-      },
-      {
-        username: 'ankith@033',
-        mobile: '1234567890',
-        status: 'Pending',
-        profilePic: 'assets/images/image1.png'
-      },
-      {
-        username: 'ankith@033',
-        mobile: '1234567890',
-        status: 'Pending',
-        profilePic: 'assets/images/image1.png'
-      },
-      {
-        username: 'ankith@033',
-        mobile: '1234567890',
-        status: 'Pending',
-        profilePic: 'assets/images/image1.png'
-      },
-      {
-        username: 'ankith@033',
-        mobile: '1234567890',
-        status: 'Pending',
-        profilePic: 'assets/images/image1.png'
-      }
-    ];
-  }
+    this.agentProfileManagement.fetchAllAgentsData().subscribe((res) => {
+      this.agentList = res.data;
+  });
 
-  addNew(): void {}
+    // this.agentList = [
+    //   {
+    //     username: 'ankith@033',
+    //     mobile: '1234567890',
+    //     status: 'Pending',
+    //     profilePic: 'assets/images/image1.png'
+    //   },
+    //   {
+    //     username: 'ankith@033',
+    //     mobile: '1234567890',
+    //     status: 'Pending',
+    //     profilePic: 'assets/images/image1.png'
+    //   },
+    //   {
+    //     username: 'ankith@033',
+    //     mobile: '1234567890',
+    //     status: 'Pending',
+    //     profilePic: 'assets/images/image1.png'
+    //   },
+    //   {
+    //     username: 'ankith@033',
+    //     mobile: '1234567890',
+    //     status: 'Pending',
+    //     profilePic: 'assets/images/image1.png'
+    //   },
+    //   {
+    //     username: 'ankith@033',
+    //     mobile: '1234567890',
+    //     status: 'Pending',
+    //     profilePic: 'assets/images/image1.png'
+    //   }
+    // ];
+  }
+    
+  addNew(){
+    this.router.navigate(['/admin/add-agent']);
+  }
+  
 
   editAgent(agent: any): void {
     console.log('Editing agent:', agent);

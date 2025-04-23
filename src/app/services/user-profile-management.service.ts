@@ -24,4 +24,9 @@ export class UserProfileManagementService {
     // console.log(data, updateProfileUrl);
     return this.http.put<any>(updateProfileUrl, data);
 }
+  fetchAllUsersData(): Observable<any>{
+  const url = `${this.apiUrl}/api/admin/users`;
+  return this.http.get<any>(url);
+}
+
 } 

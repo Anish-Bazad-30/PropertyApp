@@ -11,7 +11,7 @@
       <div class="mb-3">
         <label for="name" class="form-label secondary-font">Name</label>
         <!-- Use formControlName to bind the input to the 'name' form control -->
-        <input id="name" aria-label="Name" type="text" class="form-control custom-input" formControlName="name">
+        <input id="name" aria-label="Name" type="text" class="form-control custom-input" formControlName="name" placeholder="Enter your name">
        
         <div *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched" class="error">
           Name is required and must be at least 3 characters.
@@ -20,7 +20,7 @@
  
       <div class="mb-3">
         <label for="password" class="form-label secondary-font">Password</label>
-        <input id="password" aria-label="Password" type="password" class="form-control custom-input" formControlName="password">
+        <input id="password" aria-label="Password" type="password" class="form-control custom-input" formControlName="password" placeholder="Enter your password">
        
         <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched"
           class="error">
@@ -30,7 +30,7 @@
  
       <div class="mb-3">
         <label for="confirmPassword" class="form-label secondary-font">Confirm Password</label>
-        <input aria-label="Confirm Password" type="password" class="form-control custom-input" formControlName="confirmPassword">
+        <input aria-label="Confirm Password" type="password" class="form-control custom-input" formControlName="confirmPassword" placeholder="Confirm password">
        
         <div *ngIf="registrationForm.hasError('mismatch') && registrationForm.get('confirmPassword')?.touched"
           class="error">
@@ -39,7 +39,7 @@
       </div>
  
  
-      <div class="mb-3">
+      <!-- <div class="mb-3">
         <label for="referral" class="form-label secondary-font">Referral Link (Optional)</label>
         <input id="referral" aria-label="Referral Link" type="text" class="form-control custom-input" formControlName="referral">
        
@@ -47,7 +47,7 @@
           class="error">
           Invalid referral link.
         </div>
-      </div>
+      </div> -->
  
  
       <div class="d-flex align-items-center justify-content-between secondary-font mt-2">
@@ -59,6 +59,14 @@
         <div class="form-check">
           <input class="form-check-input" type="radio" formControlName="role" id="agentRole" value="AGENT">
           <label class="form-check-label" for="agentRole">Agent</label>
+        </div>
+      </div>
+
+      <div class="mb-3" *ngIf="registrationForm.get('role')?.value === 'USER'">
+        <label for="referral" class="form-label secondary-font">Referral Link (Optional)</label>
+        <input id="referral" aria-label="Referral Link" type="text" class="form-control custom-input" formControlName="referral">
+        <div *ngIf="registrationForm.get('referral')?.invalid && registrationForm.get('referral')?.touched" class="error">
+          Invalid referral link.
         </div>
       </div>
  
