@@ -8,10 +8,13 @@ import { UserProfileManagementService } from 'src/app/services/user-profile-mana
   styleUrls: ['./user-management.component.scss']
 })
 export class UserManagementComponent implements OnInit {
-  userList: any[] = [];
   searchText: string = '';
+userListOriginal: any[] = [];  // unfiltered list from backend
+userList: any[] = []; 
 
-  constructor(private userProfileManagement: UserProfileManagementService, private router: Router) {}
+  constructor(
+    private userProfileManagement: UserProfileManagementService, 
+    private router: Router) {}
 
   ngOnInit(): void {
     this.loadUsers();
@@ -19,50 +22,30 @@ export class UserManagementComponent implements OnInit {
 
   loadUsers(): void {
     this.userProfileManagement.fetchAllUsersData().subscribe((res) => {
-      this.userList = res.data;
+      this.userListOriginal = res.data;
+      this.userList = [...this.userListOriginal];
   });
-  //     this.userList = res
-  // );
   }
-
-  //     {
-  //       username: 'ankith@033',
-  //       mobile: '1234567890',
-  //       profilePic: 'assets/images/image1.png'
-  //     },
-  //     {
-  //       username: 'ankith@033',
-  //       mobile: '1234567890',
-  //       profilePic: 'assets/images/image1.png'
-  //     },
-  //     {
-  //       username: 'ankith@033',
-  //       mobile: '1234567890',
-  //       profilePic: 'assets/images/image1.png'
-  //     },
-  //     {
-  //       username: 'ankith@033',
-  //       mobile: '1234567890',
-  //       profilePic: 'assets/images/image1.png'
-  //     },
-  //     {
-  //       username: 'ankith@033',
-  //       mobile: '1234567890',
-  //       profilePic: 'assets/images/image1.png'
-  //     }
-  //   ];
-  // }
+  filterUsers() {
+    const query = this.searchText.toLowerCase();
+    this.userList = this.userListOriginal.filter(user =>
+      user.username.toLowerCase().includes(query)
+    );
+  }
 
   addNew(){
     this.router.navigate(['/admin/add-user']);
   }
 
   editUser(user: any): void {
-    console.log('Editing user:', user);
+    this.router.navigate(['/admin/edit-user']);
+    this.userProfileManagement.setUserData(user);
   }
 
   deleteUser(user: any): void {
-    console.log('Deleted user:', user);
+    this.userProfileManagement.deleteUserProfile(user).subscribe((res)=>{
+      this.loadUsers();
+    })
   }
 
 }

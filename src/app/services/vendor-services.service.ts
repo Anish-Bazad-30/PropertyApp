@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
@@ -30,5 +30,18 @@ export class VendorServicesService {
   updateServiceById(serviceId:any, data:any): Observable<any>{
     return this.http.put(`${this.apiUrl}/api/services/${serviceId}`, data);
   }
+
+
+   private vendorSubject = new BehaviorSubject<any>(null);
+    vendorData$ = this.vendorSubject.asObservable();
+  
+    setVendorData(data: any): void {
+      this.vendorSubject.next(data);
+    }
+  
+    // Get current property data snapshot
+    getVendorData(): any {
+      return this.vendorSubject.getValue();
+    }
 }
 

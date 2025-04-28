@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { ReferAndEarnService } from 'src/app/services/refer-and-earn.service';
 import { RegistrationService } from 'src/app/services/registration.service';
 
@@ -18,6 +19,7 @@ export class RegistrationComponent  implements OnInit {
     private registerService: RegistrationService,
     private referAndEarnService: ReferAndEarnService,
     private router: Router,
+    private toastCtrl: ToastController
   ) { }
 
   ngOnInit() {
@@ -41,8 +43,8 @@ export class RegistrationComponent  implements OnInit {
   onRegister() {
     if (this.registrationForm.valid) {
       const formData = this.registrationForm.value;
-      this.userName = formData.name
-      // Extract only the required properties
+      this.userName = formData.name;
+  
       const filteredData = {
         username: formData.name,
         password: formData.password,
@@ -50,18 +52,33 @@ export class RegistrationComponent  implements OnInit {
       };
   
       this.registerService.register(filteredData).subscribe({
-        
-        next: (res) => {
-          localStorage.setItem("jwtToken",res.data.token);
-          localStorage.setItem("userName",res.data.username);
-          localStorage.setItem("userId",res.data.id);
-          localStorage.setItem("role",res.data.role);
-          this.referAndEarnService.createReferral(this.userName).subscribe({
-            next: (res) => console.log('Referral created:', res),
-            error: (error) => console.error('Error generating referral link:', error),
+        next: async (res) => {
+          // Show the message from the backend
+          const toast = await this.toastCtrl.create({
+            message: res.message || 'Registered successfully!',
+            duration: 6000,
+            color: 'success',
           });
-
-          if (res.code === 200) {
+          await toast.present();
+  
+          // Save token only if present
+          if (res.data) {
+            // localStorage.setItem("jwtToken", res.data.token);
+            // localStorage.setItem("userName", res.data.username);
+            // localStorage.setItem("userId", res.data.userId);
+            // localStorage.setItem("role", res.data.role);
+            sessionStorage.setItem('role', res.data.role);
+sessionStorage.setItem('userId', res.data.userId);
+sessionStorage.setItem('userName', res.data.username);
+sessionStorage.setItem('jwtToken', res.data.token);
+  
+            // Call referral service if needed
+            this.referAndEarnService.createReferral(this.userName).subscribe({
+              next: (refRes) => console.log('Referral created:', refRes),
+              error: (error) => console.error('Error generating referral link:', error),
+            });
+  
+            // Redirect based on role
             switch (res.data.role) {
               case 'ADMIN':
                 this.router.navigate(['/admin']);
@@ -69,19 +86,21 @@ export class RegistrationComponent  implements OnInit {
               case 'USER':
                 this.router.navigate(['/user']);
                 break;
-                case 'AGENT':
+              case 'AGENT':
                 this.router.navigate(['/agent']);
                 break;
               default:
                 this.router.navigate(['/login']);
                 break;
             }
+          } else {
+            // If role info is not returned, fallback to login or show info
+            this.router.navigate(['/login']);
           }
         },
         error: (error) => {
           console.error('Error during registration:', error);
-          
-          if (error.status === 409) { 
+          if (error.status === 409) {
             this.errorMessage = error.error.message || 'User already registered';
           } else {
             this.errorMessage = 'An error occurred. Please try again.';
@@ -93,6 +112,7 @@ export class RegistrationComponent  implements OnInit {
       this.errorMessage = 'Please correct the errors in the form.';
     }
   }
+  
 
 
   navigate() {

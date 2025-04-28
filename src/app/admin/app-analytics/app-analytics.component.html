@@ -1,56 +1,68 @@
 <div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1 px-1">
- 
+
   <div class="header w-100 text-center">
     <h2 class="primary-font">App Usage Statistics</h2>
   </div>
   <div class="Statistics-container w-100 p-3">
     <div class="user-container w-100">
-       <app-user-engagement-chart></app-user-engagement-chart>
-    </div>
-    <div class="card-grid d-flex flex-wrap justify-content-center gap-4 py-3">
-      <div class="App-card d-flex flex-column justify-content-between align-items-center px-2">
-      
-        <div class="d-flex flex-column text-center primary-font" style="height: 100%; width: 100%;">
-          
-         <app-user-engagement-donut-chart></app-user-engagement-donut-chart>
+      <div class="row">
+        <div class="col-12">
+          <div class="w-100 filter-container d-flex justify-content-center align-items-center">
+            <select class="form-select filter hospitalFilter bg-transparent" id="hospitalsFilter">
+              <!-- Options will be added here dynamically -->
+            </select>
+          </div>
+          <div style="max-height: 300px; overflow: hidden;">
+            <app-user-engagement-chart></app-user-engagement-chart>
+          </div>
         </div>
       </div>
-      <div class="App-card d-flex justify-content-between align-items-center px-2">
-        
-        <div class="d-flex flex-column text-center primary-font" style="height: 100%; width: 100%;">
-         <app-referral-pie-chart></app-referral-pie-chart>
-        </div>
-      </div>
-     
-     
     </div>
-  </div>
   
-    <table class="data-table w-100">
-      <thead class="table-header">
-        <tr class="text-center primary-font">
-          <th>Sl No</th>
-          <th>Agent Name</th>
-          <th>Properties Listed</th>
-          <th>Property Views</th>
-          <th>Sales Finalized</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="table-data" *ngFor="let agent of agentList; let i = index">
-          <td>{{ i + 1 }}</td>
-          <td class="text-danger">{{ agent.agentName }}</td>
-          <td>
-            <div class="text-break text-wrap w-100">
-              {{ agent.propertiesListed }}
-            </div>
-          </td>
-          <td>{{ agent.propertyViews }}</td>
-          <td class="text-danger fw-semibold">{{ agent.salesFinalized}}</td>
-          <td class="d-flex justify-content-center gap-2">
-   
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="card-grid row justify-content-center gap-4 py-3">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="App-card d-flex flex-column justify-content-between align-items-center px-2">
+          <div class="d-flex flex-column text-center primary-font" style="height: 100%; width: 100%;">
+            <app-user-engagement-donut-chart></app-user-engagement-donut-chart>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="App-card d-flex justify-content-between align-items-center px-2">
+          <div class="d-flex flex-column text-center primary-font" style="height: 100%; width: 100%;">
+            <app-referral-pie-chart></app-referral-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <table class="data-table w-100">
+    <thead class="table-header">
+      <tr class="text-center primary-font">
+        <th>Sl No</th>
+        <th>Agent Name</th>
+        <th>Properties Listed</th>
+        <th>Property Views</th>
+        <th>Sales Finalized</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-data" *ngFor="let agent of agentList; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td class="text-danger">{{ agent.agentName }}</td>
+        <td>
+          <div class="text-break text-wrap w-100">
+            {{ agent.propertiesListed }}
+          </div>
+        </td>
+        <td>{{ agent.propertyViews }}</td>
+        <td class="text-danger fw-semibold">{{ agent.salesFinalized}}</td>
+        <td class="d-flex justify-content-center gap-2">
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

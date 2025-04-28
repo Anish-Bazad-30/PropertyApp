@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PropertyUploadFormService } from 'src/app/services/property-upload-form.service';
  
 @Component({
@@ -18,14 +19,15 @@ export class PropertyUploadFormComponent implements OnInit {
  
   constructor(
     private fb: FormBuilder,
-    private propertyUpload: PropertyUploadFormService
+    private propertyUpload: PropertyUploadFormService,
+    private router : Router
   ) {}
  
   ngOnInit(): void {
     this.propertyForm = this.fb.group({
       propertyName: ['', Validators.required],
       propertyType: ['', Validators.required],
-      amount: [, [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      amount: [, [Validators.required, Validators.pattern('^[0-9]+$')]],
       description: ['', Validators.required],
       city: ['', Validators.required],
       area: ['', Validators.required],
@@ -73,9 +75,10 @@ export class PropertyUploadFormComponent implements OnInit {
   
   onSubmit(): void {
     // if (this.propertyForm.valid) {
-      const storedUserId = localStorage.getItem('userId');
+      // const storedUserId = localStorage.getItem('userId');
+      // this.userId = storedUserId !== null ? storedUserId : '';
+      const storedUserId = sessionStorage.getItem('userId');
       this.userId = storedUserId !== null ? storedUserId : '';
-    
       const data1 ={
         ...this.propertyForm.value,
         mediaUrls: [...this.uploadedFilesBase64],
@@ -87,6 +90,7 @@ export class PropertyUploadFormComponent implements OnInit {
        
       })
       this.propertyForm.reset();
+      this.router.navigate(['agent/landing-page']);
     // } else {
     //   alert('Please fill out all fields correctly.');
     // }

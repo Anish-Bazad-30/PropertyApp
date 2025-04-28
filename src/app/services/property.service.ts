@@ -21,4 +21,14 @@ export class PropertyService {
         const url = `${this.apiUrl}/api/admin/properties`;
         return this.http.get<any>(url);
       }
+
+      deleteProperty(propertyId : any): Observable<any>{
+        const url = `${this.apiUrl}/api/admin/properties/`+ propertyId;
+        return this.http.delete<any>(url);
+      }
+
+      editProperty(property :any,propertyId:any): Observable<any>{
+        const url = `${this.apiUrl}/api/admin/edit/`+ propertyId;
+        return this.http.put<any>(url,property);
+      }
 }

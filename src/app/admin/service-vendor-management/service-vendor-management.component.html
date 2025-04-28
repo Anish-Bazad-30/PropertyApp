@@ -9,7 +9,8 @@
   </div>
   <div class="search-filter w-100 d-flex justify-content-between align-items-center p-3">
     <div class="search-container">
-      <input type="text" class="search-input primary-font" placeholder="search" />
+      <input type="text" class="search-input primary-font" placeholder="search" [(ngModel)]="searchText"
+      (ngModelChange)="filterVendorList()"/>
       <img src="assets/icon/Search.svg" width="20px" class="search-icon">
     </div>
  
@@ -28,22 +29,25 @@
     <tbody>
       <tr class="table-data" *ngFor="let vendor of paginatedBatches; let i = index">
         <td>{{ i + 1 }}</td>
-        <td>{{ vendor.username }}</td>
+        <td>{{ vendor.agentFirmName }}</td>
         <td>
           <div class="text-break text-wrap w-100">
             {{ vendor.serviceType }}
           </div>
         </td>
-        <td class="text-danger fw-semibold">{{ vendor.serviceAmount }}</td>
+        <td class="text-danger fw-semibold">{{ vendor.amount }}</td>
         <td class="d-flex justify-content-center gap-2">
  
-          <button class="btn p-1 edit-btn" (click)="editService(service)">
+          <button class="btn p-1 edit-btn" (click)="editService(vendor)">
             <img src="assets/icon/Edit-1.svg" alt="Edit" class="edit-icon" />
           </button>
-          <button class="btn p-1 delete-btn" (click)="deleteService(service)">
+          <button class="btn p-1 delete-btn" (click)="deleteService(vendor.id)">
             <img src="assets/icon/Delete.svg" alt="Delete" class="delete-icon" />
           </button>
         </td>
+      </tr>
+      <tr *ngIf="paginatedBatches.length === 0">
+        <td colspan="5" class="text-center">No data found</td>
       </tr>
     </tbody>
  

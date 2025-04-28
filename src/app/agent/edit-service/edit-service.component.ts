@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { VendorServicesService } from 'src/app/services/vendor-services.service';
 
 @Component({
@@ -10,14 +10,15 @@ import { VendorServicesService } from 'src/app/services/vendor-services.service'
 })
 export class EditServiceComponent implements OnInit {
   serviceForm!: FormGroup;
-  serviceTypes: string[] = ['Cleaning', 'Plumbing', 'Electrical']; // example values
+  serviceTypes: string[] = ['Cleaning', 'Plumbing', 'Electrical','Carpentry']; // example values
   serviceId!:any;
   serviceData: any = {};
 
   constructor(
     private fb: FormBuilder,
     private vendorService: VendorServicesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+     private router : Router,
   ) { }
 
   ngOnInit(): void {
@@ -50,12 +51,13 @@ export class EditServiceComponent implements OnInit {
     console.log(this.serviceForm.value);
     
     this.vendorService.updateServiceById(this.serviceId,serviceData).subscribe((res)=>{
-
+      this.router.navigate(['/agent/services']);
     })
 
   }else {
     this.serviceForm.markAllAsTouched(); // To show validation errors
   }
+
   }
   cancel(): void {
     this.serviceForm.reset();

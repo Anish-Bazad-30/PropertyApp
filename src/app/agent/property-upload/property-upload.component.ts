@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PropertyUploadFormService } from 'src/app/services/property-upload-form.service';
 import { PropertyService } from 'src/app/services/property.service';
 
 @Component({
@@ -13,12 +14,15 @@ export class PropertyUploadComponent implements OnInit {
 
   constructor(
     private router : Router,
-    private propertyService : PropertyService
+    private propertyService : PropertyService,
+    private propertyEditService : PropertyUploadFormService
   ) { }
 
   ngOnInit(): void { 
-    const storedUserId = localStorage.getItem('userId');
-    this.userId = storedUserId !== null ? storedUserId : '';
+    // const storedUserId = localStorage.getItem('userId');
+    // this.userId = storedUserId !== null ? storedUserId : '';
+    const storedUserId = sessionStorage.getItem('userId');
+this.userId = storedUserId !== null ? storedUserId : '';
     this.fetchProperty();
   }
 
@@ -38,11 +42,21 @@ export class PropertyUploadComponent implements OnInit {
   }
 
   editProperty(property: any) {
+    console.log(property);
+    
+    this.propertyEditService.setPropertyData(property);
     this.router.navigate(['/agent/edit-property']);
+   
   }
 
-  deleteProperty(property: any) {
-    console.log('Delete property:', property);
+  deleteProperty(propertyId: any) {
+  
+    
+    // console.log('Form Data:', propertyId);
+    this.propertyService.deleteProperty(propertyId).subscribe((res)=>{
+      console.log(res);
+      this.fetchProperty();
+    })
   }
 
 }

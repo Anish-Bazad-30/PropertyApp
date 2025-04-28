@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { VendorServicesService } from 'src/app/services/vendor-services.service';
 
 @Component({
@@ -14,12 +15,14 @@ export class AddServiceComponent  implements OnInit {
   
   
     constructor(
+      private router: Router,
       private vendorServices: VendorServicesService,
       private fb: FormBuilder
     ) { }
   
     ngOnInit(): void {
       this.serviceForm = this.fb.group({
+        userId: ['',Validators.required],
         serviceType: ['', Validators.required],
         agentFirmName: ['', Validators.required],
         amount: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
@@ -32,9 +35,9 @@ export class AddServiceComponent  implements OnInit {
         const serviceData = this.serviceForm.value;
         this.vendorServices.postServices(serviceData).subscribe((res) => {
           console.log(res);
-  
+          
         })
-  
+        this.router.navigate(['/admin/service-management']);
       } else {
         this.serviceForm.markAllAsTouched(); // show validation errors
       }

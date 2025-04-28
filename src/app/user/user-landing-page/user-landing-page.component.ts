@@ -80,6 +80,9 @@ export class UserLandingPageComponent implements OnInit {
 
   resetCategory() {
     this.filteredProperties = [...this.properties];
+    this.selectedCity = '';
+    this.selectedArea = '';
+    this.selectedSector = '';
   }
 
   viewProperty(property: string) {

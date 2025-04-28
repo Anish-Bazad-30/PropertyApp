@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PropertyUploadFormService } from 'src/app/services/property-upload-form.service';
 import { PropertyService } from 'src/app/services/property.service';
  
 @Component({
@@ -8,33 +9,14 @@ import { PropertyService } from 'src/app/services/property.service';
   styleUrls: ['./property-management.component.scss']
 })
 export class PropertyManagementComponent implements OnInit {
-  propertyList: any[] = [];
-  searchText: string = '';
+  propertySearchText: string = '';
+propertyListOriginal: any[] = [];  
+propertyList: any[] = [];   
  
-  // propertyList = [
-  //   {
-  //     username: 'mayank@singh',
-  //     propertyName: 'Lotus Residency - 2BHK,Deluxe Apartment',
-  //     amount: '₹ 3.85 Cr'
-  //   },
-  //   {
-  //     username: 'mayank@singh',
-  //     propertyName: 'Lotus Residency - 2BHK,Deluxe Apartment',
-  //     amount: '₹ 3.85 Cr'
-  //   },
-  //   {
-  //     username: 'mayank@singh',
-  //     propertyName: 'Lotus Residency - 2BHK,Deluxe Apartment',
-  //     amount: '₹ 3.85 Cr'
-  //   },
-  //   {
-  //     username: 'mayank@singh',
-  //     propertyName: 'Lotus Residency - 2BHK,Deluxe Apartment',
-  //     amount: '₹ 3.85 Cr'
-  //   }
-  // ];
   constructor(
-    private router: Router, private propertyManagement: PropertyService
+    private router: Router, private propertyManagement: PropertyService,
+    
+        private propertyEditService : PropertyUploadFormService
   ) {}
 
   ngOnInit(): void {
@@ -42,20 +24,33 @@ export class PropertyManagementComponent implements OnInit {
   }
   loadProperties(): void {
     this.propertyManagement.fetchAllProperties().subscribe((res) => {
-      this.propertyList = res.data;
+      this.propertyListOriginal = res.data;
+      this.propertyList = [...res.data];
     })
   }
 
+  filterProperties() {
+    const search = this.propertySearchText.toLowerCase();
+  
+    this.propertyList = this.propertyListOriginal.filter(property =>
+      property.agentName?.toLowerCase().includes(search) ||
+      property.propertyName?.toLowerCase().includes(search)
+    );
+  }
+
   addNew(){
-    console.log("Add New Property clicked");
+    this.router.navigate(['/admin/add-property']);
   }
  
   editProperty(property: any): void {
-    this.router.navigate(['/admin/edit-property'])
+    this.router.navigate(['/admin/edit-property']);
+    this.propertyEditService.setPropertyData(property);
   }
  
   deleteProperty(property: any): void {
-    console.log('Edit clicked for:', property);
+    this.propertyManagement.deleteProperty(property).subscribe((res)=>{
+      this.loadProperties(); 
+    })
     }
   }
  

@@ -10,17 +10,20 @@ export class ReferEarnComponent implements OnInit {
   referralLink: string = '';
   totalEarnings: string = '0';
   totalReferrals: string = '0';
-  userId: string = '';
+  userName: string = '';
 
   constructor(private referAndEarnService: ReferAndEarnService,) { }
 
   ngOnInit() {
 
-    const storedUserName = localStorage.getItem('userName');
-  this.userId = storedUserName !== null ? storedUserName : '';
-  console.log('User ID:', this.userId); // Here we check if userId is correct
+  //   const storedUserName = localStorage.getItem('userName');
+  // this.userId = storedUserName !== null ? storedUserName : '';
+  const storedUserName = sessionStorage.getItem('userName');
+this.userName = storedUserName !== null ? storedUserName : '';
+  
+  console.log('User ID:', this.userName); // Here we check if userId is correct
 
-  if (this.userId) {
+  if (this.userName) {
     this.fetchReferralLink(); 
   } else {
     console.error('User ID is missing');
@@ -35,8 +38,8 @@ export class ReferEarnComponent implements OnInit {
   }
 
   async fetchReferralLink(){
-    console.log('Calling getReferrals API with userId:', this.userId);
-  this.referAndEarnService.getReferrals(this.userId).subscribe(
+    console.log('Calling getReferrals API with userId:', this.userName);
+  this.referAndEarnService.getReferrals(this.userName).subscribe(
     (res:any) => {
       console.log('API Response:', res);
       this.referralLink = res.data[0].referralLink;

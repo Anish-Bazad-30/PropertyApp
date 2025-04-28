@@ -15,7 +15,7 @@
  
  
             <div class="property-details">
-                <h2 class="property-name primary-font">{{ property.name }}</h2>
+                <h2 class="property-name primary-font">{{ property.propertyName }}</h2>
                 <p class="property-address secondary-font">
                     <strong class="address-label fw-bold secondary-font">Address:</strong><br> {{ property.address }}
                 </p>
@@ -30,7 +30,7 @@
                     <button class="finalize-btn" (click)="finalizeSale(property)">Finalize Sale</button>
                     <img src="assets/icon/Edit-1.svg" alt="Edit" class="icon edit-icon" (click)="editProperty(property)">
                     <img src="assets/icon/Delete.svg" alt="Delete" class="icon delete-icon"
-                        (click)="deleteProperty(property)">
+                        (click)="deleteProperty(property.id)">
                 </div>
             </div>
         </div>

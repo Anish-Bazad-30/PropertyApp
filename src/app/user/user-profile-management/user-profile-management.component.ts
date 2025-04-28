@@ -29,9 +29,12 @@ export class UserProfileManagementComponent implements OnInit {
 
 
   fetchUserData() {
-    const storedUserId = localStorage.getItem('userId');
+    // const storedUserId = localStorage.getItem('userId');
 
-    this.userId = storedUserId !== null ? storedUserId : '';
+    // this.userId = storedUserId !== null ? storedUserId : '';
+    const storedUserId = sessionStorage.getItem('userId');
+
+this.userId = storedUserId !== null ? storedUserId : '';
     this.userProfileManagementService.fetchUserData(this.userId).subscribe((res) => {
       console.log(res);
       this.profileForm.patchValue({
@@ -48,7 +51,9 @@ export class UserProfileManagementComponent implements OnInit {
   }
 
   applyForAgent() {
-    alert('Application to become an agent submitted!');
+    this.userProfileManagementService.joinAsAgent().subscribe((res)=>{
+      
+    })
     this.role = 'Agent Pending'; // Updating role to show "Agent Pending"
   }
   updateProfile() {

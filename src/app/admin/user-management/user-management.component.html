@@ -5,7 +5,7 @@
   </div>
   <div class="search-filter w-100 d-flex justify-content-between align-items-center p-3">
     <div class="search-container">
-      <input type="text" class="search-input primary-font" placeholder="search" />
+      <input type="text" class="search-input primary-font" placeholder="search" [(ngModel)]="searchText" (ngModelChange)="filterUsers()"/>
       <img src="assets/icon/Search.svg" width="20px" class="search-icon">
     </div>
  
@@ -25,7 +25,8 @@
     <tbody>
       <tr class="table-data" *ngFor="let user of userList; let i = index">
         <td>{{ i + 1 }}</td>
-        <td><img [src]="user.profilePic" alt="Profile Pic" width="30" /></td>
+        <!-- <td><img [src]="user.profilePic" alt="Profile Pic" width="30" /></td> -->
+        <td><img src="../../../assets/icon/profile.svg" alt="Profile Pic" width="30" /></td>
         <td>
           <div class="text-break text-wrap w-100">
             {{ user.username }}
@@ -34,7 +35,7 @@
         <td>{{ user.mobilenumber }}</td>
         <td class="d-flex justify-content-center gap-2">
           <button class="btn p-1 edit-btn" (click)="editUser(user)">
-            <img src="assets/icon/Edit.svg" alt="Edit" class="edit-icon" />
+            <img src="assets/icon/Edit-1.svg" alt="Edit" class="edit-icon" />
           </button>
           <button class="btn p-1 delete-btn" (click)="deleteUser(user)">
             <img

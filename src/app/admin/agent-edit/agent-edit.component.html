@@ -14,36 +14,41 @@
       </div>
     </div>
     <div class="btn-group d-flex justify-content-between mt-4 secondary-font gap-2">
-      <button type="button" class="approve-button">Approve<img src="assets/icon/Done.svg" class="p-1"></button>
-      <button type="submit" class="reject-button">Reject<img src="assets/icon/Close.svg" class="p-1"></button>
+      <button type="button" class="approve-button" (click)="approveAgent()">
+        Approve <img src="assets/icon/Done.svg" class="p-1">
+      </button>
+
+      <button type="button" class="reject-button" (click)="rejectAgent()">
+        Reject <img src="assets/icon/Close.svg" class="p-1">
+      </button>
     </div>
-    
+
     <!-- Profile Form -->
     <form [formGroup]="profileForm" class="d-flex flex-column form-container mt-3" (ngSubmit)="updateProfile()">
       <label for="username" class="form-label secondary-font">Username</label>
-      <input type="text" id="username" class="form-control custom-input" formControlName="username"  />
-    
+      <input type="text" id="username" class="form-control custom-input" formControlName="username" />
+
       <label for="email" class="form-label secondary-font">E-mail</label>
       <input type="email" id="email" class="form-control custom-input" formControlName="email" />
-    
+
       <label for="mobilenumber" class="form-label secondary-font">Mobile Number</label>
       <input type="text" id="mobilenumber" class="form-control custom-input" formControlName="mobilenumber" />
-    
+
       <label for="serviceType" class="form-label secondary-font">Service Type</label>
       <select id="serviceType" class="form-select" formControlName="serviceType">
         <option value="Electrical" selected>Electrical</option>
         <option value="Plumbing">Plumbing</option>
         <option value="Carpentry">Carpentry</option>
       </select>
-    
+
       <div class="button-group d-flex justify-content-between mt-4 secondary-font">
         <button type="button" class="cancel-button">Cancel</button>
         <button type="submit" class="save-button">Save</button>
       </div>
-    
-      
+
+
     </form>
-    
-    
+
+
   </div>
 </div>

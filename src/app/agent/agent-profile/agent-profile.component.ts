@@ -35,8 +35,10 @@ export class AgentProfileComponent implements OnInit {
 
 
   fetchAgentData() {
-    const storedUserId = localStorage.getItem('userId');
-    this.userId = storedUserId !== null ? storedUserId : '';
+    // const storedUserId = localStorage.getItem('userId');
+    // this.userId = storedUserId !== null ? storedUserId : '';
+    const storedUserId = sessionStorage.getItem('userId');
+this.userId = storedUserId !== null ? storedUserId : '';
     this.agentProfileManagementService.fetchAgentData(this.userId).subscribe((res) => {
       console.log(res.data);
       

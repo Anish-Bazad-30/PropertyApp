@@ -36,10 +36,14 @@ export class LoginComponent implements OnInit {
         
         console.log(res);
         if(res && res.data.token){
-          localStorage.setItem('role', res.data.role)
-          localStorage.setItem('userId',res.data.userId);
-          localStorage.setItem('userName',res.data.username);
-          localStorage.setItem('jwtToken',res.data.token);
+          // localStorage.setItem('role', res.data.role)
+          // localStorage.setItem('userId',res.data.userId);
+          // localStorage.setItem('userName',res.data.username);
+          // localStorage.setItem('jwtToken',res.data.token);
+          sessionStorage.setItem('role', res.data.role);
+sessionStorage.setItem('userId', res.data.userId);
+sessionStorage.setItem('userName', res.data.username);
+sessionStorage.setItem('jwtToken', res.data.token);
           switch (res.data.role) {
                 case 'AGENT':
                   this.router.navigate(['/agent']);

@@ -23,8 +23,10 @@ export class ServiceListingComponent  implements OnInit {
   }
 
   loadServices(): void {
-    const storedUserId = localStorage.getItem('userId');
-    this.userId = storedUserId !== null ? storedUserId : '';
+    // const storedUserId = localStorage.getItem('userId');
+    // this.userId = storedUserId !== null ? storedUserId : '';
+    const storedUserId = sessionStorage.getItem('userId');
+this.userId = storedUserId !== null ? storedUserId : '';
     this.vendorService.getServicesByAgentId(this.userId).subscribe((res:any)=>{
       console.log(res);
       this.services = res.data;

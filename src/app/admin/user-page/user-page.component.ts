@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RegistrationService } from 'src/app/services/registration.service';
 import { UserProfileManagementService } from 'src/app/services/user-profile-management.service';
 
 @Component({
@@ -9,67 +10,51 @@ import { UserProfileManagementService } from 'src/app/services/user-profile-mana
   styleUrls: ['./user-page.component.scss']
 })
 export class UserPageComponent implements OnInit {
-  username: string = '';
-    role: string = '';
-    userId: string = "";
-  
-    profileForm!: FormGroup;
-    constructor(private router: Router, private fb: FormBuilder, private userProfileManagementService: UserProfileManagementService) { }
-  
-    ngOnInit(): void {
-  
-      this.profileForm = this.fb.group({
-        username: [{ value: '', disabled: true }],
-        email: ['', [Validators.required, Validators.email]],
-        mobilenumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-        role: [{ value: '', disabled: true }]
-      });
-      this.fetchUserData();
-    }
-  
-  
-    fetchUserData() {
-      const storedUserId = localStorage.getItem('userId');
-  
-      this.userId = storedUserId !== null ? storedUserId : '';
-      this.userProfileManagementService.fetchUserData(this.userId).subscribe((res) => {
-        console.log(res);
-        this.profileForm.patchValue({
-          username: res.data.username,
-          email: res.data.email,
-          mobilenumber: res.data.mobilenumber,
-          role: res.data.role
-        });
-      });
-    }
-  
-    goBack() {
-      this.router.navigate(['/previous-page']);
-    }
-  
-    applyForAgent() {
-      alert('Application to become an agent submitted!');
-      this.role = 'Agent Pending'; // Updating role to show "Agent Pending"
-    }
-    updateProfile() {
-      if (this.profileForm.valid) {
-        const formData = this.profileForm.getRawValue();
-        console.log(formData);
-  
-        this.userProfileManagementService.updateProfile(formData).subscribe((res) => {
-          console.log(res);
-        })
-      }else {
-        console.log('Form is invalid');
-      }
-    }
-  
-    onlyDigits(event: KeyboardEvent) {
-      const charCode = event.key.charCodeAt(0);
-      if (charCode < 48 || charCode > 57) {
-        event.preventDefault();
-      }
-    }
-  
+  profileForm: FormGroup;
+  constructor(
+    private router: Router, private fb: FormBuilder,
+    private userProfileManagementService: UserProfileManagementService,
+    private registerService : RegistrationService
+  ) {
+    this.profileForm = this.fb.group({
+      username: ['', Validators.required],
+      // mobilenumber: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required],
+      role: [''] 
+    }, { validators: this.passwordsMatchValidator });
   }
-  
+
+  ngOnInit(): void {
+
+
+  }
+  passwordsMatchValidator(form: FormGroup) {
+    const password = form.get('password')?.value;
+    const confirmPassword = form.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { passwordMismatch: true };
+  }
+
+  updateProfile() {
+    if (this.profileForm.valid) {
+      this.profileForm.patchValue({ role: 'USER' });
+      this.registerService.register(this.profileForm.value).subscribe((res)=>{
+
+      })
+    } else {
+      this.profileForm.markAllAsTouched(); // show validation messages if needed
+    }
+  }
+
+  goBack() {
+    this.router.navigate(['/previous-page']);
+  }
+
+  onlyDigits(event: KeyboardEvent) {
+    const charCode = event.key.charCodeAt(0);
+    if (charCode < 48 || charCode > 57) {
+      event.preventDefault();
+    }
+  }
+
+}

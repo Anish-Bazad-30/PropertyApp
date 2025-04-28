@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { VendorServicesService } from 'src/app/services/vendor-services.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class AddServiceComponent implements OnInit {
 
   constructor(
     private vendorServices: VendorServicesService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +33,7 @@ export class AddServiceComponent implements OnInit {
       const serviceData = this.serviceForm.value;
       this.vendorServices.postServices(serviceData).subscribe((res) => {
         console.log(res);
+        this.router.navigate(['agent/services']);
 
       })
 

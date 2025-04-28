@@ -14,7 +14,8 @@ export class JwtInterceptor implements HttpInterceptor {
   constructor( private router: Router) {}
  
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem('jwtToken'); // Get token from storage or a service
+    // const token = localStorage.getItem('jwtToken'); 
+    const token = sessionStorage.getItem('jwtToken');
    console.log('name');
     // Define the public API endpoints
     const publicApis = ['/login','/register'  ]; // Update with your actual API paths
@@ -39,7 +40,8 @@ export class JwtInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         if (error.status === 403) {
           // Token expired or invalid, redirect to login page
-          localStorage.removeItem('jwtToken'); // Optionally clear the token
+          // localStorage.removeItem('jwtToken'); 
+          sessionStorage.removeItem('jwtToken');
           this.router.navigate(['/logIn']);  // Navigate to login page
         }
         return throwError(error); // Continue to propagate other errors

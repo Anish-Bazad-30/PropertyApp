@@ -75,12 +75,13 @@ th {
   color: #FF7F7F !important;
 }
  
-.user-container, .App-card{
+.user-container{
   width: 150px;
-  height: 150px;
-  background-color: #ffffff;
+  height: 200px;
+  background-color: #11405A;
   border-radius: 5px;
 }
+
 .App-card{
   width: 180px;
   height: 150px;
@@ -88,6 +89,33 @@ th {
   border-radius: 5px;
 }
  
+
+.filter-container{
+  /* position: absolute;
+  top : 4px;
+  right: 4px; */
+  background-color:#7FDBFF;
+  border-radius: 20px;
+  width: 120px !important;
+  align-self: flex-end;
+  margin: 10px 10px 0px;
+  /* padding: 2px 8px; */
+  
+}
+
+.filter{
+  font-size: 10px !important;
+  border: none !important;
+  outline: none !important;
+  width: 120px !important;
+}
+
+.filter:focus{
+  border: none !important;
+  outline: none !important;
+  box-shadow:none !important;
+}
+
 @media screen and (max-width:430px) and (min-width:410px) {
   .table-header {
     font-size: 14px;

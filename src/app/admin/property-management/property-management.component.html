@@ -5,11 +5,12 @@
   </div>
  
   <div class="add-property-wrapper w-100 p-4">
-    <button class="add-property-btn primary-font" (click)="addNew()">Add New</button>
+    <!-- <button class="add-property-btn primary-font" (click)="addNew()">Add New</button> -->
   </div>
   <div class="search-filter w-100 d-flex justify-content-between align-items-center p-3">
     <div class="search-container">
-      <input type="text" class="search-input primary-font" placeholder="search" />
+      <input type="text" class="search-input primary-font" placeholder="search"  [(ngModel)]="propertySearchText"
+      (ngModelChange)="filterProperties()"/>
       <img src="assets/icon/Search.svg" width="20px" class="search-icon">
     </div>
  
@@ -31,7 +32,7 @@
       <tbody>
         <tr class="table-data" *ngFor="let property of propertyList; let i = index">
           <td>{{ i + 1 }}</td>
-          <td>{{ property.username }}</td>
+          <td>{{ property.agentName }}</td>
           <td>
             <div class="text-break text-wrap w-100">
               {{ property.propertyName }}
@@ -41,9 +42,9 @@
           <td class="d-flex justify-content-center gap-2">
            
             <button class="btn p-1" (click)="editProperty(property)">
-              <img src="assets/icon/Edit.svg" alt="Edit" class="edit-icon"  />
+              <img src="assets/icon/Edit-1.svg" alt="Edit" class="edit-icon"  />
             </button>
-            <button class="btn p-1" (click)="deleteProperty(property)">
+            <button class="btn p-1" (click)="deleteProperty(property.id)">
               <img src="assets/icon/Delete.svg" alt="Delete" class="delete-icon"  />
             </button>
           </td>
