@@ -30,4 +30,9 @@ export class PropertyUploadFormService {
     getPropertyData(): any {
       return this.propertySubject.getValue();
     }
+
+    fetchAllAgentPropertyForStatics(userId:any): Observable<any> {
+      return this.http.get<any>(`${this.apiUrl}/api/admin/user-stats/${userId}`);
+    }
+
 }

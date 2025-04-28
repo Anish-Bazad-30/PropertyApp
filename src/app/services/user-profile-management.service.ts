@@ -58,8 +58,8 @@ export class UserProfileManagementService {
   }
 
 
-  joinAsAgent(): Observable<any> {
-    const url = `${this.apiUrl}/api/profile/join-agent`;
+  joinAsAgent(userId : any): Observable<any> {
+    const url = `${this.apiUrl}/api/profile/join-agent/${userId}`;
     return this.http.post<any>(url,'');
   }
 } 
