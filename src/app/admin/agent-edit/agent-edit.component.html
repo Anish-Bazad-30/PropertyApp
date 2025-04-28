@@ -25,14 +25,22 @@
 
     <!-- Profile Form -->
     <form [formGroup]="profileForm" class="d-flex flex-column form-container mt-3" (ngSubmit)="updateProfile()">
-      <label for="username" class="form-label secondary-font">Username</label>
-      <input type="text" id="username" class="form-control custom-input" formControlName="username" />
+      <label for="username" class="form-label secondary-font">Email</label>
+      <input type="email" id="username" class="form-control custom-input" placeholder="Enter email" formControlName="username" />
+      <div *ngIf="profileForm.get('username')?.touched && profileForm.get('email')?.invalid" class="text-danger">
+        <small *ngIf="profileForm.get('username')?.errors?.['required']">Email is required.</small>
+        <small *ngIf="profileForm.get('username')?.errors?.['email']">Please enter a valid email.</small>
+      </div>
 
       <label for="email" class="form-label secondary-font">E-mail</label>
-      <input type="email" id="email" class="form-control custom-input" formControlName="email" />
+      <input type="email" id="email" class="form-control custom-input" placeholder="Enter email" formControlName="email" />
 
       <label for="mobilenumber" class="form-label secondary-font">Mobile Number</label>
-      <input type="text" id="mobilenumber" class="form-control custom-input" formControlName="mobilenumber" />
+      <input type="text" id="mobilenumber" class="form-control custom-input" placeholder="Enter mobile number" formControlName="mobilenumber" />
+      <div *ngIf="profileForm.get('mobilenumber')?.touched && profileForm.get('mobilenumber')?.invalid" class="text-danger">
+        <small *ngIf="profileForm.get('mobilenumber')?.errors?.['required']">Mobile number is required.</small>
+        <small *ngIf="profileForm.get('mobilenumber')?.errors?.['pattern']">Please enter a valid mobile number.</small>
+      </div>
 
       <label for="serviceType" class="form-label secondary-font">Service Type</label>
       <select id="serviceType" class="form-select" formControlName="serviceType">
@@ -40,6 +48,9 @@
         <option value="Plumbing">Plumbing</option>
         <option value="Carpentry">Carpentry</option>
       </select>
+      <div *ngIf="profileForm.get('serviceType')?.touched && profileForm.get('serviceType')?.invalid" class="text-danger">
+        <small *ngIf="profileForm.get('serviceType')?.errors?.['required']">Please select a service type.</small>
+      </div>
 
       <div class="button-group d-flex justify-content-between mt-4 secondary-font">
         <button type="button" class="cancel-button">Cancel</button>

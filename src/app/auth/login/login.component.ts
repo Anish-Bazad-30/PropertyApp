@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     // Define the reactive form with validation rules
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]], // UserName is required
+      username: ['', [Validators.required,  Validators.email]], // email is required
       password: ['', [Validators.required, Validators.minLength(6)]] // Password: required and minimum 6 characters
     });
 

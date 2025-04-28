@@ -1,40 +1,92 @@
-<div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1">
+<div
+  class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1"
+>
   <div class="header">
     <h2 class="primary-font">Profile</h2>
   </div>
 
-  <div class="profile-container d-flex flex-column justify-content-center align-items-center mt-4">
-
+  <div
+    class="profile-container d-flex flex-column justify-content-center align-items-center mt-4"
+  >
     <div class="profile-photo">
       <img src="assets/icon/profile.svg" alt="Profile Photo" />
       <div class="change-profile-icon">
-        <img src="assets/icon/Edit.svg">
+        <img src="assets/icon/Edit.svg" />
       </div>
     </div>
-    <form [formGroup]="profileForm" class="d-flex flex-column form-container mt-3" (ngSubmit)="updateProfile()">
+    <form
+      [formGroup]="profileForm"
+      class="d-flex flex-column form-container mt-3"
+      (ngSubmit)="updateProfile()"
+    >
       <label for="username" class="form-label secondary-font">Username</label>
-      <input type="text" id="username" class="form-control custom-input" formControlName="username" />
+      <input
+        type="text"
+        id="username"
+        class="form-control custom-input"
+        formControlName="username"
+        placeholder="Enter username"
+      />
 
       <label for="email" class="form-label secondary-font">E-mail</label>
-      <input type="email" id="email" class="form-control custom-input" formControlName="email" required />
+      <input
+        type="email"
+        id="email"
+        class="form-control custom-input"
+        formControlName="email"
+        placeholder="Enter email"
+        required
+      />
 
-      <label for="mobilenumber" class="form-label secondary-font">Mobile Number</label>
-      <input type="text" id="mobilenumber" class="form-control custom-input" formControlName="mobilenumber" required
-        maxlength="10" inputmode="numeric" pattern="[0-9]{10}" (keypress)="onlyDigits($event)" />
+      <label for="mobilenumber" class="form-label secondary-font"
+        >Mobile Number</label
+      >
+      <input
+        type="text"
+        id="mobilenumber"
+        class="form-control custom-input"
+        formControlName="mobilenumber"
+        placeholder="Enter mobile number"
+        required
+        maxlength="10"
+        inputmode="numeric"
+        pattern="[0-9]{10}"
+        (keypress)="onlyDigits($event)"
+      />
+
+      <div *ngIf="profileForm.get('mobilenumber')?.touched && profileForm.get('mobilenumber')?.invalid" class="text-danger">
+        <small *ngIf="profileForm.get('mobilenumber')?.errors?.['required']">Mobile number is required.</small>
+        <small *ngIf="profileForm.get('mobilenumber')?.errors?.['pattern']">Mobile number must be of exactly 10 digits.</small>
+      </div>
 
       <label for="role" class="form-label secondary-font">Role</label>
-      <input type="text" id="role" class="form-control custom-input" formControlName="role" />
+      <input
+        type="text"
+        id="role"
+        class="form-control custom-input"
+        formControlName="role"
+      />
 
-      <div class="button-group d-flex justify-content-between mt-4 secondary-font">
+      <div
+        class="button-group d-flex justify-content-between mt-4 secondary-font"
+      >
         <button type="button" class="cancel-button">Cancel</button>
-        <button type="submit" class="save-button" [disabled]="profileForm.invalid">Save</button>
+        <button
+          type="submit"
+          class="save-button"
+          [disabled]="profileForm.invalid"
+        >
+          Save
+        </button>
       </div>
     </form>
 
-
-    <div class="text-center mt-4 ">
+    <div class="text-center mt-4">
       <button class="agent-button secondary-font" (click)="applyForAgent()">
-        Join As Agent<img src="assets/icon/arrow.svg" style="width: 24px; height: 24px;margin-left: 10px;">
+        Join As Agent<img
+          src="assets/icon/arrow.svg"
+          style="width: 24px; height: 24px; margin-left: 10px"
+        />
       </button>
     </div>
     <p class="join-agent mt-3 secondary-font">

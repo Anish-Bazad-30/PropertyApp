@@ -9,12 +9,12 @@
     <form [formGroup]="registrationForm" (ngSubmit)="onRegister()" class="d-flex flex-column form-container">
  
       <div class="mb-3">
-        <label for="name" class="form-label secondary-font">Name</label>
+        <label for="name" class="form-label secondary-font">Email</label>
         <!-- Use formControlName to bind the input to the 'name' form control -->
-        <input id="name" aria-label="Name" type="text" class="form-control custom-input" formControlName="name" placeholder="Enter your name">
+        <input id="name" aria-label="Name" type="email" class="form-control custom-input" formControlName="name" placeholder="Enter your email" required>
        
-        <div *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched" class="error">
-          Name is required and must be at least 3 characters.
+        <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched" class="error">
+          Valid email is required.
         </div>
       </div>
  

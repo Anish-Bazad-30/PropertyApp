@@ -17,7 +17,7 @@
   
     <div class="mb-3">
       <label for="agent-firm-name" class="form-label secondary-font">Agent Firm Name</label>
-      <input type="text" id="agent-firm-name" class="form-control custom-input" formControlName="agentFirmName" />
+      <input type="text" id="agent-firm-name" class="form-control custom-input" placeholder="Enter agent firm name" formControlName="agentFirmName" />
       <div *ngIf="serviceForm.get('agentFirmName')?.touched && serviceForm.get('agentFirmName')?.invalid" class="text-danger">
         Agent Firm Name is required.
       </div>
@@ -25,9 +25,9 @@
   
     <div class="mb-3">
       <label for="amount" class="form-label secondary-font">Amount</label>
-      <input type="text" id="amount" class="form-control custom-input" formControlName="amount" />
+      <input type="text" id="amount" class="form-control custom-input" placeholder="Enter amount" formControlName="amount" />
       <div *ngIf="serviceForm.get('amount')?.touched && serviceForm.get('amount')?.invalid" class="text-danger">
-        Valid amount is required.
+        Amount is required.
       </div>
     </div>
   

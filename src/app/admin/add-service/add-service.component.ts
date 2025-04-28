@@ -22,7 +22,7 @@ export class AddServiceComponent  implements OnInit {
   
     ngOnInit(): void {
       this.serviceForm = this.fb.group({
-        userId: ['',Validators.required],
+        userId: ['',[Validators.required, Validators.email]],
         serviceType: ['', Validators.required],
         agentFirmName: ['', Validators.required],
         amount: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],

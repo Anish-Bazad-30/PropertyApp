@@ -10,25 +10,23 @@ import { UserProfileManagementService } from 'src/app/services/user-profile-mana
   styleUrls: ['./user-page.component.scss']
 })
 export class UserPageComponent implements OnInit {
-  profileForm: FormGroup;
+  profileForm!: FormGroup;
   constructor(
     private router: Router, private fb: FormBuilder,
     private userProfileManagementService: UserProfileManagementService,
     private registerService : RegistrationService
-  ) {
-    this.profileForm = this.fb.group({
-      username: ['', Validators.required],
-      // mobilenumber: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
-      role: [''] 
-    }, { validators: this.passwordsMatchValidator });
-  }
+  ) {}
 
   ngOnInit(): void {
+      this.profileForm = this.fb.group({
+        username: ['', [Validators.required, Validators.email]],
+        // mobilenumber: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', Validators.required],
+        role: [''] 
+      }, { validators: this.passwordsMatchValidator });
+    }
 
-
-  }
   passwordsMatchValidator(form: FormGroup) {
     const password = form.get('password')?.value;
     const confirmPassword = form.get('confirmPassword')?.value;

@@ -17,7 +17,7 @@ profileForm: FormGroup;
     private registerService : RegistrationService,
   ) {
     this.profileForm = this.fb.group({
-      username: ['', Validators.required],
+      username: ['', [Validators.required,  Validators.email]],
       // mobilenumber: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],

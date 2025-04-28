@@ -9,12 +9,12 @@
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="d-flex flex-column form-container">
  
       <div class="mb-3">
-        <label for="username" class="form-label secondary-font">Username</label>
-        <input id="username" aria-label="User name" type="text" class="form-control custom-input" formControlName="username" placeholder="Enter your username">
+        <label for="username" class="form-label secondary-font">Email</label>
+        <input id="username" aria-label="User name" type="email" class="form-control custom-input" formControlName="username" placeholder="Enter your email">
      
- 
         <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="error">
-          Username is required.
+          <small *ngIf="loginForm.get('username')?.errors?.['required']">Email is required.</small>
+          <small *ngIf="loginForm.get('username')?.errors?.['email']">Please enter a valid email address.</small>
         </div>
       </div>
  

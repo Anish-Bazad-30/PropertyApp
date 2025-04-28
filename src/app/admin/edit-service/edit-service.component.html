@@ -15,21 +15,35 @@
         <option value="" disabled>Select a service</option>
         <option *ngFor="let type of serviceTypes" [value]="type">{{ type }}</option>
       </select>
+
+      <div *ngIf="form.get('serviceType')?.touched && form.get('serviceType')?.invalid" class="text-danger">
+        <small *ngIf="form.get('serviceType')?.errors?.['required']">Service type is required.</small>
+      </div>
     </div>
   
     <div class="mb-3">
       <label for="agent-firm-name" class="form-label">Agent Firm Name</label>
-      <input type="text" id="agent-firm-name" class="form-control" formControlName="agentFirmName" />
+      <input type="text" id="agent-firm-name" class="form-control" placeholder="Enter agent firm name" formControlName="agentFirmName" />
+      <div *ngIf="form.get('agentFirmName')?.touched && form.get('agentFirmName')?.invalid" class="text-danger">
+        <small *ngIf="form.get('agentFirmName')?.errors?.['required']">Agent firm name is required.</small>
+      </div>
     </div>
   
     <div class="mb-3">
       <label for="amount" class="form-label">Amount</label>
-      <input type="text" id="amount" class="form-control" formControlName="amount" />
+      <input type="text" id="amount" class="form-control" placeholder="Enter amount" formControlName="amount" />
+      <div *ngIf="form.get('amount')?.touched && form.get('amount')?.invalid" class="text-danger">
+        <small *ngIf="form.get('amount')?.errors?.['required']">Amount is required.</small>
+      </div>
     </div>
   
     <div class="mb-3">
       <label for="mobile" class="form-label">Mobile Number</label>
-      <input type="text" id="mobile" class="form-control" formControlName="mobileNumber" maxlength="10" />
+      <input type="text" id="mobile" class="form-control" placeholder="Enter mobile number" formControlName="mobileNumber" maxlength="10" />
+      <div *ngIf="form.get('mobileNumber')?.touched && form.get('mobileNumber')?.invalid" class="text-danger">
+        <small *ngIf="form.get('mobileNumber')?.errors?.['required']">Mobile number is required.</small>
+        <small *ngIf="form.get('mobileNumber')?.errors?.['pattern']">Please enter a valid 10-digit mobile number.</small>
+      </div>
     </div>
   
     <div class="d-flex justify-content-between mt-4">

@@ -24,7 +24,7 @@ export class RegistrationComponent  implements OnInit {
 
   ngOnInit() {
     this.registrationForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
+      name: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
       referral: [''],
@@ -43,7 +43,7 @@ export class RegistrationComponent  implements OnInit {
   onRegister() {
     if (this.registrationForm.valid) {
       const formData = this.registrationForm.value;
-      this.userName = formData.name;
+      this.userName = formData.email;
   
       const filteredData = {
         username: formData.name,

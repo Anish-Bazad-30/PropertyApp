@@ -11,22 +11,38 @@
           <option value="" disabled>Select a service</option>
           <option *ngFor="let type of serviceTypes" [value]="type">{{ type }}</option>
         </select>
+
+        <div *ngIf="serviceForm.get('serviceType')?.touched && serviceForm.get('serviceType')?.invalid" class="text-danger">
+          <small *ngIf="serviceForm.get('serviceType')?.errors?.['required']">Service Type is required.</small>
+        </div>
       </div>
     
       <div class="mb-3">
         <label for="agent-firm-name" class="form-label secondary-font">Agent Firm Name</label>
-        <input type="text" id="agent-firm-name" class="form-control custom-input" formControlName="agentFirmName" />
+        <input type="text" id="agent-firm-name" class="form-control custom-input" placeholder="Enter agent firm name" formControlName="agentFirmName" />
+
+        <div *ngIf="serviceForm.get('agentFirmName')?.touched && serviceForm.get('agentFirmName')?.invalid" class="text-danger">
+          <small *ngIf="serviceForm.get('agentFirmName')?.errors?.['required']">Agent Firm Name is required.</small>
+        </div>
       </div>
     
       <div class="mb-3">
         <label for="amount" class="form-label secondary-font">Amount</label>
-        <input type="text" id="amount" class="form-control custom-input" formControlName="amount" />
+        <input type="text" id="amount" class="form-control custom-input" placeholder="Enter amount" formControlName="amount" />
+
+        <div *ngIf="serviceForm.get('amount')?.touched && serviceForm.get('amount')?.invalid" class="text-danger">
+          <small *ngIf="serviceForm.get('amount')?.errors?.['required']">Amount is required.</small>
+        </div>  
       </div>
     
       <div class="mb-3">
         <label for="mobile" class="form-label secondary-font">Mobile Number</label>
-        <input type="text" id="mobile" class="form-control custom-input" formControlName="mobileNumber" 
-        maxlength="10" inputmode="numeric" pattern="[0-9]{10}" (keypress)="onlyDigits($event)" />
+        <input type="text" id="mobile" class="form-control custom-input" placeholder="Enter mobile number" formControlName="mobileNumber"  />
+
+        <div *ngIf="serviceForm.get('mobileNumber')?.touched && serviceForm.get('mobileNumber')?.invalid" class="text-danger">
+          <small *ngIf="serviceForm.get('mobileNumber')?.errors?.['required']">Mobile number is required.</small>
+          <small *ngIf="serviceForm.get('mobileNumber')?.errors?.['pattern']">Mobile number must be exactly 10 digits.</small>
+        </div>  
       </div>
     
       <div class="d-flex justify-content-center w-100">
