@@ -51,8 +51,8 @@ sessionStorage.setItem('jwtToken', res.data.token);
                 case 'USER':
                   this.router.navigate(['/user']);
                   break;
-                  case 'AGENT':
-                  this.router.navigate(['/agent']);
+                  case 'ADMIN':
+                  this.router.navigate(['/admin']);
                   break;
                 default:
                   this.router.navigate(['/login']);

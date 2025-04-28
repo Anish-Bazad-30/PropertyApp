@@ -42,7 +42,8 @@ categories: string[] = ['Health', 'Plumbing', 'Electrician']; // example categor
       .map(service => ({
         title: service.serviceType,
         agent: service.agentFirmName,
-        amount: service.amount
+        amount: service.amount,
+        mobileNumber: service.mobileNumber
       }));
   
     return this.viewAllCategory === category ? filtered : filtered.slice(0, 3);
@@ -53,8 +54,10 @@ categories: string[] = ['Health', 'Plumbing', 'Electrician']; // example categor
     this.selectedCategory = event.target.value;
     this.viewAllCategory = null; // reset viewAll state when category changes
   }
-  callAgent(): void {
-    alert('Calling now...');
+  callAgent(mobileNumber:any): void {
+    // console.log(mobileNumber);
+    
+    window.open(`tel:${mobileNumber}`, '_system');
   }
 
   shouldShowCategory(category: string): boolean {

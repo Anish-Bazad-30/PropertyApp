@@ -13,12 +13,15 @@ import { JwtInterceptor } from './interceptor/jwt.interceptor';
 import { AgentModule } from './agent/agent.module';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
+import { LoaderInterceptor } from './interceptor/loader.interceptor';
+import { LoaderComponent } from './loader/loader.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +43,12 @@ import { AuthModule } from './auth/auth.module';
     provide: HTTP_INTERCEPTORS,
     useClass: JwtInterceptor,
     multi: true,
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoaderInterceptor,
+    multi: true
   }
-
   ],
   bootstrap: [AppComponent],
 
