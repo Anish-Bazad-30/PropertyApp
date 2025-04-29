@@ -53,32 +53,24 @@ export class RegistrationComponent implements OnInit {
 
       this.registerService.register(filteredData).subscribe({
         next: async (res) => {
-          // Show the message from the backend
           const toast = await this.toastCtrl.create({
             message: res.message || 'Registered successfully!',
             duration: 6000,
             color: 'success',
           });
           await toast.present();
-
-          // Save token only if present
+      
           if (res.data) {
-            // localStorage.setItem("jwtToken", res.data.token);
-            // localStorage.setItem("userName", res.data.username);
-            // localStorage.setItem("userId", res.data.userId);
-            // localStorage.setItem("role", res.data.role);
             sessionStorage.setItem('role', res.data.role);
             sessionStorage.setItem('userId', res.data.userId);
             sessionStorage.setItem('userName', res.data.username);
             sessionStorage.setItem('jwtToken', res.data.token);
-
-            // Call referral service if needed
+      
             this.referAndEarnService.createReferral(this.userName).subscribe({
               next: (refRes) => console.log('Referral created:', refRes),
               error: (error) => console.error('Error generating referral link:', error),
             });
-
-            // Redirect based on role
+      
             switch (res.data.role) {
               case 'ADMIN':
                 this.router.navigate(['/admin']);
@@ -94,17 +86,18 @@ export class RegistrationComponent implements OnInit {
                 break;
             }
           } else {
-            // If role info is not returned, fallback to login or show info
             this.router.navigate(['/login']);
           }
         },
-        error: (error) => {
+        error: async (error) => {
           console.error('Error during registration:', error);
-          if (error.status === 409) {
-            this.errorMessage = error.error.message || 'User already registered';
-          } else {
-            this.errorMessage = 'An error occurred. Please try again.';
-          }
+      
+          const toast = await this.toastCtrl.create({
+            message: error?.error?.message || 'An error occurred. Please try again.',
+            duration: 6000,
+            color: 'danger',
+          });
+          await toast.present();
         }
       });
     } else {
