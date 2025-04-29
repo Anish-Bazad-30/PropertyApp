@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SaleFinaliseService } from 'src/app/services/sale-finalise.service';
 
 @Component({
   selector: 'app-buyer-details',
@@ -6,35 +9,60 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buyer-details.component.scss'],
 })
 export class BuyerDetailsComponent  implements OnInit {
-  buyerName: string = '';
-  contactNumber: string = '';
-  email: string = '';
-  salePrice: string = '';
-  saleDate: string = '';
+  saleForm!: FormGroup;
+  propertyData: any;
 
-  constructor() { }
+  constructor(private fb: FormBuilder,
+    private finaliseSaleService : SaleFinaliseService,
+     private router : Router,
+  ) {}
 
-  ngOnInit() {}
-  markSaleComplete(): void {
-    if (
-      !this.buyerName ||
-      !this.contactNumber ||
-      !this.email ||
-      !this.salePrice ||
-      !this.saleDate
-    ) {
-      return;
+  ngOnInit() {
+    this.saleForm = this.fb.group({
+      username: ['', [Validators.required]],
+      contactNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      email: ['', [Validators.required, Validators.email]],
+      salePrice: ['', [Validators.required]],
+      saleDate: ['', [Validators.required]],
+      propertyName: [''], // from passed data
+  userId: ['']  
+    });
+    
+  }
+
+  markSaleComplete() {
+    if (this.saleForm.valid) {
+      
+      this.finaliseSaleService.getPropertyData().subscribe((data) => {
+        if (data) {
+          this.propertyData = data;
+          console.log('Received property data:', this.propertyData);
+    
+          // Optionally you can patch your form here
+          this.saleForm.patchValue({
+            propertyName: this.propertyData.propertyName,
+            userId: this.propertyData.userId
+          });
+        }
+      });
+      const formData = this.saleForm.value; 
+      console.log('Form Submitted!', formData);
+  
+      this.finaliseSaleService.finaliseSale(formData).subscribe({
+        next: (res) => {
+          console.log('Sale finalized successfully:', res);
+          this.saleForm.reset();
+          this.router.navigate(['/agent/landing-page'])
+        },
+        error: (err) => {
+          console.error('Error finalizing sale:', err);
+        }
+      });
+  
+    } else {
+      console.error('Form is invalid');
+      this.saleForm.markAllAsTouched(); 
     }
-
-    const saleDetails = {
-      buyerName: this.buyerName,
-      contactNumber: this.contactNumber,
-      email: this.email,
-      salePrice: this.salePrice,
-      saleDate: this.saleDate
-    };
-
-    console.log('Sale Completed:', saleDetails);
   }
 }
 

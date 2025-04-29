@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PropertyUploadFormService } from 'src/app/services/property-upload-form.service';
 import { PropertyService } from 'src/app/services/property.service';
+import { SaleFinaliseService } from 'src/app/services/sale-finalise.service';
 
 @Component({
   selector: 'app-property-upload',
@@ -15,7 +16,8 @@ export class PropertyUploadComponent implements OnInit {
   constructor(
     private router : Router,
     private propertyService : PropertyService,
-    private propertyEditService : PropertyUploadFormService
+    private propertyEditService : PropertyUploadFormService,
+    private finaliseSaleService : SaleFinaliseService
   ) { }
 
   ngOnInit(): void { 
@@ -38,6 +40,7 @@ this.userId = storedUserId !== null ? storedUserId : '';
     this.router.navigate(['/agent/upload-property'])
   }
   finalizeSale(property: any) {
+    this.finaliseSaleService.setPropertyData(property);
     this.router.navigate(['/agent/buyer-details']);
   }
 

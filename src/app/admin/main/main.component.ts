@@ -32,7 +32,8 @@ export class MainComponent  implements OnInit {
      }
   
      logout(){
-      localStorage.clear();
+      // localStorage.clear();
+      sessionStorage.clear();
       //clear seesion stroge here
       this.router.navigate(['/auth/login']);
      }

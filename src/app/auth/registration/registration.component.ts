@@ -10,12 +10,12 @@ import { RegistrationService } from 'src/app/services/registration.service';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
 })
-export class RegistrationComponent  implements OnInit {
+export class RegistrationComponent implements OnInit {
   registrationForm!: FormGroup;
   userName: any;
   errorMessage: string = '';
 
-  constructor(private fb: FormBuilder, 
+  constructor(private fb: FormBuilder,
     private registerService: RegistrationService,
     private referAndEarnService: ReferAndEarnService,
     private router: Router,
@@ -39,18 +39,18 @@ export class RegistrationComponent  implements OnInit {
     return password === confirmPassword ? null : { mismatch: true };
   }
 
-  
+
   onRegister() {
     if (this.registrationForm.valid) {
       const formData = this.registrationForm.value;
       this.userName = formData.email;
-  
+
       const filteredData = {
         username: formData.name,
         password: formData.password,
         role: formData.role,
       };
-  
+
       this.registerService.register(filteredData).subscribe({
         next: async (res) => {
           // Show the message from the backend
@@ -60,7 +60,7 @@ export class RegistrationComponent  implements OnInit {
             color: 'success',
           });
           await toast.present();
-  
+
           // Save token only if present
           if (res.data) {
             // localStorage.setItem("jwtToken", res.data.token);
@@ -68,16 +68,16 @@ export class RegistrationComponent  implements OnInit {
             // localStorage.setItem("userId", res.data.userId);
             // localStorage.setItem("role", res.data.role);
             sessionStorage.setItem('role', res.data.role);
-sessionStorage.setItem('userId', res.data.userId);
-sessionStorage.setItem('userName', res.data.username);
-sessionStorage.setItem('jwtToken', res.data.token);
-  
+            sessionStorage.setItem('userId', res.data.userId);
+            sessionStorage.setItem('userName', res.data.username);
+            sessionStorage.setItem('jwtToken', res.data.token);
+
             // Call referral service if needed
             this.referAndEarnService.createReferral(this.userName).subscribe({
               next: (refRes) => console.log('Referral created:', refRes),
               error: (error) => console.error('Error generating referral link:', error),
             });
-  
+
             // Redirect based on role
             switch (res.data.role) {
               case 'ADMIN':
@@ -112,10 +112,10 @@ sessionStorage.setItem('jwtToken', res.data.token);
       this.errorMessage = 'Please correct the errors in the form.';
     }
   }
-  
+
 
 
   navigate() {
     this.router.navigate(["auth/login"]);
-    }
+  }
 }

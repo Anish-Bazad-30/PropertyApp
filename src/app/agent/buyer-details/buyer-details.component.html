@@ -3,33 +3,54 @@
   <div class="text-center">
     <h3 class="title primary-font">Buyer Details</h3>
   </div>
-  <form class="form-container">
+  <form [formGroup]="saleForm" (ngSubmit)="markSaleComplete()" class="form-container">
     <div class="mb-3">
-      <label for="buyerName" class="form-label secondary-font">User Name(Buyer name)</label>
-      <input type="text" id="buyerName" class="form-control custom-input" [(ngModel)]="buyerName" />
+      <label for="username" class="form-label secondary-font">User Name(Buyer name)</label>
+      <input type="text" id="username" class="form-control custom-input" formControlName="username" />
+      <div *ngIf="saleForm.get('username')?.touched && saleForm.get('username')?.invalid" class="text-danger">
+        <div *ngIf="saleForm.get('username')?.hasError('required')">Buyer name is required.</div>
+      </div>
     </div>
+  
     <div class="mb-3">
       <label for="contactNumber" class="form-label secondary-font">Contact Number</label>
-      <input type="text" id="contactNumber" class="form-control custom-input" [(ngModel)]="contactNumber" />
+      <input type="tel" id="contactNumber" class="form-control custom-input" formControlName="contactNumber" />
+      <div *ngIf="saleForm.get('contactNumber')?.touched && saleForm.get('contactNumber')?.invalid" class="text-danger">
+        <div *ngIf="saleForm.get('contactNumber')?.hasError('required')">Contact number is required.</div>
+        <div *ngIf="saleForm.get('contactNumber')?.hasError('pattern')">Invalid contact number. Must be 10 digits.</div>
+      </div>
     </div>
+  
     <div class="mb-3">
       <label for="email" class="form-label secondary-font">Email</label>
-      <input type="text" id="amount" class="form-control custom-input" [(ngModel)]="email" />
+      <input type="email" id="email" class="form-control custom-input" formControlName="email" />
+      <div *ngIf="saleForm.get('email')?.touched && saleForm.get('email')?.invalid" class="text-danger">
+        <div *ngIf="saleForm.get('email')?.hasError('required')">Email is required.</div>
+        <div *ngIf="saleForm.get('email')?.hasError('email')">Invalid email format.</div>
+      </div>
     </div>
+  
     <div class="mb-3">
       <label for="salePrice" class="form-label secondary-font">Sale Price</label>
-      <input type="text" id="salePrice" class="form-control custom-input" [(ngModel)]="salePrice" />
+      <input type="number" id="salePrice" class="form-control custom-input" formControlName="salePrice" />
+      <div *ngIf="saleForm.get('salePrice')?.touched && saleForm.get('salePrice')?.invalid" class="text-danger">
+        <div *ngIf="saleForm.get('salePrice')?.hasError('required')">Sale price is required.</div>
+      </div>
     </div>
+  
     <div class="mb-3">
-      <label for="saledate" class="form-label secondary-font">Sale Date</label>
-      <input type="date" id="saleDate" class="form-control custom-input" [(ngModel)]="saleDate" />
+      <label for="saleDate" class="form-label secondary-font">Sale Date</label>
+      <input type="date" id="saleDate" class="form-control custom-input" formControlName="saleDate" />
+      <div *ngIf="saleForm.get('saleDate')?.touched && saleForm.get('saleDate')?.invalid" class="text-danger">
+        <div *ngIf="saleForm.get('saleDate')?.hasError('required')">Sale date is required.</div>
+      </div>
     </div>
- 
+  
     <div class="d-flex justify-content-center mt-4">
-      <!-- Submit button triggers the (ngSubmit) event -->
-      <ion-button type="submit" expand="block" class="text-center secondary-font" (click)="markSaleComplete()">
+      <ion-button type="submit" expand="block" class="text-center secondary-font" [disabled]="saleForm.invalid">
         Mark Sale Complete
       </ion-button>
     </div>
   </form>
+  
 </div>

@@ -51,11 +51,19 @@ this.userId = storedUserId !== null ? storedUserId : '';
   }
 
   applyForAgent() {
-    this.userProfileManagementService.joinAsAgent().subscribe((res)=>{
+    const storedUserId = sessionStorage.getItem('userId');
+
+this.userId = storedUserId !== null ? storedUserId : '';
+    this.userProfileManagementService.joinAsAgent(this.userId).subscribe((res)=>{
       
     })
+    this.profileForm.patchValue({
+      
+      role: 'Agent Pending'
+    });
     this.role = 'Agent Pending'; // Updating role to show "Agent Pending"
   }
+
   updateProfile() {
     if (this.profileForm.valid) {
       const formData = this.profileForm.getRawValue();
