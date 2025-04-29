@@ -35,4 +35,7 @@ export class PropertyUploadFormService {
       return this.http.get<any>(`${this.apiUrl}/api/admin/user-stats/${userId}`);
     }
 
+    getPropertiesById(propertyId:any):Observable<any> {
+      return this.http.get<any>(`${this.apiUrl}/api/properties/${propertyId}`);
+    }
 }

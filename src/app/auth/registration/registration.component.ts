@@ -43,7 +43,7 @@ export class RegistrationComponent implements OnInit {
   onRegister() {
     if (this.registrationForm.valid) {
       const formData = this.registrationForm.value;
-      this.userName = formData.email;
+      this.userName = formData.name;
 
       const filteredData = {
         username: formData.name,

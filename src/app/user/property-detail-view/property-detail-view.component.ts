@@ -10,7 +10,7 @@ import { PropertyUploadFormService } from 'src/app/services/property-upload-form
 
 export class PropertyDetailViewComponent implements OnInit {
  
-
+  propertyId : any;
   propertyDetail : any;
   constructor(
     private propertyService: PropertyUploadFormService
@@ -18,8 +18,17 @@ export class PropertyDetailViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.propertyService.propertyData$.subscribe(data => {
-      this.propertyDetail = data;
+      this.propertyId = data;
     });
+
+    this.fetchProperty();
+    
+  }
+
+  fetchProperty(){
+    this.propertyService.getPropertiesById(this.propertyId).subscribe((res)=>{
+      this.propertyDetail = res.data;
+    })
   }
 
   callNow(phoneNumber: string) {

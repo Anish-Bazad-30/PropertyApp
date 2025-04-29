@@ -85,11 +85,11 @@ export class UserLandingPageComponent implements OnInit {
     this.selectedSector = '';
   }
 
-  viewProperty(property: string) {
+  viewProperty(propertyId: string) {
     
     this.router.navigate(['user/property-detail-view']);
 
-      this.propertyService.setPropertyData(property);
+      this.propertyService.setPropertyData(propertyId);
 
   }
 

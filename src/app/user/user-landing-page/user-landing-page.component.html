@@ -49,7 +49,7 @@
             <strong class="address-label fw-bold">Address:</strong><br> {{ property.address }}
           </p>
           <div class="property-buttons primary-font d-flex justify-content-between align-items-center">
-            <button class="btn btn-danger view-button" (click)="viewProperty(property)">View</button>
+            <button class="btn btn-danger view-button" (click)="viewProperty(property.id)">View</button>
             <button class="btn btn-info call-now-button" (click)="callNow('9423232323')">Call Now</button>
           </div>
         </div>

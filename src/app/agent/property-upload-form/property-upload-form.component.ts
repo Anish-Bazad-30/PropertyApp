@@ -87,10 +87,10 @@ export class PropertyUploadFormComponent implements OnInit {
       console.log('Form Data:', data1);
       this.propertyUpload.uploadProperty(data1).subscribe((res)=>{
         console.log(res);
-       
+        this.router.navigate(['agent/landing-page']);
       })
       this.propertyForm.reset();
-      this.router.navigate(['agent/landing-page']);
+      
     // } else {
     //   alert('Please fill out all fields correctly.');
     // }

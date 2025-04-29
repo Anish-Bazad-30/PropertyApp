@@ -11,11 +11,11 @@ export class AdminDashboardComponent  implements OnInit {
  
   ngOnInit() {}
   private routeMap: { [key: string]: string } = {
-    'user-agent': '/profile-management',
-    'property': '/property-management',
-    'vendor': '/service-management',
-    'referral': '/referral-management',
-    'statistics': '/app-usage-statistic'
+    'user-agent': 'admin/profile-management',
+    'property': 'admin/property-management',
+    'vendor': 'admin/service-management',
+    'referral': 'admin/referral-management',
+    'statistics': 'admin/app-usage-statistic'
   };
  
   navigateTo(key: string) {

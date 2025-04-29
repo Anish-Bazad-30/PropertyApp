@@ -23,13 +23,14 @@ export class PropertyUploadComponent implements OnInit {
   ngOnInit(): void { 
     // const storedUserId = localStorage.getItem('userId');
     // this.userId = storedUserId !== null ? storedUserId : '';
-    const storedUserId = sessionStorage.getItem('userId');
-this.userId = storedUserId !== null ? storedUserId : '';
+
     this.fetchProperty();
   }
 
 
   fetchProperty(){
+    const storedUserId = sessionStorage.getItem('userId');
+    this.userId = storedUserId !== null ? storedUserId : '';
     this.propertyService.getProperties(this.userId).subscribe((res)=>{
       this.properties= res.data;
       console.log(this.properties);
