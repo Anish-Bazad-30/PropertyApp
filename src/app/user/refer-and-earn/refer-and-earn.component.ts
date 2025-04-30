@@ -64,7 +64,7 @@ export class ReferEarnComponent implements OnInit {
       await Share.share({
         title: 'Refer & Earn',
         text: 'Get 20% off using my referral link!',
-        url: 'this.referralLink',
+        url: this.referralLink,
         dialogTitle: 'Share with friends'
       });
     } catch (error) {
