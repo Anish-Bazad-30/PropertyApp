@@ -27,13 +27,15 @@ export class PropertyUploadFormComponent implements OnInit {
     this.propertyForm = this.fb.group({
       propertyName: ['', Validators.required],
       propertyType: ['', Validators.required],
-      amount: [, [Validators.required, Validators.pattern('^[0-9]+$')]],
+      amount: [, [Validators.required, Validators.pattern('^[0-9]+$'),Validators.minLength(1),
+        Validators.maxLength(10)]],
       description: ['', Validators.required],
       city: ['', Validators.required],
       area: ['', Validators.required],
       sector: ['', Validators.required],
       address: ['', Validators.required],
-      agentMobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]]
+      agentMobile: ['', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.minLength(10),
+        Validators.maxLength(10)]]
     });
   }
  
@@ -94,5 +96,13 @@ export class PropertyUploadFormComponent implements OnInit {
     // } else {
     //   alert('Please fill out all fields correctly.');
     // }
+  }
+
+
+  onlyDigits(event: KeyboardEvent): void {
+    const inputChar = event.key;
+    if (!/^\d$/.test(inputChar)) {
+      event.preventDefault();
+    }
   }
 }

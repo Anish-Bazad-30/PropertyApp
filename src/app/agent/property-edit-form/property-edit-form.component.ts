@@ -33,13 +33,15 @@ export class PropertyEditFormComponent implements OnInit {
       id:[''],
       propertyName: ['', Validators.required],
       propertyType: ['', Validators.required],
-      amount: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      amount: ['', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.minLength(1),
+        Validators.maxLength(10)]],
       description: ['', Validators.required],
       city: ['', Validators.required],
       area: ['', Validators.required],
       sector: ['', Validators.required],
       address: ['', Validators.required],
-      agentMobile: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
+      agentMobile: ['', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.minLength(10),
+        Validators.maxLength(10)]]
     });
 
     this.propertyService.propertyData$.subscribe(data => {
@@ -125,6 +127,13 @@ this.userId = storedUserId !== null ? storedUserId : '';
 
   onCancel(): void {
     this.router.navigate(['agent/landing-page']);
+  }
+
+  onlyDigits(event: KeyboardEvent): void {
+    const inputChar = event.key;
+    if (!/^\d$/.test(inputChar)) {
+      event.preventDefault();
+    }
   }
 }
 

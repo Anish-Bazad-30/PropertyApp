@@ -36,11 +36,12 @@ export class UserEngagementDonutChartComponent {
         position: 'right',
         display : true,
         labels: {
+          color:"#fff",
           usePointStyle : true,
           pointStyle : 'circle',
           padding: 10,
           font: {
-            size: 10,
+            size: 10
           }
         }
         }

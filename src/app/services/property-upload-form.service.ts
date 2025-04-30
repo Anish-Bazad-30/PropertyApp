@@ -7,8 +7,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PropertyUploadFormService {
-    private apiUrl: string = environment.API_URL; 
-
+  private apiUrl: string = environment.API_URL; 
+  
   constructor(private http: HttpClient) { }
 
     uploadProperty(propertyData: any): Observable<any> {
@@ -31,11 +31,17 @@ export class PropertyUploadFormService {
       return this.propertySubject.getValue();
     }
 
-    fetchAllAgentPropertyForStatics(userId:any): Observable<any> {
-      return this.http.get<any>(`${this.apiUrl}/api/admin/user-stats/${userId}`);
-    }
-
+    
     getPropertiesById(propertyId:any):Observable<any> {
       return this.http.get<any>(`${this.apiUrl}/api/properties/${propertyId}`);
     }
+
+    fetchAllAgentPropertyForStatics(): Observable<any> {
+      return this.http.get<any>(`${this.apiUrl}/api/admin/agent-stats`);
+    }
+
+    fetchPropertyByIdForStatics(userId:any): Observable<any>{
+      return this.http.get<any>(`${this.apiUrl}/api/admin/agent-stats/${userId}`);
+    }
+
 }

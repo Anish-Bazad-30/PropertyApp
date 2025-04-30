@@ -17,25 +17,30 @@ export class AppUsageAnalyticsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.fetchData();
+    this.fetchData();
   }
-
+//   {
+//     "username": "agent",
+//     "propertyUploadCount": 0,
+//     "totalViewsCount": 0,
+//     "salesFinalizedCount": 0
+// },
   fetchData() {
-    const storedUserId = sessionStorage.getItem('userId');
+  
 
-    this.userId = storedUserId !== null ? storedUserId : '';
-
-    if (this.userId) {
-      this.propertyService.fetchAllAgentPropertyForStatics(this.userId).subscribe({
+    // if (this.userI) {
+      this.propertyService.fetchAllAgentPropertyForStatics().subscribe({
         next: (res) => {
           this.agentList = res.data;
+          console.log(this.agentList);
+          
         },
         error: (error) => {
           console.error('Error fetching agent properties:', error);
         }
       });
-    } else {
-      console.warn('No userId found in localStorage.');
-    }
+    // } else {
+      // console.warn('No userId found in localStorage.');
+    // }
   }
 }

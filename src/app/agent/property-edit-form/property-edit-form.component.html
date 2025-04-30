@@ -7,11 +7,12 @@
     <form class="form-container" [formGroup]="propertyForm">
         <div class="mb-3">
             <label for="propertyName" class="form-label secondary-font">Property Name</label>
-            <input type="text" id="propertyName" placeholder="Enter property name" class="form-control custom-input" 
+            <input type="text" id="propertyName" placeholder="Enter property name" class="form-control custom-input"
                 formControlName="propertyName" />
-                <div *ngIf="propertyForm.get('propertyName')?.touched && propertyForm.get('propertyName')?.invalid" class="text-danger mt-1">
-                    <small *ngIf="propertyForm.get('propertyName')?.errors?.['required']">Property name is required.</small>
-                  </div>       
+            <div *ngIf="propertyForm.get('propertyName')?.touched && propertyForm.get('propertyName')?.invalid"
+                class="text-danger mt-1">
+                <small *ngIf="propertyForm.get('propertyName')?.errors?.['required']">Property name is required.</small>
+            </div>
         </div>
         <div class="mb-3">
             <!-- Image Upload Section -->
@@ -52,26 +53,30 @@
                 <option value="">Select Type</option>
                 <option *ngFor="let type of propertyTypes" [value]="type">{{ type }}</option>
             </select>
-            <div *ngIf="propertyForm.get('propertyType')?.touched && propertyForm.get('propertyType')?.invalid" class="text-danger mt-1">
+            <div *ngIf="propertyForm.get('propertyType')?.touched && propertyForm.get('propertyType')?.invalid"
+                class="text-danger mt-1">
                 <small *ngIf="propertyForm.get('propertyType')?.errors?.['required']">Property type is required.</small>
-              </div>  
+            </div>
         </div>
         <div class="mb-3">
             <!-- Amount (Rs.) -->
             <label for="amount" class="form-label secondary-font">Amount (Rs.)</label>
-            <input type="text" id="amount" placeholder="Enter amount" class="form-control custom-input" formControlName="amount" />
-            <div *ngIf="propertyForm.get('amount')?.touched && propertyForm.get('amount')?.invalid" class="text-danger mt-1">
+            <input type="text" id="amount" placeholder="Enter amount" class="form-control custom-input" maxlength="10"
+                minlength="1" formControlName="amount" (keypress)="onlyDigits($event)" />
+            <div *ngIf="propertyForm.get('amount')?.touched && propertyForm.get('amount')?.invalid"
+                class="text-danger mt-1">
                 <small *ngIf="propertyForm.get('amount')?.errors?.['required']">Amount is required.</small>
-              </div>   
+            </div>
         </div>
 
         <div class="mb-3">
             <label for="description" class="form-label secondary-font">Property Description</label>
             <textarea id="description" placeholder="Enter property description" class="form-control custom-input"
                 formControlName="description"></textarea>
-                <div *ngIf="propertyForm.get('description')?.touched && propertyForm.get('description')?.invalid" class="text-danger mt-1">
-                    <small *ngIf="propertyForm.get('description')?.errors?.['required']">Description is required.</small>
-                  </div>      
+            <div *ngIf="propertyForm.get('description')?.touched && propertyForm.get('description')?.invalid"
+                class="text-danger mt-1">
+                <small *ngIf="propertyForm.get('description')?.errors?.['required']">Description is required.</small>
+            </div>
         </div>
         <!-- City -->
         <div class="mb-3">
@@ -80,9 +85,10 @@
                 <option value="">Select City</option>
                 <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
             </select>
-            <div *ngIf="propertyForm.get('city')?.touched && propertyForm.get('city')?.invalid" class="text-danger mt-1">
+            <div *ngIf="propertyForm.get('city')?.touched && propertyForm.get('city')?.invalid"
+                class="text-danger mt-1">
                 <small *ngIf="propertyForm.get('city')?.errors?.['required']">City is required.</small>
-              </div>   
+            </div>
         </div>
         <div class="mb-3">
             <!-- Area -->
@@ -91,10 +97,11 @@
                 <option value="">Select Area</option>
                 <option *ngFor="let area of areas" [value]="area">{{ area }}</option>
             </select>
-          
-            <div *ngIf="propertyForm.get('area')?.touched && propertyForm.get('area')?.invalid" class="text-danger mt-1">
+
+            <div *ngIf="propertyForm.get('area')?.touched && propertyForm.get('area')?.invalid"
+                class="text-danger mt-1">
                 <small *ngIf="propertyForm.get('area')?.errors?.['required']">Area is required.</small>
-              </div>  
+            </div>
         </div>
         <!-- Sector -->
         <div class="mb-3">
@@ -103,9 +110,10 @@
                 <option value="">Select Sector</option>
                 <option *ngFor="let sector of sectors" [value]="sector">{{ sector }}</option>
             </select>
-            <div *ngIf="propertyForm.get('sector')?.touched && propertyForm.get('sector')?.invalid" class="text-danger mt-1">
+            <div *ngIf="propertyForm.get('sector')?.touched && propertyForm.get('sector')?.invalid"
+                class="text-danger mt-1">
                 <small *ngIf="propertyForm.get('sector')?.errors?.['required']">Sector is required.</small>
-              </div>   
+            </div>
         </div>
         <!-- Address -->
         <div class="mb-3">
@@ -114,19 +122,22 @@
                 formControlName="address" /> -->
             <textarea id="address" placeholder="Enter address" class="form-control custom-input"
                 formControlName="address"></textarea>
-           
-                <div *ngIf="propertyForm.get('address')?.touched && propertyForm.get('address')?.invalid" class="text-danger mt-1">
-                    <small *ngIf="propertyForm.get('address')?.errors?.['required']">Address is required.</small>
-                  </div>         
+
+            <div *ngIf="propertyForm.get('address')?.touched && propertyForm.get('address')?.invalid"
+                class="text-danger mt-1">
+                <small *ngIf="propertyForm.get('address')?.errors?.['required']">Address is required.</small>
+            </div>
         </div>
         <div class="mb-3">
             <label for="agentMobile" class="form-label secondary-font">Agent Mobile Number</label>
-            <input type="text" id="agentMobile" placeholder="Enter agent mobile number" class="form-control custom-input"
-                formControlName="agentMobile" />
-                <div *ngIf="propertyForm.get('agentMobile')?.touched && propertyForm.get('agentMobile')?.invalid" class="text-danger">
-                    <small *ngIf="propertyForm.get('agentMobile')?.errors?.['required']">Mobile number is required.</small>
-                    <small *ngIf="propertyForm.get('agentMobile')?.errors?.['pattern']">Mobile number must be of exactly 10 digits.</small>
-                  </div>      
+            <input type="text" id="agentMobile" placeholder="Enter agent mobile number" maxlength="10" minlength="10"
+                class="form-control custom-input" formControlName="agentMobile" (keypress)="onlyDigits($event)" />
+            <div *ngIf="propertyForm.get('agentMobile')?.touched && propertyForm.get('agentMobile')?.invalid"
+                class="text-danger">
+                <small *ngIf="propertyForm.get('agentMobile')?.errors?.['required']">Mobile number is required.</small>
+                <small *ngIf="propertyForm.get('agentMobile')?.errors?.['pattern']">Mobile number must be of exactly 10
+                    digits.</small>
+            </div>
         </div>
 
         <!-- <div class="submit-button-container">

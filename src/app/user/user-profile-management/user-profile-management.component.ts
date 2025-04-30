@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { UserProfileManagementService } from 'src/app/services/user-profile-management.service';
 
 @Component({
@@ -14,7 +15,9 @@ export class UserProfileManagementComponent implements OnInit {
   userId: string = "";
 
   profileForm!: FormGroup;
-  constructor(private router: Router, private fb: FormBuilder, private userProfileManagementService: UserProfileManagementService) { }
+  constructor(private router: Router, 
+      private toastCtrl: ToastController,
+      private fb: FormBuilder, private userProfileManagementService: UserProfileManagementService) { }
 
   ngOnInit(): void {
 
@@ -34,7 +37,7 @@ export class UserProfileManagementComponent implements OnInit {
     // this.userId = storedUserId !== null ? storedUserId : '';
     const storedUserId = sessionStorage.getItem('userId');
 
-this.userId = storedUserId !== null ? storedUserId : '';
+    this.userId = storedUserId !== null ? storedUserId : '';
     this.userProfileManagementService.fetchUserData(this.userId).subscribe((res) => {
       console.log(res);
       this.profileForm.patchValue({
@@ -50,18 +53,33 @@ this.userId = storedUserId !== null ? storedUserId : '';
     this.router.navigate(['/previous-page']);
   }
 
-  applyForAgent() {
+  async applyForAgent() {
     const storedUserId = sessionStorage.getItem('userId');
-
-this.userId = storedUserId !== null ? storedUserId : '';
-    this.userProfileManagementService.joinAsAgent(this.userId).subscribe((res)=>{
-      
-    })
-    this.profileForm.patchValue({
-      
-      role: 'Agent Pending'
+    this.userId = storedUserId !== null ? storedUserId : '';
+  
+    this.userProfileManagementService.joinAsAgent(this.userId).subscribe({
+      next: async (res) => {
+        const toast = await this.toastCtrl.create({
+          message: res.data || res.message || 'Request submitted successfully',
+          duration: 4000,
+          color: 'success',
+        });
+        await toast.present();
+  
+        this.profileForm.patchValue({
+          role: 'Agent Pending'
+        });
+        this.role = 'Agent Pending';
+      },
+      error: async (error) => {
+        const toast = await this.toastCtrl.create({
+          message: error?.error?.message || 'Something went wrong. Please try again.',
+          duration: 4000,
+          color: 'danger',
+        });
+        await toast.present();
+      }
     });
-    this.role = 'Agent Pending'; // Updating role to show "Agent Pending"
   }
 
   updateProfile() {
@@ -72,7 +90,7 @@ this.userId = storedUserId !== null ? storedUserId : '';
       this.userProfileManagementService.updateProfile(formData).subscribe((res) => {
         console.log(res);
       })
-    }else {
+    } else {
       console.log('Form is invalid');
     }
   }

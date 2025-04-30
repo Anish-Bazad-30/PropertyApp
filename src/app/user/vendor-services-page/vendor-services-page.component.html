@@ -3,12 +3,14 @@
   <p class="subtitle text-center primary-font mt-4">Essential Home Services at Your Fingertips</p>
   <div class="service-container w-100">
     <div class="category-section d-flex justify-content-center mt-4">
-      <select id="category" (change)="onCategoryChange($event)">
+      <select id="category" [value]="selectedCategory" (change)="onCategoryChange($event)">
         <option value="all">Choose categories</option>
         <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
       </select>
     </div>
-  
+    <div class="text-end mt-3" *ngIf="viewAllCategory">
+      <button class="btn btn-danger view-button" (click)="resetCategoryView()">Show All Categories</button>
+    </div>
     <div *ngFor="let category of categories">
       <ng-container *ngIf="shouldShowCategory(category)">
         <h3 class="category-title mt-4 primary-font">{{ category }}</h3>

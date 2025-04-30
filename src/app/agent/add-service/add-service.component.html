@@ -28,7 +28,7 @@
     
       <div class="mb-3">
         <label for="amount" class="form-label secondary-font">Amount</label>
-        <input type="text" id="amount" class="form-control custom-input" placeholder="Enter amount" formControlName="amount" />
+        <input type="text" id="amount" class="form-control custom-input" minlength="1" maxlength="10" placeholder="Enter amount"  formControlName="amount" (keypress)="onlyDigits($event)"/>
 
         <div *ngIf="serviceForm.get('amount')?.touched && serviceForm.get('amount')?.invalid" class="text-danger">
           <small *ngIf="serviceForm.get('amount')?.errors?.['required']">Amount is required.</small>
@@ -37,7 +37,7 @@
     
       <div class="mb-3">
         <label for="mobile" class="form-label secondary-font">Mobile Number</label>
-        <input type="text" id="mobile" class="form-control custom-input" placeholder="Enter mobile number" formControlName="mobileNumber"  />
+        <input type="text" id="mobile" class="form-control custom-input" minlength="10" maxlength="10" placeholder="Enter mobile number" formControlName="mobileNumber" (keypress)="onlyDigits($event)" />
 
         <div *ngIf="serviceForm.get('mobileNumber')?.touched && serviceForm.get('mobileNumber')?.invalid" class="text-danger">
           <small *ngIf="serviceForm.get('mobileNumber')?.errors?.['required']">Mobile number is required.</small>

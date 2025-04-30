@@ -51,14 +51,14 @@
     <tbody>
       <tr class="table-data" *ngFor="let agent of agentList; let i = index">
         <td>{{ i + 1 }}</td>
-        <td class="text-danger">{{ agent.agentName }}</td>
+        <td class="text-danger">{{ agent.username }}</td>
         <td>
           <div class="text-break text-wrap w-100">
-            {{ agent.propertiesListed }}
+            {{ agent.propertyUploadCount }}
           </div>
         </td>
-        <td>{{ agent.propertyViews }}</td>
-        <td class="text-danger fw-semibold">{{ agent.salesFinalized}}</td>
+        <td>{{ agent.totalViewsCount }}</td>
+        <td class="text-danger fw-semibold">{{ agent.salesFinalizedCount}}</td>
         <td class="d-flex justify-content-center gap-2">
 
         </td>

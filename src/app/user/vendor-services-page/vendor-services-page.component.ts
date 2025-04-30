@@ -70,4 +70,8 @@ categories: string[] = ['Health', 'Plumbing', 'Electrician']; // example categor
   viewAll(category: string) {
     this.viewAllCategory = category;
   }
+  resetCategoryView() {
+    this.viewAllCategory = null;
+    this.selectedCategory = 'all';
+  }
 }
