@@ -10,7 +10,9 @@ import { UserProfileManagementService } from 'src/app/services/user-profile-mana
 export class UserManagementComponent implements OnInit {
   searchText: string = '';
 userListOriginal: any[] = [];  // unfiltered list from backend
-userList: any[] = []; 
+userList: any[] = [];
+currentPage=1;
+itemsPerPage=10;
 
   constructor(
     private userProfileManagement: UserProfileManagementService, 
@@ -46,6 +48,20 @@ userList: any[] = [];
     this.userProfileManagement.deleteUserProfile(user).subscribe((res)=>{
       this.loadUsers();
     })
+  }
+  get userlistview() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.userList.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+ 
+  getTotalPages(): number {
+    return Math.ceil(this.userList.length / this.itemsPerPage);
+  }
+ 
+  changePage(newPage: number) {
+    if (newPage > 0 && newPage <= this.getTotalPages()) {
+      this.currentPage = newPage;
+    }
   }
 
 }

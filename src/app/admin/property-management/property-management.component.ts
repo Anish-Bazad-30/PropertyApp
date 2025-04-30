@@ -11,7 +11,9 @@ import { PropertyService } from 'src/app/services/property.service';
 export class PropertyManagementComponent implements OnInit {
   propertySearchText: string = '';
 propertyListOriginal: any[] = [];  
-propertyList: any[] = [];   
+propertyList: any[] = []; 
+currentPage= 1;
+itemsPerPage= 10;  
  
   constructor(
     private router: Router, private propertyManagement: PropertyService,
@@ -51,6 +53,20 @@ propertyList: any[] = [];
     this.propertyManagement.deleteProperty(property).subscribe((res)=>{
       this.loadProperties(); 
     })
+    }
+    get propertyListview() {
+      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+      return this.propertyList.slice(startIndex, startIndex + this.itemsPerPage);
+    }
+   
+    getTotalPages(): number {
+      return Math.ceil(this.propertyList.length / this.itemsPerPage);
+    }
+   
+    changePage(newPage: number) {
+      if (newPage > 0 && newPage <= this.getTotalPages()) {
+        this.currentPage = newPage;
+      }
     }
   }
  

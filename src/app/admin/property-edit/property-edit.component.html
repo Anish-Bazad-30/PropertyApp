@@ -59,7 +59,7 @@
       <div class="mb-3">
           <!-- Amount (Rs.) -->
           <label for="amount" class="form-label secondary-font">Amount (Rs.)</label>
-          <input type="text" id="amount" placeholder="Enter Amount" class="form-control custom-input" formControlName="amount" />
+          <input type="number" id="amount" min="0" placeholder="Enter Amount" maxlength="10" minlength="1" class="form-control custom-input" formControlName="amount" />
           <div *ngIf="propertyForm.get('amount')?.touched && propertyForm.get('amount')?.invalid" class="text-danger mt-1">
             <small *ngIf="propertyForm.get('amount')?.errors?.['required']">Amount is required.</small>
           </div>
@@ -122,7 +122,7 @@
       </div>
       <div class="mb-3">
           <label for="agentMobile" class="form-label secondary-font">Agent Mobile Number</label>
-          <input type="text" id="agentMobile" placeholder="Enter agent mobile number" class="form-control custom-input"
+          <input type="tel" id="agentMobile" placeholder="Enter agent mobile number" maxlength="10" pattern="[0-9]*" class="form-control custom-input"
               formControlName="agentMobile" />
               <div *ngIf="propertyForm.get('agentMobile')?.touched && propertyForm.get('agentMobile')?.invalid" class="text-danger">
                 <small *ngIf="propertyForm.get('agentMobile')?.errors?.['required']">Mobile number is required.</small>

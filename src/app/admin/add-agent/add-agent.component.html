@@ -28,22 +28,24 @@
       <input type="text" id="mobilenumber" class="form-control custom-input" formControlName="mobilenumber" /> -->
     
       <label for="password" class="form-label secondary-font">Password</label>
-      <input type="text" id="password" class="form-control custom-input" placeholder="Enter password" formControlName="password" />
+      <input type="password" id="password" class="form-control custom-input" placeholder="Enter password" formControlName="password" />
       <div *ngIf="profileForm.get('password')?.touched && profileForm.get('password')?.invalid" class="text-danger">
         <small *ngIf="profileForm.get('password')?.errors?.['required']">Password is required.</small>
         <small *ngIf="profileForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</small>
       </div>
 
       <label for="confirmPassword" class="form-label secondary-font">Confirm Password</label>
-      <input type="text" id="confirmPassword" class="form-control custom-input" placeholder="Confirm password" formControlName="confirmPassword" />
+      <input type="password" id="confirmPassword" class="form-control custom-input" placeholder="Confirm password" formControlName="confirmPassword" />
       <div *ngIf="profileForm.get('confirmPassword')?.touched && profileForm.get('confirmPassword')?.invalid" class="text-danger">
         <small *ngIf="profileForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</small>
-        <small *ngIf="profileForm.get('confirmPassword')?.errors?.['passwordMismatch']">Passwords must match.</small>
+      </div>
+      <div *ngIf="profileForm.errors?.['passwordMismatch'] && profileForm.get('confirmPassword')?.touched" class="text-danger">
+        <small>Passwords must match.</small>
       </div>
     
       <div class=" d-flex justify-content-center mt-4 secondary-font">
         
-        <button type="submit" class="save-button">Submit</button>
+        <button type="submit" class="save-button" [disabled]="profileForm.invalid">Submit</button>
       </div>
     
       

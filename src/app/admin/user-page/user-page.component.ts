@@ -48,11 +48,4 @@ export class UserPageComponent implements OnInit {
     this.router.navigate(['/previous-page']);
   }
 
-  onlyDigits(event: KeyboardEvent) {
-    const charCode = event.key.charCodeAt(0);
-    if (charCode < 48 || charCode > 57) {
-      event.preventDefault();
-    }
-  }
-
 }

@@ -26,7 +26,7 @@ export class EditServiceComponent implements OnInit {
       userId: [''],
       serviceType: ['', Validators.required],
       agentFirmName: [''],
-      amount: [, Validators.required],
+      amount: [, [Validators.required, Validators.pattern('^[0-9]+$')]],
       mobileNumber: ['', [Validators.required, Validators.pattern('[0-9]{10}')]]
     });
 

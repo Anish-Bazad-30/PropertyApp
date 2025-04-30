@@ -23,7 +23,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="table-data" *ngFor="let user of userList; let i = index">
+      <tr class="table-data" *ngFor="let user of userlistview; let i = index">
         <td>{{ i + 1 }}</td>
         <!-- <td><img [src]="user.profilePic" alt="Profile Pic" width="30" /></td> -->
         <td><img src="../../../assets/icon/profile.svg" alt="Profile Pic" width="30" /></td>
@@ -48,4 +48,27 @@
       </tr>
     </tbody>
   </table>
+
+  <nav >
+    <ul class="pagination-ul d-flex justify-content-center align-items-center mt-4">
+        <li class="" [class.disabled]="currentPage === 1">
+            <a class="" (click)="changePage(currentPage - 1)">
+                <img src="assets/icon/Double Left.svg" width="20px">
+            </a>
+        </li>
+ 
+        <li class="ms-3 fs-5"
+            *ngFor="let page of [].constructor(getTotalPages()); let i = index"
+            [class.active]="currentPage === i + 1">
+            <a class="" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+        </li>
+ 
+        <li class="ms-3" [class.disabled]="currentPage === getTotalPages()">
+            <a class="" (click)="changePage(currentPage + 1)">
+                <img src="assets/icon/Double Right.svg" width="20px">
+            </a>
+        </li>
+    </ul>
+</nav>
+
 </div>

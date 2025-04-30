@@ -27,16 +27,20 @@
     <form [formGroup]="profileForm" class="d-flex flex-column form-container mt-3" (ngSubmit)="updateProfile()">
       <label for="username" class="form-label secondary-font">Email</label>
       <input type="email" id="username" class="form-control custom-input" placeholder="Enter email" formControlName="username" />
-      <div *ngIf="profileForm.get('username')?.touched && profileForm.get('email')?.invalid" class="text-danger">
+      <div *ngIf="profileForm.get('username')?.touched && profileForm.get('username')?.invalid" class="text-danger">
         <small *ngIf="profileForm.get('username')?.errors?.['required']">Email is required.</small>
         <small *ngIf="profileForm.get('username')?.errors?.['email']">Please enter a valid email.</small>
       </div>
 
       <label for="email" class="form-label secondary-font">E-mail</label>
       <input type="email" id="email" class="form-control custom-input" placeholder="Enter email" formControlName="email" />
+      <div *ngIf="profileForm.get('email')?.touched && profileForm.get('email')?.invalid" class="text-danger">
+        <small *ngIf="profileForm.get('email')?.errors?.['required']">Email is required.</small>
+        <small *ngIf="profileForm.get('email')?.errors?.['email']">Please enter a valid email.</small>
+      </div>
 
       <label for="mobilenumber" class="form-label secondary-font">Mobile Number</label>
-      <input type="text" id="mobilenumber" class="form-control custom-input" placeholder="Enter mobile number" formControlName="mobilenumber" />
+      <input type="text" id="mobilenumber" class="form-control custom-input" minlength="10" maxlength="10" pattern="[0-9]*" placeholder="Enter mobile number" formControlName="mobilenumber" />
       <div *ngIf="profileForm.get('mobilenumber')?.touched && profileForm.get('mobilenumber')?.invalid" class="text-danger">
         <small *ngIf="profileForm.get('mobilenumber')?.errors?.['required']">Mobile number is required.</small>
         <small *ngIf="profileForm.get('mobilenumber')?.errors?.['pattern']">Please enter a valid mobile number.</small>

@@ -31,7 +31,7 @@
   
     <div class="mb-3">
       <label for="amount" class="form-label">Amount</label>
-      <input type="text" id="amount" class="form-control" placeholder="Enter amount" formControlName="amount" />
+      <input type="number" id="amount" min="0" class="form-control" placeholder="Enter amount" formControlName="amount"  maxlength="10" minlength="1" />
       <div *ngIf="form.get('amount')?.touched && form.get('amount')?.invalid" class="text-danger">
         <small *ngIf="form.get('amount')?.errors?.['required']">Amount is required.</small>
       </div>
@@ -39,7 +39,7 @@
   
     <div class="mb-3">
       <label for="mobile" class="form-label">Mobile Number</label>
-      <input type="text" id="mobile" class="form-control" placeholder="Enter mobile number" formControlName="mobileNumber" maxlength="10" />
+      <input type="tel" id="mobile" class="form-control" placeholder="Enter mobile number" formControlName="mobileNumber" maxlength="10" />
       <div *ngIf="form.get('mobileNumber')?.touched && form.get('mobileNumber')?.invalid" class="text-danger">
         <small *ngIf="form.get('mobileNumber')?.errors?.['required']">Mobile number is required.</small>
         <small *ngIf="form.get('mobileNumber')?.errors?.['pattern']">Please enter a valid 10-digit mobile number.</small>

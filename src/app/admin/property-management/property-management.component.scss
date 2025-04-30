@@ -119,6 +119,25 @@ th {
 .text-danger{
   color: #FF7F7F !important;
 }
+.pagination-ul{
+  list-style: none;
+}
+ 
+.pagination-ul li{
+  cursor: pointer;
+  color: #C4C4C4;
+}
+ 
+.pagination-ul li a {
+  padding: 4px 8px;
+}
+ 
+.pagination-ul li.active a {
+  background-color: #96E1FF;;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
  
 @media screen and (max-width:430px) and (min-width:410px) {
   .table-header {
