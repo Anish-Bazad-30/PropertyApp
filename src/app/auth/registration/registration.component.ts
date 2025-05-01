@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { ReferAndEarnService } from 'src/app/services/refer-and-earn.service';
 import { RegistrationService } from 'src/app/services/registration.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-registration',
@@ -19,7 +20,8 @@ export class RegistrationComponent implements OnInit {
     private registerService: RegistrationService,
     private referAndEarnService: ReferAndEarnService,
     private router: Router,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private storageService: StorageService
   ) { }
 
   ngOnInit() {
@@ -59,18 +61,21 @@ export class RegistrationComponent implements OnInit {
             color: 'success',
           });
           await toast.present();
-      
+
           if (res.data) {
-            sessionStorage.setItem('role', res.data.role);
-            sessionStorage.setItem('userId', res.data.userId);
-            sessionStorage.setItem('userName', res.data.username);
-            sessionStorage.setItem('jwtToken', res.data.token);
-      
+            // sessionStorage.setItem('role', res.data.role);
+            // sessionStorage.setItem('userId', res.data.userId);
+            // sessionStorage.setItem('userName', res.data.username);
+            // sessionStorage.setItem('jwtToken', res.data.token);
+            this.storageService.setPreference('role', res.data.role);
+            this.storageService.setPreference('userId', res.data.userId);
+            this.storageService.setPreference('userName', res.data.username);
+            this.storageService.setPreference('jwtToken', res.data.token);
             this.referAndEarnService.createReferral(this.userName).subscribe({
               next: (refRes) => console.log('Referral created:', refRes),
               error: (error) => console.error('Error generating referral link:', error),
             });
-      
+
             switch (res.data.role) {
               case 'ADMIN':
                 this.router.navigate(['/admin']);
@@ -91,7 +96,7 @@ export class RegistrationComponent implements OnInit {
         },
         error: async (error) => {
           console.error('Error during registration:', error);
-      
+
           const toast = await this.toastCtrl.create({
             message: error?.error?.message || 'An error occurred. Please try again.',
             duration: 6000,

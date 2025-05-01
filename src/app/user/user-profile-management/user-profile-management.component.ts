@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { StorageService } from 'src/app/services/storage.service';
 import { UserProfileManagementService } from 'src/app/services/user-profile-management.service';
 
 @Component({
@@ -15,11 +16,14 @@ export class UserProfileManagementComponent implements OnInit {
   userId: string = "";
 
   profileForm!: FormGroup;
-  constructor(private router: Router, 
-      private toastCtrl: ToastController,
-      private fb: FormBuilder, private userProfileManagementService: UserProfileManagementService) { }
+  constructor(private router: Router,
+    private toastCtrl: ToastController,
+    private fb: FormBuilder,
+    private userProfileManagementService: UserProfileManagementService,
+    private storageService: StorageService,
+  ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
 
     this.profileForm = this.fb.group({
       username: [{ value: '', disabled: true }],
@@ -27,17 +31,24 @@ export class UserProfileManagementComponent implements OnInit {
       mobilenumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       role: [{ value: '', disabled: true }]
     });
+
+    
+
+    const userId = await this.storageService.getPreference('userId');
+    this.userId = userId || '';
+    console.log('User ID:', this.userId);
+   
     this.fetchUserData();
   }
+
+
 
 
   fetchUserData() {
     // const storedUserId = localStorage.getItem('userId');
 
     // this.userId = storedUserId !== null ? storedUserId : '';
-    const storedUserId = sessionStorage.getItem('userId');
-
-    this.userId = storedUserId !== null ? storedUserId : '';
+    
     this.userProfileManagementService.fetchUserData(this.userId).subscribe((res) => {
       console.log(res);
       this.profileForm.patchValue({
@@ -54,8 +65,6 @@ export class UserProfileManagementComponent implements OnInit {
   }
 
   async applyForAgent() {
-    const storedUserId = sessionStorage.getItem('userId');
-    this.userId = storedUserId !== null ? storedUserId : '';
   
     this.userProfileManagementService.joinAsAgent(this.userId).subscribe({
       next: async (res) => {
@@ -65,7 +74,7 @@ export class UserProfileManagementComponent implements OnInit {
           color: 'success',
         });
         await toast.present();
-  
+
         this.profileForm.patchValue({
           role: 'Agent Pending'
         });

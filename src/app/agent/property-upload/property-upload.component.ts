@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { PropertyUploadFormService } from 'src/app/services/property-upload-form.service';
 import { PropertyService } from 'src/app/services/property.service';
 import { SaleFinaliseService } from 'src/app/services/sale-finalise.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-property-upload',
@@ -17,20 +18,22 @@ export class PropertyUploadComponent implements OnInit {
     private router : Router,
     private propertyService : PropertyService,
     private propertyEditService : PropertyUploadFormService,
-    private finaliseSaleService : SaleFinaliseService
+    private finaliseSaleService : SaleFinaliseService,
+    private storageService: StorageService,
   ) { }
 
-  ngOnInit(): void { 
-    // const storedUserId = localStorage.getItem('userId');
-    // this.userId = storedUserId !== null ? storedUserId : '';
-
+  async ngOnInit(){ 
+    
+    const userId = await this.storageService.getPreference('userId');
+    this.userId = userId || '';
+    console.log('User ID:', this.userId);
+   
     this.fetchProperty();
   }
 
 
   fetchProperty(){
-    const storedUserId = sessionStorage.getItem('userId');
-    this.userId = storedUserId !== null ? storedUserId : '';
+   
     this.propertyService.getProperties(this.userId).subscribe((res)=>{
       this.properties= res.data;
       console.log(this.properties);

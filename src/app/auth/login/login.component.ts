@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { ToastController } from '@ionic/angular';
+import { StorageService } from 'src/app/services/storage.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private loginService: LoginService,
     private router: Router,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private storageService: StorageService
   ) { }
 
   ngOnInit() {
@@ -37,11 +39,14 @@ export class LoginComponent implements OnInit {
       this.loginService.login(formData).subscribe({
         next: async (res) => {
           if (res && res.data.token) {
-            sessionStorage.setItem('role', res.data.role);
-            sessionStorage.setItem('userId', res.data.userId);
-            sessionStorage.setItem('userName', res.data.username);
-            sessionStorage.setItem('jwtToken', res.data.token);
-  
+            // sessionStorage.setItem('role', res.data.role);
+            // sessionStorage.setItem('userId', res.data.userId);
+            // sessionStorage.setItem('userName', res.data.username);
+            // sessionStorage.setItem('jwtToken', res.data.token);
+            this.storageService.setPreference('role', res.data.role);
+            this.storageService.setPreference('userId', res.data.userId);
+            this.storageService.setPreference('userName', res.data.username);
+            this.storageService.setPreference('jwtToken', res.data.token);
             const toast = await this.toastCtrl.create({
               message: 'Login successful!',
               duration: 4000,

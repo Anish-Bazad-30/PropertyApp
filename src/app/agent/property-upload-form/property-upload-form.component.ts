@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PropertyUploadFormService } from 'src/app/services/property-upload-form.service';
+import { StorageService } from 'src/app/services/storage.service';
  
 @Component({
   selector: 'app-property-upload',
@@ -15,15 +16,16 @@ export class PropertyUploadFormComponent implements OnInit {
   cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Miami'];
   areas = ['Downtown', 'Suburbs', 'Countryside'];
   sectors = ['Sector A', 'Sector B', 'Sector C'];
-  userId!: any;
+  userName!: any;
  
   constructor(
     private fb: FormBuilder,
     private propertyUpload: PropertyUploadFormService,
-    private router : Router
+    private router : Router,
+     private storageService: StorageService,
   ) {}
  
-  ngOnInit(): void {
+  async ngOnInit(){
     this.propertyForm = this.fb.group({
       propertyName: ['', Validators.required],
       propertyType: ['', Validators.required],
@@ -37,6 +39,10 @@ export class PropertyUploadFormComponent implements OnInit {
       agentMobile: ['', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.minLength(10),
         Validators.maxLength(10)]]
     });
+
+    const userName = await this.storageService.getPreference('userName');
+    this.userName = userName || '';
+    console.log('User ID:', this.userName);
   }
  
   goBack(): void {
@@ -79,12 +85,11 @@ export class PropertyUploadFormComponent implements OnInit {
     // if (this.propertyForm.valid) {
       // const storedUserId = localStorage.getItem('userId');
       // this.userId = storedUserId !== null ? storedUserId : '';
-      const storedUserId = sessionStorage.getItem('userId');
-      this.userId = storedUserId !== null ? storedUserId : '';
+      
       const data1 ={
         ...this.propertyForm.value,
         mediaUrls: [...this.uploadedFilesBase64],
-        agentName: this.userId
+        agentName: this.userName
       }
       console.log('Form Data:', data1);
       this.propertyUpload.uploadProperty(data1).subscribe((res)=>{

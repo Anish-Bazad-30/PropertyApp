@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PropertyUploadFormService } from 'src/app/services/property-upload-form.service';
 import { PropertyService } from 'src/app/services/property.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-property-edit-form',
@@ -21,53 +22,57 @@ export class PropertyEditFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private propertyUpload: PropertyService,
-    private propertyService : PropertyUploadFormService,
-    private router : Router,
+    private propertyService: PropertyUploadFormService,
+    private router: Router,
+     private storageService: StorageService
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
 
-    
+
 
     this.propertyForm = this.fb.group({
-      id:[''],
+      id: [''],
       propertyName: ['', Validators.required],
       propertyType: ['', Validators.required],
-      amount: ['', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.minLength(1),
-        Validators.maxLength(10)]],
+      amount: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(1),
+      Validators.maxLength(10)]],
       description: ['', Validators.required],
       city: ['', Validators.required],
       area: ['', Validators.required],
       sector: ['', Validators.required],
       address: ['', Validators.required],
-      agentMobile: ['', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.minLength(10),
-        Validators.maxLength(10)]]
+      agentMobile: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(10),
+      Validators.maxLength(10)]]
     });
 
     this.propertyService.propertyData$.subscribe(data => {
-     if(data){
-      this.propertyDetail = data;
-      console.log(this.propertyDetail);
-      
-      // Patch the form values from the data
-      this.propertyForm.patchValue({
-        id: data.id,
-        propertyName: data.propertyName || '',
-        propertyType: data.propertyType || '',
-        amount: data.amount || '',
-        description: data.description || '',
-        city: data.city || '',
-        area: data.area || '',
-        sector: data.sector || '',
-        address: data.address || '',
-        agentMobile: data.agentMobile || ''
-      });
+      if (data) {
+        this.propertyDetail = data;
+        console.log(this.propertyDetail);
 
-      // Assign media (base64) to preview
-      this.uploadedFilesBase64 = data.mediaUrls || [];
-     }
-  });
-   
+        // Patch the form values from the data
+        this.propertyForm.patchValue({
+          id: data.id,
+          propertyName: data.propertyName || '',
+          propertyType: data.propertyType || '',
+          amount: data.amount || '',
+          description: data.description || '',
+          city: data.city || '',
+          area: data.area || '',
+          sector: data.sector || '',
+          address: data.address || '',
+          agentMobile: data.agentMobile || ''
+        });
+
+        // Assign media (base64) to preview
+        this.uploadedFilesBase64 = data.mediaUrls || [];
+      }
+    });
+
+    const userId = await this.storageService.getPreference('userId');
+    this.userId = userId || '';
+    console.log('User ID:', this.userId);
   }
 
   goBack(): void {
@@ -107,19 +112,18 @@ export class PropertyEditFormComponent implements OnInit {
   onSave(): void {
     // const storedUserId = localStorage.getItem('userId');
     // this.userId = storedUserId !== null ? storedUserId : '';
-    const storedUserId = sessionStorage.getItem('userId');
-this.userId = storedUserId !== null ? storedUserId : '';
-  
-    const data1 ={
+
+
+    const data1 = {
       ...this.propertyForm.value,
       mediaUrls: [...this.uploadedFilesBase64],
       agentName: this.userId,
-      
+
     }
     console.log('Form Data:', data1);
-    this.propertyUpload.editProperty(data1,data1.id).subscribe((res)=>{
+    this.propertyUpload.editProperty(data1, data1.id).subscribe((res) => {
       console.log(res);
-     
+
     })
     this.propertyForm.reset();
     this.router.navigate(['/agent/landing-page']);

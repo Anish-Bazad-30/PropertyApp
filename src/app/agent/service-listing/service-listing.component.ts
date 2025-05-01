@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/services/storage.service';
 import { VendorServicesService } from 'src/app/services/vendor-services.service';
 
 @Component({
@@ -8,29 +9,37 @@ import { VendorServicesService } from 'src/app/services/vendor-services.service'
   templateUrl: './service-listing.component.html',
   styleUrls: ['./service-listing.component.scss'],
 })
-export class ServiceListingComponent  implements OnInit {
+export class ServiceListingComponent implements OnInit {
 
   services: any[] = [];
   userId: any;
 
   constructor(private fb: FormBuilder, private router: Router,
-    private vendorService : VendorServicesService
-  ) { 
-  }
+    private vendorService: VendorServicesService,
+    private storageService: StorageService,
+  ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    const userId = await this.storageService.getPreference('userId');
+    this.userId = userId || '';
+    console.log('User ID:', this.userId);
     this.loadServices();
   }
 
   loadServices(): void {
-    // const storedUserId = localStorage.getItem('userId');
-    // this.userId = storedUserId !== null ? storedUserId : '';
-    const storedUserId = sessionStorage.getItem('userId');
-this.userId = storedUserId !== null ? storedUserId : '';
-    this.vendorService.getServicesByAgentId(this.userId).subscribe((res:any)=>{
-      console.log(res);
-      this.services = res.data;
-    })
+
+
+    this.vendorService.getServicesByAgentId(this.userId).subscribe({
+      next: (res: any) => {
+        this.services = res.data;
+      },
+      error: (err) => {
+        if (err.status === 404) {
+          this.services = []; // clear services
+        }
+        console.error('Error loading services:', err);
+      }
+    });
   }
 
   editService(service: any): void {
@@ -40,15 +49,15 @@ this.userId = storedUserId !== null ? storedUserId : '';
         serviceType: service.serviceType,
         agentFirmName: service.agentFirmName,
         amount: service.amount,
-        userId: service.userId 
+        userId: service.userId
       }
     });
   }
 
   deleteService(serviceId: any): void {
-    this.vendorService.deleteServiceById(serviceId).subscribe((res)=>{
+    this.vendorService.deleteServiceById(serviceId).subscribe((res) => {
       console.log("aadsdsadsa");
-      
+
       this.loadServices();
     })
   }
@@ -65,6 +74,5 @@ this.userId = storedUserId !== null ? storedUserId : '';
     console.log('Menu clicked');
   }
 }
-  
 
- 
+

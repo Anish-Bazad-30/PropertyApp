@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReferAndEarnService } from 'src/app/services/refer-and-earn.service';
 import { Share } from '@capacitor/share';
+import { StorageService } from 'src/app/services/storage.service';
 @Component({
   selector: 'app-refer-earn',
   templateUrl: './refer-and-earn.component.html',
@@ -12,16 +13,17 @@ export class ReferEarnComponent implements OnInit {
   totalReferrals: string = '0';
   userName: string = '';
 
-  constructor(private referAndEarnService: ReferAndEarnService,) { }
+  constructor(
+    private referAndEarnService: ReferAndEarnService,
+    private storageService: StorageService,
+  ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
 
     //   const storedUserName = localStorage.getItem('userName');
     // this.userId = storedUserName !== null ? storedUserName : '';
-    const storedUserName = sessionStorage.getItem('userName');
-    this.userName = storedUserName !== null ? storedUserName : '';
-
-    console.log('User ID:', this.userName); // Here we check if userId is correct
+    const userId = await this.storageService.getPreference('userName');
+    this.userName = userId || '';
 
     if (this.userName) {
       this.fetchReferralLink();
@@ -38,7 +40,6 @@ export class ReferEarnComponent implements OnInit {
   }
 
   async fetchReferralLink() {
-    console.log('Calling getReferrals API with userId:', this.userName);
     this.referAndEarnService.getReferrals(this.userName).subscribe(
       (res: any) => {
         console.log('API Response:', res);
