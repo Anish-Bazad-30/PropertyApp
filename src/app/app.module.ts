@@ -16,7 +16,6 @@ import { AuthModule } from './auth/auth.module';
 import { LoaderInterceptor } from './interceptor/loader.interceptor';
 import { LoaderComponent } from './loader/loader.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +35,7 @@ import { LoaderComponent } from './loader/loader.component';
     AdminModule,
     AuthModule,
     IonicModule,
+    
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

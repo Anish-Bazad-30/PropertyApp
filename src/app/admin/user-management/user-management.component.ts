@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { UserProfileManagementService } from 'src/app/services/user-profile-management.service';
 
 @Component({
@@ -9,14 +10,16 @@ import { UserProfileManagementService } from 'src/app/services/user-profile-mana
 })
 export class UserManagementComponent implements OnInit {
   searchText: string = '';
-userListOriginal: any[] = [];  // unfiltered list from backend
-userList: any[] = [];
-currentPage=1;
-itemsPerPage=10;
+  userListOriginal: any[] = [];  // unfiltered list from backend
+  userList: any[] = [];
+  currentPage = 1;
+  itemsPerPage = 10;
 
   constructor(
-    private userProfileManagement: UserProfileManagementService, 
-    private router: Router) {}
+    private userProfileManagement: UserProfileManagementService,
+    private router: Router,
+    private confirmService: ConfirmDialogService
+  ) { }
 
   ngOnInit(): void {
     this.loadUsers();
@@ -26,7 +29,7 @@ itemsPerPage=10;
     this.userProfileManagement.fetchAllUsersData().subscribe((res) => {
       this.userListOriginal = res.data;
       this.userList = [...this.userListOriginal];
-  });
+    });
   }
   filterUsers() {
     const query = this.searchText.toLowerCase();
@@ -35,7 +38,7 @@ itemsPerPage=10;
     );
   }
 
-  addNew(){
+  addNew() {
     this.router.navigate(['/admin/add-user']);
   }
 
@@ -45,19 +48,29 @@ itemsPerPage=10;
   }
 
   deleteUser(user: any): void {
-    this.userProfileManagement.deleteUserProfile(user).subscribe((res)=>{
-      this.loadUsers();
-    })
+    this.confirmService
+      .confirm('Confirm Deletion', 'Are you sure you want to delete this User?')
+      .subscribe((result) => {
+        if (result) {
+
+          this.userProfileManagement.deleteUserProfile(user).subscribe((res) => {
+            this.loadUsers();
+          })
+        } else {
+          // Deletion cancelled
+          console.log('Deletion cancelled');
+        }
+      });
   }
   get userlistview() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     return this.userList.slice(startIndex, startIndex + this.itemsPerPage);
   }
- 
+
   getTotalPages(): number {
     return Math.ceil(this.userList.length / this.itemsPerPage);
   }
- 
+
   changePage(newPage: number) {
     if (newPage > 0 && newPage <= this.getTotalPages()) {
       this.currentPage = newPage;

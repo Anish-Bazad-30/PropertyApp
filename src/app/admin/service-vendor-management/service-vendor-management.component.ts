@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { VendorServicesService } from 'src/app/services/vendor-services.service';
 
 @Component({
@@ -15,7 +16,8 @@ itemsPerPage = 10;
 currentPage = 1;
   constructor(
     private router: Router,
-    private vendorService: VendorServicesService
+    private vendorService: VendorServicesService,
+    private confirmService: ConfirmDialogService
   ) { }
   ngOnInit(): void {
     this.fetchAllServices();
@@ -31,9 +33,21 @@ currentPage = 1;
   }
 
   deleteService(serviceId: any): void {
-    this.vendorService.deleteServiceById(serviceId).subscribe((res) => {
-      this.fetchAllServices();
-    })
+    this.confirmService
+      .confirm('Confirm Deletion', 'Are you sure you want to delete this Service?')
+      .subscribe((result) => {
+        if (result) {
+
+          this.vendorService.deleteServiceById(serviceId).subscribe((res) => {
+            this.fetchAllServices();
+          })
+        } else {
+          // Deletion cancelled
+          console.log('Deletion cancelled');
+        }
+      });
+    
+ 
   }
   filterVendorList() {
     const search = this.searchText.toLowerCase().trim();

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AgentProfileManagementService } from 'src/app/services/agent-profile-management.service';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 
 @Component({
   selector: 'app-agent-management',
@@ -16,7 +17,8 @@ agentListFilter: any[] = [];
 
   constructor(
     private router: Router, 
-    private agentProfileManagement: AgentProfileManagementService
+    private agentProfileManagement: AgentProfileManagementService,
+     private confirmService: ConfirmDialogService
   ) {}
 
   ngOnInit(): void {
@@ -51,9 +53,22 @@ agentListFilter: any[] = [];
   }
 
   deleteAgent(agent: any): void {
-    this.agentProfileManagement.deleteAgentProfile(agent).subscribe((res)=>{
-      this.loadAgents();
-    })
+    this.confirmService
+      .confirm('Confirm Deletion', 'Are you sure you want to delete this Agent?')
+      .subscribe((result) => {
+        if (result) {
+
+          this.agentProfileManagement.deleteAgentProfile(agent).subscribe((res)=>{
+            this.loadAgents();
+          })
+       
+        } else {
+          // Deletion cancelled
+          console.log('Deletion cancelled');
+        }
+      });
+    
+    
   }
 
   get agentListview() {

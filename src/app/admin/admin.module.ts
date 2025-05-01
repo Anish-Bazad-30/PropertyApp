@@ -26,6 +26,11 @@ import { NgChartsModule } from 'ng2-charts';
 import { UserEngagementChartComponent } from './app-analytics/user-engagement-chart/user-engagement-chart.component';
 import { UserEngagementDonutChartComponent } from './app-analytics/user-engagement-donut-chart/user-engagement-donut-chart.component';
 import { ReferralPieChartComponent } from './app-analytics/referral-pie-chart/referral-pie-chart.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DeletePopupComponent } from '../delete-popup/delete-popup.component';
+
+
 
 
 
@@ -52,7 +57,8 @@ import { ReferralPieChartComponent } from './app-analytics/referral-pie-chart/re
     MainComponent,
     UserEngagementChartComponent,
     UserEngagementDonutChartComponent,
-    ReferralPieChartComponent
+    ReferralPieChartComponent,
+    DeletePopupComponent
   ],
   imports: [
     CommonModule,
@@ -61,7 +67,9 @@ import { ReferralPieChartComponent } from './app-analytics/referral-pie-chart/re
     IonicModule,
     RouterModule,
     AdminRoutingModule,
-    NgChartsModule
+    NgChartsModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   exports: [
     AdminDashboardComponent,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { PropertyUploadFormService } from 'src/app/services/property-upload-form.service';
 import { PropertyService } from 'src/app/services/property.service';
  
@@ -18,7 +19,8 @@ itemsPerPage= 10;
   constructor(
     private router: Router, private propertyManagement: PropertyService,
     
-        private propertyEditService : PropertyUploadFormService
+        private propertyEditService : PropertyUploadFormService,
+        private confirmService: ConfirmDialogService
   ) {}
 
   ngOnInit(): void {
@@ -50,9 +52,20 @@ itemsPerPage= 10;
   }
  
   deleteProperty(property: any): void {
-    this.propertyManagement.deleteProperty(property).subscribe((res)=>{
-      this.loadProperties(); 
-    })
+    
+    this.confirmService
+      .confirm('Confirm Deletion', 'Are you sure you want to delete this Property?')
+      .subscribe((result) => {
+        if (result) {
+
+          this.propertyManagement.deleteProperty(property).subscribe((res)=>{
+            this.loadProperties(); 
+          })
+        } else {
+          // Deletion cancelled
+          console.log('Deletion cancelled');
+        }
+      });
     }
     get propertyListview() {
       const startIndex = (this.currentPage - 1) * this.itemsPerPage;
