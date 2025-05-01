@@ -13,6 +13,7 @@ import { BuyerDetailsComponent } from './buyer-details/buyer-details.component';
 import { MainComponent } from './main/main.component';
 import { RouterModule } from '@angular/router';
 import { AgentRoutingModule } from './agent-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -26,7 +27,7 @@ import { AgentRoutingModule } from './agent-routing.module';
     AddServiceComponent,
     EditServiceComponent,
     BuyerDetailsComponent,
-    MainComponent
+    MainComponent,
   ],
   imports: [
     AgentRoutingModule,
@@ -35,6 +36,7 @@ import { AgentRoutingModule } from './agent-routing.module';
     FormsModule,
     IonicModule,
     RouterModule,
+    SharedModule
   ],
   exports: [
     PropertyUploadFormComponent,

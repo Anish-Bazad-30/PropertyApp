@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { VendorServicesService } from 'src/app/services/vendor-services.service';
 
@@ -17,6 +18,7 @@ export class ServiceListingComponent implements OnInit {
   constructor(private fb: FormBuilder, private router: Router,
     private vendorService: VendorServicesService,
     private storageService: StorageService,
+    private confirmService: ConfirmDialogService
   ) { }
 
   async ngOnInit() {
@@ -55,11 +57,23 @@ export class ServiceListingComponent implements OnInit {
   }
 
   deleteService(serviceId: any): void {
-    this.vendorService.deleteServiceById(serviceId).subscribe((res) => {
-      console.log("aadsdsadsa");
+    
+    this.confirmService
+      .confirm('Confirm Deletion', 'Are you sure you want to delete this Service?')
+      .subscribe((result) => {
+        if (result) {
 
-      this.loadServices();
-    })
+          this.vendorService.deleteServiceById(serviceId).subscribe((res) => {
+            console.log("aadsdsadsa");
+      
+            this.loadServices();
+          })
+
+        } else {
+          // Deletion cancelled
+          console.log('Deletion cancelled');
+        }
+      });
   }
 
   addService(): void {

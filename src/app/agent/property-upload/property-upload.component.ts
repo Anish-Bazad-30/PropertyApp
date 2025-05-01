@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { PropertyUploadFormService } from 'src/app/services/property-upload-form.service';
 import { PropertyService } from 'src/app/services/property.service';
 import { SaleFinaliseService } from 'src/app/services/sale-finalise.service';
 import { StorageService } from 'src/app/services/storage.service';
+
 
 @Component({
   selector: 'app-property-upload',
@@ -11,36 +13,37 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./property-upload.component.scss']
 })
 export class PropertyUploadComponent implements OnInit {
-  properties :any[]=[];
+  properties: any[] = [];
   userId!: any;
 
   constructor(
-    private router : Router,
-    private propertyService : PropertyService,
-    private propertyEditService : PropertyUploadFormService,
-    private finaliseSaleService : SaleFinaliseService,
+    private router: Router,
+    private propertyService: PropertyService,
+    private propertyEditService: PropertyUploadFormService,
+    private finaliseSaleService: SaleFinaliseService,
     private storageService: StorageService,
+    private confirmService: ConfirmDialogService
   ) { }
 
-  async ngOnInit(){ 
-    
+  async ngOnInit() {
+
     const userId = await this.storageService.getPreference('userId');
     this.userId = userId || '';
     console.log('User ID:', this.userId);
-   
+
     this.fetchProperty();
   }
 
 
-  fetchProperty(){
-   
-    this.propertyService.getProperties(this.userId).subscribe((res)=>{
-      this.properties= res.data;
+  fetchProperty() {
+
+    this.propertyService.getProperties(this.userId).subscribe((res) => {
+      this.properties = res.data;
       console.log(this.properties);
-      
+
     })
   }
-  addNew(){
+  addNew() {
     this.router.navigate(['/agent/upload-property'])
   }
   finalizeSale(property: any) {
@@ -50,20 +53,32 @@ export class PropertyUploadComponent implements OnInit {
 
   editProperty(property: any) {
     console.log(property);
-    
+
     this.propertyEditService.setPropertyData(property);
     this.router.navigate(['/agent/edit-property']);
-   
+
   }
 
   deleteProperty(propertyId: any) {
-  
-    
-    // console.log('Form Data:', propertyId);
-    this.propertyService.deleteProperty(propertyId).subscribe((res)=>{
-      console.log(res);
-      this.fetchProperty();
-    })
+
+
+    this.confirmService
+      .confirm('Confirm Deletion', 'Are you sure you want to delete this Property?')
+      .subscribe((result) => {
+        if (result) {
+
+
+          // console.log('Form Data:', propertyId);
+          this.propertyService.deleteProperty(propertyId).subscribe((res) => {
+            console.log(res);
+            this.fetchProperty();
+          })
+
+        } else {
+          // Deletion cancelled
+          console.log('Deletion cancelled');
+        }
+      });
   }
 
 }
