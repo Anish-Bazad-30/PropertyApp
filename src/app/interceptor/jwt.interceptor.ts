@@ -28,6 +28,8 @@ export class JwtInterceptor implements HttpInterceptor {
     return from(this.storageService.getPreference('jwtToken')).pipe(
       switchMap((token: string | null) => {
         if (token) {
+          console.log(token);
+          
           req = req.clone({
             setHeaders: {
               Authorization: `Bearer ${token}`,

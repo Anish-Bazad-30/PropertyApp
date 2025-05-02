@@ -43,5 +43,7 @@ export class VendorServicesService {
     getVendorData(): any {
       return this.vendorSubject.getValue();
     }
+
+    
 }
 

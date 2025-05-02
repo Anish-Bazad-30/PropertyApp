@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-main',
@@ -14,7 +15,8 @@ export class MainComponent  implements OnInit {
     constructor(
       private menu: MenuController,
       private location: Location,
-      private router: Router
+      private router: Router,
+      private storageService: StorageService,
     ) { }
   
     ngOnInit() {}
@@ -32,9 +34,11 @@ export class MainComponent  implements OnInit {
      }
   
      logout(){
-      // localStorage.clear();
-      sessionStorage.clear();
-      //clear seesion stroge here
+      this.storageService.clearPreference().then(() => {
+        this.router.navigate(['/login']); // Redirect to login page
+      }).catch(error => {
+        console.error('Error clearing preferences on logout:', error);
+      });
       this.router.navigate(['/auth/login']);
      }
 }

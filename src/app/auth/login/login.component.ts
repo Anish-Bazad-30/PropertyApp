@@ -22,6 +22,11 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.storageService.clearPreference().then(() => {
+      this.router.navigate(['/login']); // Redirect to login page
+    }).catch(error => {
+      console.error('Error clearing preferences on logout:', error);
+    });
     // Define the reactive form with validation rules
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.email]], // email is required
