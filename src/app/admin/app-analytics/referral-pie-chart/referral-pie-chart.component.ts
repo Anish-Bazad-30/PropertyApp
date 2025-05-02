@@ -35,7 +35,7 @@ export class ReferralPieChartComponent implements OnInit {
     responsive: true,
     plugins: {
       legend: {
-        position: 'right',
+        position: 'bottom',
         labels: {
           color: 'white',
           usePointStyle: true,

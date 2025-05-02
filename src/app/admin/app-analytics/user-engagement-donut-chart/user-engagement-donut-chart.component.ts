@@ -33,7 +33,7 @@ export class UserEngagementDonutChartComponent {
       //   text: 'User Engagement Overview'
       // },
       legend: {
-        position: 'right',
+        position: 'bottom',
         display : true,
         labels: {
           color:"#fff",
