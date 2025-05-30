@@ -126,6 +126,7 @@ export class PropertyEditFormComponent implements OnInit {
 
     })
     this.propertyForm.reset();
+    
     this.router.navigate(['/agent/landing-page']);
   }
 

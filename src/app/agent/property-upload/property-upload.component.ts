@@ -31,7 +31,9 @@ export class PropertyUploadComponent implements OnInit {
     this.userId = userId || '';
     console.log('User ID:', this.userId);
 
-    this.fetchProperty();
+    setTimeout(() => {
+      this.fetchProperty();
+    }, 500);
   }
 
 
