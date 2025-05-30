@@ -14,7 +14,7 @@
   
     <div class="mb-3">
       <label for="contactNumber" class="form-label secondary-font">Contact Number</label>
-      <input type="tel" id="contactNumber" class="form-control custom-input" formControlName="contactNumber" />
+      <input type="tel" id="contactNumber" class="form-control custom-input" formControlName="contactNumber" (keypress)="onlyDigits($event)"/>
       <div *ngIf="saleForm.get('contactNumber')?.touched && saleForm.get('contactNumber')?.invalid" class="text-danger">
         <div *ngIf="saleForm.get('contactNumber')?.hasError('required')">Contact number is required.</div>
         <div *ngIf="saleForm.get('contactNumber')?.hasError('pattern')">Invalid contact number. Must be 10 digits.</div>
