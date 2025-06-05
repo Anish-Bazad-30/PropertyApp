@@ -6,6 +6,7 @@ import { ReferEarnComponent } from './refer-and-earn/refer-and-earn.component';
 import { UserProfileManagementComponent } from './user-profile-management/user-profile-management.component';
 import { VendorServicesPageComponent } from './vendor-services-page/vendor-services-page.component';
 import { MainComponent } from './main/main.component';
+import { PostPropertyFormComponent } from './post-property-form/post-property-form.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'refer-and-earn', component: ReferEarnComponent },
       { path: 'profile', component: UserProfileManagementComponent },
       { path: 'vendor-service', component: VendorServicesPageComponent },
+      { path: 'post-property', component: PostPropertyFormComponent },
       { path: '', redirectTo: 'landing-page', pathMatch: 'full' }
     ]
   }
