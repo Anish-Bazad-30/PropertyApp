@@ -133,7 +133,22 @@
   border-radius: 10px;
   cursor: pointer;
 }
- 
+ion-button {
+  --background: #FFFFFF;
+  --background-hover: #FFFFFF;
+  --background-activated: #FFFFFF;
+  --background-focused: #FFFFFF;
+  --color: #11405A !important;
+  --border-radius: 10px !important;
+  --padding-top: 10px !important;
+  --padding-bottom: 10px !important;
+  min-height: 20px !important;
+  width: 40%;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  text-transform: none;
+}
 @media only screen and (max-width: 390px) and (min-width: 320px) {
   .property-title{
     font-size: 15px;

@@ -1,0 +1,185 @@
+.main-container {
+    min-height: 100%;
+    width: 100vw;
+  }
+   
+  .title {
+    font-size: 28px;
+    font-weight: 300;
+    color: #ffffff;
+  }
+   
+   
+  .form-container {
+    width: 100%;
+    margin-top: 20px;
+  }
+   
+  label {
+    color: #ffffff;
+    font-size: 16px;
+  }
+   
+  input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    background: #ffffff;
+    color: #000;
+  }
+   
+  input,
+  select {
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+  }
+   
+   
+  .image-container {
+    position: relative;
+    display: inline-block;
+    margin-right: 8px;
+  }
+   
+  .image-container img.main-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+  }
+  .main-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+  }
+   
+  .delete-icon {
+    position: absolute;
+    top: 0px;
+    right: -3px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+   
+   
+   
+   
+   
+   
+  /* Image Upload Section */
+  .image-upload-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  }
+   
+  .upload-button {
+      background-color: #ffffff;
+      color: #11405A;
+      border: 1px solid #11405A;
+      padding: 6px 16px;
+      cursor: pointer;
+      border-radius: 10px;
+  }
+   
+  ion-button {
+    --background: #FFFFFF;
+    --background-hover: #FFFFFF;
+    --background-activated: #FFFFFF;
+    --background-focused: #FFFFFF;
+    --color: #11405A !important;
+    --border-radius: 20px !important;
+    --padding-top: 10px !important;
+    --padding-bottom: 10px !important;
+    min-height: 20px !important;
+    width: 80%;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    text-transform: none;
+  }
+   
+  @media screen and (min-width:540px){
+    .title{
+      font-size: 34px;
+    }
+    label{
+      font-size: 20px;
+    }
+    .form-container{
+      width: 100%;
+    }
+    input, .form-select{
+      font-size: 20px;
+    }
+    .upload-button{
+      font-size: 26px;
+    }
+    ion-button{
+      font-size: 26px;
+    }
+  }
+   
+  @media screen and (max-width:840px) and (min-width:740px){
+    .title{
+      font-size: 50px;
+    }
+    label{
+      font-size: 24px;
+    }
+    .form-container{
+      width: 100%;
+    }
+    input, .form-select{
+      font-size: 24px;
+    }
+    .upload-button{
+      font-size: 26px;
+    }
+    ion-button{
+      font-size: 26px;
+    }
+  }
+  @media screen and (max-width:940px) and (min-width:850px){
+    .title{
+      font-size: 50px;
+    }
+    label{
+      font-size: 30px;
+      margin-top: 40px;
+    }
+    .form-container{
+      width: 100%;
+    }
+    input, .form-select{
+      font-size: 24px;
+    }
+    ion-button{
+      font-size: 26px;
+    }
+  }
+  @media screen and (min-width:1024px){
+    .title{
+      font-size: 60px;
+    }
+    label{
+      font-size: 30px;
+      margin-top: 50px;
+    }
+    .form-container{
+      width: 100%;
+    }
+    input, .form-select{
+      font-size: 26px;
+    }
+    .upload-button{
+      font-size: 30px;
+    }
+    ion-button{
+      font-size: 30px;
+    }
+  }
