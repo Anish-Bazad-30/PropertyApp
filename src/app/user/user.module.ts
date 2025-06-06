@@ -10,12 +10,14 @@ import { UserRoutingModule } from './user-routing.module';
 import { MainComponent } from './main/main.component';
 import { RouterModule } from '@angular/router';
 import { PropertyDetailViewComponent } from './property-detail-view/property-detail-view.component';
+import { PostPropertyFormComponent } from './post-property-form/post-property-form.component';
 @NgModule({
   declarations: [UserLandingPageComponent,
     VendorServicesPageComponent,
     UserProfileManagementComponent,
     ReferEarnComponent,
     PropertyDetailViewComponent,
+    PostPropertyFormComponent,
     MainComponent
   ],
   imports: [

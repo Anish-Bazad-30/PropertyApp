@@ -149,6 +149,18 @@ ion-button {
   border: none;
   text-transform: none;
 }
+
+.whatsapp-container {
+  position: sticky;
+  float:right;
+  bottom: 20px;
+  right: 20px;
+  width: 70px; /* Adjust size as needed */
+  height: 70px;
+  z-index: 9999;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 390px) and (min-width: 320px) {
   .property-title{
     font-size: 15px;
@@ -300,3 +312,6 @@ ion-button {
     height: 190px;
   }
 }
+
+
+

@@ -12,7 +12,7 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class PostPropertyFormComponent  implements OnInit {
 
- propertyForm!: FormGroup;
+  propertyForm!: FormGroup;
   uploadedImages: File[] = [];
   propertyTypes = ['House', 'Apartment', 'Commercial', 'Land'];
   cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Miami'];
@@ -96,7 +96,7 @@ export class PostPropertyFormComponent  implements OnInit {
       console.log('Form Data:', data1);
       this.propertyUpload.uploadProperty(data1).subscribe((res)=>{
         console.log(res);
-        this.router.navigate(['user/landing-page']);
+        this.router.navigate(['']);
       })
       this.propertyForm.reset();
       
