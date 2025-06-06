@@ -15,7 +15,8 @@ export class AdminDashboardComponent  implements OnInit {
     'property': 'admin/property-management',
     'vendor': 'admin/service-management',
     'referral': 'admin/referral-management',
-    'statistics': 'admin/app-usage-statistic'
+    'statistics': 'admin/app-usage-statistic',
+    'ads-management': 'admin/ads-management'
   };
  
   navigateTo(key: string) {

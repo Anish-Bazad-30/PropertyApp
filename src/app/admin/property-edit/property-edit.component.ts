@@ -36,7 +36,8 @@ export class PropertyEditComponent implements OnInit {
       area: ['', Validators.required],
       sector: ['', Validators.required],
       address: ['', Validators.required],
-      agentMobile: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
+      agentMobile: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      flatOwnerMobile: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
     });
 
     this.propertyService.propertyData$.subscribe(data => {
@@ -124,4 +125,10 @@ onCancel(): void {
       this.router.navigate(['/admin/property-management']);
     
 }
+  onlyDigits(event: KeyboardEvent) {
+    const charCode = event.key.charCodeAt(0);
+    if (charCode < 48 || charCode > 57) {
+      event.preventDefault();
+    }
+  }
 }

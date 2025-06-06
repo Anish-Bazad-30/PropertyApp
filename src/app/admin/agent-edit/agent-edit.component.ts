@@ -115,4 +115,10 @@ export class AgentEditComponent  implements OnInit {
         }
       });
     }
+    onlyDigits(event: KeyboardEvent) {
+    const charCode = event.key.charCodeAt(0);
+    if (charCode < 48 || charCode > 57) {
+      event.preventDefault();
+    }
+  }
   }

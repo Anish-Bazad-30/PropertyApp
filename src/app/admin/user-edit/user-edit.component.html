@@ -32,7 +32,7 @@
       </div>
     
       <label for="mobilenumber" class="form-label secondary-font">Mobile Number</label>
-      <input type="tel" id="mobilenumber" class="form-control custom-input" minlength="10" maxlength="10" pattern="[0-9]*" placeholder="Enter mobile number" formControlName="mobilenumber" />
+      <input type="tel" id="mobilenumber" class="form-control custom-input" minlength="10" maxlength="10" pattern="[0-9]*" placeholder="Enter mobile number" inputmode="numeric" formControlName="mobilenumber" (keypress)="onlyDigits($event)" />
       <div *ngIf="profileForm.get('mobilenumber')?.touched && profileForm.get('mobilenumber')?.invalid" class="text-danger">
         <small *ngIf="profileForm.get('mobilenumber')?.errors?.['required']">Mobile number is required.</small>
         <small *ngIf="profileForm.get('mobilenumber')?.errors?.['pattern']">Please enter a valid mobile number.</small>

@@ -38,7 +38,7 @@ export class PostPropertyFormComponent  implements OnInit {
       area: ['', Validators.required],
       sector: ['', Validators.required],
       address: ['', Validators.required],
-      agentMobile: ['', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.minLength(10),
+      Mobile: ['', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.minLength(10),
         Validators.maxLength(10)]]
     });
 

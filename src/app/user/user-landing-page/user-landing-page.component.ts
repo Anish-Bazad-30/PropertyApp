@@ -117,5 +117,7 @@ export class UserLandingPageComponent implements OnInit {
       return `data:video/mp4;base64,${media}`;
     }
   }
-
+ postProperty() {
+    this.router.navigate(['/user/post-property']);
+  }
 }

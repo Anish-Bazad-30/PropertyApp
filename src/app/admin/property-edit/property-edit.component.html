@@ -122,8 +122,8 @@
       </div>
       <div class="mb-3">
           <label for="agentMobile" class="form-label secondary-font">Agent Mobile Number</label>
-          <input type="tel" id="agentMobile" placeholder="Enter agent mobile number" maxlength="10" pattern="[0-9]*" class="form-control custom-input"
-              formControlName="agentMobile" />
+          <input type="tel" id="agentMobile" placeholder="Enter agent mobile number" maxlength="10" inputmode="numeric" pattern="[0-9]*" class="form-control custom-input"
+              formControlName="agentMobile" (keypress)="onlyDigits($event)" />
               <div *ngIf="propertyForm.get('agentMobile')?.touched && propertyForm.get('agentMobile')?.invalid" class="text-danger">
                 <small *ngIf="propertyForm.get('agentMobile')?.errors?.['required']">Mobile number is required.</small>
                 <small *ngIf="propertyForm.get('agentMobile')?.errors?.['pattern']">Mobile number must be of exactly 10 digits.</small>
@@ -141,8 +141,9 @@
 
          <div class="mb-3">
           <label for="flatOwnerMobile" class="form-label secondary-font">Flat Owner Mobile Number</label>
-          <input type="tel" id="flatOwnerMobile" placeholder="Enter flat owner mobile number" maxlength="10" pattern="[0-9]*" class="form-control custom-input"
-              formControlName="flatOwnerMobile" />
+          <input type="text" id="flatOwnerMobile" class="form-control custom-input" formControlName="flatOwnerMobile"
+             placeholder="Enter mobile number" required maxlength="10" inputmode="numeric" pattern="[0-9]{10}"
+             (keypress)="onlyDigits($event)" />
               <div *ngIf="propertyForm.get('flatOwnerMobile')?.touched && propertyForm.get('flatOwnerMobile')?.invalid" class="text-danger">
                 <small *ngIf="propertyForm.get('flatOwnerMobile')?.errors?.['required']">Mobile number is required.</small>
                 <small *ngIf="propertyForm.get('flatOwnerMobile')?.errors?.['pattern']">Mobile number must be of exactly 10 digits.</small>

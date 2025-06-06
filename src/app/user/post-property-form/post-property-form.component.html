@@ -138,16 +138,16 @@
             </div>
         </div>
         <div class="mb-3">
-            <label for="agentMobile" class="form-label secondary-font">Agent Mobile Number</label>
-            <input type="tel" id="agentMobile" minlength="10" maxlength="10" pattern="[0-9]*" placeholder="Enter agent mobile number"
-                class="form-control custom-input" formControlName="agentMobile"  (keypress)="onlyDigits($event)" />
+            <label for="Mobile" class="form-label secondary-font">Mobile Number</label>
+            <input type="tel" id="Mobile" minlength="10" maxlength="10" pattern="[0-9]*" placeholder="Enter mobile number"
+                class="form-control custom-input" formControlName="Mobile"  (keypress)="onlyDigits($event)" />
 
 
-                <div *ngIf="propertyForm.get('agentMobile')?.touched && propertyForm.get('agentMobile')?.invalid" class="text-danger">
-                    <small *ngIf="propertyForm.get('agentMobile')?.errors?.['required']">Mobile number is required.</small>
-                    <small *ngIf="propertyForm.get('agentMobile')?.errors?.['pattern']">Only digits are allowed.</small>
-                    <small *ngIf="propertyForm.get('agentMobile')?.errors?.['minlength']">Mobile number must be 10 digits long.</small>
-                    <small *ngIf="propertyForm.get('agentMobile')?.errors?.['maxlength']">Mobile number must be 10 digits long.</small>
+                <div *ngIf="propertyForm.get('Mobile')?.touched && propertyForm.get('Mobile')?.invalid" class="text-danger">
+                    <small *ngIf="propertyForm.get('Mobile')?.errors?.['required']">Mobile number is required.</small>
+                    <small *ngIf="propertyForm.get('Mobile')?.errors?.['pattern']">Only digits are allowed.</small>
+                    <small *ngIf="propertyForm.get('Mobile')?.errors?.['minlength']">Mobile number must be 10 digits long.</small>
+                    <small *ngIf="propertyForm.get('Mobile')?.errors?.['maxlength']">Mobile number must be 10 digits long.</small>
                   </div>
         </div>
         <div class="d-flex justify-content-center">
