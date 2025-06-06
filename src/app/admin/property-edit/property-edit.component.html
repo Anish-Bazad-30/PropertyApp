@@ -130,6 +130,26 @@
               </div>
       </div>
 
+       <div class="mb-3">
+          <label for="flatOwnerName" class="form-label secondary-font">Flat Owner Name</label>
+          <input type="text" id="flatOwnerName" placeholder="Enter flat owner name" class="form-control custom-input"
+              formControlName="flatOwnerName" />
+              <div *ngIf="propertyForm.get('flatOwnerName')?.touched && propertyForm.get('flatOwnerName')?.invalid" class="text-danger mt-1">
+                <small *ngIf="propertyForm.get('flatOwnerName')?.errors?.['required']">Flat Owner Name is required.</small>
+              </div>     
+      </div>
+
+         <div class="mb-3">
+          <label for="flatOwnerMobile" class="form-label secondary-font">Flat Owner Mobile Number</label>
+          <input type="tel" id="flatOwnerMobile" placeholder="Enter flat owner mobile number" maxlength="10" pattern="[0-9]*" class="form-control custom-input"
+              formControlName="flatOwnerMobile" />
+              <div *ngIf="propertyForm.get('flatOwnerMobile')?.touched && propertyForm.get('flatOwnerMobile')?.invalid" class="text-danger">
+                <small *ngIf="propertyForm.get('flatOwnerMobile')?.errors?.['required']">Mobile number is required.</small>
+                <small *ngIf="propertyForm.get('flatOwnerMobile')?.errors?.['pattern']">Mobile number must be of exactly 10 digits.</small>
+              </div>
+      </div>
+
+
       <!-- <div class="submit-button-container">
           <button type="submit" [disabled]="propertyForm.invalid" class="submit-button">
               Submit
