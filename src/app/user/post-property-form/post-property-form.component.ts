@@ -38,7 +38,7 @@ export class PostPropertyFormComponent  implements OnInit {
       area: ['', Validators.required],
       sector: ['', Validators.required],
       address: ['', Validators.required],
-      Mobile: ['', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.minLength(10),
+      agentMobile: ['', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.minLength(10),
         Validators.maxLength(10)]]
     });
 
@@ -96,7 +96,7 @@ export class PostPropertyFormComponent  implements OnInit {
       console.log('Form Data:', data1);
       this.propertyUpload.uploadProperty(data1).subscribe((res)=>{
         console.log(res);
-        this.router.navigate(['']);
+        this.router.navigate(['user/list-property']);
       })
       this.propertyForm.reset();
       

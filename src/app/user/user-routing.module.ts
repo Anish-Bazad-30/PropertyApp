@@ -7,6 +7,8 @@ import { UserProfileManagementComponent } from './user-profile-management/user-p
 import { VendorServicesPageComponent } from './vendor-services-page/vendor-services-page.component';
 import { MainComponent } from './main/main.component';
 import { PostPropertyFormComponent } from './post-property-form/post-property-form.component';
+import { PropertyEditFormComponent } from './property-edit-form/property-edit-form.component';
+import { PropertyListComponent } from './property-list/property-list.component';
 
 
 const routes: Routes = [
@@ -20,6 +22,8 @@ const routes: Routes = [
       { path: 'profile', component: UserProfileManagementComponent },
       { path: 'vendor-service', component: VendorServicesPageComponent },
       { path: 'post-property', component: PostPropertyFormComponent },
+      { path: 'edit-property', component: PropertyEditFormComponent },
+      { path: 'list-property', component: PropertyListComponent },
       { path: '', redirectTo: 'landing-page', pathMatch: 'full' }
     ]
   }

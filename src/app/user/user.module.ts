@@ -11,6 +11,8 @@ import { MainComponent } from './main/main.component';
 import { RouterModule } from '@angular/router';
 import { PropertyDetailViewComponent } from './property-detail-view/property-detail-view.component';
 import { PostPropertyFormComponent } from './post-property-form/post-property-form.component';
+import { PropertyEditFormComponent } from './property-edit-form/property-edit-form.component';
+import { PropertyListComponent } from './property-list/property-list.component';
 @NgModule({
   declarations: [UserLandingPageComponent,
     VendorServicesPageComponent,
@@ -18,6 +20,8 @@ import { PostPropertyFormComponent } from './post-property-form/post-property-fo
     ReferEarnComponent,
     PropertyDetailViewComponent,
     PostPropertyFormComponent,
+    PropertyEditFormComponent,
+    PropertyListComponent,
     MainComponent
   ],
   imports: [

@@ -1,0 +1,262 @@
+.main-container{
+    width: 100vw;
+    min-height: 100%;
+}
+ 
+h1 {
+    font-size: 32px;
+    color: white;
+    font-weight: 300;
+}
+ 
+.add-property-wrapper {
+    text-align: right;
+    width: 100%;
+}
+ 
+.add-property-btn {
+    background-color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 20px;
+    color: #11405a;
+    cursor: pointer;
+    font-size: 18px;
+}
+ 
+.property-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+}
+ 
+.property-card {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 95%;
+    max-width: 500px;
+    height: auto;
+    text-align: left;
+}
+ 
+.property-img-wrapper {
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ 
+.property-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.property-sold-message {
+    color: red;
+    font-weight: bold;
+  }
+ 
+.property-details {
+    width: 70%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+ 
+.property-name {
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: #11405a;
+}
+.address-label, .amount {
+    color: #000000;
+    font-size: 13px;
+  }
+.property-address {
+    font-size: 10px;
+    color: #337280;
+}
+ 
+ 
+ 
+.finalize-btn {
+    background-color: #11405a;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 15px;
+    color: white;
+    font-size: 11px;
+    cursor: pointer;
+}
+ 
+.icon {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+ 
+.edit-icon {
+    margin-left: 30px;
+    height: 20px;
+    width: 20px;
+}
+ 
+.delete-icon {
+    margin-left: 8px;
+    height: 20px;
+    width: 20px;
+}
+ 
+.amount-value{
+    color: #ff7f7f;
+}
+ 
+ 
+@media screen and (max-width:450px) and (min-width:400px){
+    .property-name{
+        font-size: 14px;
+    }
+}
+@media screen and (min-width:540px){
+    h1{
+        font-size: 40px;
+    }
+    .property-name{
+        font-size: 17px;
+    }
+    .property-address{
+        font-size: 15px;
+    }
+    .address-label, .amount{
+        font-size: 18px;
+    }
+    .finalize-btn{
+        font-size: 20px;
+    }
+    .edit-icon {
+        margin-left: 30px;
+        height: 30px;
+        width: 30px;
+    }
+   
+    .delete-icon {
+        margin-left: 8px;
+        height: 30px;
+        width: 30px;
+    }
+}
+@media screen and (max-width:840px) and (min-width:750px){
+    h1{
+        font-size: 50px;
+    }
+    .add-property-wrapper{
+        max-width: 70%;
+    }
+    .property-name{
+        font-size: 17px;
+    }
+    .property-address{
+        font-size: 15px;
+    }
+    .address-label, .amount{
+        font-size: 18px;
+    }
+    .finalize-btn{
+        font-size: 20px;
+    }
+    .edit-icon {
+        margin-left: 30px;
+        height: 30px;
+        width: 30px;
+    }
+   
+    .delete-icon {
+        margin-left: 8px;
+        height: 30px;
+        width: 30px;
+    }
+}
+ 
+@media screen and (max-width:920px)and (min-width:850px){
+    h1{
+        font-size: 60px;
+    }
+    .add-property-wrapper{
+        max-width: 77%;
+    }
+    .add-property-btn{
+        font-size: 24px;
+    }
+    .property-card{
+        max-width: 600px;
+    }
+    .property-name{
+        font-size: 22px;
+    }
+    .property-address{
+        font-size: 18px;
+    }
+    .address-label, .amount{
+        font-size: 20px;
+    }
+    .finalize-btn{
+        font-size: 24px;
+    }
+    .edit-icon {
+        margin-left: 30px;
+        height: 40px;
+        width: 40px;
+    }
+   
+    .delete-icon {
+        margin-left: 8px;
+        height: 40px;
+        width: 40px;
+    }
+}
+ 
+@media screen and (min-width:1024px){
+    h1{
+        font-size: 60px;
+    }
+    .add-property-wrapper{
+        max-width: 63%;
+    }
+    .add-property-btn{
+        font-size: 26px;
+    }
+    .property-card{
+        max-width: 600px;
+    }
+    .property-name{
+        font-size: 22px;
+    }
+    .property-address{
+        font-size: 18px;
+    }
+    .address-label, .amount{
+        font-size: 20px;
+    }
+    .finalize-btn{
+        font-size: 24px;
+    }
+    .edit-icon {
+        margin-left: 30px;
+        height: 40px;
+        width: 40px;
+    }
+   
+    .delete-icon {
+        margin-left: 8px;
+        height: 40px;
+        width: 40px;
+    }
+}
