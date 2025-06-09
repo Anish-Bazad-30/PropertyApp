@@ -14,6 +14,7 @@ import { MainComponent } from './main/main.component';
 import { RouterModule } from '@angular/router';
 import { AgentRoutingModule } from './agent-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { MapDetailsComponent } from './map-details/map-details.component';
 
 
 
@@ -28,6 +29,7 @@ import { SharedModule } from '../shared/shared.module';
     EditServiceComponent,
     BuyerDetailsComponent,
     MainComponent,
+    MapDetailsComponent,
   ],
   imports: [
     AgentRoutingModule,

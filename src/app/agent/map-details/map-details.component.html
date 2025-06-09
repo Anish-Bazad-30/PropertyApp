@@ -1,0 +1,38 @@
+<div
+  class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1"
+>
+  <!-- Embedded Google Map -->
+  <div class="map-container w-100 mb-3">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14031.138006487325!2d77.00697928510083!3d28.45591188270176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19b6dda9e50b%3A0x6defd2193904116e!2sGurgaon%20Bus%20Stand!5e0!3m2!1sen!2sin!4v1749455475638!5m2!1sen!2sin"
+      width="380"
+      height="450"
+      style="border: 0"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+
+    <div
+    class="details-section w-100 px-4"
+    *ngFor="let property of propertyDetail"
+  >
+    <h5 class="primary-font mb-2">
+      {{ property.name }}
+    </h5>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="owner-info">
+        <p class="owner-label mb-1">Owner Name</p>
+        <p class="owner-phone mb-0">{{ property.ownerMobile }}</p>
+      </div>
+
+      <!-- Call Now Button -->
+      <button class="call-now-btn" (click)="callNow(property.ownerMobile)">
+        Call Now
+      </button>
+    </div>
+  </div>
+</div>
+
