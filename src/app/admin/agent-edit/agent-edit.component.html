@@ -13,7 +13,8 @@
         <img src="assets/icon/Edit.svg">
       </div>
     </div>
-    <div class="btn-group d-flex justify-content-between mt-4 secondary-font gap-2">
+    <p class="primary-font">Subsribed <img src="assets/icon/Done.svg" class="p-1"></p>
+    <!-- <div class="btn-group d-flex justify-content-between mt-4 secondary-font gap-2">
       <button type="button" class="approve-button" (click)="approveAgent()">
         Approve <img src="assets/icon/Done.svg" class="p-1">
       </button>
@@ -21,27 +22,62 @@
       <button type="button" class="reject-button" (click)="rejectAgent()">
         Reject <img src="assets/icon/Close.svg" class="p-1">
       </button>
+    </div> -->
+    <div class="role-selection d-flex justify-content-between align-items-center secondary-font mt-2 gap-3">
+      <label for="role" class="form-label">Approve as Agent</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="role" value="user" checked>
+        <label class="form-check-label" for="userRole">Yes</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="role" value="agent">
+        <label class="form-check-label" for="agentRole">No</label>
+      </div>
     </div>
 
     <!-- Profile Form -->
     <form [formGroup]="profileForm" class="d-flex flex-column form-container mt-3" (ngSubmit)="updateProfile()">
+
+      <!-- <div class="d-flex align-items-center justify-content-between secondary-font">
+        <label for="approveAgent" class="form-label">Approve as Agent</label>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="approveAgent" id="approveYes" value="YES"
+            name="approveAgent">
+          <label class="form-check-label" for="approveYes">Yes</label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" formControlName="approveAgent" id="approveNo" value="NO"
+            name="approveAgent">
+          <label class="form-check-label" for="approveNo">No</label>
+        </div>
+      </div> -->
+
+
+
       <label for="username" class="form-label secondary-font">Email</label>
-      <input type="email" id="username" class="form-control custom-input" placeholder="Enter email" formControlName="username" />
+      <input type="email" id="username" class="form-control custom-input" placeholder="Enter email"
+        formControlName="username" />
       <div *ngIf="profileForm.get('username')?.touched && profileForm.get('username')?.invalid" class="text-danger">
         <small *ngIf="profileForm.get('username')?.errors?.['required']">Email is required.</small>
         <small *ngIf="profileForm.get('username')?.errors?.['email']">Please enter a valid email.</small>
       </div>
 
       <label for="email" class="form-label secondary-font">E-mail</label>
-      <input type="email" id="email" class="form-control custom-input" placeholder="Enter email" formControlName="email" />
+      <input type="email" id="email" class="form-control custom-input" placeholder="Enter email"
+        formControlName="email" />
       <div *ngIf="profileForm.get('email')?.touched && profileForm.get('email')?.invalid" class="text-danger">
         <small *ngIf="profileForm.get('email')?.errors?.['required']">Email is required.</small>
         <small *ngIf="profileForm.get('email')?.errors?.['email']">Please enter a valid email.</small>
       </div>
 
       <label for="mobilenumber" class="form-label secondary-font">Mobile Number</label>
-      <input type="text" id="mobilenumber" class="form-control custom-input" minlength="10" maxlength="10" pattern="[0-9]*" placeholder="Enter mobile number" inputmode="numeric" formControlName="mobilenumber" (keypress)="onlyDigits($event)" />
-      <div *ngIf="profileForm.get('mobilenumber')?.touched && profileForm.get('mobilenumber')?.invalid" class="text-danger">
+      <input type="text" id="mobilenumber" class="form-control custom-input" minlength="10" maxlength="10"
+        pattern="[0-9]*" placeholder="Enter mobile number" inputmode="numeric" formControlName="mobilenumber"
+        (keypress)="onlyDigits($event)" />
+      <div *ngIf="profileForm.get('mobilenumber')?.touched && profileForm.get('mobilenumber')?.invalid"
+        class="text-danger">
         <small *ngIf="profileForm.get('mobilenumber')?.errors?.['required']">Mobile number is required.</small>
         <small *ngIf="profileForm.get('mobilenumber')?.errors?.['pattern']">Please enter a valid mobile number.</small>
       </div>
@@ -52,7 +88,8 @@
         <option value="Plumbing">Plumbing</option>
         <option value="Carpentry">Carpentry</option>
       </select>
-      <div *ngIf="profileForm.get('serviceType')?.touched && profileForm.get('serviceType')?.invalid" class="text-danger">
+      <div *ngIf="profileForm.get('serviceType')?.touched && profileForm.get('serviceType')?.invalid"
+        class="text-danger">
         <small *ngIf="profileForm.get('serviceType')?.errors?.['required']">Please select a service type.</small>
       </div>
 

@@ -1,0 +1,158 @@
+.main-container {
+    min-height: 100% !important;
+    width: 100vw;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 300;
+    color: #ffffff;
+}
+
+.form-container {
+    width: 80%;
+}
+
+label {
+    color: #ffffff;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    background: #ffffff;
+    color: #000;
+}
+
+input,
+select {
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 12px;
+    border: 1px solid #ccc;
+}
+
+
+.cancel-button,
+.save-button {
+    width: 40%;
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #11405a;
+}
+
+.cancel-button:hover,
+.save-button:hover {
+    background-color: #e6e6e6;
+}
+
+@media screen and (max-width:430px) and (min-width:390px) {
+    .form-container {
+        margin-top: 30px;
+    }
+
+    label {
+        font-size: 24px;
+        margin-top: 16px;
+    }
+
+    input,
+    .form-select {
+        font-size: 16px;
+    }
+
+
+}
+
+@media screen and (min-width:540px) {
+    .form-container {
+        margin-top: 30px;
+    }
+
+    label {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+
+    input,
+    .form-select {
+        font-size: 16px;
+    }
+
+}
+
+@media screen and (max-width:830px) and (min-width:760px) {
+    .title {
+        font-size: 40px;
+    }
+
+    .form-container {
+        margin-top: 30px;
+    }
+
+    label {
+        font-size: 24px;
+        margin-top: 20px;
+    }
+
+
+
+    input,
+    .form-select {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width:920px) and (min-width:840px) {
+    .title {
+        font-size: 50px;
+    }
+
+    .form-container {
+        margin-top: 30px;
+    }
+
+    label {
+        font-size: 32px;
+        margin-top: 40px;
+    }
+
+    input,
+    .form-select {
+        font-size: 22px;
+    }
+
+
+}
+
+@media screen and (min-width:1024px) {
+    .title {
+        font-size: 50px;
+    }
+
+    .form-container {
+        margin-top: 30px;
+    }
+
+    label {
+        font-size: 32px;
+        margin-top: 40px;
+    }
+
+
+
+    input,
+    .form-select {
+        font-size: 26px;
+    }
+}

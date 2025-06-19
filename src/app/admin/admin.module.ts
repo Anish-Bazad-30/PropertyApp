@@ -28,7 +28,9 @@ import { UserEngagementDonutChartComponent } from './app-analytics/user-engageme
 import { ReferralPieChartComponent } from './app-analytics/referral-pie-chart/referral-pie-chart.component';
 import { SharedModule } from '../shared/shared.module';
 import { AdsManagementFormComponent } from './ads-management-form/ads-management-form.component';
-import { PropertyOwnerFormComponent } from './property-owner-form/property-owner-form.component';
+import { PropertyForAgentComponent } from './property-for-agent/property-for-agent.component';
+import { AddPropertyForAgentComponent } from './add-property-for-agent/add-property-for-agent.component';
+import { EditPropertyForAgentComponent } from './edit-property-for-agent/edit-property-for-agent.component';
 
 
 
@@ -56,7 +58,9 @@ import { PropertyOwnerFormComponent } from './property-owner-form/property-owner
     UserEngagementDonutChartComponent,
     ReferralPieChartComponent,
     AdsManagementFormComponent,
-    PropertyOwnerFormComponent,
+    PropertyForAgentComponent,
+    AddPropertyForAgentComponent,
+    EditPropertyForAgentComponent,
   ],
   imports: [
     CommonModule,
@@ -83,8 +87,7 @@ import { PropertyOwnerFormComponent } from './property-owner-form/property-owner
     AddAgentComponent,
     AddServiceComponent,
     EditServiceComponent,
-    AdsManagementFormComponent,
-    PropertyOwnerFormComponent,
+    AdsManagementFormComponent
   ]
 })
 export class AdminModule { }

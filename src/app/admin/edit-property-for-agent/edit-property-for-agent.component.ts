@@ -3,13 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-property-owner-form',
-  templateUrl: './property-owner-form.component.html',
-  styleUrls: ['./property-owner-form.component.scss'],
+  selector: 'app-edit-property-for-agent',
+  templateUrl: './edit-property-for-agent.component.html',
+  styleUrls: ['./edit-property-for-agent.component.scss'],
 })
-export class PropertyOwnerFormComponent  implements OnInit {
+export class EditPropertyForAgentComponent  implements OnInit {
 
-   propertyOwnerForm!: FormGroup;
+editropertyforAgent!: FormGroup;
  
    constructor(
      private fb: FormBuilder,
@@ -17,11 +17,10 @@ export class PropertyOwnerFormComponent  implements OnInit {
    ) {}
  
    ngOnInit(): void {
-     this.propertyOwnerForm = this.fb.group({
+     this.editropertyforAgent = this.fb.group({
        mobileNumber: [
          '',  [Validators.required, Validators.pattern('^[0-9]{10}$')],
        ]
      });
    }
- 
- }
+  }
