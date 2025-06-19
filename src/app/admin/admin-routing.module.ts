@@ -19,6 +19,7 @@ import { EditServiceComponent } from './edit-service/edit-service.component';
 import { AgentManagementComponent } from './agent-management/agent-management.component';
 import { UserEngagementChartComponent } from './app-analytics/user-engagement-chart/user-engagement-chart.component';
 import { AdsManagementFormComponent } from './ads-management-form/ads-management-form.component';
+import { PropertyOwnerFormComponent } from './property-owner-form/property-owner-form.component';
 
 
 const routes: Routes = [
@@ -44,6 +45,7 @@ const routes: Routes = [
       { path: 'edit-property', component: PropertyEditComponent},
       { path: 'user-chart', component: UserEngagementChartComponent},
       { path: 'ads-management', component: AdsManagementFormComponent},
+      { path: 'property-owner', component: PropertyOwnerFormComponent},
 
       { path: '', redirectTo: 'landing-page', pathMatch: 'full' }
     ]

@@ -28,6 +28,7 @@ import { UserEngagementDonutChartComponent } from './app-analytics/user-engageme
 import { ReferralPieChartComponent } from './app-analytics/referral-pie-chart/referral-pie-chart.component';
 import { SharedModule } from '../shared/shared.module';
 import { AdsManagementFormComponent } from './ads-management-form/ads-management-form.component';
+import { PropertyOwnerFormComponent } from './property-owner-form/property-owner-form.component';
 
 
 
@@ -55,6 +56,7 @@ import { AdsManagementFormComponent } from './ads-management-form/ads-management
     UserEngagementDonutChartComponent,
     ReferralPieChartComponent,
     AdsManagementFormComponent,
+    PropertyOwnerFormComponent,
   ],
   imports: [
     CommonModule,
@@ -82,6 +84,7 @@ import { AdsManagementFormComponent } from './ads-management-form/ads-management
     AddServiceComponent,
     EditServiceComponent,
     AdsManagementFormComponent,
+    PropertyOwnerFormComponent,
   ]
 })
 export class AdminModule { }
