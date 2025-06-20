@@ -14,9 +14,12 @@
         </div>
       </ion-toolbar>
     </ion-header>
-   
-   
+
+
     <ion-content class="side-bar">
+      <div class="h-100 d-flex flex-column justify-content-between">
+
+    
       <ion-list>
         <ion-item routerLink="/agent/landing-page" (click)="closeMenu()">
           <img src="assets/icon/Home.svg" slot="start" style="width: 24px; height: 24px;" />
@@ -25,14 +28,18 @@
           <img src="assets/icon/User.svg" slot="start" style="width: 24px; height: 24px;" />
           Profile</ion-item>
         <ion-item routerLink="/agent/services" (click)="closeMenu()">
-          <img src="assets/icon/Service.svg" slot="start" style="width: 24px; height: 24px;" />Services</ion-item>
-        <ion-item  (click)="closeMenu()" (click)="logout()">
+          <img src="assets/icon/Service.svg" slot="start" style="width: 24px; height: 24px;" />Service List</ion-item>
+        <ion-item routerLink="/agent/map-details" (click)="closeMenu()">
+          <img src="assets/icon/loc.svg" slot="start" style="width: 24px; height: 24px;" />Property Near me</ion-item>
+        <ion-item (click)="closeMenu()" (click)="logout()">
           <img src="assets/icon/Logout.svg" slot="start" style="width: 24px; height: 24px;" />
           Log out</ion-item>
       </ion-list>
+      <button class="subscribe-btn mb-2 w-50" type="button" routerLink="/agent/subscription" (click)="closeMenu()">Subscribe for Premium</button>
+        </div>
     </ion-content>
   </ion-menu>
-   
+
   <!-- Main Content -->
   <div id="main-content">
     <div class="main w-100 d-flex flex-column align-items-center flex-grow-1">
@@ -43,7 +50,7 @@
       <div class="px-3 d-flex">
         <router-outlet></router-outlet>
       </div>
-     
+
     </div>
   </div>
-  </ion-content>
+</ion-content>

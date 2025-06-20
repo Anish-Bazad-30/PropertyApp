@@ -1,0 +1,283 @@
+.main-container{
+    width: 100vw;
+    min-height: 100%;
+}
+ 
+h1 {
+    font-size: 32px;
+    color: white;
+    font-weight: 300;
+}
+h5{
+    font-size: 24px;
+    color: #FF7F7F;
+
+}
+h4{
+    font-size: 24px;
+    color: #7FDBFF;
+    font-weight: 300;
+}
+.add-subscribe-wrapper {
+    text-align: right;
+    width: 100%;
+}
+ 
+.add-subscribe-btn {
+    background-color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 20px;
+    color: #11405a;
+    cursor: pointer;
+    font-size: 18px;
+}
+ 
+.subscribe-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+}
+ 
+.subscribe-card {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 95%;
+    max-width: 500px;
+    height: auto;
+    text-align: left;
+}
+ 
+.subscribe-img-wrapper {
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ 
+.subscribe-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.subscribe-sold-message {
+    color: red;
+    font-weight: bold;
+  }
+ 
+.subscribe-details {
+    width: 70%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+ 
+.subscribe-name {
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: #11405a;
+}
+
+ 
+ 
+ 
+.finalize-btn {
+    background-color: #11405a;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 15px;
+    color: white;
+    font-size: 11px;
+    cursor: pointer;
+}
+ 
+.icon {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+ 
+.edit-icon {
+    margin-left: 30px;
+    height: 20px;
+    width: 20px;
+}
+ 
+.delete-icon {
+    margin-left: 8px;
+    height: 20px;
+    width: 20px;
+}
+ 
+.amount-value{
+    color: #ff7f7f;
+}
+
+.subscribe-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #FE6C6C;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 9999;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+}
+
+
+ 
+ 
+@media screen and (max-width:450px) and (min-width:400px){
+    .subscribe-name{
+        font-size: 14px;
+    }
+}
+@media screen and (min-width:540px){
+    h1{
+        font-size: 40px;
+    }
+    .subscribe-name{
+        font-size: 17px;
+    }
+    .subscribe-address{
+        font-size: 15px;
+    }
+    .address-label, .amount{
+        font-size: 18px;
+    }
+    .finalize-btn{
+        font-size: 20px;
+    }
+    .edit-icon {
+        margin-left: 30px;
+        height: 30px;
+        width: 30px;
+    }
+   
+    .delete-icon {
+        margin-left: 8px;
+        height: 30px;
+        width: 30px;
+    }
+}
+@media screen and (max-width:840px) and (min-width:750px){
+    h1{
+        font-size: 50px;
+    }
+    .add-subscribe-wrapper{
+        max-width: 70%;
+    }
+    .subscribe-name{
+        font-size: 17px;
+    }
+    .subscribe-address{
+        font-size: 15px;
+    }
+    .address-label, .amount{
+        font-size: 18px;
+    }
+    .finalize-btn{
+        font-size: 20px;
+    }
+    .edit-icon {
+        margin-left: 30px;
+        height: 30px;
+        width: 30px;
+    }
+   
+    .delete-icon {
+        margin-left: 8px;
+        height: 30px;
+        width: 30px;
+    }
+}
+ 
+@media screen and (max-width:920px)and (min-width:850px){
+    h1{
+        font-size: 60px;
+    }
+    .add-subscribe-wrapper{
+        max-width: 77%;
+    }
+    .add-subscribe-btn{
+        font-size: 24px;
+    }
+    .subscribe-card{
+        max-width: 600px;
+    }
+    .subscribe-name{
+        font-size: 22px;
+    }
+    .subscribe-address{
+        font-size: 18px;
+    }
+    .address-label, .amount{
+        font-size: 20px;
+    }
+    .finalize-btn{
+        font-size: 24px;
+    }
+    .edit-icon {
+        margin-left: 30px;
+        height: 40px;
+        width: 40px;
+    }
+   
+    .delete-icon {
+        margin-left: 8px;
+        height: 40px;
+        width: 40px;
+    }
+}
+ 
+@media screen and (min-width:1024px){
+    h1{
+        font-size: 60px;
+    }
+    .add-subscribe-wrapper{
+        max-width: 63%;
+    }
+    .add-subscribe-btn{
+        font-size: 26px;
+    }
+    .subscribe-card{
+        max-width: 600px;
+    }
+    .subscribe-name{
+        font-size: 22px;
+    }
+    .subscribe-address{
+        font-size: 18px;
+    }
+    .address-label, .amount{
+        font-size: 20px;
+    }
+    .finalize-btn{
+        font-size: 24px;
+    }
+    .edit-icon {
+        margin-left: 30px;
+        height: 40px;
+        width: 40px;
+    }
+   
+    .delete-icon {
+        margin-left: 8px;
+        height: 40px;
+        width: 40px;
+    }
+}
