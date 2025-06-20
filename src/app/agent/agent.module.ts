@@ -42,8 +42,9 @@ import { MapDetailsComponent } from './map-details/map-details.component';
   ],
   exports: [
     PropertyUploadFormComponent,
-    PropertyUploadComponent, // Export if used in other modules
-    AgentProfileComponent
+    PropertyUploadComponent, 
+    AgentProfileComponent,
+    MapDetailsComponent,
   ]
 })
 export class AgentModule { }

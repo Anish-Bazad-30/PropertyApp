@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PropertyUploadFormService } from 'src/app/services/property-upload-form.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-property-detail-view',
@@ -9,7 +10,7 @@ import { PropertyUploadFormService } from 'src/app/services/property-upload-form
 })
 
 export class PropertyDetailViewComponent implements OnInit {
- 
+ adminMobileNumber: any = environment.mobileNumber;
   propertyId : any;
   propertyDetail : any;
   constructor(

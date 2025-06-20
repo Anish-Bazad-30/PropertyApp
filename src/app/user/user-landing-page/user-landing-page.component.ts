@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { AdsService } from 'src/app/services/ads.service';
 import { PropertyUploadFormService } from 'src/app/services/property-upload-form.service';
 import { SearchPropertiesService } from 'src/app/services/search-properties.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-landing-page',
@@ -11,6 +13,7 @@ import { SearchPropertiesService } from 'src/app/services/search-properties.serv
 })
 export class UserLandingPageComponent implements OnInit {
 
+  adminMobileNumber: any = environment.mobileNumber;
   properties :any[]=[]; 
   filteredProperties :any[]=[]; 
 
@@ -22,16 +25,19 @@ export class UserLandingPageComponent implements OnInit {
   areas: any[] = [];
   sectors: any[] = [];
 
+   adsList: any[] = [];
+  errorMessage: string = '';
   constructor(
     private searchProperties: SearchPropertiesService,
     private router: Router,
-    private propertyService: PropertyUploadFormService
-
+    private propertyService: PropertyUploadFormService,
+    private adsService: AdsService
   ) {
 
   }
   ngOnInit(): void {
     this.getAllProperty();
+    this.loadAds();
   }
 
 
@@ -74,7 +80,7 @@ export class UserLandingPageComponent implements OnInit {
   }
   filterByCategory(category: string) {
     this.filteredProperties = this.properties.filter(
-      p => p.propertyType === category
+      p => p.option === category
     );
   }
 
@@ -88,12 +94,10 @@ export class UserLandingPageComponent implements OnInit {
   viewProperty(propertyId: string) {
     this.propertyService.setPropertyData(propertyId);
     this.router.navigate(['user/property-detail-view']);
-
-      
-
   }
 
   callNow(phoneNumber: string) {
+    
     window.open(`tel:${phoneNumber}`, '_system');
   }
 
@@ -120,4 +124,26 @@ export class UserLandingPageComponent implements OnInit {
  postProperty() {
     this.router.navigate(['/user/post-property']);
   }
+
+
+ loadAds(): void {
+    this.adsService.getAds().subscribe({
+      next: (res) => {
+        // if (res.length > 0) {
+          this.adsList = res.data;
+          console.log(this.adsList);
+          
+        // } else {
+        //   this.errorMessage = 'No ads available at the moment.';
+        // }
+      },
+      error: (err) => {
+        console.error('Error fetching ads:', err);
+        this.errorMessage = 'Failed to load ads. Please try again later.';
+      }
+    });
+  }
+
+
+
 }

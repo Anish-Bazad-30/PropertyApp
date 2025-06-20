@@ -18,6 +18,7 @@ export class PropertyEditComponent implements OnInit {
   areas = ['Downtown', 'Suburbs', 'Countryside'];
   sectors = ['Sector A', 'Sector B', 'Sector C'];
   propertyDetail: any;
+  propertyTypesOption = ['SALE', 'RENT', 'LEASE'];
   constructor(
     private fb: FormBuilder,
     private propertyService : PropertyUploadFormService,
@@ -30,6 +31,7 @@ export class PropertyEditComponent implements OnInit {
       id:[''],
       propertyName: ['', Validators.required],
       propertyType: ['', Validators.required],
+      option: ['', Validators.required],
       amount: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       description: ['', Validators.required],
       city: ['', Validators.required],

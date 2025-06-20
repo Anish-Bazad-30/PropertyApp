@@ -1,29 +1,54 @@
 <div class="main-container d-flex flex-column justify-content-evenly align-items-center flex-grow-1">
   <div class="header w-100 text-start p-3">
     <h5 class="welcome-text primary-font">Welcome</h5>
-   
+
     <div class="d-flex justify-content-between w-100 px-2">
-       <h3 class="find-text primary-font">Find Your Properties</h3>
+      <h3 class="find-text primary-font">Find Your Properties</h3>
       <ion-button expand="block" class="text-center secondary-font" (click)="postProperty()">
-       Post Property
+        Post Property
       </ion-button>
+    </div>
   </div>
-  </div>
-  
-  <div class="property-cards w-100 d-flex flex-wrap justify-content-between">
-    <div class="property-card">
-      <div class="property-content d-flex justify-content-center align-items-center">
-        <h3>Ads</h3>
+
+ <div *ngIf="adsList.length > 0"
+     id="carouselExampleAutoplaying"
+     class="carousel slide w-100"
+     data-bs-ride="carousel"
+     data-bs-interval="3000"
+     data-bs-pause="false">
+
+  <div class="carousel-inner">
+    <div *ngFor="let ad of adsList; let i = index" class="carousel-item" [class.active]="i === 0">
+      <div class="ads-card text-center p-3 d-flex justify-content-center align-items-center">
+        <img [src]="ad.imageUrl"
+             class="d-block my-2"
+             alt="Ad Image"
+             style="height: 150px; object-fit: cover;" />
+        <!-- <p>{{ ad.description }}</p> -->
+        <!-- <small>By: {{ ad.partnerName }}</small> -->
       </div>
     </div>
   </div>
-  
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
   <div class="categories-section w-100 text-start p-3 mb-3">
     <!-- <h6 class="categories-title primary-font">Categories</h6> -->
     <div class="categories-buttons secondary-font d-flex justify-content-between align-items-center">
-      <button class="btn btn-primary category-button" (click)="filterByCategory('House')">Buy</button>
-      <button class="btn btn-primary category-button" (click)="filterByCategory('Apartment')">Rent/Lease</button>
-      <button class="btn btn-primary category-button" (click)="filterByCategory('Apartment')">PG</button>
+      <button class="btn btn-primary category-button" (click)="filterByCategory('SALE')">Buy</button>
+      <button class="btn btn-primary category-button" (click)="filterByCategory('RENT')">For Rent</button>
+      <button class="btn btn-primary category-button" (click)="filterByCategory('LEASE')">For Lease</button>
+      <button class="btn btn-primary category-button" (click)="filterByCategory('PG')">PG</button>
       <!-- <button class="btn btn-secondary category-button" (click)="resetCategory()">All</button> -->
       <!-- <button class="btn btn-primary category-button" (click)="filterByCategory('Office')">Office</button> -->
     </div>
@@ -48,18 +73,18 @@
       </select>
     </div>
   </div>
-  
+
   <div class="property-cards w-100 d-flex flex-wrap justify-content-between">
     <div class="property-card" *ngFor="let property of filteredProperties">
       <h6 class="property-title primary-font mt-1">{{ property.propertyName }}</h6>
       <div class="property-content d-flex justify-content-between align-items-center">
-        <div class="property-image" >
+        <div class="property-image">
           <!-- <img [src]="property.mediaUrls[0]"  alt="Property Image" /> -->
           <img *ngIf="isImage(property.mediaUrls[0])" [src]="getBase64(property.mediaUrls[0])" class="d-block w-100"
             alt="Property Image" />
 
           <!-- Show video if it's base64 video -->
-          <video *ngIf="isVideo(property.mediaUrls[0])" class="d-block w-100" loop  [muted]="true" autoplay>
+          <video *ngIf="isVideo(property.mediaUrls[0])" class="d-block w-100" loop [muted]="true" autoplay>
             <source [src]="getBase64(property.mediaUrls[0])" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -70,23 +95,22 @@
           </p>
           <div class="property-buttons primary-font d-flex justify-content-between align-items-center">
             <button class="btn btn-danger view-button" (click)="viewProperty(property.id)">View</button>
-            <button class="btn btn-info call-now-button" (click)="callNow(property.agentMobile)">Call Now</button>
+           <button class="btn btn-info call-now-button" (click)="callNow(property.subscribe ? property.agentMobile : adminMobileNumber)">
+  Call Now
+</button>
           </div>
         </div>
       </div>
     </div>
   </div>
- 
+
 </div>
 
-  <div class="contact-container w-100 d-flex justify-content-between align-items-center px-2">
-    <a href="tel:+919999999999" target="_blank">
-      <img src="assets/icon/Phone.svg" class="phone-icon" alt="Call">
-    </a>
-    <a href="https://wa.me/919999999999" target="_blank">
-      <img src="assets/icon/WhatsApp.svg" class="whatsapp-icon" alt="WhatsApp">
-    </a>
-  </div>
-
-
-
+<div class="contact-container w-100 d-flex justify-content-between align-items-center px-2">
+  <button class="btn btn-info call-button" (click)="callNow(adminMobileNumber)">
+    <img src="assets/icon/Phone.svg" class="phone-icon" alt="Call">
+  </button>
+  <a href="https://wa.me/919999999999" target="_blank">
+    <img src="assets/icon/WhatsApp.svg" class="whatsapp-icon" alt="WhatsApp">
+  </a>
+</div>

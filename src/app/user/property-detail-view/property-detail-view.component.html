@@ -66,7 +66,7 @@
    
   
     <div class="d-flex justify-content-center w-100 mt-2">
-      <ion-button expand="block" class="text-center secondary-font" (click)="callNow(propertyDetail.agentMobile)">
+      <ion-button expand="block" class="text-center secondary-font" (click)="callNow(propertyDetail.subscribe ? propertyDetail.agentMobile : adminMobileNumber)">
         Call Now
       </ion-button>
       

@@ -5,39 +5,99 @@
   </div>
 
   <div class="flex-grow-1 d-flex flex-column justify-content-evenly align-items-center w-100">
-    <form [formGroup]="adsForm" class="form-container">
-      
+    <form [formGroup]="adForm" class="form-container" (ngSubmit)="onSubmit()">
+
+      <!-- Title -->
       <div class="mb-3">
-        <label for="images" class="form-label secondary-font">Upload Images</label>
-        <input type="file" id="images" class="form-control custom-input" multiple />
+        <label for="title" class="form-label secondary-font">Title</label>
+        <input type="text" id="title" class="form-control custom-input" formControlName="title"
+          placeholder="Enter title" />
+        <div *ngIf="adForm.get('title')?.touched && adForm.get('title')?.invalid" class="text-danger mt-1">
+          <small *ngIf="adForm.get('title')?.errors?.['required']">Title is required.</small>
+        </div>
       </div>
 
+      <!-- Description -->
       <div class="mb-3">
-        <label for="description" class="form-label secondary-font">Property Description</label>
-        <textarea id="description" placeholder="Enter property description" class="form-control custom-input"
+        <label for="description" class="form-label secondary-font">Description</label>
+        <textarea id="description" class="form-control custom-input" placeholder="Enter description"
           formControlName="description"></textarea>
-           <div *ngIf="adsForm.get('description')?.touched && adsForm.get('description')?.invalid" class="text-danger mt-1">
-                <small *ngIf="adsForm.get('description')?.errors?.['required']">Description is required.</small>
-              </div>   
+        <div *ngIf="adForm.get('description')?.touched && adForm.get('description')?.invalid" class="text-danger mt-1">
+          <small *ngIf="adForm.get('description')?.errors?.['required']">Description is required.</small>
+        </div>
       </div>
 
+      <!-- Image URL -->
+     <div class="mb-3">
+  <!-- Label and Upload Button -->
+  <div class="image-upload-section d-flex justify-content-between align-items-center">
+    <label for="imageUrl" class="form-label secondary-font">Add Media</label>
+    <button type="button" class="upload-button" (click)="fileInput.click()">
+      Add <img src="assets/icon/Add.svg" />
+    </button>
+  </div>
+
+  <!-- Hidden File Input -->
+  <input
+    type="file"
+    id="imageUrl"
+    #fileInput
+    class="hidden-input"
+    accept="image/*,video/*"
+    (change)="onMediaChange($event)"
+    style="display: none;"
+  />
+
+  <!-- Validation Message -->
+  <div *ngIf="adForm.get('imageUrl')?.touched && adForm.get('imageUrl')?.invalid" class="text-danger mt-1">
+    <small *ngIf="adForm.get('imageUrl')?.errors?.['required']">Media file is required.</small>
+  </div>
+
+  <!-- Preview -->
+  <div
+    class="preview-container mt-2"
+    *ngIf="mediaPreview"
+    style="border: 2px solid #7fdbff; padding: 5px; border-radius: 10px;"
+  >
+    <ng-container *ngIf="isImage(mediaPreview); else videoTemplate">
+      <img [src]="mediaPreview" class="main-img" />
+    </ng-container>
+
+    <ng-template #videoTemplate>
+      <video [src]="mediaPreview" class="main-img" controls></video>
+    </ng-template>
+
+    <img src="assets/icon/Minus.svg" class="delete-icon" (click)="removeMedia()" />
+  </div>
+</div>
+
+
+
+      <!-- Partner Name -->
       <div class="mb-3">
-        <label for="mobile" class="form-label secondary-font">Mobile Number</label>
-        <input type="tel" id="mobile" placeholder="Enter mobile number" maxlength="10" pattern="[0-9]*"
-          class="form-control custom-input" formControlName="mobileNumber" />
-           <div *ngIf="adsForm.get('agentMobile')?.touched && adsForm.get('agentMobile')?.invalid" class="text-danger">
-                <small *ngIf="adsForm.get('agentMobile')?.errors?.['required']">Mobile number is required.</small>
-                <small *ngIf="adsForm.get('agentMobile')?.errors?.['pattern']">Mobile number must be of exactly 10 digits.</small>
-              </div>
+        <label for="partnerName" class="form-label secondary-font">Partner Name</label>
+        <input type="text" id="partnerName" class="form-control custom-input" formControlName="partnerName"
+          placeholder="Enter partner name" />
+        <div *ngIf="adForm.get('partnerName')?.touched && adForm.get('partnerName')?.invalid" class="text-danger mt-1">
+          <small *ngIf="adForm.get('partnerName')?.errors?.['required']">Partner name is required.</small>
+        </div>
       </div>
 
+      <div class="form-check my-3 d-flex justify-content-evenly align-items-center">
+        <input class="form-check-checkbox custom-white-checkbox" type="checkbox" id="approvedByAdmin"
+          formControlName="approvedByAdmin" />
+        <label class="form-check-label m-0" for="approvedByAdmin">Approved by Admin</label>
+      </div>
+
+      <!-- Submit Button -->
       <div class="d-flex justify-content-center w-100">
-        <ion-button type="submit" expand="block" class="text-center secondary-font" [disabled]="adsForm.invalid">
+        <ion-button type="submit" expand="block" class="text-center secondary-font" [disabled]="adForm.invalid">
           Submit
         </ion-button>
       </div>
 
     </form>
+
   </div>
 
 </div>

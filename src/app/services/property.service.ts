@@ -31,4 +31,14 @@ export class PropertyService {
         const url = `${this.apiUrl}/api/admin/edit/`+ propertyId;
         return this.http.put<any>(url,property);
       }
+
+      addPropertiesForAgent(property :any): Observable<any>{
+        const url = `${this.apiUrl}/api/admin/uploadProperties`;
+        return this.http.post<any>(url,property);
+      }
+
+       getPropertiesForAgent(id :any): Observable<any>{
+        const url = `${this.apiUrl}/api/properties/by-agent/${id}`;
+        return this.http.get<any>(url);
+      }
 }

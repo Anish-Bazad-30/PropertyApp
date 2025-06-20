@@ -18,6 +18,8 @@ export class PostPropertyFormComponent  implements OnInit {
   cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Miami'];
   areas = ['Downtown', 'Suburbs', 'Countryside'];
   sectors = ['Sector A', 'Sector B', 'Sector C'];
+   propertyTypesOption = ['SALE', 'RENT', 'LEASE'];
+  
   userName!: any;
  
   constructor(
@@ -31,6 +33,7 @@ export class PostPropertyFormComponent  implements OnInit {
     this.propertyForm = this.fb.group({
       propertyName: ['', Validators.required],
       propertyType: ['', Validators.required],
+      option: ['', Validators.required],
       amount: [, [Validators.required, Validators.pattern('^[0-9]+$'),Validators.minLength(1),
         Validators.maxLength(10)]],
       description: ['', Validators.required],

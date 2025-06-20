@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PropertyService } from 'src/app/services/property.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-map-details',
@@ -7,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapDetailsComponent  implements OnInit {
   propertyDetail: any[] = [];
+  userId: any;
 
-  constructor() {}
+  constructor(
+    private propertyService : PropertyService,
+    private storageService: StorageService
+  ) {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.propertyDetail = [
       {
         name: 'Lotus Residency - 2BHK Deluxe Apartment',
@@ -21,9 +27,23 @@ export class MapDetailsComponent  implements OnInit {
         ownerMobile: '+91 9878987654'
       }
     ];
+     const userId = await this.storageService.getPreference('userId');
+    this.userId = userId || '';
+    console.log('User ID:', this.userId);
+
+    this.getProperties();
   }
 
   callNow(mobileNumber: string): void {
     window.location.href = `tel:${mobileNumber}`;
   }
+
+  getProperties(){
+    this.propertyService.getPropertiesForAgent(this.userId).subscribe((res)=>{
+      this.propertyDetail = res.data;
+      console.log(this.propertyDetail);
+      
+    })
+  }
+
 }

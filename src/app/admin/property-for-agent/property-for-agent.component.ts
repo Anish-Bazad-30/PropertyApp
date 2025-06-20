@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { PropertyUploadFormService } from 'src/app/services/property-upload-form.service';
 import { PropertyService } from 'src/app/services/property.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-property-for-agent',
@@ -16,19 +17,25 @@ export class PropertyForAgentComponent  implements OnInit {
   propertyList: any[] = []; 
   currentPage= 1;
   itemsPerPage= 10;  
+  userId: any;
    
     constructor(
       private router: Router, private propertyManagement: PropertyService,
-      
+          private storageService: StorageService,
           private propertyEditService : PropertyUploadFormService,
           private confirmService: ConfirmDialogService
     ) {}
   
-    ngOnInit(): void {
+    async ngOnInit() {
       this.loadProperties(); 
+          const userId = await this.storageService.getPreference('userId');
+    this.userId = userId || '';
+    console.log('User ID:', this.userId);
     }
+
+
     loadProperties(): void {
-      this.propertyManagement.fetchAllProperties().subscribe((res) => {
+      this.propertyManagement.getPropertiesForAgent(this.userId).subscribe((res) => {
         this.propertyListOriginal = res.data;
         // this.propertyList = [...res.data];
       })

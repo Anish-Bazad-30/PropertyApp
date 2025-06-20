@@ -64,6 +64,20 @@
             </div>
         </div>
         <div class="mb-3">
+            <!-- Property Type (Dropdown) -->
+            <label for="option" class="form-label secondary-font">Sale Type</label>
+
+            <select id="option" formControlName="option" class="form-select">
+                <option value="">Select Type</option>
+                <option *ngFor="let type of propertyTypesOption" [value]="type">{{ type }}</option>
+            </select>
+
+            <div *ngIf="propertyForm.get('option')?.touched && propertyForm.get('option')?.invalid"
+                class="text-danger mt-1">
+                <small *ngIf="propertyForm.get('option')?.errors?.['required']">Property type Option is required.</small>
+            </div>
+        </div>
+        <div class="mb-3">
             <!-- Amount (Rs.) -->
             <label for="amount" class="form-label secondary-font">Amount (Rs.)</label>
             <input type="number" id="amount" min="0" placeholder="Enter Amount" class="form-control custom-input"

@@ -8,80 +8,60 @@
     <form [formGroup]="addPropertyforAgent" class="form-container">
 
 
-      <div class="mb-3">
-        <label for="propertyName" class="form-label secondary-font">Property Name</label>
-        <input type="text" id="propertyName" placeholder="Enter property name" class="form-control custom-input"
-          formControlName="propertyName" />
+     <div class="mb-3">
+        <label for="ownername" class="form-label secondary-font">Property Owner Name</label>
+        <input type="text" id="ownername" placeholder="Enter property owner name"
+          class="form-control custom-input" formControlName="ownername" />
         <div
-          *ngIf="addPropertyforAgent.get('propertyName')?.touched && addPropertyforAgent.get('propertyName')?.invalid"
+          *ngIf="addPropertyforAgent.get('ownername')?.touched && addPropertyforAgent.get('ownername')?.invalid"
           class="text-danger mt-1">
-          <small *ngIf="addPropertyforAgent.get('propertyName')?.errors?.['required']">Property name is
-            required.</small>
-        </div>
-      </div>
-
-
-      <div class="mb-3">
-        <label for="location" class="form-label secondary-font">Property Location</label>
-        <textarea id="location" placeholder="Enter property location" class="form-control custom-input"
-          formControlName="location"></textarea>
-        <div *ngIf="addPropertyforAgent.get('location')?.touched && addPropertyforAgent.get('location')?.invalid"
-          class="text-danger mt-1">
-          <small *ngIf="addPropertyforAgent.get('location')?.errors?.['required']">location is required.</small>
-        </div>
-      </div>
-
-      <div class="mb-3">
-        <label for="agentUserName" class="form-label secondary-font">Agent User Name</label>
-        <input type="text" id="agentUserName" placeholder="Enter agent user name" class="form-control custom-input"
-          formControlName="agentUserName" />
-        <div
-          *ngIf="addPropertyforAgent.get('agentUserName')?.touched && addPropertyforAgent.get('agentUserName')?.invalid"
-          class="text-danger mt-1">
-          <small *ngIf="addPropertyforAgent.get('agentUserName')?.errors?.['required']">Agent User name is
-            required.</small>
-        </div>
-      </div>
-      <div class="mb-3">
-        <label for="agentUserName" class="form-label secondary-font">Agent Mobile Number</label>
-        <input type="text" id="agentUserName" placeholder="Enter agent user name" class="form-control custom-input"
-          formControlName="agentUserName" />
-        <div
-          *ngIf="addPropertyforAgent.get('agentMobile')?.touched && addPropertyforAgent.get('agentMobile')?.invalid"
-          class="text-danger mt-1">
-          <small *ngIf="addPropertyforAgent.get('agentMobile')?.errors?.['required']">Agent Mobile number is
-            required.</small>
-        </div>
-      </div>
-      <div class="mb-3">
-        <label for="propertyOwnerName" class="form-label secondary-font">Property Owner Name</label>
-        <input type="text" id="propertyOwnerName" placeholder="Enter property owner name"
-          class="form-control custom-input" formControlName="propertyOwnerName" />
-        <div
-          *ngIf="addPropertyforAgent.get('propertyOwnerName')?.touched && addPropertyforAgent.get('propertyOwnerName')?.invalid"
-          class="text-danger mt-1">
-          <small *ngIf="addPropertyforAgent.get('propertyOwnerName')?.errors?.['required']">Property owner name is
+          <small *ngIf="addPropertyforAgent.get('ownername')?.errors?.['required']">Property owner name is
             required.</small>
         </div>
       </div>
 
       <div class="mb-3">
-        <label for="mobile" class="form-label secondary-font">Property Owner Mobile Number</label>
-        <input type="tel" id="mobile" placeholder="Enter Property Owner mobile number" maxlength="10" pattern="[0-9]*"
-          class="form-control custom-input" formControlName="mobileNumber" />
+        <label for="ownerNumber" class="form-label secondary-font">Property Owner Mobile Number</label>
+        <input type="tel" id="ownerNumber" placeholder="Enter Property Owner mobile number" maxlength="10" pattern="[0-9]*"
+          class="form-control custom-input" formControlName="ownerNumber" />
         <div
-          *ngIf="addPropertyforAgent.get('propertyOwnerMobile')?.touched && addPropertyforAgent.get('propertyOwnerMobile')?.invalid"
+          *ngIf="addPropertyforAgent.get('ownerNumber')?.touched && addPropertyforAgent.get('ownerNumber')?.invalid"
           class="text-danger">
-          <small *ngIf="addPropertyforAgent.get('propertyOwnerMobile')?.errors?.['required']">Mobile number is
+          <small *ngIf="addPropertyforAgent.get('ownerNumber')?.errors?.['required']">Mobile number is
             required.</small>
-          <small *ngIf="addPropertyforAgent.get('propertyOwnerMobile')?.errors?.['pattern']">Mobile number must be of
+          <small *ngIf="addPropertyforAgent.get('ownerNumber')?.errors?.['pattern']">Mobile number must be of
             exactly 10 digits.</small>
         </div>
       </div>
 
+
+      <div class="mb-3">
+        <label for="locationUrl" class="form-label secondary-font">Property Location</label>
+        <textarea id="locationUrl" placeholder="Enter property location" class="form-control custom-input"
+          formControlName="locationUrl"></textarea>
+        <div *ngIf="addPropertyforAgent.get('locationUrl')?.touched && addPropertyforAgent.get('locationUrl')?.invalid"
+          class="text-danger mt-1">
+          <small *ngIf="addPropertyforAgent.get('locationUrl')?.errors?.['required']">location is required.</small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="agentId" class="form-label secondary-font">Agent User Name</label>
+        <input type="text" id="agentId" placeholder="Enter agent user name" class="form-control custom-input"
+          formControlName="agentId" />
+        <div
+          *ngIf="addPropertyforAgent.get('agentId')?.touched && addPropertyforAgent.get('agentId')?.invalid"
+          class="text-danger mt-1">
+          <small *ngIf="addPropertyforAgent.get('agentId')?.errors?.['required']">Agent User name is
+            required.</small>
+        </div>
+      </div>
+    
+      
+
       <div class="d-flex justify-content-center w-100">
         <ion-button type="submit" expand="block" class="text-center secondary-font"
-          [disabled]="addPropertyforAgent.invalid">
+          [disabled]="addPropertyforAgent.invalid" (click)="onSubmit()">
           Submit
         </ion-button>
       </div>

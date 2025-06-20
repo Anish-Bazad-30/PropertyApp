@@ -19,7 +19,7 @@ export class PropertyEditFormComponent implements OnInit {
   sectors = ['Sector A', 'Sector B', 'Sector C'];
   userId !: string;
   propertyDetail: any;
-
+propertyTypesOption = ['SALE', 'RENT', 'LEASE'];
   constructor(private fb: FormBuilder,
     private propertyUpload: PropertyService,
     private propertyService: PropertyUploadFormService,
@@ -35,6 +35,7 @@ export class PropertyEditFormComponent implements OnInit {
       id: [''],
       propertyName: ['', Validators.required],
       propertyType: ['', Validators.required],
+      option: ['', Validators.required],
       amount: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(1),
       Validators.maxLength(10)]],
       description: ['', Validators.required],
