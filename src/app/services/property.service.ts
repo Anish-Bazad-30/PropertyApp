@@ -41,4 +41,9 @@ export class PropertyService {
         const url = `${this.apiUrl}/api/properties/by-agent/${id}`;
         return this.http.get<any>(url);
       }
+
+      getAllPropertiesForAgent():Observable<any>{
+        const url = `${this.apiUrl}/api/admin/allProperties`;
+        return this.http.get<any>(url);
+      }
 }

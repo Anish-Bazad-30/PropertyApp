@@ -31,6 +31,8 @@ import { AdsManagementFormComponent } from './ads-management-form/ads-management
 import { PropertyForAgentComponent } from './property-for-agent/property-for-agent.component';
 import { AddPropertyForAgentComponent } from './add-property-for-agent/add-property-for-agent.component';
 import { EditPropertyForAgentComponent } from './edit-property-for-agent/edit-property-for-agent.component';
+import { AdsManagementComponent } from './ads-management/ads-management.component';
+import { EditAdsComponent } from './edit-ads/edit-ads.component';
 
 
 
@@ -61,6 +63,8 @@ import { EditPropertyForAgentComponent } from './edit-property-for-agent/edit-pr
     PropertyForAgentComponent,
     AddPropertyForAgentComponent,
     EditPropertyForAgentComponent,
+    AdsManagementComponent,
+    EditAdsComponent
   ],
   imports: [
     CommonModule,
@@ -87,7 +91,8 @@ import { EditPropertyForAgentComponent } from './edit-property-for-agent/edit-pr
     AddAgentComponent,
     AddServiceComponent,
     EditServiceComponent,
-    AdsManagementFormComponent
+    AdsManagementFormComponent,
+    AdsManagementComponent,
   ]
 })
 export class AdminModule { }

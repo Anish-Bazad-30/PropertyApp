@@ -23,30 +23,30 @@
       <thead class="table-header">
         <tr class="text-center custom-font">
           <th>Sl No</th>
-          <th>Property Name</th>
+          <th>Owner Name</th>
           <th>Property Location</th>
           <th>Agent username</th>
-          <th>Action</th>
+          <!-- <th>Action</th> -->
         </tr>
-      </thead>
+      </thead> 
       <tbody>
-        <tr class="table-data" *ngFor="let property of propertyListview; let i = index">
+        <tr class="table-data" *ngFor="let property of propertyList; let i = index">
           <td>{{ i + 1 }}</td>
-          <td>{{ property.agentName }}</td>
+          <td>{{ property.ownername }}</td>
           <td>
             <div class="text-break text-wrap w-100">
-              {{ property.propertyName }}
+              {{ property.locationUrl }}
             </div>
           </td>
-          <td class="text-danger fw-semibold">{{ property.amount }}</td>
+          <td class="text-danger fw-semibold">{{ property.agentId }}</td>
           <td class="d-flex justify-content-center gap-2">
            
-            <button class="btn p-1" (click)="editProperty(property)">
+            <!-- <button class="btn p-1" (click)="editProperty(property)">
               <img src="assets/icon/Edit-1.svg" alt="Edit" class="edit-icon"  />
-            </button>
-            <button class="btn p-1" (click)="deleteProperty(property.id)">
+            </button> -->
+            <!-- <button class="btn p-1" (click)="deleteProperty(property.id)">
               <img src="assets/icon/Delete.svg" alt="Delete" class="delete-icon"  />
-            </button>
+            </button> -->
           </td>
         </tr>
       </tbody>  

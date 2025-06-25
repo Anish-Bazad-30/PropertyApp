@@ -5,7 +5,8 @@ import { AdsService } from 'src/app/services/ads.service';
 import { PropertyUploadFormService } from 'src/app/services/property-upload-form.service';
 import { SearchPropertiesService } from 'src/app/services/search-properties.service';
 import { environment } from 'src/environments/environment';
-
+import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
+import { Platform } from '@ionic/angular';
 @Component({
   selector: 'app-user-landing-page',
   templateUrl: './user-landing-page.component.html',
@@ -16,7 +17,7 @@ export class UserLandingPageComponent implements OnInit {
   adminMobileNumber: any = environment.mobileNumber;
   properties :any[]=[]; 
   filteredProperties :any[]=[]; 
-
+  
   selectedCity = '';
   selectedArea = '';
   selectedSector = '';
@@ -31,7 +32,9 @@ export class UserLandingPageComponent implements OnInit {
     private searchProperties: SearchPropertiesService,
     private router: Router,
     private propertyService: PropertyUploadFormService,
-    private adsService: AdsService
+    private adsService: AdsService,
+    private socialSharing: SocialSharing,
+    private platform: Platform
   ) {
 
   }
@@ -143,7 +146,27 @@ export class UserLandingPageComponent implements OnInit {
       }
     });
   }
+  message :any = "Hi, I would like to talk about a property.";
+  whatsappShare() {
+    const policePhone = '919468222043';
+    const storeUrl = this.platform.is('ios')
+      ? 'https://apps.apple.com/app/whatsapp-messenger/id310633997'
+      : 'https://play.google.com/store/apps/details?id=com.whatsapp';
 
+    this.socialSharing
+      .shareViaWhatsAppToPhone(policePhone, this.message , '')
+      .then(() => {
+       
+        
+      })
+      .catch((error) => {
+       
+        window.open(storeUrl, '_system'); // Redirect to app store
+
+      });
+
+
+  }
 
 
 }

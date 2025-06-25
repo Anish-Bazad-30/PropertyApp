@@ -15,7 +15,7 @@ import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { LoaderInterceptor } from './interceptor/loader.interceptor';
 import { LoaderComponent } from './loader/loader.component';
-
+import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,9 +48,11 @@ import { LoaderComponent } from './loader/loader.component';
     provide: HTTP_INTERCEPTORS,
     useClass: LoaderInterceptor,
     multi: true
-  }
+  },
+   SocialSharing
   ],
   bootstrap: [AppComponent],
+ 
 
 })
 export class AppModule { }

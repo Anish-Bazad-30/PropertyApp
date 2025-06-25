@@ -5,15 +5,16 @@ import { PropertyUploadFormService } from 'src/app/services/property-upload-form
 import { PropertyService } from 'src/app/services/property.service';
 import { SaleFinaliseService } from 'src/app/services/sale-finalise.service';
 import { StorageService } from 'src/app/services/storage.service';
-
+import { SubscriptionService } from 'src/app/services/subscription.service';
+import { Browser } from '@capacitor/browser';
 @Component({
   selector: 'app-subscription',
   templateUrl: './subscription.component.html',
   styleUrls: ['./subscription.component.scss'],
 })
-export class SubscriptionComponent  implements OnInit {
+export class SubscriptionComponent implements OnInit {
 
- properties: any[] = [];
+  properties: any[] = [];
   userId!: any;
 
   constructor(
@@ -22,7 +23,8 @@ export class SubscriptionComponent  implements OnInit {
     private propertyEditService: PropertyUploadFormService,
     private finaliseSaleService: SaleFinaliseService,
     private storageService: StorageService,
-    private confirmService: ConfirmDialogService
+    private confirmService: ConfirmDialogService,
+    private subscribleService: SubscriptionService
   ) { }
 
   async ngOnInit() {
@@ -31,56 +33,18 @@ export class SubscriptionComponent  implements OnInit {
     this.userId = userId || '';
     console.log('User ID:', this.userId);
 
-    setTimeout(() => {
-      this.fetchProperty();
-    }, 500);
   }
 
 
-  fetchProperty() {
-
-    this.propertyService.getProperties(this.userId).subscribe((res) => {
-      this.properties = res.data;
-      console.log(this.properties);
-
-    })
-  }
-  addNew() {
-    this.router.navigate(['/agent/upload-property'])
-  }
-  finalizeSale(property: any) {
-    this.finaliseSaleService.setPropertyData(property);
-    this.router.navigate(['/agent/buyer-details']);
-  }
-
-  editProperty(property: any) {
-    console.log(property);
-
-    this.propertyEditService.setPropertyData(property);
-    this.router.navigate(['/agent/edit-property']);
-
-  }
-
-  deleteProperty(propertyId: any) {
-
-
-    this.confirmService
-      .confirm('Confirm Deletion', 'Are you sure you want to delete this Property?')
-      .subscribe((result) => {
-        if (result) {
-
-
-          // console.log('Form Data:', propertyId);
-          this.propertyService.deleteProperty(propertyId).subscribe((res) => {
-            console.log(res);
-            this.fetchProperty();
-          })
-
-        } else {
-          // Deletion cancelled
-          console.log('Deletion cancelled');
+  subscribe() {
+    this.subscribleService.postSubscription(this.userId).subscribe(
+      async (res: any) => {
+        const url = res.data.checkoutUrl;
+        if (url) {
+          await Browser.open({ url });
         }
-      });
+      })
   }
+
 
 }

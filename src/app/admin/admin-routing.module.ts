@@ -22,6 +22,8 @@ import { AdsManagementFormComponent } from './ads-management-form/ads-management
 import { PropertyForAgentComponent } from './property-for-agent/property-for-agent.component';
 import { AddPropertyForAgentComponent } from './add-property-for-agent/add-property-for-agent.component';
 import { EditPropertyForAgentComponent } from './edit-property-for-agent/edit-property-for-agent.component';
+import { EditAdsComponent } from './edit-ads/edit-ads.component';
+import { AdsManagementComponent } from './ads-management/ads-management.component';
 
 
 const routes: Routes = [
@@ -46,7 +48,9 @@ const routes: Routes = [
       { path: 'edit-services', component: EditServiceComponent},
       { path: 'edit-property', component: PropertyEditComponent},
       { path: 'user-chart', component: UserEngagementChartComponent},
-      { path: 'ads-management', component: AdsManagementFormComponent},
+      { path: 'ads-management', component: AdsManagementComponent},
+       { path: 'add-ads', component: AdsManagementFormComponent},
+        { path: 'edit-ads', component: EditAdsComponent},
       { path: 'property-for-agent', component: PropertyForAgentComponent},
       { path: 'add-property-for-agent', component: AddPropertyForAgentComponent},
       { path: 'edit-property-for-agent', component: EditPropertyForAgentComponent},

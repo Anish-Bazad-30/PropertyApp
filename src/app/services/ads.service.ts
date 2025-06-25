@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -22,7 +22,7 @@ private apiUrl: string = environment.API_URL;
     }
 
     updateAds(id:any,data: any): Observable<any> {
-      const url = `${this.apiUrl}/api/partner-ads${id}`;
+      const url = `${this.apiUrl}/api/partner-ads/${id}`;
       return this.http.put<any>(url, data);
     }
 
@@ -31,4 +31,15 @@ private apiUrl: string = environment.API_URL;
       return this.http.get<any>(url);
     }
 
+    private adsSubject = new BehaviorSubject<any>(null);
+      adsData$ = this.adsSubject.asObservable();
+    
+      setAdsData(data: any): void {
+        this.adsSubject.next(data);
+      }
+    
+      // Get current property data snapshot
+      getAdsData(): any {
+        return this.adsSubject.getValue();
+      }
 }
