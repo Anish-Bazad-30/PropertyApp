@@ -16,6 +16,7 @@ import { AgentRoutingModule } from './agent-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { MapDetailsComponent } from './map-details/map-details.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 
 
 
@@ -31,7 +32,8 @@ import { SubscriptionComponent } from './subscription/subscription.component';
     BuyerDetailsComponent,
     MainComponent,
     MapDetailsComponent,
-    SubscriptionComponent
+    SubscriptionComponent,
+    PaymentSuccessComponent
   ],
   imports: [
     AgentRoutingModule,

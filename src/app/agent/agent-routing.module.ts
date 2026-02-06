@@ -12,6 +12,8 @@ import { PropertyEditFormComponent } from './property-edit-form/property-edit-fo
 import { PropertyUploadFormComponent } from './property-upload-form/property-upload-form.component';
 import { MapDetailsComponent } from './map-details/map-details.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
+import { PaymentFailureComponent } from './payment-failure/payment-failure.component';
 
 
 const routes: Routes = [
@@ -29,6 +31,8 @@ const routes: Routes = [
       { path: 'edit-service', component: EditServiceComponent }, 
       { path: 'map-details', component: MapDetailsComponent },
       { path: 'subscription', component: SubscriptionComponent },
+      { path: 'payment-success', component: PaymentSuccessComponent },
+      { path: 'payment-failure', component: PaymentFailureComponent },
       { path: '', redirectTo: 'landing-page', pathMatch: 'full' }
  
     ]
